@@ -1,25 +1,75 @@
+#message add_edge(i64 From, i64 To)
+#message remove_edge(i64 From, i64 To)
+
+
 #epilogue ```python
 
+import os
+import re
+import subprocess
 import sys
 from capstone import *
+from binascii import unhexlify
+
+md = Cs(CS_ARCH_X86, CS_MODE_64)
+md.detail = True
+md.syntax = CS_OPT_SYNTAX_ATT
 
 usage = '''Usage: 
 		\tpython3 %s [target_binary]
 		''' % sys.argv[0]
 
+# Fetch disassembly for processing
+
+def get_disassembly(target):
+	if not os.path.exists(target):
+		print("ERROR: Missing target!")
+		print(usage)
+		exit(0)	
+	disas = subprocess.check_output(['objdump', '-D', target]).decode('utf-8').rstrip()
+	return disas
+
+# Parse disassembly and feed into datalog
+
+def parse_disassembly(disas):
+	re_text = re.compile(r'(?s)(?=(?:Disas.*?(?:text|TEXT)(?:.*?):\n)(.*?)(?:Disas))')
+	re_insn = re.compile(r'([0-9a-fA-F]*)(?::\t)([0-9a-fA-F{2} ]*\b)')
+
+	for section in re.findall(re_text, disas):
+		for entry in re.findall(re_insn, section):
+			(addr, code) = entry
+
+			cs_addr = int(addr,16)
+			cs_code = unhexlify(code.replace(' ',''))
+
+			try:
+				insn = [x for x in md.disasm(code=cs_code, offset=cs_addr)][0]
+			except: 
+				continue
+
+			print("0x%x:\t%s\t%s" % (insn.address, insn.mnemonic, insn.op_str))
+			#print([i for i in insn.operands])
+
+	return
+
 if __name__ == "__main__":
-	# DrLej setup
 	functors = DatabaseFunctors()
 	log = DatabaseLog()
 	db = Database(log, functors)
 
-    # Check for errors
-	if len(sys.argv) != 2:
-		print ("ERROR: Missing argument(s)!")
-		print (usage)
-		exit(0)
+	# Parse args
 
-	# Get binary and start disassembling
 	target = sys.argv[1]
 
+    # Check for errors
+
+	if len(sys.argv) != 2:
+		print("ERROR: Missing argument(s)!")
+		print(usage)
+		exit(0)
+
+	# Get disassembly
+
+	disas = get_disassembly(target)
+	parse_disassembly(disas)	
 ```
