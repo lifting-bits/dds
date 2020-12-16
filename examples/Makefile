@@ -1,9 +1,9 @@
 CC=clang
 
-all: helloworld
+all: hello
 
-helloworld:
-	$(CC) -o helloworld helloworld.c
+hello:
+	$(CC) -o hello hello.c
 
 clean:
-	rm -rf helloworld
+	rm -rf hello

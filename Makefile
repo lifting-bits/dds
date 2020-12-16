@@ -1,11 +1,11 @@
 .PHONY: all examples clean
 
-all: examples
-	drlojekyll objdump.dr -py-out objdump.py
-	python3 objdump.py examples/helloworld
+#examples:
+	#$(MAKE) all -C examples 
 
-examples:
-	$(MAKE) all -C examples 
+all: 
+	drlojekyll objdump.dr -py-out objdump.py
+	python3 objdump.py examples/hello.elf lief
 
 clean:
 	rm -rf objdump.py

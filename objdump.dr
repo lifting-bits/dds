@@ -4,6 +4,7 @@
 
 #epilogue ```python
 
+import lief
 import os
 import re
 import subprocess
@@ -16,60 +17,88 @@ md.detail = True
 md.syntax = CS_OPT_SYNTAX_ATT
 
 usage = '''Usage: 
-		\tpython3 %s [target_binary]
+		\tpython3 %s [target_binary] [disassembler]
+		\tSupported disassemblers:
+		\t  objdump
+		\t  llvm-objdump
+		\t  lief
 		''' % sys.argv[0]
 
-# Fetch disassembly for processing
+# Disassemble with objdump/llvm-objdump
 
-def get_disassembly(target):
-	if not os.path.exists(target):
-		print("ERROR: Missing target!")
-		print(usage)
-		exit(0)	
-	disas = subprocess.check_output(['objdump', '-D', target]).decode('utf-8').rstrip()
-	return disas
+def disas_objdump(targ, mode):
+	disas = subprocess.check_output([mode, '-D', targ]).decode('utf-8').rstrip()
+	
+	re_text = r"(?s)(?=(?:Dis.*?(?:text)(?:.*?):\n)(.*?)(?:Dis))"
+	re_insn = re.compile(r"([0-9a-fA-F]*)(?::[\t| ])([0-9a-fA-F{2} ]*\b)")
+	
+	text = re.search(re_text, disas, re.MULTILINE).group(1)
 
-# Parse disassembly and feed into datalog
+	for entry in re.findall(re_insn, text):
+		(addr, code) = entry
+		cs_addr = int(addr,16)
+		cs_code = unhexlify(code.replace(' ',''))
 
-def parse_disassembly(disas):
-	re_text = re.compile(r'(?s)(?=(?:Disas.*?(?:text|TEXT)(?:.*?):\n)(.*?)(?:Disas))')
-	re_insn = re.compile(r'([0-9a-fA-F]*)(?::\t)([0-9a-fA-F{2} ]*\b)')
+		# One-by-one decoding
 
-	for section in re.findall(re_text, disas):
-		for entry in re.findall(re_insn, section):
-			(addr, code) = entry
+		try: 
+			i = next(md.disasm(cs_code, cs_addr)) 
+		except: 
+			continue
 
-			cs_addr = int(addr,16)
-			cs_code = unhexlify(code.replace(' ',''))
+		print("0x%x:\t%s\t%s" % (i.address, i.mnemonic, i.op_str))
+	
+	return
 
-			try:
-				insn = [x for x in md.disasm(code=cs_code, offset=cs_addr)][0]
-			except: 
-				continue
+# Disassemble with lief
 
-			print("0x%x:\t%s\t%s" % (insn.address, insn.mnemonic, insn.op_str))
-			#print([i for i in insn.operands])
+def disas_lief(targ, mode):
+	parsed = lief.parse(targ)
+	text = parsed.get_section(".text")
+
+	cs_addr = int('0x400000',16)
+	cs_code = bytearray(text.content)
+
+	# Full-bytearray decoding
+
+	insns = md.disasm(cs_code, text.virtual_address)
+
+	for i in insns:
+		print("0x%x:\t%s\t%s" % (i.address, i.mnemonic, i.op_str))
 
 	return
+
+# Main function
 
 if __name__ == "__main__":
 	functors = DatabaseFunctors()
 	log = DatabaseLog()
 	db = Database(log, functors)
 
-	# Parse args
+	# Get and check args
 
-	target = sys.argv[1]
-
-    # Check for errors
-
-	if len(sys.argv) != 2:
+	if len(sys.argv) != 3:
 		print("ERROR: Missing argument(s)!")
 		print(usage)
 		exit(0)
 
-	# Get disassembly
+	targ = sys.argv[1]
+	if not os.path.exists(targ):
+		print("ERROR: Can't find target binary (%s)!" % targ)
+		print(usage)
+		exit(0)	
 
-	disas = get_disassembly(target)
-	parse_disassembly(disas)	
+	mode = sys.argv[2]
+	if mode not in ['objdump', 'llvm-objdump', 'lief']:
+		print("ERROR: Unsupported disassembler (%s)!" % mode)
+		print(usage)
+		exit(0)			
+
+	# Disassemble and decode!
+
+	if "objdump" in mode:
+		disas_objdump(targ, mode)
+	if "lief" in mode:
+		disas_lief(targ, mode)
+
 ```
