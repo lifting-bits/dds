@@ -1,2 +1,6 @@
 examples/hello
 objdump.py
+dds.dot
+dds.py
+__pycache__/
+.mypy_cache/
