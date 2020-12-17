@@ -1,6 +1,6 @@
-#message add_edge(i64 From, i64 To)
-#message remove_edge(i64 From, i64 To)
 
+#local instruction(i64 Address, i64 Mnemonic)
+instructions: Set[instruction] = set()
 
 #epilogue ```python
 
@@ -24,6 +24,21 @@ usage = '''Usage:
 		\t  lief
 		''' % sys.argv[0]
 
+
+def parse_insn(i):
+	addr   = i.address
+	mnem   = i.mnemonic
+	op_str = i.op_str
+
+	
+	instructions.add()
+
+	#print("0x%x:\t%s\t%s" % (i.address, i.mnemonic, i.op_str))
+
+	return
+
+
+
 # Disassemble with objdump/llvm-objdump
 
 def disas_objdump(targ, mode):
@@ -41,13 +56,10 @@ def disas_objdump(targ, mode):
 
 		# One-by-one decoding
 
-		try: 
-			i = next(md.disasm(cs_code, cs_addr)) 
-		except: 
-			continue
+		try: i = next(md.disasm(cs_code, cs_addr)) 
+		except: continue
 
-		print("0x%x:\t%s\t%s" % (i.address, i.mnemonic, i.op_str))
-	
+		parse_insn(i)
 	return
 
 # Disassemble with lief
@@ -63,10 +75,9 @@ def disas_lief(targ, mode):
 
 	insns = md.disasm(cs_code, text.virtual_address)
 
-	for i in insns:
-		print("0x%x:\t%s\t%s" % (i.address, i.mnemonic, i.op_str))
-
+	for i in insns: parse_insn(i)
 	return
+
 
 # Main function
 

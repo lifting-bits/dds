@@ -1,0 +1,35 @@
+#prologue ```python
+from capstone import CsInsn
+```
+
+#message section(bytes Name, u64 Start, u64 End)
+#message executable_section(bytes Name, u64 Start, u64 End)
+
+#foreign Instruction ```python CsInsn```
+#message decoded_instruction(u64 Addr, Instruction Insn)
+
+; Give me all section names
+#query get_section_name(free bytes Name)
+get_section_name(Name): 
+	section(Name,_,_).
+
+; Give me the name of the section containing the instruction at Addr
+#query instruction_section(bound u64 Addr, free bytes Name)
+
+; Give me all of the instruction addresses contained in section Name
+#query instruction_section(free u64 Addr, bound bytes Name)
+
+; If there is a decoded instruction at Addr 
+; and there is a section at Addr, 
+; then the instruction_section at Addr's name is the section's name
+instruction_section(Addr, Name) : 
+	decoded_instruction(Addr, _), 
+	section(Name, Addr, _).
+	
+; If a decoded_instruction's Addr is within section, 
+; then we have a instruction section at Addr
+instruction_section(Addr, Name) : 
+	decoded_instruction(Addr, _), 
+	section(Name, Start, End),
+	Start < Addr,
+	Addr < End.

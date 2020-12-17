@@ -4,9 +4,12 @@
 	#$(MAKE) all -C examples 
 
 all: 
-	drlojekyll objdump.dr -py-out objdump.py
-	python3 objdump.py examples/hello.elf lief
+	drlojekyll dds.dr -py-out dds.py -dot-out dds.dot
+	python3 __main.py examples/hello.elf lief
+
+debug:
+	xdot dds.dot
 
 clean:
-	rm -rf objdump.py
+	rm -rf dds.py
 	$(MAKE) clean -C examples
