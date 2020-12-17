@@ -5,7 +5,7 @@
 
 all: 
 	drlojekyll dds.dr -py-out dds.py -dot-out dds.dot
-	python3 __main.py examples/hello.elf lief
+	python3 __main__.py examples/hello.elf lief
 
 debug:
 	xdot dds.dot

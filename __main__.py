@@ -20,22 +20,13 @@ usage = '''Usage:
 		\t  lief
 		''' % sys.argv[0]
 
-
-def parse_insn(i):
-	addr   = i.address
-	mnem   = i.mnemonic
-	op_str = i.op_str
-	instructions.add()
-	#print("0x%x:\t%s\t%s" % (i.address, i.mnemonic, i.op_str))
-	return
-
 # Disassemble with lief
 
 def disas_lief(targ, db):
 	parsed = lief.parse(targ)
 
 	for s in parsed.sections:
-		s_name  = bytes(s.name)
+		s_name  = bytes(s.name, "utf-8")
 		s_start = s.virtual_address
 		s_end   = s.virtual_address + s.size
 		s_bytes = bytearray(s.content)
@@ -43,7 +34,7 @@ def disas_lief(targ, db):
 
 		db.section_3([(s_name, s_start, s_end)])
 
-		print (s_name)
+		#print (s_name)
 
 		# TODO: make format-agnostic
 
@@ -54,7 +45,7 @@ def disas_lief(targ, db):
 				s_insns = md.disasm(s_bytes[i:], s_start+i)
 
 				for insn in s_insns:
-					print(insn.address, insn)
+					#print(insn.address, insn)
 					db.decoded_instruction_2([(insn.address, insn)])
 
 	for addr in db.instruction_section_fb(b'.text'):
