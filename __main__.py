@@ -39,17 +39,20 @@ def disas_lief(targ, db):
 		# TODO: make format-agnostic
 
 		if lief.ELF.SECTION_FLAGS.EXECINSTR in s_flags:
-			#db.executable_section_3([(s_name, s_start, s_end)]) 
+			#db.exec_section_3([(s_name, s_start, s_end)]) 
 			
 			for i in range(0, 15):
 				s_insns = md.disasm(s_bytes[i:], s_start+i)
 
 				for insn in s_insns:
 					#print(insn.address, insn)
-					db.decoded_instruction_2([(insn.address, insn)])
+					db.dec_instruction_3([(s_name, insn.address, insn)])
 
-	for addr in db.instruction_section_fb(b'.text'):
-		print (addr)
+	for x in db.get_sec_insns_bf(b'.text'):
+		print (hex(x))
+
+	#for x in db.get_insn_addrs_from_sec_fb(b'.text'):
+	#	print (hex(x))
 
 	return
 
