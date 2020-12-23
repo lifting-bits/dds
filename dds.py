@@ -23,12 +23,12 @@ class Database:
         self._functors: DatabaseFunctors = functors
         self._refs: DefaultDict[int, List[object]] = defaultdict(list)
 
-        self.table_0: DefaultDict[Tuple[bytes, int], int] = defaultdict(int)
-        self.index_35: DefaultDict[bytes, List[int]] = defaultdict(list)
+        self.table_0: DefaultDict[int, int] = defaultdict(int)
 
-        self.table_3: DefaultDict[int, int] = defaultdict(int)
+        self.table_2: DefaultDict[int, int] = defaultdict(int)
 
-        self.table_5: DefaultDict[int, int] = defaultdict(int)
+        self.table_4: DefaultDict[Tuple[bytes, int], int] = defaultdict(int)
+        self.index_36: DefaultDict[bytes, List[int]] = defaultdict(list)
 
         self.table_7: DefaultDict[bytes, int] = defaultdict(int)
 
@@ -52,6 +52,22 @@ class Database:
                 elif obj == maybe_obj:
                     prior_obj: CsInsn = cast(CsInsn, maybe_obj)
                     Database._MERGE_METHOD_instruction(obj, prior_obj)
+                    return prior_obj
+            ref_list.append(obj)
+        return obj
+
+    _HAS_MERGE_METHOD_personality: Final[bool] = hasattr(int, 'merge_into')
+    _MERGE_METHOD_personality: Final[Callable[[int, int], None]] = getattr(int, 'merge_into', lambda a, b: None)
+
+    def _resolve_personality(self, obj: int) -> int:
+        if Database._HAS_MERGE_METHOD_personality:
+            ref_list = self._refs[hash(obj)]
+            for maybe_obj in ref_list:
+                if obj is maybe_obj:
+                    return obj
+                elif obj == maybe_obj:
+                    prior_obj: int = cast(int, maybe_obj)
+                    Database._MERGE_METHOD_personality(obj, prior_obj)
                     return prior_obj
             ref_list.append(obj)
         return obj
@@ -94,20 +110,20 @@ class Database:
                 vec_20.append(var_17)
             # Program TransitionState Region
             tuple_19 = var_19
-            prev_state = self.table_3[tuple_19]
+            prev_state = self.table_0[tuple_19]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_3[tuple_19] = 1 | 4
+                self.table_0[tuple_19] = 1 | 4
                 if not present_bit:
                     pass
             # Program TransitionState Region
             tuple_18 = var_18
-            prev_state = self.table_5[tuple_18]
+            prev_state = self.table_2[tuple_18]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_5[tuple_18] = 1 | 4
+                self.table_2[tuple_18] = 1 | 4
                 if not present_bit:
                     pass
             # Program TransitionState Region
@@ -135,113 +151,113 @@ class Database:
                 if var_22 in self.index_24:
                     # Program TransitionState Region
                     tuple_22_25 = (var_22, var_25)
-                    prev_state = self.table_0[tuple_22_25]
+                    prev_state = self.table_4[tuple_22_25]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_0[tuple_22_25] = 1 | 4
+                        self.table_4[tuple_22_25] = 1 | 4
                         if not present_bit:
-                            self.index_35[tuple_22_25[0]].append(tuple_22_25[1])
+                            self.index_36[tuple_22_25[0]].append(tuple_22_25[1])
         # Program VectorClear Region
         del vec_20[:]
         vec_index20 = 0
         # Program Return Region
         return False
 
-    def dec_instruction_3(self, vec_27: List[Tuple[bytes, int, CsInsn]]) -> bool:
+    def decoded_instruction_4(self, vec_27: List[Tuple[bytes, int, int, int]]) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
         vec_index27: int = 0
-        vec_31: List[bytes] = list()
-        vec_index31: int = 0
+        vec_32: List[bytes] = list()
+        vec_index32: int = 0
         # Program Series Region
         # Program VectorLoop Region
         vec_index27 = 0
         while vec_index27 < len(vec_27):
-            var_28, var_29, var_30 = vec_27[vec_index27]
+            var_28, var_29, var_30, var_31 = vec_27[vec_index27]
             vec_index27 += 1
             # Program TransitionState Region
-            tuple_28_29 = (var_28, var_29)
-            prev_state = self.table_9[tuple_28_29]
+            tuple_28_30 = (var_28, var_30)
+            prev_state = self.table_9[tuple_28_30]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_9[tuple_28_29] = 1 | 4
+                self.table_9[tuple_28_30] = 1 | 4
                 if not present_bit:
-                    self.index_23[tuple_28_29[0]].append(tuple_28_29[1])
+                    self.index_23[tuple_28_30[0]].append(tuple_28_30[1])
                 # Program VectorAppend Region
-                vec_31.append(var_28)
+                vec_32.append(var_28)
         # Program VectorUnique Region
-        vec_31 = list(set(vec_31))
-        vec_index31 = 0
+        vec_32 = list(set(vec_32))
+        vec_index32 = 0
         # Program TableJoin Region
-        while vec_index31 < len(vec_31):
-            var_33 = vec_31[vec_index31]
-            vec_index31 += 1
-            tuple_32_0_index: int = 0
-            tuple_32_0_vec: List[int] = self.index_23[var_33]
-            while tuple_32_0_index < len(tuple_32_0_vec):
-                tuple_32_0 = tuple_32_0_vec[tuple_32_0_index]
-                tuple_32_0_index += 1
-                var_34 = tuple_32_0
-                if var_33 in self.index_24:
+        while vec_index32 < len(vec_32):
+            var_34 = vec_32[vec_index32]
+            vec_index32 += 1
+            tuple_33_0_index: int = 0
+            tuple_33_0_vec: List[int] = self.index_23[var_34]
+            while tuple_33_0_index < len(tuple_33_0_vec):
+                tuple_33_0 = tuple_33_0_vec[tuple_33_0_index]
+                tuple_33_0_index += 1
+                var_35 = tuple_33_0
+                if var_34 in self.index_24:
                     # Program TransitionState Region
-                    tuple_33_34 = (var_33, var_34)
-                    prev_state = self.table_0[tuple_33_34]
+                    tuple_34_35 = (var_34, var_35)
+                    prev_state = self.table_4[tuple_34_35]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_0[tuple_33_34] = 1 | 4
+                        self.table_4[tuple_34_35] = 1 | 4
                         if not present_bit:
-                            self.index_35[tuple_33_34[0]].append(tuple_33_34[1])
+                            self.index_36[tuple_34_35[0]].append(tuple_34_35[1])
         # Program VectorClear Region
-        del vec_31[:]
-        vec_index31 = 0
+        del vec_32[:]
+        vec_index32 = 0
         # Program Return Region
         return False
 
-    def get_sec_insns_bf(self, param_0: bytes) -> Iterator[int]:
+    def get_section_ends_f(self) -> Iterator[int]:
         state: int = 0
         tuple_index: int = 0
-        tuple_vec: List[int] = self.index_35[param_0]
+        for tuple in self.table_0:
+            tuple_index += 1
+            param_0: int = tuple
+            full_tuple = param_0
+            state = self.table_0[full_tuple] & 3
+            if state != 1:
+                continue;
+            yield param_0
+
+    def get_section_starts_f(self) -> Iterator[int]:
+        state: int = 0
+        tuple_index: int = 0
+        for tuple in self.table_2:
+            tuple_index += 1
+            param_0: int = tuple
+            full_tuple = param_0
+            state = self.table_2[full_tuple] & 3
+            if state != 1:
+                continue;
+            yield param_0
+
+    def instructions_from_section_name_bf(self, param_0: bytes) -> Iterator[int]:
+        state: int = 0
+        tuple_index: int = 0
+        tuple_vec: List[int] = self.index_36[param_0]
         while tuple_index < len(tuple_vec):
             tuple = tuple_vec[tuple_index]
             tuple_index += 1
             param_1: int = tuple
             full_tuple = (param_0, param_1)
-            state = self.table_0[full_tuple] & 3
+            state = self.table_4[full_tuple] & 3
             if state != 1:
                 continue;
             yield param_1
 
-    def get_sec_ends_f(self) -> Iterator[int]:
-        state: int = 0
-        tuple_index: int = 0
-        for tuple in self.table_3:
-            tuple_index += 1
-            param_0: int = tuple
-            full_tuple = param_0
-            state = self.table_3[full_tuple] & 3
-            if state != 1:
-                continue;
-            yield param_0
-
-    def get_sec_starts_f(self) -> Iterator[int]:
-        state: int = 0
-        tuple_index: int = 0
-        for tuple in self.table_5:
-            tuple_index += 1
-            param_0: int = tuple
-            full_tuple = param_0
-            state = self.table_5[full_tuple] & 3
-            if state != 1:
-                continue;
-            yield param_0
-
-    def get_sec_names_f(self) -> Iterator[bytes]:
+    def get_section_names_f(self) -> Iterator[bytes]:
         state: int = 0
         tuple_index: int = 0
         for tuple in self.table_7:

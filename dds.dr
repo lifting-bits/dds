@@ -5,36 +5,57 @@ from capstone import CsInsn
 ;---------------------------------------------------------
 
 ; Section declarations
-#message     section(bytes Name, u64 Start, u64 End)
-#message dat_section(bytes Name, u64 Start, u64 End)
-#message exe_section(bytes Name, u64 Start, u64 End)
-
-;---------------------------------------------------------
-;---------------------------------------------------------
+#message            section(bytes Name, u64 Start, u64 End)
+#message       data_section(bytes Name, u64 Start, u64 End)
+#message executable_section(bytes Name, u64 Start, u64 End)
 
 ; Get all section names
-#query get_sec_names(free bytes Name)
-get_sec_names(Name): section(Name,_,_).
+#query get_section_names(free bytes Name)
+get_section_names(Name): section(Name,_,_).
 
 ; Get all section start addresses
-#query get_sec_starts(free u64 Start)
-get_sec_starts(Start): section(_,Start,_).
+#query get_section_starts(free u64 Start)
+get_section_starts(Start): section(_,Start,_).
 
 ; Get all section end addresses 
-#query get_sec_ends(free u64 End)
-get_sec_ends(End): section(_,_,End).
+#query get_section_ends(free u64 End)
+get_section_ends(End): section(_,_,End).
+
+;---------------------------------------------------------
+;---------------------------------------------------------
+
+;#message function
+
+
+#message maybe_function(u64 Start)
+
+
 
 ;---------------------------------------------------------
 ;---------------------------------------------------------
 
 ; Instruction declarations
-#foreign     instruction ```python CsInsn```
-#message dec_instruction(bytes SecName, u64 Addr, instruction Insn)
+#foreign instruction ```python CsInsn```
+#message decoded_instruction(bytes SecName, u64 SecEA, u64 InsnEA, i8 Type)
+#message direct_call(u64 InsnEA, u64 Target)
+#message direct_jump(u64 InsnEA, u64 Target)
+#message conditional_direct_jump(u64 InsnEA, u64 Target)
 
-; Given a section name, get all instruction addresses
-#query get_sec_insns(bound bytes SecName, free u64 Addr)
-get_sec_insns(SecName, Addr) :
-  dec_instruction(SecName, Addr, _),
+; Instruction personality types
+#foreign personality ```python int```
+#constant personality PERSONALITY_NORMAL ```python 0```
+#constant personality PERSONALITY_DIRECT_JUMP ```python 1```
+#constant personality PERSONALITY_INDIRECT_JUMP ```python 2```
+#constant personality PERSONALITY_CONDITIONAL_DIRECT_JUMP ```python 3```
+#constant personality PERSONALITY_CONDITIONAL_INDIRECT_JUMP ```python 4```
+#constant personality PERSONALITY_DIRECT_CALL ```python 5```
+#constant personality PERSONALITY_INDIRECT_CALL ```python 6```
+#constant personality PERSONALITY_RETURN ```python 7```
+
+; Given a section name, get its instruction addrs
+#query instructions_from_section_name(bound bytes SecName, free u64 InsnEA)
+instructions_from_section_name(SecName, InsnEA) :
+  decoded_instruction(SecName, _, InsnEA,_),
   section(SecName,_,_).
 
 ;---------------------------------------------------------
