@@ -3,11 +3,10 @@ from capstone import CsInsn
 ```
 ;---------------------------------------------------------
 ;---------------------------------------------------------
-
 ; Section declarations
-#message            section(bytes Name, u64 Start, u64 End)
-#message       data_section(bytes Name, u64 Start, u64 End)
-#message executable_section(bytes Name, u64 Start, u64 End)
+#message section(bytes Name, u64 Start, u64 End)
+#message data_section(bytes Name, u64 Start, u64 End)
+#message exec_section(bytes Name, u64 Start, u64 End)
 
 ; Get all section names
 #query get_section_names(free bytes Name)
@@ -23,41 +22,56 @@ get_section_ends(End): section(_,_,End).
 
 ;---------------------------------------------------------
 ;---------------------------------------------------------
-
-;#message function
-
-
-#message maybe_function(u64 Start)
-
-
-
-;---------------------------------------------------------
-;---------------------------------------------------------
+; Instruction personalities
+#foreign personality ```python int```
+#constant personality INSN_NORMAL             ```python 0```
+#constant personality INSN_DIRECT_JUMP        ```python 1```
+#constant personality INSN_INDIRECT_JUMP      ```python 2```
+#constant personality INSN_COND_DIRECT_JUMP   ```python 3```
+#constant personality INSN_COND_INDIRECT_JUMP ```python 4```
+#constant personality INSN_DIRECT_CALL        ```python 5```
+#constant personality INSN_INDIRECT_CALL      ```python 6```
+#constant personality INSN_RETURN             ```python 7```
+#constant personality INSN_NOP                ```python 8```
 
 ; Instruction declarations
-#foreign instruction ```python CsInsn```
-#message decoded_instruction(bytes SecName, u64 SecEA, u64 InsnEA, i8 Type)
-#message direct_call(u64 InsnEA, u64 Target)
-#message direct_jump(u64 InsnEA, u64 Target)
-#message conditional_direct_jump(u64 InsnEA, u64 Target)
+#message instruction(u64 InsnEA, personality InsnType, bytes SecName)
 
-; Instruction personality types
-#foreign personality ```python int```
-#constant personality PERSONALITY_NORMAL ```python 0```
-#constant personality PERSONALITY_DIRECT_JUMP ```python 1```
-#constant personality PERSONALITY_INDIRECT_JUMP ```python 2```
-#constant personality PERSONALITY_CONDITIONAL_DIRECT_JUMP ```python 3```
-#constant personality PERSONALITY_CONDITIONAL_INDIRECT_JUMP ```python 4```
-#constant personality PERSONALITY_DIRECT_CALL ```python 5```
-#constant personality PERSONALITY_INDIRECT_CALL ```python 6```
-#constant personality PERSONALITY_RETURN ```python 7```
-
-; Given a section name, get its instruction addrs
-#query instructions_from_section_name(bound bytes SecName, free u64 InsnEA)
-instructions_from_section_name(SecName, InsnEA) :
-  decoded_instruction(SecName, _, InsnEA,_),
-  section(SecName,_,_).
+; Get instructions in a section
+#query get_section_instructions(bound bytes SecName, free u64 InsnEA)
+get_section_instructions(SecName, InsnEA) :
+  instruction(InsnEA, _, SecName),
+  section(SecName, _, _).
 
 ;---------------------------------------------------------
+;---------------------------------------------------------
+; Control-flow personalities
+#constant personality FLOW_FALLTHRU   ```python 0```
+#constant personality FLOW_JUMP_TARG  ```python 1```
+#constant personality FLOW_COND_TRUE  ```python 2```
+#constant personality FLOW_COND_FALSE ```python 3```
+#constant personality FLOW_CALL_TARG  ```python 4```
+#constant personality FLOW_PSEUDO     ```python 5```
 
+; Transfer declarations
+#message instruction_transfer(u64 InsnEA, u64 NextEA, personality FlowType)
+
+; Get called functions
+#query get_called_functions(free u64 FuncEA)
+get_called_functions(FuncEA) :
+  instruction(FuncEA, _, _),
+  instruction_transfer(_, FuncEA, FLOW_CALL_TARG).
+
+; TODO: need a reliable way to detect tailcalled funcs
+#query get_tailcalled_functions(free u64 FuncEA)
+get_tailcalled_functions(FuncEA) :
+  instruction(FuncEA, _, _),
+  instruction_transfer(_, FuncEA, FLOW_CALL_TARG), ; won't hold
+  instruction_transfer(_, FuncEA, FLOW_JUMP_TARG).
+
+; TODO: map to PLT?
+#query get_extern_functions(free u64 FuncEA)
+get_extern_functions(FuncEA) :
+  instruction(FuncEA, _, _),
+  instruction_transfer(_, FuncEA, FLOW_CALL_TARG).
 
