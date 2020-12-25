@@ -2,28 +2,14 @@
 from capstone import CsInsn
 ```
 ;---------------------------------------------------------
+; Personalities
 ;---------------------------------------------------------
-; Section declarations
-#message section(bytes Name, u64 Start, u64 End)
-#message data_section(bytes Name, u64 Start, u64 End)
-#message exec_section(bytes Name, u64 Start, u64 End)
-
-; Get all section names
-#query get_section_names(free bytes Name)
-get_section_names(Name): section(Name,_,_).
-
-; Get all section start addresses
-#query get_section_starts(free u64 Start)
-get_section_starts(Start): section(_,Start,_).
-
-; Get all section end addresses 
-#query get_section_ends(free u64 End)
-get_section_ends(End): section(_,_,End).
-
-;---------------------------------------------------------
-;---------------------------------------------------------
-; Instruction personalities
+; Section personalities 
 #foreign personality ```python int```
+#constant personality SECTION_EXEC ```python 0```
+#constant personality SECTION_DATA ```python 1```
+
+; Instruction personalities
 #constant personality INSN_NORMAL             ```python 0```
 #constant personality INSN_DIRECT_JUMP        ```python 1```
 #constant personality INSN_INDIRECT_JUMP      ```python 2```
@@ -34,44 +20,71 @@ get_section_ends(End): section(_,_,End).
 #constant personality INSN_RETURN             ```python 7```
 #constant personality INSN_NOP                ```python 8```
 
-; Instruction declarations
-#message instruction(u64 InsnEA, personality InsnType, bytes SecName)
+; Flow personalities
+#constant personality FLOW_INTRA_PROC         ```python 0```
+#constant personality FLOW_INTER_PROC         ```python 1```
 
-; Get instructions in a section
+; Edge personalities
+#constant personality EDGE_FALLTHRU           ```python 0```
+#constant personality EDGE_JUMP_TARG          ```python 1```
+#constant personality EDGE_COND_TRUE          ```python 2```
+#constant personality EDGE_COND_FALSE         ```python 3```
+#constant personality EDGE_CALL_TARG          ```python 4```
+#constant personality EDGE_PSEUDO             ```python 5```
+
+;---------------------------------------------------------
+; Sections
+;---------------------------------------------------------
+#message section(bytes Name, u64 Start, u64 End, personality Exec)
+
+#query get_sections(free bytes Name)
+get_sections(SecName): section(SecName,_,_,_).
+
+;---------------------------------------------------------
+; Functions
+;---------------------------------------------------------
+#message    function(u64 FuncEA)
+
+#query get_functions(free u64 FuncEA)
+get_functions(FuncEA): function(FuncEA).
+
+
+;---------------------------------------------------------
+; Instructions
+;---------------------------------------------------------
+#message instruction(u64 InsnEA, personality InsnType, u64 FuncEA, bytes SecName)
+
+#query get_instructions(free u64 InsnEA)
+get_instructions(InsnEA): instruction(InsnEA,_,_,_).
+
 #query get_section_instructions(bound bytes SecName, free u64 InsnEA)
-get_section_instructions(SecName, InsnEA) :
-  instruction(InsnEA, _, SecName),
-  section(SecName, _, _).
+get_section_instructions(SecName, InsnEA):
+  section(SecName,_,_,_),
+  instruction(InsnEA,_,_,SecName).
 
+#query get_function_instructions(bound u64 FuncEA, free u64 InsnEA)
+get_function_instructions(FuncEA, InsnEA):
+  function(FuncEA),
+  function_instruction(InsnEA,FuncEA).
+  
 ;---------------------------------------------------------
+; Control-flow Transfers
 ;---------------------------------------------------------
-; Control-flow personalities
-#constant personality FLOW_FALLTHRU   ```python 0```
-#constant personality FLOW_JUMP_TARG  ```python 1```
-#constant personality FLOW_COND_TRUE  ```python 2```
-#constant personality FLOW_COND_FALSE ```python 3```
-#constant personality FLOW_CALL_TARG  ```python 4```
-#constant personality FLOW_PSEUDO     ```python 5```
+#message instruction_transfer(u64 InsnEA, u64 NextEA, personality EdgeType, personality FlowType)
 
-; Transfer declarations
-#message instruction_transfer(u64 InsnEA, u64 NextEA, personality FlowType)
+#query get_direct_call_targets(free u64 TargEA)
+get_direct_call_targets(TargEA):
+  instruction(InsnEA,INSN_DIRECT_CALL,_,_),
+  instruction(TargEA,_,_,_),
+  instruction_transfer(InsnEA,TargEA,EDGE_CALL_TARG,_).
 
-; Get called functions
-#query get_called_functions(free u64 FuncEA)
-get_called_functions(FuncEA) :
-  instruction(FuncEA, _, _),
-  instruction_transfer(_, FuncEA, FLOW_CALL_TARG).
+#query get_intraproc_successor(bound u64 InsnEA, free u64 NextEA)
+get_intraproc_successor(InsnEA,NextEA):
+  instruction(NextEA,_,_,_),
+  instruction_transfer(InsnEA,NextEA,_,FLOW_INTRA_PROC).
 
-; TODO: need a reliable way to detect tailcalled funcs
-#query get_tailcalled_functions(free u64 FuncEA)
-get_tailcalled_functions(FuncEA) :
-  instruction(FuncEA, _, _),
-  instruction_transfer(_, FuncEA, FLOW_CALL_TARG), ; won't hold
-  instruction_transfer(_, FuncEA, FLOW_JUMP_TARG).
 
-; TODO: map to PLT?
-#query get_extern_functions(free u64 FuncEA)
-get_extern_functions(FuncEA) :
-  instruction(FuncEA, _, _),
-  instruction_transfer(_, FuncEA, FLOW_CALL_TARG).
+
+
+
 

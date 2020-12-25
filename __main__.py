@@ -21,6 +21,10 @@ usage = '''Usage:
 		\t  lief
 		''' % sys.argv[0]
 
+# Section personalities
+SECTION_DATA = 0
+SECTION_EXEC = 1
+
 # Instruction personalities
 INSN_NORMAL             = 0
 INSN_DIRECT_JUMP        = 1
@@ -32,15 +36,20 @@ INSN_INDIRECT_CALL      = 6
 INSN_RETURN             = 7
 INSN_NOP                = 8
 
-# Control-flow personalities
-FLOW_FALLTHRU   = 0
-FLOW_JUMP_TARG  = 1
-FLOW_COND_TRUE  = 2
-FLOW_COND_FALSE = 3
-FLOW_CALL_TARG  = 4
-FLOW_PSEUDO     = 5
+# Flow personalities
+FLOW_INTRA_PROC = 0
+FLOW_INTER_PROC = 1
 
-# Return instruction type 
+# Edge personalities
+EDGE_FALLTHRU   = 0
+EDGE_JUMP_TARG  = 1
+EDGE_COND_TRUE  = 2
+EDGE_COND_FALSE = 3
+EDGE_CALL_TARG  = 4
+EDGE_PSEUDO     = 5
+
+
+# Return instruction type given its mnemonic and operand
 def get_instruction_type(mnemonic, operands):
 	insn_str = "%s %s" % (mnemonic, operands)
 	if (re.match(r'(jmp[a-z]*) 0x',  insn_str)): # 1
@@ -61,48 +70,78 @@ def get_instruction_type(mnemonic, operands):
 		return INSN_NOP	
 	return INSN_NORMAL # 0
 
-# Disassemble with lief
-def disassemble_lief(targ, db):
-	parsed = lief.parse(targ)
 
-	for s in parsed.sections:
-		s_name  = bytes(s.name, "utf-8")
-		s_start = s.virtual_address
-		s_end   = s.virtual_address + s.size
-		s_bytes = bytearray(s.content)
-		s_flags = s.flags_list
+# Parses a Capstone CsInsn object into DrLoj
+def lief_parse_instruction(CsInsn, SecName):
+	InsnEA   = CsInsn.address
+	NextEA   = CsInsn.address + CsInsn.size
+	InsnType = get_instruction_type(CsInsn.mnemonic, CsInsn.op_str)
 
-		# Declare section
-		db.section_3([(s_name, s_start, s_end)])
-		
-		# Declare executable section
-		if lief.ELF.SECTION_FLAGS.EXECINSTR in s_flags:
-		#	db.executable_section_3([(s_name, s_start, s_end)])
-
-			for x in range(0, 15): 
-				s_insns = md.disasm(s_bytes[x:], s_start+x)
-
-			for i in s_insns:
-				i_type = get_instruction_type(i.mnemonic, i.op_str)
-
-				db.instruction_3([(i.address, i_type, s_name)])
-				
-				if i_type == INSN_NORMAL or i_type == INSN_NOP:
-					db.instruction_transfer_3([(i.address, i.address+i.size, FLOW_FALLTHRU)])
-				if i_type == INSN_COND_DIRECT_JUMP:
-					db.instruction_transfer_3([(i.address, int(i.op_str,16), FLOW_COND_TRUE)])
-					db.instruction_transfer_3([(i.address, i.address+i.size, FLOW_COND_FALSE)]) 
-				if i_type == INSN_DIRECT_CALL:
-					db.instruction_transfer_3([(i.address, int(i.op_str,16), FLOW_CALL_TARG)])
-					db.instruction_transfer_3([(i.address, i.address+i.size, FLOW_PSEUDO)]) # fallthrough (pseudo-edge)
-				
-
-	#for x in db.get_section_instructions(b'.text'):
-	#	print (hex(x))
-	for x in db.get_called_functions_f():
-		print (hex(x))
+	db.instruction_4([(InsnEA, InsnType, '', SecName)])
+	
+	if InsnType == INSN_NORMAL or InsnType == INSN_NOP:
+		db.instruction_transfer_4([(InsnEA, NextEA, EDGE_FALLTHRU, FLOW_INTRA_PROC)])
+	if InsnType == INSN_COND_DIRECT_JUMP:
+		TargEA = int(CsInsn.op_str,16) 
+		db.instruction_transfer_4([(InsnEA, TargEA, EDGE_COND_TRUE, FLOW_INTRA_PROC)])
+		db.instruction_transfer_4([(InsnEA, NextEA, EDGE_COND_FALSE, FLOW_INTRA_PROC)]) 
+	if InsnType == INSN_DIRECT_CALL:
+		TargEA = int(CsInsn.op_str,16)
+		db.instruction_transfer_4([(InsnEA, TargEA, EDGE_CALL_TARG, FLOW_INTER_PROC)])
+		db.instruction_transfer_4([(InsnEA, NextEA, EDGE_PSEUDO, FLOW_INTRA_PROC)]) # fallthrough (pseudo-edge)
 
 	return
+
+
+# Parses a function as a group of intraprocedural successors
+def lief_parse_function(InsnEA):
+	FuncStart = InsnEA
+	
+	while (InsnEA != None):
+		try: 
+			InsnEA = next(db.get_intraproc_successor_bf(InsnEA))
+			#db.instruction(InsnEA) -> want to now update FuncEA
+			#db.function_instruction(InsnEA, FuncEA)
+		except: 
+			break
+
+	FuncEnd = InsnEA
+
+	print (hex(FuncStart), hex(FuncEnd))
+	return
+
+
+# Disassemble with lief
+def disassemble_lief(db, targ):
+	parsed = lief.parse(targ)
+
+	# Iterate all available sections
+	for s in parsed.sections:
+		SecName  = bytes(s.name, "utf-8")
+		SecStart = s.virtual_address
+		SecEnd   = s.virtual_address + s.size
+		SecBytes = bytearray(s.content)
+		SecFlags = s.flags_list
+
+		# Parse executable sections
+		if lief.ELF.SECTION_FLAGS.EXECINSTR in SecFlags:
+			db.section_4([(SecName, SecStart, SecEnd, SECTION_EXEC)])
+
+			# Parse all decoded instructions
+			for x in range(0, 15): 	
+				for i in md.disasm(SecBytes[x:], SecStart + x):
+					lief_parse_instruction(i, SecName) 
+
+		# Parse data sections
+		else:
+			db.section_4([(SecName, SecStart, SecEnd, SECTION_DATA)])
+
+	# Parse functions 			
+	for i in db.get_direct_call_targets_f():
+		lief_parse_function(i)
+
+	return
+
 
 # Main function
 if __name__ == "__main__":
@@ -121,4 +160,4 @@ if __name__ == "__main__":
 		print(usage)
 		exit(0)	
 
-	disassemble_lief(targ, db)
+	disassemble_lief(db, targ)
