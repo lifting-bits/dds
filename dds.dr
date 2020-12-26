@@ -33,29 +33,43 @@ from capstone import CsInsn
 #message section(bytes SecName, u64 SecStart, u64 SecEnd, sectype SecType)
 
 #query get_sections(free bytes SecName)
+
 get_sections(SecName) 
   : section(SecName, _, _, _).
 
 ;---------------------------------------------------------
 ; Instructions
 ;---------------------------------------------------------
-#message instruction(u64 InsnEA, insntype InsnType, bytes SecName)
+#message instruction(u64 InsnEA, insntype InsnType, bytes InsnBytes, bytes SecName)
 #message instruction_transfer(u64 InsnEA, u64 NextEA, edgetype EdgeType)
 
 #query get_instructions(free u64 InsnEA)
 #query get_section_instructions(bound bytes SecName, free u64 InsnEA)
 #query get_function_instructions(bound u64 FuncEA, free u64 InsnEA)
 
+; All instructions
 get_instructions(InsnEA) 
-  : instruction(InsnEA, _, _).
+  : instruction(InsnEA, _, _, _).
 
+; Instructions for a particular section
 get_section_instructions(SecName, InsnEA)
   : section(SecName, _, _, _)
-  , instruction(InsnEA, _, SecName).
+  , instruction(InsnEA, _, _, SecName).
 
+; Function heads from section entrypoints
 get_function_instructions(FuncEA, FuncEA)
-  : instruction(CallEA, INSN_DIRECT_CALL, _)
-  , instruction_transfer(CallEA, FuncEA, EDGE_CALL_TARG).
+  : instruction(FuncEA, _, _, _)
+  , section(_, FuncEA, _, 1).
+
+; Function heads from call targets (excluding PC thunks)
+get_function_instructions(FuncEA, FuncEA)
+  : instruction(CallEA, INSN_DIRECT_CALL, _, _)
+  , instruction_transfer(CallEA, FuncEA, EDGE_CALL_TARG)
+  , instruction(NextEA, _, _, _)
+  , instruction_transfer(CallEA, NextEA, EDGE_CALL_RET)
+  , NextEA != FuncEA.
+
+; Function body instructions (intraprocedural sequences)
 get_function_instructions(FuncEA, NextEA)
   : get_function_instructions(FuncEA, InsnEA)
   , instruction_transfer(InsnEA, NextEA, EDGE_FALLTHRU). 
@@ -73,8 +87,13 @@ get_function_instructions(FuncEA, NextEA)
 ; Functions
 ;---------------------------------------------------------
 #query get_functions(free u64 FuncEA)
+
+; All function heads
 get_functions(FuncEA)
   : get_function_instructions(FuncEA, FuncEA).
 
+;get_functions_tailcalled(FuncEA)
+;  : get_function_instructions(FuncEA, Insn),
+;  , instruction_transfer(Insn, FuncEA, )
 
 

@@ -69,6 +69,8 @@ def get_instruction_type(mnemonic, operands):
 def disassemble_lief(db, targ):
 	parsed = lief.parse(targ)
 
+	print (hex(parsed.entrypoint))
+
 	# Iterate all available sections
 	for s in parsed.sections:
 		s_name  = bytes(s.name, "utf-8")
@@ -83,11 +85,14 @@ def disassemble_lief(db, targ):
 
 			for x in range(0, 15): 	
 				for i in md.disasm(s_bytes[x:], s_start + x):
-					i_addr   = i.address
-					i_next   = i.address + i.size
-					i_type = get_instruction_type(i.mnemonic, i.op_str)
+					i_addr  = i.address
+					i_next  = i.address + i.size
+					i_type  = get_instruction_type(i.mnemonic, i.op_str)
+					i_bytes = i.bytes.hex()
 
-					db.instruction_3([(i_addr, i_type, s_name)])
+					db.instruction_4([(i_addr, i_type, i_bytes, s_name)])
+
+					#print (hex(i_addr), i_type, i.mnemonic, i.op_str)
 					
 					if i_type == INSN_NORMAL or i_type == INSN_NOP:
 						db.instruction_transfer_3([(i_addr, i_next, EDGE_FALLTHRU)])
@@ -104,15 +109,16 @@ def disassemble_lief(db, targ):
 		else:
 			db.section_4([(s_name, s_start, s_end, SECTION_DATA)])
 
-
+	
 	for f in db.get_functions_f():
 		print (hex(f))
+		#for i in db.get_function_instructions_bf(f):
+		#for i in db.get_functions_tailcalled_bf():
+			#print (hex(i))
 
-		for i in db.get_function_instructions_bf(f):
-			print (hex(i))
-
-		exit(0)
-
+		#print ('')
+		#exit(0)
+	
 	return
 
 
