@@ -21,11 +21,9 @@ usage = '''Usage:
 		\t  lief
 		''' % sys.argv[0]
 
-# Section personalities
 SECTION_DATA = 0
 SECTION_EXEC = 1
 
-# Instruction personalities
 INSN_NORMAL             = 0
 INSN_DIRECT_JUMP        = 1
 INSN_INDIRECT_JUMP      = 2
@@ -36,18 +34,15 @@ INSN_INDIRECT_CALL      = 6
 INSN_RETURN             = 7
 INSN_NOP                = 8
 
-# Flow personalities
 FLOW_INTRA_PROC = 0
 FLOW_INTER_PROC = 1
 
-# Edge personalities
 EDGE_FALLTHRU   = 0
 EDGE_JUMP_TARG  = 1
 EDGE_COND_TRUE  = 2
 EDGE_COND_FALSE = 3
 EDGE_CALL_TARG  = 4
 EDGE_PSEUDO     = 5
-
 
 # Return instruction type given its mnemonic and operand
 def get_instruction_type(mnemonic, operands):
@@ -70,75 +65,53 @@ def get_instruction_type(mnemonic, operands):
 		return INSN_NOP	
 	return INSN_NORMAL # 0
 
-
-# Parses a Capstone CsInsn object into DrLoj
-def lief_parse_instruction(CsInsn, SecName):
-	InsnEA   = CsInsn.address
-	NextEA   = CsInsn.address + CsInsn.size
-	InsnType = get_instruction_type(CsInsn.mnemonic, CsInsn.op_str)
-
-	db.instruction_4([(InsnEA, InsnType, '', SecName)])
-	
-	if InsnType == INSN_NORMAL or InsnType == INSN_NOP:
-		db.instruction_transfer_4([(InsnEA, NextEA, EDGE_FALLTHRU, FLOW_INTRA_PROC)])
-	if InsnType == INSN_COND_DIRECT_JUMP:
-		TargEA = int(CsInsn.op_str,16) 
-		db.instruction_transfer_4([(InsnEA, TargEA, EDGE_COND_TRUE, FLOW_INTRA_PROC)])
-		db.instruction_transfer_4([(InsnEA, NextEA, EDGE_COND_FALSE, FLOW_INTRA_PROC)]) 
-	if InsnType == INSN_DIRECT_CALL:
-		TargEA = int(CsInsn.op_str,16)
-		db.instruction_transfer_4([(InsnEA, TargEA, EDGE_CALL_TARG, FLOW_INTER_PROC)])
-		db.instruction_transfer_4([(InsnEA, NextEA, EDGE_PSEUDO, FLOW_INTRA_PROC)]) # fallthrough (pseudo-edge)
-
-	return
-
-
-# Parses a function as a group of intraprocedural successors
-def lief_parse_function(InsnEA):
-	FuncStart = InsnEA
-	
-	while (InsnEA != None):
-		try: 
-			InsnEA = next(db.get_intraproc_successor_bf(InsnEA))
-			#db.instruction(InsnEA) -> want to now update FuncEA
-			#db.function_instruction(InsnEA, FuncEA)
-		except: 
-			break
-
-	FuncEnd = InsnEA
-
-	print (hex(FuncStart), hex(FuncEnd))
-	return
-
-
 # Disassemble with lief
 def disassemble_lief(db, targ):
 	parsed = lief.parse(targ)
 
 	# Iterate all available sections
 	for s in parsed.sections:
-		SecName  = bytes(s.name, "utf-8")
-		SecStart = s.virtual_address
-		SecEnd   = s.virtual_address + s.size
-		SecBytes = bytearray(s.content)
-		SecFlags = s.flags_list
+		s_name  = bytes(s.name, "utf-8")
+		s_start = s.virtual_address
+		s_end   = s.virtual_address + s.size
+		s_bytes = bytearray(s.content)
+		s_flags = s.flags_list
 
-		# Parse executable sections
-		if lief.ELF.SECTION_FLAGS.EXECINSTR in SecFlags:
-			db.section_4([(SecName, SecStart, SecEnd, SECTION_EXEC)])
+		# Parse executable sections and decoded instructions
+		if lief.ELF.SECTION_FLAGS.EXECINSTR in s_flags:
+			db.section_4([(s_name, s_start, s_end, SECTION_EXEC)])
 
-			# Parse all decoded instructions
 			for x in range(0, 15): 	
-				for i in md.disasm(SecBytes[x:], SecStart + x):
-					lief_parse_instruction(i, SecName) 
+				for i in md.disasm(s_bytes[x:], s_start + x):
+					i_addr   = i.address
+					i_next   = i.address + i.size
+					i_type = get_instruction_type(i.mnemonic, i.op_str)
+
+					db.instruction_3([(i_addr, i_type, s_name)])
+					
+					if i_type == INSN_NORMAL or i_type == INSN_NOP:
+						db.instruction_transfer_3([(i_addr, i_next, EDGE_FALLTHRU)])
+					if i_type == INSN_COND_DIRECT_JUMP:
+						i_targ = int(i.op_str,16) 
+						db.instruction_transfer_3([(i_addr, i_targ, EDGE_COND_TRUE)])
+						db.instruction_transfer_3([(i_addr, i_next, EDGE_COND_FALSE)]) 
+					if i_type == INSN_DIRECT_CALL:
+						i_targ = int(i.op_str,16)
+						db.instruction_transfer_3([(i_addr, i_targ, EDGE_CALL_TARG)])
+						db.instruction_transfer_3([(i_addr, i_next, EDGE_PSEUDO)]) # fallthrough (pseudo-edge)
 
 		# Parse data sections
 		else:
-			db.section_4([(SecName, SecStart, SecEnd, SECTION_DATA)])
+			db.section_4([(s_name, s_start, s_end, SECTION_DATA)])
 
-	# Parse functions 			
-	for i in db.get_direct_call_targets_f():
-		lief_parse_function(i)
+
+	for f in db.get_functions_f():
+		print (hex(f))
+
+		for i in db.get_function_instructions_bf(f):
+			print (hex(i))
+
+		exit(0)
 
 	return
 
