@@ -25,7 +25,7 @@ from capstone import CsInsn
 #constant edgetype EDGE_COND_TRUE          ```python 2```
 #constant edgetype EDGE_COND_FALSE         ```python 3```
 #constant edgetype EDGE_CALL_TARG          ```python 4```
-#constant edgetype EDGE_PSEUDO             ```python 5```
+#constant edgetype EDGE_CALL_RET           ```python 5```
 
 ;---------------------------------------------------------
 ; Sections
@@ -65,6 +65,9 @@ get_function_instructions(FuncEA, NextEA)
 get_function_instructions(FuncEA, NextEA)
   : get_function_instructions(FuncEA, InsnEA)
   , instruction_transfer(InsnEA, NextEA, EDGE_COND_FALSE).
+get_function_instructions(FuncEA, NextEA)
+  : get_function_instructions(FuncEA, InsnEA)
+  , instruction_transfer(InsnEA, NextEA, EDGE_CALL_RET).
 
 ;---------------------------------------------------------
 ; Functions

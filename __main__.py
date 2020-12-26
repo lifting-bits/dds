@@ -42,7 +42,7 @@ EDGE_JUMP_TARG  = 1
 EDGE_COND_TRUE  = 2
 EDGE_COND_FALSE = 3
 EDGE_CALL_TARG  = 4
-EDGE_PSEUDO     = 5
+EDGE_CALL_RET   = 5
 
 # Return instruction type given its mnemonic and operand
 def get_instruction_type(mnemonic, operands):
@@ -98,7 +98,7 @@ def disassemble_lief(db, targ):
 					if i_type == INSN_DIRECT_CALL:
 						i_targ = int(i.op_str,16)
 						db.instruction_transfer_3([(i_addr, i_targ, EDGE_CALL_TARG)])
-						db.instruction_transfer_3([(i_addr, i_next, EDGE_PSEUDO)]) # fallthrough (pseudo-edge)
+						db.instruction_transfer_3([(i_addr, i_next, EDGE_CALL_RET)]) 
 
 		# Parse data sections
 		else:
