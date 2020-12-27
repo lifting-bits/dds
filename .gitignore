@@ -4,3 +4,6 @@ dds.dot
 dds.py
 __pycache__/
 .mypy_cache/
+examples/*.id*
+examples/*.nam
+examples/*.til

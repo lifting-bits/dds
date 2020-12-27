@@ -1,0 +1,39 @@
+#import "instruction.dr"
+
+;---------------------------------------------------------
+#foreign edgetype ```python int```
+#constant edgetype EDGE_FALLTHRU    ```python 0```
+#constant edgetype EDGE_JUMP_TARG   ```python 1```
+#constant edgetype EDGE_JUMP_PSEUDO ```python 2``` ; post-jump fallthrough
+#constant edgetype EDGE_COND_TRUE   ```python 3```
+#constant edgetype EDGE_COND_FALSE  ```python 4```
+#constant edgetype EDGE_CALL_TARG   ```python 5```
+#constant edgetype EDGE_CALL_PSEUDO ```python 6``` ; post-call fallthrough
+
+;---------------------------------------------------------
+; Transfer objects.
+#message transfer(u64 InsnEA, u64 NextEA, edgetype EdgeType)
+
+;---------------------------------------------------------
+; Interprocedural transfers, minus any thunk call edges.
+#query interproc_transfer(bound u64 CallEA, free u64 FuncEA)
+
+interproc_transfer(CallEA, TargEA)
+  : transfer(CallEA, TargEA, EDGE_CALL_TARG)
+  , transfer(CallEA, FallEA, EDGE_CALL_PSEUDO)
+  , TargEA != FallEA.
+
+;---------------------------------------------------------
+; Intra-procedural transfers.
+#query intraproc_transfer(bound u64 FuncEA, free u64 InsnEA)
+
+intraproc_transfer(PrevEA, InsnEA)
+  : transfer(PrevEA, InsnEA, EDGE_FALLTHRU).
+intraproc_transfer(PrevEA, InsnEA)
+  : transfer(PrevEA, InsnEA, EDGE_COND_TRUE).
+intraproc_transfer(PrevEA, InsnEA)
+  : transfer(PrevEA, InsnEA, EDGE_COND_FALSE).
+intraproc_transfer(PrevEA, InsnEA)
+  : transfer(PrevEA, InsnEA, EDGE_JUMP_PSEUDO).
+intraproc_transfer(PrevEA, InsnEA)
+  : transfer(PrevEA, InsnEA, EDGE_CALL_PSEUDO).

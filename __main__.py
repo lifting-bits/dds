@@ -21,8 +21,8 @@ usage = '''Usage:
 		\t  lief
 		''' % sys.argv[0]
 
-SECTION_DATA = 0
-SECTION_EXEC = 1
+SECTION_DATA            = 0
+SECTION_EXEC            = 1
 
 INSN_NORMAL             = 0
 INSN_DIRECT_JUMP        = 1
@@ -32,17 +32,16 @@ INSN_COND_INDIRECT_JUMP = 4
 INSN_DIRECT_CALL        = 5
 INSN_INDIRECT_CALL      = 6
 INSN_RETURN             = 7
-INSN_NOP                = 8
+INSN_HALT               = 8
+INSN_NOP                = 9
 
-FLOW_INTRA_PROC = 0
-FLOW_INTER_PROC = 1
-
-EDGE_FALLTHRU   = 0
-EDGE_JUMP_TARG  = 1
-EDGE_COND_TRUE  = 2
-EDGE_COND_FALSE = 3
-EDGE_CALL_TARG  = 4
-EDGE_CALL_RET   = 5
+EDGE_FALLTHRU           = 0
+EDGE_JUMP_TARG          = 1
+EDGE_JUMP_PSEUDO        = 2
+EDGE_COND_TRUE          = 3
+EDGE_COND_FALSE         = 4
+EDGE_CALL_TARG          = 5
+EDGE_CALL_PSEUDO        = 6
 
 # Return instruction type given its mnemonic and operand
 def get_instruction_type(mnemonic, operands):
@@ -61,7 +60,9 @@ def get_instruction_type(mnemonic, operands):
 		return INSN_INDIRECT_CALL
 	if (re.match(r'(ret)',           insn_str)): # 7
 		return INSN_RETURN	
-	if (re.match(r'(nop)',           insn_str)): # 8
+	if (re.match(r'(hlt)',           insn_str)): # 8
+		return INSN_HALT
+	if (re.match(r'(nop)',           insn_str)): # 9
 		return INSN_NOP	
 	return INSN_NORMAL # 0
 
@@ -69,7 +70,8 @@ def get_instruction_type(mnemonic, operands):
 def disassemble_lief(db, targ):
 	parsed = lief.parse(targ)
 
-	print (hex(parsed.entrypoint))
+	#print (parsed)
+	#exit(0)
 
 	# Iterate all available sections
 	for s in parsed.sections:
@@ -92,35 +94,44 @@ def disassemble_lief(db, targ):
 
 					db.instruction_4([(i_addr, i_type, i_bytes, s_name)])
 
-					#print (hex(i_addr), i_type, i.mnemonic, i.op_str)
-					
+					# We connect all instructions with transfers (or pseudo
+					# -transfers, for jumps and calls). We omit new transfers
+					# when a RET or HLT instruction is encountered, as these
+					# designate a procedure end.
+						
 					if i_type == INSN_NORMAL or i_type == INSN_NOP:
-						db.instruction_transfer_3([(i_addr, i_next, EDGE_FALLTHRU)])
+						db.transfer_3([(i_addr, i_next, EDGE_FALLTHRU)])
+					
 					if i_type == INSN_COND_DIRECT_JUMP:
 						i_targ = int(i.op_str,16) 
-						db.instruction_transfer_3([(i_addr, i_targ, EDGE_COND_TRUE)])
-						db.instruction_transfer_3([(i_addr, i_next, EDGE_COND_FALSE)]) 
+						db.transfer_3([(i_addr, i_targ, EDGE_COND_TRUE)])
+						db.transfer_3([(i_addr, i_next, EDGE_COND_FALSE)]) 
+
+					if i_type == INSN_DIRECT_JUMP:
+						i_targ = int(i.op_str,16)
+						db.transfer_3([(i_addr, i_targ, EDGE_JUMP_TARG)])
+						db.transfer_3([(i_addr, i_next, EDGE_JUMP_PSEUDO)]) # post-jump fallthrough
+
 					if i_type == INSN_DIRECT_CALL:
 						i_targ = int(i.op_str,16)
-						db.instruction_transfer_3([(i_addr, i_targ, EDGE_CALL_TARG)])
-						db.instruction_transfer_3([(i_addr, i_next, EDGE_CALL_RET)]) 
-
+						db.transfer_3([(i_addr, i_targ, EDGE_CALL_TARG)])
+						db.transfer_3([(i_addr, i_next, EDGE_CALL_PSEUDO)]) # post-call fallthrough
+					
+					
 		# Parse data sections
 		else:
 			db.section_4([(s_name, s_start, s_end, SECTION_DATA)])
-
 	
 	for f in db.get_functions_f():
-		print (hex(f))
-		#for i in db.get_function_instructions_bf(f):
-		#for i in db.get_functions_tailcalled_bf():
-			#print (hex(i))
+		#print (hex(f))
+		for i in db.get_function_instructions_bf(f):
+			print (hex(i))
 
-		#print ('')
+		print ('')
 		#exit(0)
 	
+	
 	return
-
 
 # Main function
 if __name__ == "__main__":

@@ -3,8 +3,10 @@
 #examples:
 	#$(MAKE) all -C examples 
 
+deps = datalog/section.dr datalog/instruction.dr datalog/function.dr datalog/transfer.dr
+
 all: 
-	drlojekyll dds.dr -py-out dds.py -dot-out dds.dot
+	drlojekyll $(deps) -py-out dds.py -dot-out dds.dot
 	python3 __main__.py examples/hello.elf lief
 
 debug:
