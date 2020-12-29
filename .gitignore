@@ -7,3 +7,4 @@ __pycache__/
 examples/*.id*
 examples/*.nam
 examples/*.til
+*.DS_Store
