@@ -158,8 +158,8 @@ def disassemble_lief(db, targ):
 		#print ('')
 		#exit(0)
 
-	#for i in db.get_external_calls_f():
-	#	print (hex(i))
+	for i in db.get_external_calls_f():
+		print (hex(i))
 	
 	
 	return

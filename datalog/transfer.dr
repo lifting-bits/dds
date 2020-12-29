@@ -1,4 +1,10 @@
-#import "instruction.dr"
+;#import "instruction.dr"
+#import "section.dr"
+
+;---------------------------------------------------------
+; Import redeclarations
+#foreign insntype
+#message instruction(u64 InsnEA, insntype Type, bytes Bytes, bytes SecName)
 
 ;---------------------------------------------------------
 #foreign edgetype ```python int```
@@ -40,13 +46,11 @@ intraproc_transfer(PrevEA, InsnEA)
 
 ;---------------------------------------------------------
 
-;#query external_call(free u64 CallEA)
+#query get_external_calls(free u64 CallEA)
 
-;external_call(CallEA)
-  ;: interproc_transfer(CallEA, TargEA)
-  ;: instruction(TargEA, _, _, SecName).
-  ;, SecName = ```python b'.plt'```.
-
-
+get_external_calls(CallEA)
+  : interproc_transfer(CallEA, TargEA)
+  , instruction(TargEA, _, _, SecName)
+  , SecName = SECNAME_PLT.
 
 
