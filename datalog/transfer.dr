@@ -15,7 +15,7 @@
 #message transfer(u64 InsnEA, u64 NextEA, edgetype EdgeType)
 
 ;---------------------------------------------------------
-; Interprocedural transfers, minus any thunk call edges.
+; Interprocedural transfers, minus inlined thunk calls.
 #query interproc_transfer(bound u64 CallEA, free u64 FuncEA)
 
 interproc_transfer(CallEA, TargEA)
@@ -24,7 +24,7 @@ interproc_transfer(CallEA, TargEA)
   , TargEA != FallEA.
 
 ;---------------------------------------------------------
-; Intra-procedural transfers.
+; Intraprocedural transfers.
 #query intraproc_transfer(bound u64 FuncEA, free u64 InsnEA)
 
 intraproc_transfer(PrevEA, InsnEA)
@@ -37,3 +37,16 @@ intraproc_transfer(PrevEA, InsnEA)
   : transfer(PrevEA, InsnEA, EDGE_JUMP_PSEUDO).
 intraproc_transfer(PrevEA, InsnEA)
   : transfer(PrevEA, InsnEA, EDGE_CALL_PSEUDO).
+
+;---------------------------------------------------------
+
+;#query external_call(free u64 CallEA)
+
+;external_call(CallEA)
+  ;: interproc_transfer(CallEA, TargEA)
+  ;: instruction(TargEA, _, _, SecName).
+  ;, SecName = ```python b'.plt'```.
+
+
+
+

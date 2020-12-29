@@ -30,5 +30,3 @@ get_function_instructions(FuncEA, NextEA)
   : get_function_instructions(FuncEA, InsnEA)
   , intraproc_transfer(InsnEA, NextEA).
 
-
-

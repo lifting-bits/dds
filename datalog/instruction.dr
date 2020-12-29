@@ -1,4 +1,5 @@
 #import "transfer.dr"
+#import "section.dr"
 
 ;---------------------------------------------------------
 #foreign insntype ```python int```
@@ -23,3 +24,11 @@
 
 get_instructions(InsnEA) 
   : instruction(InsnEA, _, _, _).
+
+;---------------------------------------------------------
+
+#query external_call(free u64 CallEA)
+
+external_call(CallEA)
+  : interproc_transfer(CallEA, TargEA)
+  , instruction(TargEA, _, _, ```python  b'.plt'```).

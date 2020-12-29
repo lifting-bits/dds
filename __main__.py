@@ -21,6 +21,8 @@ usage = '''Usage:
 		\t  lief
 		''' % sys.argv[0]
 
+FLAG_ELF_EXEC = lief.ELF.SECTION_FLAGS.EXECINSTR
+
 SECTION_DATA            = 0
 SECTION_EXEC            = 1
 
@@ -66,12 +68,29 @@ def get_instruction_type(mnemonic, operands):
 		return INSN_NOP	
 	return INSN_NORMAL # 0
 
+def get_addrs_in_operands(operands, lbound, ubound):
+	matches = re.findall(r'(0x[0-9a-fA-F]+)', operands)
+
+	for addr in matches:
+		addr = int(addr,16)
+		if addr >= lbound and addr <= ubound:
+			yield addr
+
+	return
+
 # Disassemble with lief
 def disassemble_lief(db, targ):
 	parsed = lief.parse(targ)
 
-	#print (parsed)
-	#exit(0)
+	# Get instruction entry / exit boundaries
+	exec_lower = min([(x.virtual_address) \
+		for x in parsed.sections if FLAG_ELF_EXEC in x.flags_list])
+	exec_upper = max([(x.virtual_address+x.size) \
+		for x in parsed.sections if FLAG_ELF_EXEC in x.flags_list])
+
+	#print (hex(b_lower), hex(b_upper))
+
+	print ([x.name for x in parsed.dynamic_symbols])
 
 	# Iterate all available sections
 	for s in parsed.sections:
@@ -82,7 +101,7 @@ def disassemble_lief(db, targ):
 		s_flags = s.flags_list
 
 		# Parse executable sections and decoded instructions
-		if lief.ELF.SECTION_FLAGS.EXECINSTR in s_flags:
+		if FLAG_ELF_EXEC in s_flags:
 			db.section_4([(s_name, s_start, s_end, SECTION_EXEC)])
 
 			for x in range(0, 15): 	
@@ -98,37 +117,49 @@ def disassemble_lief(db, targ):
 					# -transfers, for jumps and calls). We omit new transfers
 					# when a RET or HLT instruction is encountered, as these
 					# designate a procedure end.
+
+					#print (hex(i_addr), i_type, i.mnemonic, i.op_str, get_possible_function(i.op_str))
 						
 					if i_type == INSN_NORMAL or i_type == INSN_NOP:
 						db.transfer_3([(i_addr, i_next, EDGE_FALLTHRU)])
 					
 					if i_type == INSN_COND_DIRECT_JUMP:
-						i_targ = int(i.op_str,16) 
-						db.transfer_3([(i_addr, i_targ, EDGE_COND_TRUE)])
 						db.transfer_3([(i_addr, i_next, EDGE_COND_FALSE)]) 
+						for i_targ in get_addrs_in_operands(i.op_str, exec_lower, exec_upper):
+							db.transfer_3([(i_addr, i_targ, EDGE_COND_TRUE)])
 
 					if i_type == INSN_DIRECT_JUMP:
-						i_targ = int(i.op_str,16)
-						db.transfer_3([(i_addr, i_targ, EDGE_JUMP_TARG)])
 						db.transfer_3([(i_addr, i_next, EDGE_JUMP_PSEUDO)]) # post-jump fallthrough
-
+						for i_targ in get_addrs_in_operands(i.op_str, exec_lower, exec_upper):
+							db.transfer_3([(i_addr, i_targ, EDGE_CALL_TARG)])
+						
 					if i_type == INSN_DIRECT_CALL:
-						i_targ = int(i.op_str,16)
-						db.transfer_3([(i_addr, i_targ, EDGE_CALL_TARG)])
 						db.transfer_3([(i_addr, i_next, EDGE_CALL_PSEUDO)]) # post-call fallthrough
+						for i_targ in get_addrs_in_operands(i.op_str, exec_lower, exec_upper):
+							db.transfer_3([(i_addr, i_targ, EDGE_CALL_TARG)])
+						
+					# For PLT relocations, figure out the pointer address
 					
-					
+					#if (s_name == b'.plt') and i_type == INSN_INDIRECT_JUMP:
+					#	print (hex(i_addr))
+						#for i_targ in get_addrs_in_operands(i.op_str, exec_lower, exec_upper):
+						#	print (hex(i_targ))
+						#print ()
+
 		# Parse data sections
 		else:
 			db.section_4([(s_name, s_start, s_end, SECTION_DATA)])
 	
-	for f in db.get_functions_f():
+	#for f in db.get_functions_f():
 		#print (hex(f))
-		for i in db.get_function_instructions_bf(f):
-			print (hex(i))
+		#for i in db.get_function_instructions_bf(f):
+		#	print (hex(i))
 
-		print ('')
+		#print ('')
 		#exit(0)
+
+	#for i in db.get_external_calls_f():
+	#	print (hex(i))
 	
 	
 	return
