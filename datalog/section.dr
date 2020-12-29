@@ -4,8 +4,6 @@
 #foreign sectype ```python int```
 #constant sectype SECTION_EXEC ```python 0```
 #constant sectype SECTION_DATA ```python 1```
-#constant bytes SECNAME_PLT    ```python b'.plt'```
-#constant bytes SECNAME_TEXT   ```python b'.txt'```
 
 ;---------------------------------------------------------
 ; Section objects.

@@ -7,12 +7,12 @@ import sys
 from capstone import *
 from binascii import unhexlify
 
-# Capstone setup
+# Capstone setup.
 md = Cs(CS_ARCH_X86, CS_MODE_64)
 md.detail = True
 md.syntax = CS_OPT_SYNTAX_ATT
 
-# Usage help
+# Usage help.
 usage = '''Usage: 
 		\tpython3 %s [target_binary] [disassembler]
 		\tSupported disassemblers:
@@ -21,6 +21,7 @@ usage = '''Usage:
 		\t  lief
 		''' % sys.argv[0]
 
+# Important definitions.
 FLAG_ELF_EXEC = lief.ELF.SECTION_FLAGS.EXECINSTR
 
 SECTION_DATA            = 0
@@ -45,7 +46,7 @@ EDGE_COND_FALSE         = 4
 EDGE_CALL_TARG          = 5
 EDGE_CALL_PSEUDO        = 6
 
-# Return instruction type given its mnemonic and operand
+# Return instruction type given its mnemonic and operand.
 def get_instruction_type(mnemonic, operands):
 	insn_str = "%s %s" % (mnemonic, operands)
 	if (re.match(r'(jmp[a-z]*) 0x',  insn_str)): # 1
@@ -68,31 +69,43 @@ def get_instruction_type(mnemonic, operands):
 		return INSN_NOP	
 	return INSN_NORMAL # 0
 
-def get_addrs_in_operands(operands, lbound, ubound):
-	matches = re.findall(r'(0x[0-9a-fA-F]+)', operands)
 
-	for addr in matches:
-		addr = int(addr,16)
-		if addr >= lbound and addr <= ubound:
-			yield addr
+# Retrieve potential addresses from instruction operands.
+def get_address_in_operands(operands):
+	matches = re.search(r'(0x[0-9a-fA-F]+)', operands)
+	return int(matches.group(),16)
+
+
+# Add an `.extern` section (4-byte aligned) with 
+# enough slots to accommodate each PLT relocations.
+def lief_reloc_externs(parsed, plt_relocs):
+	s_extern                 = lief.ELF.Section()
+	s_extern.name            = ".extern"
+	s_extern.type            = lief.ELF.SECTION_TYPES.PROGBITS
+	s_extern.virtual_address = max([(x.virtual_address+x.size) for x in parsed.sections])
+	s_extern.alignment       = 4
+	s_extern.content         = [0] * s_extern.alignment * len(plt_relocs)
+	s_extern                 = parsed.add(s_extern, False)
+
+	for i in range(0, len(plt_relocs)):
+		reloc_addr = plt_relocs[i].address
+		extrn_addr = (i * s_extern.alignment) + s_extern.virtual_address
+		#db.relocation_2(reloc_addr, extrn_addr)
 
 	return
 
-# Disassemble with lief
-def disassemble_lief(db, targ):
+# Disassemble with lief.
+def lief_disassemble(db, targ):
 	parsed = lief.parse(targ)
 
-	# Get instruction entry / exit boundaries
-	exec_lower = min([(x.virtual_address) \
-		for x in parsed.sections if FLAG_ELF_EXEC in x.flags_list])
-	exec_upper = max([(x.virtual_address+x.size) \
-		for x in parsed.sections if FLAG_ELF_EXEC in x.flags_list])
+	# Set up .extern section.
+	
+	plt_relocs = [x for x in parsed.relocations \
+		if x.purpose == lief.ELF.RELOCATION_PURPOSES.PLTGOT]
+	lief_reloc_externs(parsed, plt_relocs)
 
-	#print (hex(b_lower), hex(b_upper))
+	# Iterate all sections.
 
-	print ([x.name for x in parsed.dynamic_symbols])
-
-	# Iterate all available sections
 	for s in parsed.sections:
 		s_name  = bytes(s.name, "utf-8")
 		s_start = s.virtual_address
@@ -100,8 +113,9 @@ def disassemble_lief(db, targ):
 		s_bytes = bytearray(s.content)
 		s_flags = s.flags_list
 
-		# Parse executable sections and decoded instructions
-		if FLAG_ELF_EXEC in s_flags:
+		# Parse executable sections.
+
+		if FLAG_ELF_EXEC in s_flags:	
 			db.section_4([(s_name, s_start, s_end, SECTION_EXEC)])
 
 			for x in range(0, 15): 	
@@ -113,58 +127,49 @@ def disassemble_lief(db, targ):
 
 					db.instruction_4([(i_addr, i_type, i_bytes, s_name)])
 
-					# We connect all instructions with transfers (or pseudo
-					# -transfers, for jumps and calls). We omit new transfers
-					# when a RET or HLT instruction is encountered, as these
-					# designate a procedure end.
+					# Connect instructions with transfers (or pseudo-transfers, 
+					# for jumps / calls). Omit new transfers for RETs / HLTs.
 
-					#print (hex(i_addr), i_type, i.mnemonic, i.op_str, get_possible_function(i.op_str))
-						
 					if i_type == INSN_NORMAL or i_type == INSN_NOP:
 						db.transfer_3([(i_addr, i_next, EDGE_FALLTHRU)])
-					
 					if i_type == INSN_COND_DIRECT_JUMP:
+						i_targ = get_address_in_operands(i.op_str)
+						db.transfer_3([(i_addr, i_targ, EDGE_COND_TRUE)])
 						db.transfer_3([(i_addr, i_next, EDGE_COND_FALSE)]) 
-						for i_targ in get_addrs_in_operands(i.op_str, exec_lower, exec_upper):
-							db.transfer_3([(i_addr, i_targ, EDGE_COND_TRUE)])
-
 					if i_type == INSN_DIRECT_JUMP:
-						db.transfer_3([(i_addr, i_next, EDGE_JUMP_PSEUDO)]) # post-jump fallthrough
-						for i_targ in get_addrs_in_operands(i.op_str, exec_lower, exec_upper):
-							db.transfer_3([(i_addr, i_targ, EDGE_CALL_TARG)])
-						
+						i_targ = get_address_in_operands(i.op_str)
+						db.transfer_3([(i_addr, i_targ, EDGE_JUMP_TARG)])
+						db.transfer_3([(i_addr, i_next, EDGE_JUMP_PSEUDO)]) # post-jump fallthrough	
 					if i_type == INSN_DIRECT_CALL:
+						i_targ = get_address_in_operands(i.op_str)
+						db.transfer_3([(i_addr, i_targ, EDGE_CALL_TARG)])
 						db.transfer_3([(i_addr, i_next, EDGE_CALL_PSEUDO)]) # post-call fallthrough
-						for i_targ in get_addrs_in_operands(i.op_str, exec_lower, exec_upper):
-							db.transfer_3([(i_addr, i_targ, EDGE_CALL_TARG)])
-						
-					# For PLT relocations, figure out the pointer address
 					
 					#if (s_name == b'.plt') and i_type == INSN_INDIRECT_JUMP:
-					#	print (hex(i_addr))
+					#	i_targ = get_address_in_operands(i.op_str)
+					#	print (hex(i_addr), hex(i_targ))
 						#for i_targ in get_addrs_in_operands(i.op_str, exec_lower, exec_upper):
 						#	print (hex(i_targ))
 						#print ()
 
-		# Parse data sections
-		else:
+		else:	
 			db.section_4([(s_name, s_start, s_end, SECTION_DATA)])
 	
+	#print ([hex(x.address) for x in plt_relocs])
+
 	#for f in db.get_functions_f():
 		#print (hex(f))
-		#for i in db.get_function_instructions_bf(f):
-		#	print (hex(i))
+	#	for i in db.get_function_instructions_bf(f):
+	#		print (hex(i))
+	#	print ('')
 
-		#print ('')
-		#exit(0)
-
-	for i in db.get_external_calls_f():
-		print (hex(i))
+	#for i in db.get_external_calls_f():
+	#	print (hex(i))
 	
 	
 	return
 
-# Main function
+# Main function.
 if __name__ == "__main__":
 	functors = DatabaseFunctors()
 	log = DatabaseLog()
@@ -181,4 +186,4 @@ if __name__ == "__main__":
 		print(usage)
 		exit(0)	
 
-	disassemble_lief(db, targ)
+	lief_disassemble(db, targ)

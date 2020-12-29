@@ -1,7 +1,3 @@
-;#import "instruction.dr"
-#import "section.dr"
-
-;---------------------------------------------------------
 ; Import redeclarations
 #foreign insntype
 #message instruction(u64 InsnEA, insntype Type, bytes Bytes, bytes SecName)
@@ -46,11 +42,12 @@ intraproc_transfer(PrevEA, InsnEA)
 
 ;---------------------------------------------------------
 
-#query get_external_calls(free u64 CallEA)
+;#message relocation(u64 RelocEA, u64 ExternEA)
 
-get_external_calls(CallEA)
-  : interproc_transfer(CallEA, TargEA)
-  , instruction(TargEA, _, _, SecName)
-  , SecName = SECNAME_PLT.
+;#query get_external_calls(free u64 CallEA)
+;get_external_calls(CallEA)
+;  : interproc_transfer(CallEA, TargEA)
+;  , instruction(TargEA, _, _, SecName)
+;  , SecName = ".plt".
 
 
