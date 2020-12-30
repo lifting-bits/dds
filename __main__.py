@@ -17,10 +17,12 @@ def lief_relocate_externs(parsed, relocs):
 	s_extern.content         = [0] * s_extern.alignment * len(relocs)
 	s_extern                 = parsed.add(s_extern, False)
 
+	# Generate relocation and instruction objects. 
 	for i in range(0, len(relocs)):
 		reloc_addr  = relocs[i].address
 		extern_addr = (i * s_extern.alignment) + s_extern.virtual_address
 		db.relocation_2([(reloc_addr, extern_addr)])
+		db.instruction_4([(extern_addr, None, None, b'.extern')])
 
 	return
 
@@ -66,8 +68,10 @@ def lief_disassemble(db, target):
 			db.section_4([(s_name, s_start, s_end, SECTION_EXEC)])
 
 			# Decode instructions with Capstone.
-			for x in range(0, 15): 	
-				for i in cs.disasm(s_bytes[x:], s_start + x):
+			#for x in range(0, 15): 
+			for i in range(0,1):	
+				#for i in cs.disasm(s_bytes[x:], s_start + x):
+				for i in cs.disasm(s_bytes, s_start):
 					i_addr  = i.address
 					i_next  = i.address + i.size
 					i_type  = get_instruction_type(i.mnemonic, i.op_str)
@@ -95,15 +99,13 @@ def lief_disassemble(db, target):
 		else:	
 			db.section_4([(s_name, s_start, s_end, SECTION_DATA)])
 	
-	#print ([hex(x.address) for x in b_relocs])
-
-	#for f in db.get_functions_f():
+	for f in db.get_functions_f():
 		#print (hex(f))
-	#	for i in db.get_function_instructions_bf(f):
-	#		print (hex(i))
-	#	print ('')
+		for i in db.get_function_instructions_bf(f):
+			print (hex(i))
+		print ('')
 
-	#for i in db.get_relocations_f():
+	#for i in db.get_external_calls_f():
 	#	print (hex(i))
 	
 	return

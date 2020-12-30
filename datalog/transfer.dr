@@ -1,3 +1,5 @@
+#import "function.dr"
+
 ; Import redeclarations
 #foreign insntype
 #message instruction(u64 InsnEA, insntype Type, bytes Bytes, bytes SecName)
@@ -30,24 +32,35 @@ interproc_transfer(CallEA, TargEA)
 #query intraproc_transfer(bound u64 FuncEA, free u64 InsnEA)
 
 intraproc_transfer(PrevEA, InsnEA)
-  : transfer(PrevEA, InsnEA, EDGE_FALLTHRU).
+  : transfer(PrevEA, InsnEA, EDGE_FALLTHRU)
+  , !function(InsnEA).
 intraproc_transfer(PrevEA, InsnEA)
-  : transfer(PrevEA, InsnEA, EDGE_COND_TRUE).
+  : transfer(PrevEA, InsnEA, EDGE_COND_TRUE)
+  , !function(InsnEA).
 intraproc_transfer(PrevEA, InsnEA)
-  : transfer(PrevEA, InsnEA, EDGE_COND_FALSE).
+  : transfer(PrevEA, InsnEA, EDGE_COND_FALSE)
+  , !function(InsnEA).
 intraproc_transfer(PrevEA, InsnEA)
-  : transfer(PrevEA, InsnEA, EDGE_JUMP_PSEUDO).
+  : transfer(PrevEA, InsnEA, EDGE_JUMP_PSEUDO)
+  , !function(InsnEA).
 intraproc_transfer(PrevEA, InsnEA)
-  : transfer(PrevEA, InsnEA, EDGE_CALL_PSEUDO).
+  : transfer(PrevEA, InsnEA, EDGE_CALL_PSEUDO)
+  , !function(InsnEA).
 
 ;---------------------------------------------------------
+; Return all calls to external (relocated) addresses.
+#query get_external_calls(free u64 CallEA)
 
-;#query get_relocated_target(free u64 )
+get_external_calls(CallEA)
+  : interproc_transfer(CallEA, TargEA)
+  , instruction(TargEA, _, _, SecName)
+  , SecName = ".extern".
 
-;#query get_external_calls(free u64 CallEA)
-;get_external_calls(CallEA)
-;  : interproc_transfer(CallEA, TargEA)
-;  , instruction(TargEA, _, _, SecName)
-;  , SecName = ".plt".
+;---------------------------------------------------------
+; Return all tail calls (jumps to function starts).
+#query get_tail_calls(free u64 CallEA)
 
-
+get_external_calls(CallEA)
+  : intraproc_transfer(CallEA, TargEA)
+  , instruction(TargEA, _, _, SecName)
+  , SecName = ".extern".

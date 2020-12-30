@@ -12,13 +12,16 @@ function(FuncEA)
   : instruction(FuncEA, _, _, _)
   , section(_, FuncEA, _, 1).
 
-
 ;---------------------------------------------------------
 ; Return all function heads.
 #query get_functions(free u64 FuncEA)
 
 get_functions(FuncEA) 
   : function(FuncEA).
+
+;---------------------------------------------------------
+; Return all function heads.
+#query get_function(bound u64 FuncEA)
 
 ;---------------------------------------------------------
 ; Return all instructions for a given function head; i.e.,
