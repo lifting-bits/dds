@@ -1,4 +1,5 @@
 #import "section.dr"
+#import "transfer.dr"
 
 ;---------------------------------------------------------
 #foreign insntype ```python int```
@@ -24,3 +25,15 @@
 get_instructions(InsnEA) 
   : instruction(InsnEA, _, _, _).
 
+;---------------------------------------------------------
+; Relocation objects.
+#message relocation(u64 RelocEA, u64 ExternEA)
+
+;---------------------------------------------------------
+; Given a target address (i.e., of a .PLT entry), return 
+; the relocated target address (i.e., in .EXTERN).
+#query get_relocated_target(bound u64 Targ, free u64 ExternEA)
+
+get_relocated_target(TargEA, ExternEA)
+  : transfer(TargEA, RelocEA, _)
+  , relocation(RelocEA, ExternEA).

@@ -42,7 +42,7 @@ intraproc_transfer(PrevEA, InsnEA)
 
 ;---------------------------------------------------------
 
-;#message relocation(u64 RelocEA, u64 ExternEA)
+;#query get_relocated_target(free u64 )
 
 ;#query get_external_calls(free u64 CallEA)
 ;get_external_calls(CallEA)
