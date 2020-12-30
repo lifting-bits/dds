@@ -1,8 +1,5 @@
-#import "function.dr"
+#import "__header__.dr"
 
-; Import redeclarations
-#foreign insntype
-#message instruction(u64 InsnEA, insntype Type, bytes Bytes, bytes SecName)
 
 ;---------------------------------------------------------
 #foreign edgetype ```python int```
@@ -16,11 +13,11 @@
 
 ;---------------------------------------------------------
 ; Transfer objects.
-#message transfer(u64 InsnEA, u64 NextEA, edgetype EdgeType)
+
 
 ;---------------------------------------------------------
 ; Interprocedural transfers, minus inlined thunk calls.
-#query interproc_transfer(bound u64 CallEA, free u64 FuncEA)
+
 
 interproc_transfer(CallEA, TargEA)
   : transfer(CallEA, TargEA, EDGE_CALL_TARG)
@@ -29,7 +26,7 @@ interproc_transfer(CallEA, TargEA)
 
 ;---------------------------------------------------------
 ; Intraprocedural transfers.
-#query intraproc_transfer(bound u64 FuncEA, free u64 InsnEA)
+
 
 intraproc_transfer(PrevEA, InsnEA)
   : transfer(PrevEA, InsnEA, EDGE_FALLTHRU)
@@ -49,7 +46,7 @@ intraproc_transfer(PrevEA, InsnEA)
 
 ;---------------------------------------------------------
 ; Return all calls to external (relocated) addresses.
-#query get_external_calls(free u64 CallEA)
+
 
 get_external_calls(CallEA)
   : interproc_transfer(CallEA, TargEA)
@@ -58,7 +55,7 @@ get_external_calls(CallEA)
 
 ;---------------------------------------------------------
 ; Return all tail calls (jumps to function starts).
-#query get_tail_calls(free u64 CallEA)
+
 
 get_external_calls(CallEA)
   : intraproc_transfer(CallEA, TargEA)

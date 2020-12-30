@@ -1,11 +1,8 @@
-#import "instruction.dr"
-#import "transfer.dr"
+#import "__header__.dr"
 
 ;---------------------------------------------------------
 ; Function objects. Derived from known call targets or 
 ; executable section (.init, .fini, .text) entries. 
-#query function(bound u64 FuncEA)
-
 function(FuncEA)
   : interproc_transfer(_, FuncEA).
 function(FuncEA)
@@ -14,19 +11,17 @@ function(FuncEA)
 
 ;---------------------------------------------------------
 ; Return all function heads.
-#query get_functions(free u64 FuncEA)
-
 get_functions(FuncEA) 
   : function(FuncEA).
 
 ;---------------------------------------------------------
 ; Return all function heads.
-#query get_function(bound u64 FuncEA)
+
 
 ;---------------------------------------------------------
 ; Return all instructions for a given function head; i.e.,
 ; all instructions connected by intraprocedural transfers.
-#query get_function_instructions(bound u64 FuncEA, free u64 InsnEA)
+
 
 get_function_instructions(FuncEA, FuncEA)
   : function(FuncEA).

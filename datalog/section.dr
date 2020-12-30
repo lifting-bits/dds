@@ -1,4 +1,5 @@
-#import "instruction.dr"
+#import "__header__.dr"
+
 
 ;---------------------------------------------------------
 #foreign sectype ```python int```
@@ -7,18 +8,18 @@
 
 ;---------------------------------------------------------
 ; Section objects.
-#message section(bytes SecName, u64 SecStart, u64 SecEnd, sectype SecType)
+
 
 ;---------------------------------------------------------
 ; Return all section names.
-#query get_sections(free bytes SecName)
+
 
 get_sections(SecName) 
   : section(SecName, _, _, _).
 
 ;---------------------------------------------------------
 ; Return all instructions for a given section name.
-#query get_section_instructions(bound bytes SecName, free u64 InsnEA)
+
 
 get_section_instructions(SecName, InsnEA)
   : section(SecName, _, _, _)
