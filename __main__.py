@@ -19,7 +19,7 @@ def lief_relocate_externs(parsed, relocs):
 
 	# Start address of our fake `.extern` section.
 	s_addr = max((x.virtual_address + x.size) for x in parsed.sections)
-	s_addr = ((s_addr + 3) // 4) + 4  # Align to a four-byte boundary.
+	s_addr = ((s_addr + 3) // 4) * 4  # Align to a four-byte boundary.
 
 	# Generate relocation and external addresses.
 	s_size = 0
@@ -35,6 +35,7 @@ def lief_relocate_externs(parsed, relocs):
 		relocations.append((reloc.address, e_addr))
 		externs.append((e_addr, bytes(reloc.symbol.name, "utf-8")))
 
+	debug("Faking .extern section [{:x}, {:x})", s_addr, s_addr + s_size)
 	db.section_4([(b'.extern', s_addr, s_addr + s_size, SECTION_EXEC)])
 	db.external_symbol_2(externs)
 	db.relocation_2(relocations)
