@@ -5,45 +5,76 @@ from capstone import *
 import capstone.x86
 import lief, os, re, sys
 
+
+def debug(message, *args):
+	print(message.format(*args))
+
+
 # Add an `.extern` section (4-byte aligned) with 
 # enough slots to accommodate each PLT relocations.
 def lief_relocate_externs(parsed, relocs):
-	s_extern                 = lief.ELF.Section()
-	s_extern.name            = ".extern"
-	s_extern.type            = lief.ELF.SECTION_TYPES.PROGBITS
-	s_extern.virtual_address = max([(x.virtual_address+x.size) \
-								     for x in parsed.sections])
-	s_extern.alignment       = 4
-	s_extern.content         = [0] * s_extern.alignment * len(relocs)
-	s_extern                 = parsed.add(s_extern, False)
+	
+	externs = []
+	relocations = []
 
-	# Generate relocation and instruction objects. 
-	for i in range(0, len(relocs)):
-		reloc_addr  = relocs[i].address
-		extern_addr = (i * s_extern.alignment) + s_extern.virtual_address
-		db.relocation_2([(reloc_addr, extern_addr)])
-		db.instruction_4([(extern_addr, None, None, b'.extern')])
+	# Start address of our fake `.extern` section.
+	s_addr = max((x.virtual_address + x.size) for x in parsed.sections)
+	s_addr = ((s_addr + 3) // 4) + 4  # Align to a four-byte boundary.
 
-	return
+	# Generate relocation and external addresses.
+	s_size = 0
+	for reloc in relocs:
+		
+		if not reloc.symbol or not reloc.symbol.name:
+			continue
+
+		e_addr = s_addr + s_size
+		s_size += 4  # TODO: Fix me
+
+		debug("Relocation from {:x} to external {} at {:x}", reloc.address, reloc.symbol.name, e_addr)
+		relocations.append((reloc.address, e_addr))
+		externs.append((e_addr, bytes(reloc.symbol.name, "utf-8")))
+
+	db.section_4([(b'.extern', s_addr, s_addr + s_size, SECTION_EXEC)])
+	db.external_symbol_2(externs)
+	db.relocation_2(relocations)
+
 
 
 # For edges with two outgoing edges (including calls
 # and jumps), add their corresponding target and 
 # fallthrough (or pseudo-fallthrough) edges.
-def lief_add_two_edges(instruction, TARGET, FALLTHRU):
+def lief_add_two_edges(instruction, target_type, fallthru_type, transfers):
 	i_addr = instruction.address
 	i_next = instruction.address + instruction.size
 	i_targ = get_transfer_target(instruction)
 
-	if (i_targ): 
+	if i_targ: 
 		# Check if the target address is relocated.
 		i_targ = next(db.get_relocated_target_bf(i_targ), i_targ)
-		db.transfer_3([(i_addr, i_targ, TARGET)])
-		#print (hex(i_addr), hex(i_targ))
+		transfers.append((i_addr, i_targ, target_type))
 
-	db.transfer_3([(i_addr, i_next, FALLTHRU)]) 
+	transfers.append((i_addr, i_next, fallthru_type))
 
-	return
+
+# Comprehensively decode instructions in `data`, treating the first byte of
+# data as beginning at the virtual address `addr`.
+def decode_instructions(cs, addr, data, size_range):
+	seen = set()
+	for offset in size_range:
+		if not len(data):
+			break
+		for i in cs.disasm(data, addr + offset):
+
+			# We've aligned with another decoding, so all remaining instructions will
+			# also be in `seen`.
+			if i.address in seen:
+				break 
+			if i.mnemonic == ".byte":
+				continue  # It's not an instruction.
+			yield i
+			seen.add(i.address)
+		data = bytearray(data[1:])
 
 
 # Disassemble with lief.
@@ -55,54 +86,96 @@ def lief_disassemble(db, target):
 	# Set up necessary relocations.
 	lief_relocate_externs(parsed, b_relocs)
 
+	sections = []
+	insts = []
+	transfers = []
+	address_operands = []
+
 	# Iterate all sections.
 	for s in parsed.sections:
 		s_name  = bytes(s.name, "utf-8")
 		s_start = s.virtual_address
 		s_end   = s.virtual_address + s.size
+		if s_start >= s_end:
+			continue
 		s_bytes = bytearray(s.content)
 		s_flags = s.flags_list
 
 		# Parse executable sections.
-		if FLAG_ELF_EXEC in s_flags:	
-			db.section_4([(s_name, s_start, s_end, SECTION_EXEC)])
+		if FLAG_ELF_EXEC in s_flags:
+			debug("Adding code section {} [{:x}, {:x}) ".format(s.name, s_start, s_end))
+			sections.append((s_name, s_start, s_end, SECTION_EXEC))
 
 			# Decode instructions with Capstone.
-			#for x in range(0, 15): 
-			for i in range(0,1):	
-				#for i in cs.disasm(s_bytes[x:], s_start + x):
-				for i in cs.disasm(s_bytes, s_start):
-					i_addr  = i.address
-					i_next  = i.address + i.size
-					i_type  = get_instruction_type(i.mnemonic, i.op_str)
-					i_bytes = i.bytes.hex()
+			#
+			# TODO(pag): Eventually replace `range(15)`, which is specific to x86,
+			#						 with something generic.
+			for i in decode_instructions(cs, s_start, s_bytes, range(15)):
+				i_addr  = i.address
+				i_next  = i.address + i.size
+				i_type  = get_instruction_type(i.mnemonic, i.op_str)
+				i_bytes = i.bytes.hex()
 
-					# Add the instruction to our database.
-					db.instruction_4([(i_addr, i_type, i_bytes, s_name)])
+				debug("  Adding instruction {:x}: {} {}".format(i_addr, i.mnemonic, i.op_str))
 
-					# Conditional branches: add target and fallthrough edges.
-					if i_type == INSN_COND_DIRECT_JUMP:
-						lief_add_two_edges(i, EDGE_COND_TRUE, EDGE_COND_FALSE)
-					
-					# Jumps: add target edge, and post-jump fallthrough.
-					elif i_type == INSN_DIRECT_JUMP or i_type == INSN_INDIRECT_JUMP:
-						lief_add_two_edges(i, EDGE_JUMP_TARG, EDGE_JUMP_PSEUDO)
-					
-					# Calls: add target edge, and post-call fallthrough.
-					elif i_type == INSN_DIRECT_CALL or i_type == INSN_INDIRECT_CALL:
-						lief_add_two_edges(i, EDGE_CALL_TARG, EDGE_CALL_PSEUDO)
+				# Add the instruction to our database.
+				insts.append((i_addr, i_type, i_bytes, s_name))
 
-					# Rest: add fallthrough edges (except if RET or HLT).
-					elif i_type == INSN_NORMAL or i_type == INSN_NOP:
-						db.transfer_3([(i_addr, i_next, EDGE_FALLTHRU)])
+				# Conditional branches: add target and fallthrough edges.
+				if i_type == INSN_COND_DIRECT_JUMP:
+					lief_add_two_edges(i, EDGE_COND_TRUE, EDGE_COND_FALSE, transfers)
+				
+				# Jumps: add target edge, and post-jump fallthrough.
+				elif i_type in (INSN_DIRECT_JUMP, INSN_INDIRECT_JUMP):
+					lief_add_two_edges(i, EDGE_JUMP_TARG, EDGE_JUMP_PSEUDO, transfers)
+				
+				# Calls: add target edge, and post-call fallthrough.
+				elif i_type in (INSN_DIRECT_CALL, INSN_INDIRECT_CALL):
+					lief_add_two_edges(i, EDGE_CALL_TARG, EDGE_CALL_PSEUDO, transfers)
 
-		else:	
-			db.section_4([(s_name, s_start, s_end, SECTION_DATA)])
+				# Rest: add fallthrough edges (except if RET or HLT).
+				elif i_type in (INSN_NORMAL, INSN_NOP):
+					transfers.append((i_addr, i_next, EDGE_FALLTHRU))
+
+				elif i_type == INSN_RETURN:
+					pass
+
+				else:
+					debug("    No transfer???")
+
+				for o in i.operands:
+					# Indirect transfers
+					if o.type == capstone.x86.X86_OP_MEM:
+						m = o.mem
+						m_addr = 0
+						# PC-relative, e.g. `jmp [RIP + 0xdisp]`.
+						if m.base == capstone.x86.X86_REG_RIP and not m.segment and not m.index:
+							m_addr = i.address + m.disp					
+						# Absolute addr, e.g. `jmp [0xaddr]`.
+						elif not m.base and not m.segment and not m.index and m.disp:
+							m_addr = m.disp	
+						else:
+							continue
+
+						if m_addr:
+							address_operands.append((i_addr, m_addr))
+							
+
+		else:
+			debug("Adding data section {} [{:x}, {:x}) ".format(s.name, s_start, s_end))
+			sections.append((s_name, s_start, s_end, SECTION_DATA))
 	
-	for f in db.get_functions_f():
-		#print (hex(f))
-		for i in db.get_function_instructions_bf(f):
-			print (hex(i))
+	# Send all the instructions and transfers to datalog in one batch.
+	db.section_4(sections)
+	db.instruction_4(insts)
+	db.entrypoint_1([(parsed.entrypoint)])
+	db.address_operand_2(address_operands)
+	db.raw_transfer_3(transfers)
+
+	for f in sorted(db.function_f()):
+		print("Function {:x}".format(f))
+		for i in sorted(db.function_instruction_bf(f)):
+			print("  {:x}".format(i))
 		print ('')
 
 	#for i in db.get_external_calls_f():

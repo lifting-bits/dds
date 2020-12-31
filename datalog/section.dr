@@ -1,8 +1,4 @@
-#import "__header__.dr"
-
-#foreign sectype ```python int```
-#constant sectype SECTION_EXEC ```python 0```
-#constant sectype SECTION_DATA ```python 1```
+#import "header.dr"
 
 get_sections(SecName) 
   : section(SecName, _, _, _).

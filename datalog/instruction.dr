@@ -1,16 +1,4 @@
-#import "__header__.dr"
-
-#foreign insntype ```python int```
-#constant insntype INSN_NORMAL             ```python 0```
-#constant insntype INSN_DIRECT_JUMP        ```python 1```
-#constant insntype INSN_INDIRECT_JUMP      ```python 2```
-#constant insntype INSN_COND_DIRECT_JUMP   ```python 3```
-#constant insntype INSN_COND_INDIRECT_JUMP ```python 4```
-#constant insntype INSN_DIRECT_CALL        ```python 5```
-#constant insntype INSN_INDIRECT_CALL      ```python 6```
-#constant insntype INSN_RETURN             ```python 7```
-#constant insntype INSN_HALT               ```python 8```
-#constant insntype INSN_NOP                ```python 9```
+#import "header.dr"
 
 get_instructions(InsnEA) 
   : instruction(InsnEA, _, _, _).
@@ -18,3 +6,9 @@ get_instructions(InsnEA)
 get_relocated_target(TargEA, ExternEA)
   : transfer(TargEA, RelocEA, _)
   , relocation(RelocEA, ExternEA).
+
+plausible_instruction(InsnEA)
+  : instruction(InsnEA, _, _, _).
+
+plausible_instruction(InsnEA)
+  : external_symbol(InsnEA, _).

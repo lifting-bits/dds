@@ -11,26 +11,6 @@ def get_transfer_target(instruction):
 	# All direct transfers, e.g., `jmp 0xaddr`
 	if op.type == capstone.x86.X86_OP_IMM:
 		return op.imm
-			
-	# Indirect transfers
-	elif op.type == capstone.x86.X86_OP_MEM:
-		mem = op.mem
-	
-		# PC-relative, e.g. `jmp [RIP + 0xdisp]`.
-		if mem.base == capstone.x86.X86_REG_RIP \
-		and not mem.segment \
-		and not mem.index:
-			return instruction.address + mem.disp					
-		
-		# Absolute addr, e.g. `jmp [0xaddr]`.
-		elif not mem.base \
-		and not mem.segment \
-		and not mem.index \
-		and mem.disp:
-			return mem.disp	
-
-		else:
-			return None
 
 	return None
 	
@@ -67,8 +47,7 @@ def get_target_info(parsed):
 	
 	if (b_type == lief.ELF.Binary):
 		b_arch = parsed.header.machine_type
-		b_relocs = [x for x in parsed.relocations \
-			if x.purpose == lief.ELF.RELOCATION_PURPOSES.PLTGOT]
+		b_relocs = parsed.relocations
 	else:
 		print("ERROR: Unsupported target type!")
 		exit(0)
@@ -91,4 +70,5 @@ def get_capstone(b_type, b_arch):
 
 	cs.detail = True
 	cs.syntax = CS_OPT_SYNTAX_ATT
+	cs.skipdata = True  # Skip non-decodable instructions.
 	return cs

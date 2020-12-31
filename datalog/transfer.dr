@@ -1,41 +1,70 @@
-#import "__header__.dr"
+#import "header.dr"
 
-#foreign edgetype ```python int```
-#constant edgetype EDGE_FALLTHRU    ```python 0```
-#constant edgetype EDGE_JUMP_TARG   ```python 1```
-#constant edgetype EDGE_JUMP_PSEUDO ```python 2``` ; post-jump fallthrough
-#constant edgetype EDGE_COND_TRUE   ```python 3```
-#constant edgetype EDGE_COND_FALSE  ```python 4```
-#constant edgetype EDGE_CALL_TARG   ```python 5```
-#constant edgetype EDGE_CALL_PSEUDO ```python 6``` ; post-call fallthrough
 
-interproc_transfer(CallEA, TargEA)
-  : transfer(CallEA, TargEA, EDGE_CALL_TARG)
-  , transfer(CallEA, FallEA, EDGE_CALL_PSEUDO)
-  , TargEA != FallEA.
+; Normal control-flow, unrelated to functions.
+transfer(FromEA, ToEA, EdgeType)
+  : raw_transfer(FromEA, ToEA, EdgeType)
+  , plausible_instruction(ToEA)
+  , EdgeType != EDGE_CALL_TARG
+  , EdgeType != EDGE_CALL_PSEUDO.
 
-intraproc_transfer(PrevEA, InsnEA)
-  : transfer(PrevEA, InsnEA, EDGE_FALLTHRU)
-  , !function(InsnEA).
-intraproc_transfer(PrevEA, InsnEA)
-  : transfer(PrevEA, InsnEA, EDGE_COND_TRUE)
-  , !function(InsnEA).
-intraproc_transfer(PrevEA, InsnEA)
-  : transfer(PrevEA, InsnEA, EDGE_COND_FALSE)
-  , !function(InsnEA).
-intraproc_transfer(PrevEA, InsnEA)
-  : transfer(PrevEA, InsnEA, EDGE_JUMP_PSEUDO)
-  , !function(InsnEA).
-intraproc_transfer(PrevEA, InsnEA)
-  : transfer(PrevEA, InsnEA, EDGE_CALL_PSEUDO)
-  , !function(InsnEA).
+
+; Target of a function call.
+transfer(CallEA, TargEA, EDGE_CALL_TARG)
+  : raw_transfer(CallEA, TargEA, EDGE_CALL_TARG)
+  , raw_transfer(CallEA, FallEA, EDGE_CALL_PSEUDO)
+  , TargEA != FallEA
+  , plausible_instruction(TargEA).
+
+
+; Fall-through of a function call.
+transfer(CallEA, FallEA, EDGE_CALL_PSEUDO)
+  : raw_transfer(CallEA, TargEA, EDGE_CALL_TARG)
+  , raw_transfer(CallEA, FallEA, EDGE_CALL_PSEUDO)
+  , TargEA != FallEA
+  , plausible_instruction(FallEA).
+
+
+; An indirect jump through a relocation.
+transfer(JmpEA, ExternEA, EDGE_JUMP_TARG)
+  : instruction(JmpEA, INSN_INDIRECT_JUMP, _, _)
+  , address_operand(JmpEA, AddrOfTargetEA)
+  , relocation(AddrOfTargetEA, ExternEA)
+  , plausible_instruction(ExternEA).
+
+
+; An indirect call through a relocation.
+transfer(CallEA, ExternEA, EDGE_CALL_TARG)
+  : instruction(CallEA, INSN_INDIRECT_CALL, _, _)
+  , address_operand(CallEA, AddrOfTargetEA)
+  , relocation(AddrOfTargetEA, ExternEA)
+  , plausible_instruction(ExternEA).
+
+
+; If the target and the fall-through are the same instruction, then
+; this is usally a kind of "inline PC thunk" pattern, e.g.
+;
+;       call $+5
+;       pop ebx
+;
+; On x86, where x86 is the address of the `pop` instruction.
+transfer(CallEA, TargEA, EDGE_FALLTHRU)
+  : raw_transfer(CallEA, TargEA, EDGE_CALL_TARG)
+  , raw_transfer(CallEA, TargEA, EDGE_CALL_PSEUDO)
+  , plausible_instruction(TargEA).
+
+
+intraproc_transfer(FromEA, ToEA)
+  : transfer(FromEA, ToEA, _)
+  , !function(ToEA).
+
+
+interproc_transfer(FromEA, ToEA)
+  : transfer(FromEA, ToEA, _)
+  , function(ToEA).
+
 
 get_external_calls(CallEA)
   : interproc_transfer(CallEA, TargEA)
-  , instruction(TargEA, _, _, SecName)
-  , SecName = ".extern".
+  , external_symbol(TargEA, _).
 
-get_external_calls(CallEA)
-  : intraproc_transfer(CallEA, TargEA)
-  , instruction(TargEA, _, _, SecName)
-  , SecName = ".extern".
