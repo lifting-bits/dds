@@ -1,7 +1,5 @@
 #import "__header__.dr"
 
-
-;---------------------------------------------------------
 #foreign insntype ```python int```
 #constant insntype INSN_NORMAL             ```python 0```
 #constant insntype INSN_DIRECT_JUMP        ```python 1```
@@ -14,25 +12,8 @@
 #constant insntype INSN_HALT               ```python 8```
 #constant insntype INSN_NOP                ```python 9```
 
-;---------------------------------------------------------
-; Instruction objects.
-
-
-;---------------------------------------------------------
-; Return all instruction addresses.
-
-
 get_instructions(InsnEA) 
   : instruction(InsnEA, _, _, _).
-
-;---------------------------------------------------------
-; Relocation objects.
-
-
-;---------------------------------------------------------
-; Given a target address (i.e., of a .PLT entry), return 
-; the relocated target address (i.e., in .EXTERN).
-
 
 get_relocated_target(TargEA, ExternEA)
   : transfer(TargEA, RelocEA, _)

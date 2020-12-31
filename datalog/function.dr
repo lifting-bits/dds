@@ -1,31 +1,17 @@
 #import "__header__.dr"
 
-;---------------------------------------------------------
-; Function objects. Derived from known call targets or 
-; executable section (.init, .fini, .text) entries. 
 function(FuncEA)
   : interproc_transfer(_, FuncEA).
 function(FuncEA)
   : instruction(FuncEA, _, _, _)
   , section(_, FuncEA, _, 1).
 
-;---------------------------------------------------------
-; Return all function heads.
 get_functions(FuncEA) 
   : function(FuncEA).
-
-;---------------------------------------------------------
-; Return all function heads.
-
-
-;---------------------------------------------------------
-; Return all instructions for a given function head; i.e.,
-; all instructions connected by intraprocedural transfers.
-
 
 get_function_instructions(FuncEA, FuncEA)
   : function(FuncEA).
 get_function_instructions(FuncEA, NextEA)
   : get_function_instructions(FuncEA, InsnEA)
   , intraproc_transfer(InsnEA, NextEA).
-
+  

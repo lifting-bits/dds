@@ -1,7 +1,5 @@
 #import "__header__.dr"
 
-
-;---------------------------------------------------------
 #foreign edgetype ```python int```
 #constant edgetype EDGE_FALLTHRU    ```python 0```
 #constant edgetype EDGE_JUMP_TARG   ```python 1```
@@ -11,22 +9,10 @@
 #constant edgetype EDGE_CALL_TARG   ```python 5```
 #constant edgetype EDGE_CALL_PSEUDO ```python 6``` ; post-call fallthrough
 
-;---------------------------------------------------------
-; Transfer objects.
-
-
-;---------------------------------------------------------
-; Interprocedural transfers, minus inlined thunk calls.
-
-
 interproc_transfer(CallEA, TargEA)
   : transfer(CallEA, TargEA, EDGE_CALL_TARG)
   , transfer(CallEA, FallEA, EDGE_CALL_PSEUDO)
   , TargEA != FallEA.
-
-;---------------------------------------------------------
-; Intraprocedural transfers.
-
 
 intraproc_transfer(PrevEA, InsnEA)
   : transfer(PrevEA, InsnEA, EDGE_FALLTHRU)
@@ -44,18 +30,10 @@ intraproc_transfer(PrevEA, InsnEA)
   : transfer(PrevEA, InsnEA, EDGE_CALL_PSEUDO)
   , !function(InsnEA).
 
-;---------------------------------------------------------
-; Return all calls to external (relocated) addresses.
-
-
 get_external_calls(CallEA)
   : interproc_transfer(CallEA, TargEA)
   , instruction(TargEA, _, _, SecName)
   , SecName = ".extern".
-
-;---------------------------------------------------------
-; Return all tail calls (jumps to function starts).
-
 
 get_external_calls(CallEA)
   : intraproc_transfer(CallEA, TargEA)
