@@ -50,8 +50,6 @@ def lief_add_two_edges(instruction, target_type, fallthru_type, transfers):
 	i_targ = get_transfer_target(instruction)
 
 	if i_targ: 
-		# Check if the target address is relocated.
-		i_targ = next(db.get_relocated_target_bf(i_targ), i_targ)
 		transfers.append((i_addr, i_targ, target_type))
 
 	transfers.append((i_addr, i_next, fallthru_type))

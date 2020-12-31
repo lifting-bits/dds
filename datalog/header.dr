@@ -66,8 +66,6 @@
 ;---------------------------------------------------------
 ; Relocation objects.
 #message relocation(u64 RelocEA, u64 ExternEA)
-; Return the relocated address for a transfer taret.
-#query get_relocated_target(bound u64 Targ, free u64 ExternEA)
 
 ;---------------------------------------------------------
 ; Transfer objects

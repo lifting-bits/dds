@@ -3,10 +3,6 @@
 get_instructions(InsnEA) 
   : instruction(InsnEA, _, _, _).
 
-get_relocated_target(TargEA, ExternEA)
-  : transfer(TargEA, RelocEA, _)
-  , relocation(RelocEA, ExternEA).
-
 plausible_instruction(InsnEA)
   : instruction(InsnEA, _, _, _).
 
