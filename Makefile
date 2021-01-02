@@ -1,9 +1,9 @@
 .PHONY: all examples clean
 
-deps = datalog/section.dr datalog/instruction.dr datalog/function.dr datalog/transfer.dr
+deps = dds/datalog/section.dr dds/datalog/instruction.dr dds/datalog/function.dr dds/datalog/transfer.dr
 
 all: 
-	drlojekyll $(deps) -py-out dds.py -dot-out dds.dot
+	drlojekyll $(deps) -py-out dds/datalog/__init__.py -dot-out dds.dot
 	python3 __main__.py examples/helloworld/helloworld.elf.x86_64.pie lief
 
 debug:

@@ -1,9 +1,13 @@
 examples/hello
 objdump.py
 dds.dot
-dds.py
+dds/dds.py
 __pycache__/
 .mypy_cache/
+venv/
+dist/
+build/
+dds.egg-info/
 **.id*
 **.nam
 **.til
