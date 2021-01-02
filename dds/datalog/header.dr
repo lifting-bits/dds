@@ -68,6 +68,11 @@
 #message relocation(u64 RelocEA, u64 ExternEA)
 
 ;---------------------------------------------------------
+; Constructor and destructor function objects.
+#message constructor_function(u64 FuncEA)
+#message destructor_function(u64 FuncEA)
+
+;---------------------------------------------------------
 ; Transfer objects
 #message raw_transfer(u64 InsnEA, u64 NextEA, edgetype EdgeType)
 ; An adjusted transfer, e.g. that distinguishes between PC-thunk calls and

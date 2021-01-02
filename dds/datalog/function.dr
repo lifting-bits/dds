@@ -1,7 +1,7 @@
 #import "header.dr"
 
 ;---------------------------------------------------------
-; If we have an interprocedural transfer
+; If we have an interprocedural transfer.
 function(FuncEA)
   : transfer(_, FuncEA, EDGE_CALL_TARG).
 
@@ -22,6 +22,16 @@ function(FuncEA)
   : instruction(FuncEA, INSN_INDIRECT_JUMP, _, _)
   , transfer(FuncEA, ExternEA, EDGE_JUMP_TARG)
   , external_symbol(ExternEA, _).
+
+; Mark all constructor functions.
+function(FuncEA)
+  : constructor_function(FuncEA)
+  , instruction(FuncEA, _, _, _).
+
+; Mark all destructor functions.
+function(FuncEA)
+  : destructor_function(FuncEA)
+  , instruction(FuncEA, _, _, _). 
 
 ;---------------------------------------------------------
 ; If an instruction begins a function, it is part of it.

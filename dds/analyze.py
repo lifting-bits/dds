@@ -87,6 +87,12 @@ def lief_disassemble(db, target):
     # Set up necessary relocations.
     lief_relocate_externs(db, parsed, b_relocs)
 
+    # Mark all constructor/destructor functions.
+    for f in parsed.ctor_functions:
+        db.constructor_function_1([(f.address)])
+    for f in parsed.dtor_functions:
+        db.destructor_function_1([(f.address)])
+
     sections = []
     insts = []
     transfers = []
