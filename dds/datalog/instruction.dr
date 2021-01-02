@@ -1,8 +1,10 @@
 #import "header.dr"
 
+;---------------------------------------------------------
 get_instructions(InsnEA) 
   : instruction(InsnEA, _, _, _).
 
+;---------------------------------------------------------
 plausible_instruction(InsnEA)
   : instruction(InsnEA, _, _, _).
 

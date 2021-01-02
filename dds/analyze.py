@@ -17,9 +17,8 @@ def debug(message, *args):
 # Add an `.extern` section (4-byte aligned) with 
 # enough slots to accommodate each PLT relocations.
 def lief_relocate_externs(db, parsed, relocs):
-
-    externs = []
-    relocations = []
+    external_symbols = []
+    relocations      = []
 
     # Start address of our fake `.extern` section.
     s_addr = max((x.virtual_address + x.size) for x in parsed.sections)
@@ -27,23 +26,22 @@ def lief_relocate_externs(db, parsed, relocs):
 
     # Generate relocation and external addresses.
     s_size = 0
-    for reloc in relocs:
-
-        if not reloc.symbol or not reloc.symbol.name:
+    for r in relocs:
+        if not r.symbol or not r.symbol.name:
             continue
 
+        r_addr = r.address
         e_addr = s_addr + s_size
         s_size += 4  # TODO: Fix me
 
-        debug("Relocation from {:x} to external {} at {:x}", reloc.address, reloc.symbol.name, e_addr)
-        relocations.append((reloc.address, e_addr))
-        externs.append((e_addr, bytes(reloc.symbol.name, "utf-8")))
+        debug("Relocation from {:x} to external {} at {:x}", r.address, r.symbol.name, e_addr)
+        relocations.append((r.address, e_addr))
+        external_symbols.append((e_addr, bytes(r.symbol.name, "utf-8")))
 
     debug("Faking .extern section [{:x}, {:x})", s_addr, s_addr + s_size)
     db.section_4([(b'.extern', s_addr, s_addr + s_size, SECTION_EXEC)])
-    db.external_symbol_2(externs)
+    db.external_symbol_2(external_symbols)
     db.relocation_2(relocations)
-
 
 
 # For edges with two outgoing edges (including calls
@@ -140,29 +138,35 @@ def lief_disassemble(db, target):
                 elif i_type in (INSN_NORMAL, INSN_NOP):
                     transfers.append((i_addr, i_next, EDGE_FALLTHRU))
 
+                # We omit edges from returns as these denote function endpoints.
                 elif i_type == INSN_RETURN:
                     pass
 
+                # Report if no transfer instruction is detected.
                 else:
                     debug("    No transfer???")
 
+                # Extract address-like operands found in any instruction.
                 for o in i.operands:
+                    
                     # Indirect transfers
                     if o.type == capstone.x86.X86_OP_MEM:
                         m = o.mem
                         m_addr = 0
+                        
                         # PC-relative, e.g. `jmp [RIP + 0xdisp]`.
                         if m.base == capstone.x86.X86_REG_RIP and not m.segment and not m.index:
                             m_addr = i.address + m.disp
+                        
                         # Absolute addr, e.g. `jmp [0xaddr]`.
                         elif not m.base and not m.segment and not m.index and m.disp:
                             m_addr = m.disp
+                        
                         else:
                             continue
 
                         if m_addr:
                             address_operands.append((i_addr, m_addr))
-
 
         else:
             debug("Adding data section {} [{:x}, {:x}) ".format(s.name, s_start, s_end))

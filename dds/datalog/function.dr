@@ -1,23 +1,20 @@
 #import "header.dr"
 
+;---------------------------------------------------------
 ; If we have an interprocedural transfer
 function(FuncEA)
   : transfer(_, FuncEA, EDGE_CALL_TARG).
 
-
-; Any type of control-flow transfer to an external is treated as a making
-; that external into a function.
+; Any type of control-flow transfer to an external is treated ;
+; as a making that external into a function.
 function(FuncEA)
   : external_symbol(FuncEA, _)
   , transfer(_, FuncEA, _).
-
 
 ; The binary entrypoint is treated as a function.
 function(EntryPointEA)
   : entrypoint(EntryPointEA)
   , plausible_instruction(EntryPointEA).
-
-
 
 ; An indirect jump in the `.plt` that has a been rewritten
 ; as an external transfer is treated as a function head.
@@ -26,10 +23,12 @@ function(FuncEA)
   , transfer(FuncEA, ExternEA, EDGE_JUMP_TARG)
   , external_symbol(ExternEA, _).
 
-
+;---------------------------------------------------------
+; If an instruction begins a function, it is part of it.
 function_instruction(FuncEA, FuncEA)
   : function(FuncEA).
 
+; A function's intraproc-connected instructions are part of it.
 function_instruction(FuncEA, NextEA)
   : function_instruction(FuncEA, InsnEA)
   , intraproc_transfer(InsnEA, NextEA).

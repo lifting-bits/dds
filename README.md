@@ -2,6 +2,6 @@
 
 #### Usage
 ```
-drlojekyll objdump.dr -py-out objdump.py
-python3 objdump.py [target_binary]
+python3 setup.py install
+make all
 ```

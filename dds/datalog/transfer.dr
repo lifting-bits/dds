@@ -1,13 +1,12 @@
 #import "header.dr"
 
-
+;---------------------------------------------------------
 ; Normal control-flow, unrelated to functions.
 transfer(FromEA, ToEA, EdgeType)
   : raw_transfer(FromEA, ToEA, EdgeType)
   , plausible_instruction(ToEA)
   , EdgeType != EDGE_CALL_TARG
   , EdgeType != EDGE_CALL_PSEUDO.
-
 
 ; Target of a function call.
 transfer(CallEA, TargEA, EDGE_CALL_TARG)
@@ -16,14 +15,12 @@ transfer(CallEA, TargEA, EDGE_CALL_TARG)
   , TargEA != FallEA
   , plausible_instruction(TargEA).
 
-
 ; Fall-through of a function call.
 transfer(CallEA, FallEA, EDGE_CALL_PSEUDO)
   : raw_transfer(CallEA, TargEA, EDGE_CALL_TARG)
   , raw_transfer(CallEA, FallEA, EDGE_CALL_PSEUDO)
   , TargEA != FallEA
   , plausible_instruction(FallEA).
-
 
 ; An indirect jump through a relocation.
 transfer(JmpEA, ExternEA, EDGE_JUMP_TARG)
@@ -32,14 +29,12 @@ transfer(JmpEA, ExternEA, EDGE_JUMP_TARG)
   , relocation(AddrOfTargetEA, ExternEA)
   , plausible_instruction(ExternEA).
 
-
 ; An indirect call through a relocation.
 transfer(CallEA, ExternEA, EDGE_CALL_TARG)
   : instruction(CallEA, INSN_INDIRECT_CALL, _, _)
   , address_operand(CallEA, AddrOfTargetEA)
   , relocation(AddrOfTargetEA, ExternEA)
   , plausible_instruction(ExternEA).
-
 
 ; If the target and the fall-through are the same instruction, then
 ; this is usally a kind of "inline PC thunk" pattern, e.g.
@@ -53,17 +48,16 @@ transfer(CallEA, TargEA, EDGE_FALLTHRU)
   , raw_transfer(CallEA, TargEA, EDGE_CALL_PSEUDO)
   , plausible_instruction(TargEA).
 
-
+;---------------------------------------------------------
 intraproc_transfer(FromEA, ToEA)
   : transfer(FromEA, ToEA, _)
   , !function(ToEA).
-
 
 interproc_transfer(FromEA, ToEA)
   : transfer(FromEA, ToEA, _)
   , function(ToEA).
 
-
+;---------------------------------------------------------
 get_external_calls(CallEA)
   : interproc_transfer(CallEA, TargEA)
   , external_symbol(TargEA, _).

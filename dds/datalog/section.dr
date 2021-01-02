@@ -1,8 +1,10 @@
 #import "header.dr"
 
+;---------------------------------------------------------
 get_sections(SecName) 
   : section(SecName, _, _, _).
 
+;---------------------------------------------------------
 get_section_instructions(SecName, InsnEA)
   : section(SecName, _, _, _)
   , instruction(InsnEA, _, _, SecName).
