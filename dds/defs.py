@@ -1,3 +1,6 @@
+# Copyright 2020, Trail of Bits. All rights reserved.
+
+
 import lief
 
 # Sections
