@@ -19,19 +19,19 @@ function(EntryPointEA)
 ; An indirect jump in the `.plt` that has a been rewritten
 ; as an external transfer is treated as a function head.
 function(FuncEA)
-  : instruction(FuncEA, INSN_INDIRECT_JUMP, _, _)
+  : instruction(FuncEA, INSN_INDIRECT_JUMP, _)
   , transfer(FuncEA, ExternEA, EDGE_JUMP_TARG)
   , external_symbol(ExternEA, _).
 
 ; Mark all constructor functions.
 function(FuncEA)
   : constructor_function(FuncEA)
-  , instruction(FuncEA, _, _, _).
+  , instruction(FuncEA, _, _).
 
 ; Mark all destructor functions.
 function(FuncEA)
   : destructor_function(FuncEA)
-  , instruction(FuncEA, _, _, _). 
+  , instruction(FuncEA, _, _).
 
 ;---------------------------------------------------------
 ; If an instruction begins a function, it is part of it.
