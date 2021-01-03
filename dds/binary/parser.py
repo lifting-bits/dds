@@ -10,51 +10,51 @@ class BinaryMetadataVisitor:
         and pointing to `to_ea`."""
         pass
 
-    def visit_constructor_function(self, ea: int):
-        """Visit a constructor function that is defined at `ea`."""
-        pass
-
-    def visit_destructor_function(self, ea: int):
-        """Visit a destructor function that is defined at `ea`."""
-        pass
-
     def visit_entrypoint_function(self, ea: int):
         """Visit the entrypoint of the binary. This is something like
         `_start` or `_init` in ELF binaries."""
         pass
-
-    def visit_local_symbol(self, ea: int, name: Optional[bytes]):
-        """Visit a named symbol that is neither exported nor imported. A local
-        symbol is not necessarily the head of a logical entity. For example,
-        it could point inside the middle of a logical entity."""
+    
+    def visit_constructor_function(self, ea: int):
+        """Visit a constructor function that is defined at `ea`."""
         pass
-
+    
+    def visit_destructor_function(self, ea: int):
+        """Visit a destructor function that is defined at `ea`."""
+        pass
+    
+    def visit_imported_function(self, ea: int, name: bytes):
+        """Visit a function that is imported by this binary from other binaries.
+        In practice, these functions are externals."""
+        pass
+    
+    def visit_exported_function(self, ea: int, name: bytes):
+        """Visit a function that is exported by this binary to other binaries.
+        For example, if this is a shared library, then this would be called
+        for each symbol that the library exports to users of the library."""
+        pass
+    
     def visit_local_function(self, ea: int, name: Optional[bytes]):
         """Visit a named function that is neither exported nor imported."""
         pass
-
+    
+    def visit_imported_symbol(self, ea: int, name: bytes):
+        """Visit a symbol that is imported by this binary from other binaries.
+        In practice, these symbols are externals. There are no guarantees that
+        this is code or data."""
+        pass
+    
     def visit_exported_symbol(self, ea: int, name: bytes):
         """Visit a symbol that is exported by this binary to other binaries.
         For example, if this is a shared library, then this would be called
         for each symbol that the library exports to users of the library.
         There are no guarantees that this is code or data."""
         pass
-
-    def visit_exported_function(self, ea: int, name: bytes):
-        """Visit a function that is exported by this binary to other binaries.
-        For example, if this is a shared library, then this would be called
-        for each symbol that the library exports to users of the library."""
-        pass
-
-    def visit_imported_symbol(self, ea: int, name: bytes):
-        """Visit a symbol that is imported by this binary from other binaries.
-        In practice, these symbols are externals. There are no guarantees that
-        this is code or data."""
-        pass
-
-    def visit_imported_function(self, ea: int, name: bytes):
-        """Visit a function that is imported by this binary from other binaries.
-        In practice, these functions are externals."""
+    
+    def visit_local_symbol(self, ea: int, name: Optional[bytes]):
+        """Visit a named symbol that is neither exported nor imported. A local
+        symbol is not necessarily the head of a logical entity. For example,
+        it could point inside the middle of a logical entity."""
         pass
 
     def visit_section(self, begin_ea: int, end_ea: int, name: bytes):

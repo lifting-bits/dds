@@ -63,15 +63,25 @@
 #message relocation(u64 RelocEA, u64 ExternEA)
 
 ;---------------------------------------------------------
-; Constructor and destructor function objects.
+; Function objects (constructors, destructors, imported, 
+; exported, and local functions).
 #message constructor_function(u64 FuncEA)
 #message destructor_function(u64 FuncEA)
+#message imported_function(u64 FuncEA, bytes Name)
+#message exported_function(u64 FuncEA, bytes Name)
+#message local_function(u64 FuncEA, bytes Name)
+
+;---------------------------------------------------------
+; Symbol objects (imported, exported, and local).
+#message imported_symbol(u64 SymEA, bytes SymName)
+#message exported_symbol(u64 SymEA, bytes SymName)
+#message local_symbol(u64 SymEA, bytes SymName)
 
 ;---------------------------------------------------------
 ; Transfer objects
 #message raw_transfer(u64 InsnEA, u64 NextEA, edgetype EdgeType)
-; An adjusted transfer, e.g. that distinguishes between PC-thunk calls and
-; non-PC thunk calls.
+; An adjusted transfer, e.g. that distinguishes between PC-
+; thunk calls and non-PC thunk calls.
 #export transfer(u64 InsnEA, u64 NextEA, edgetype EdgeType)
 ; Interprocedural transfers, minus inlined thunk calls.
 #query interproc_transfer(bound u64 CallEA, free u64 FuncEA)
