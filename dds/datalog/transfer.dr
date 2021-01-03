@@ -24,14 +24,14 @@ transfer(CallEA, FallEA, EDGE_CALL_PSEUDO)
 
 ; An indirect jump through a relocation.
 transfer(JmpEA, ExternEA, EDGE_JUMP_TARG)
-  : instruction(JmpEA, INSN_INDIRECT_JUMP, _, _)
+  : instruction(JmpEA, INSN_INDIRECT_JUMP, _)
   , address_operand(JmpEA, AddrOfTargetEA)
   , relocation(AddrOfTargetEA, ExternEA)
   , plausible_instruction(ExternEA).
 
 ; An indirect call through a relocation.
 transfer(CallEA, ExternEA, EDGE_CALL_TARG)
-  : instruction(CallEA, INSN_INDIRECT_CALL, _, _)
+  : instruction(CallEA, INSN_INDIRECT_CALL, _)
   , address_operand(CallEA, AddrOfTargetEA)
   , relocation(AddrOfTargetEA, ExternEA)
   , plausible_instruction(ExternEA).

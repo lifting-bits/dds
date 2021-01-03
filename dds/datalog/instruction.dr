@@ -2,11 +2,11 @@
 
 ;---------------------------------------------------------
 get_instructions(InsnEA) 
-  : instruction(InsnEA, _, _, _).
+  : instruction(InsnEA, _, _).
 
 ;---------------------------------------------------------
 plausible_instruction(InsnEA)
-  : instruction(InsnEA, _, _, _).
+  : instruction(InsnEA, _, _).
 
 plausible_instruction(InsnEA)
   : external_symbol(InsnEA, _).

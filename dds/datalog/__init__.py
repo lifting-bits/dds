@@ -22,120 +22,110 @@ class Database:
         self._refs: DefaultDict[int, List[object]] = defaultdict(list)
 
         self.table_6: DefaultDict[Tuple[int, int], int] = defaultdict(int)
-        self.index_414: DefaultDict[int, List[int]] = defaultdict(list)
-        self.index_1029: DefaultDict[int, List[int]] = defaultdict(list)
+        self.index_290: DefaultDict[int, List[int]] = defaultdict(list)
+        self.index_756: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_9: DefaultDict[Tuple[int, int], int] = defaultdict(int)
-        self.index_415: DefaultDict[int, List[int]] = defaultdict(list)
-        self.index_1079: DefaultDict[int, List[int]] = defaultdict(list)
+        self.table_9: DefaultDict[Tuple[int, int, int], int] = defaultdict(int)
+        self.index_799: DefaultDict[Tuple[int, int], List[int]] = defaultdict(list)
 
-        self.table_12: DefaultDict[Tuple[int, int], int] = defaultdict(int)
-        self.index_433: DefaultDict[int, List[int]] = defaultdict(list)
-        self.index_1028: DefaultDict[int, List[int]] = defaultdict(list)
+        self.table_13: DefaultDict[int, int] = defaultdict(int)
 
-        self.table_15: DefaultDict[int, int] = defaultdict(int)
+        self.table_15: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_752: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_17: DefaultDict[int, int] = defaultdict(int)
-        self.index_408 = self.table_17
+        self.table_18: DefaultDict[int, int] = defaultdict(int)
+        self.index_280 = self.table_18
 
-        self.table_19: DefaultDict[bytes, int] = defaultdict(int)
+        self.table_20: DefaultDict[int, int] = defaultdict(int)
 
-        self.table_21: DefaultDict[int, int] = defaultdict(int)
+        self.table_22: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_760: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_23: DefaultDict[Tuple[bytes, int], int] = defaultdict(int)
-        self.index_1036: DefaultDict[bytes, List[int]] = defaultdict(list)
+        self.table_25: DefaultDict[bytes, int] = defaultdict(int)
 
-        self.table_26: DefaultDict[Tuple[int, int, int], int] = defaultdict(int)
-        self.index_199: DefaultDict[int, List[Tuple[int, int]]] = defaultdict(list)
-        self.index_1053: DefaultDict[Tuple[int, int], List[int]] = defaultdict(list)
+        self.table_27: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_116: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_30: DefaultDict[Tuple[bytes, int, int, int], int] = defaultdict(int)
-        self.index_170: DefaultDict[bytes, List[Tuple[int, int, int]]] = defaultdict(list)
+        self.table_30: DefaultDict[int, int] = defaultdict(int)
+        self.index_256 = self.table_30
 
-        self.table_35: DefaultDict[Tuple[int, int, bytes, bytes], int] = defaultdict(int)
-        self.index_171: DefaultDict[bytes, List[Tuple[int, int, bytes]]] = defaultdict(list)
-        self.index_188: DefaultDict[int, List[Tuple[int, bytes, bytes]]] = defaultdict(list)
+        self.table_32: DefaultDict[int, int] = defaultdict(int)
+        self.index_257 = self.table_32
 
-        self.table_40: DefaultDict[Tuple[int, bytes], int] = defaultdict(int)
-        self.index_372: DefaultDict[int, List[bytes]] = defaultdict(list)
+        self.table_34: DefaultDict[int, int] = defaultdict(int)
+        self.index_175 = self.table_34
 
-        self.table_43: DefaultDict[Tuple[int, int, int], int] = defaultdict(int)
-        self.index_373: DefaultDict[int, List[Tuple[int, int]]] = defaultdict(list)
+        self.table_36: DefaultDict[int, int] = defaultdict(int)
+        self.index_157 = self.table_36
 
-        self.table_47: DefaultDict[int, int] = defaultdict(int)
-        self.index_334 = self.table_47
+        self.table_38: DefaultDict[int, int] = defaultdict(int)
+        self.index_151 = self.table_38
 
-        self.table_49: DefaultDict[int, int] = defaultdict(int)
-        self.index_267 = self.table_49
+        self.table_40: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_265: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_51: DefaultDict[Tuple[int, int, bytes, bytes], int] = defaultdict(int)
-        self.index_384: DefaultDict[int, List[Tuple[int, bytes, bytes]]] = defaultdict(list)
+        self.table_43: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_270: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_56: DefaultDict[Tuple[int, int, int], int] = defaultdict(int)
-        self.index_385: DefaultDict[int, List[Tuple[int, int]]] = defaultdict(list)
+        self.table_46: DefaultDict[int, int] = defaultdict(int)
+        self.index_137 = self.table_46
 
-        self.table_60: DefaultDict[Tuple[int, int, int, bytes, bytes, int], int] = defaultdict(int)
-        self.index_394: DefaultDict[int, List[Tuple[int, int, int, bytes, bytes]]] = defaultdict(list)
+        self.table_48: DefaultDict[int, int] = defaultdict(int)
+        self.index_115 = self.table_48
 
-        self.table_67: DefaultDict[int, int] = defaultdict(int)
-        self.index_211 = self.table_67
+        self.table_50: DefaultDict[int, int] = defaultdict(int)
+        self.index_114 = self.table_50
 
-        self.table_69: DefaultDict[int, int] = defaultdict(int)
-        self.index_187 = self.table_69
+        self.table_52: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_291: DefaultDict[int, List[int]] = defaultdict(list)
+        self.index_778: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_71: DefaultDict[Tuple[int, int, int, int, int], int] = defaultdict(int)
-        self.index_319: DefaultDict[int, List[Tuple[int, int, int, int]]] = defaultdict(list)
+        self.table_55: DefaultDict[Tuple[int, int, int], int] = defaultdict(int)
+        self.index_156: DefaultDict[int, List[Tuple[int, int]]] = defaultdict(list)
 
-        self.table_77: DefaultDict[Tuple[int, int, int], int] = defaultdict(int)
-        self.index_697: DefaultDict[int, List[Tuple[int, int]]] = defaultdict(list)
+        self.table_59: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_220: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_81: DefaultDict[Tuple[int, int, int], int] = defaultdict(int)
-        self.index_698: DefaultDict[int, List[Tuple[int, int]]] = defaultdict(list)
+        self.table_62: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_504 = self.table_62
+        self.index_509: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_85: DefaultDict[Tuple[int, int, int, int, int], int] = defaultdict(int)
-        self.index_357: DefaultDict[int, List[Tuple[int, int, int, int]]] = defaultdict(list)
+        self.table_65: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_505 = self.table_65
+        self.index_510: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_91: DefaultDict[Tuple[int, int, int], int] = defaultdict(int)
-        self.index_688: DefaultDict[int, List[Tuple[int, int]]] = defaultdict(list)
+        self.table_68: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_208: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_95: DefaultDict[Tuple[int, int, int], int] = defaultdict(int)
-        self.index_689: DefaultDict[int, List[Tuple[int, int]]] = defaultdict(list)
+        self.table_71: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_146: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_99: DefaultDict[Tuple[int, int, int, int, int], int] = defaultdict(int)
-        self.index_342: DefaultDict[int, List[Tuple[int, int, int, int]]] = defaultdict(list)
+        self.table_74: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_183: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_105: DefaultDict[Tuple[int, int, bytes, bytes], int] = defaultdict(int)
-        self.index_240: DefaultDict[int, List[Tuple[int, bytes, bytes]]] = defaultdict(list)
+        self.table_77: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_202: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_110: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.table_80: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_244: DefaultDict[int, List[int]] = defaultdict(list)
+
+        self.table_83: DefaultDict[int, int] = defaultdict(int)
+        self.index_145 = self.table_83
+
+        self.table_85: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_184: DefaultDict[int, List[int]] = defaultdict(list)
+
+        self.table_88: DefaultDict[Tuple[int, int], int] = defaultdict(int)
         self.index_232: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_113: DefaultDict[Tuple[int, int], int] = defaultdict(int)
-        self.index_248: DefaultDict[int, List[int]] = defaultdict(list)
+        self.table_91: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_190: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_116: DefaultDict[Tuple[int, int, bytes, bytes, int], int] = defaultdict(int)
-        self.index_249: DefaultDict[int, List[Tuple[int, int, bytes, bytes]]] = defaultdict(list)
+        self.table_94: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_279: DefaultDict[int, List[int]] = defaultdict(list)
 
-        self.table_122: DefaultDict[Tuple[int, int, int, int, bytes, bytes], int] = defaultdict(int)
-        self.index_303: DefaultDict[int, List[Tuple[int, int, int, bytes, bytes]]] = defaultdict(list)
-
-        self.table_129: DefaultDict[Tuple[int, int, bytes, bytes], int] = defaultdict(int)
-        self.index_231: DefaultDict[int, List[Tuple[int, bytes, bytes]]] = defaultdict(list)
-
-        self.table_134: DefaultDict[Tuple[int, int, bytes, bytes, int], int] = defaultdict(int)
-        self.index_258: DefaultDict[int, List[Tuple[int, int, bytes, bytes]]] = defaultdict(list)
-
-        self.table_140: DefaultDict[Tuple[int, int, int, int, bytes, bytes], int] = defaultdict(int)
-        self.index_287: DefaultDict[int, List[Tuple[int, int, int, bytes, bytes]]] = defaultdict(list)
-
-        self.table_147: DefaultDict[Tuple[int, int, int], int] = defaultdict(int)
-        self.index_681: DefaultDict[Tuple[int, int], List[int]] = defaultdict(list)
-
-        self.table_151: DefaultDict[Tuple[int, int, int], int] = defaultdict(int)
-        self.index_682: DefaultDict[Tuple[int, int], List[int]] = defaultdict(list)
-
-        self.table_155: DefaultDict[Tuple[int, int, int, int], int] = defaultdict(int)
-        self.index_268: DefaultDict[int, List[Tuple[int, int, int]]] = defaultdict(list)
+        self.table_97: DefaultDict[Tuple[int, int], int] = defaultdict(int)
+        self.index_285: DefaultDict[int, List[int]] = defaultdict(list)
 
         self.var_0: int = 5
         self.var_1: int = 2
@@ -143,23 +133,7 @@ class Database:
         self.var_3: int = 6
         self.var_4: int = 6
         self.var_5: int = 0
-        self.init_160_()
-
-    _HAS_MERGE_METHOD_sectype: Final[bool] = hasattr(int, 'merge_into')
-    _MERGE_METHOD_sectype: Final[Callable[[int, int], None]] = getattr(int, 'merge_into', lambda a, b: None)
-
-    def _resolve_sectype(self, obj: int) -> int:
-        if Database._HAS_MERGE_METHOD_sectype:
-            ref_list = self._refs[hash(obj)]
-            for maybe_obj in ref_list:
-                if obj is maybe_obj:
-                    return obj
-                elif obj == maybe_obj:
-                    prior_obj: int = cast(int, maybe_obj)
-                    Database._MERGE_METHOD_sectype(obj, prior_obj)
-                    return prior_obj
-            ref_list.append(obj)
-        return obj
+        self.init_100_()
 
     _HAS_MERGE_METHOD_insntype: Final[bool] = hasattr(int, 'merge_into')
     _MERGE_METHOD_insntype: Final[Callable[[int, int], None]] = getattr(int, 'merge_into', lambda a, b: None)
@@ -193,7 +167,7 @@ class Database:
             ref_list.append(obj)
         return obj
 
-    def init_160_(self) -> bool:
+    def init_100_(self) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
@@ -201,2543 +175,2124 @@ class Database:
         found: bool = False
         # Program Return Region
         return False
+        return False
 
-    def section_4(self, vec_162: List[Tuple[bytes, int, int, int]]) -> bool:
+    def section_3(self, vec_102: List[Tuple[bytes, int, int]]) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
-        vec_index162: int = 0
-        vec_167: List[bytes] = list()
-        vec_index167: int = 0
+        vec_index102: int = 0
         # Program Series Region
         # Program VectorLoop Region
-        vec_index162 = 0
-        while vec_index162 < len(vec_162):
-            var_163, var_164, var_165, var_166 = vec_162[vec_index162]
-            vec_index162 += 1
-            # Program Parallel Region
+        vec_index102 = 0
+        while vec_index102 < len(vec_102):
+            var_103, var_104, var_105 = vec_102[vec_index102]
+            vec_index102 += 1
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            var_166 = self._resolve_sectype(var_166)
-            tuple_163_164_165_166 = (var_163, var_164, var_165, var_166)
-            prev_state = self.table_30[tuple_163_164_165_166]
+            tuple_103 = var_103
+            prev_state = self.table_25[tuple_103]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_30[tuple_163_164_165_166] = 1 | 4
+                self.table_25[tuple_103] = 1 | 4
                 if not present_bit:
-                    self.index_170[tuple_163_164_165_166[0]].append((tuple_163_164_165_166[1], tuple_163_164_165_166[2], tuple_163_164_165_166[3]))
-                # Program Parallel Region
-                # Program TransitionState Region
-                tuple_163 = var_163
-                prev_state = self.table_19[tuple_163]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_19[tuple_163] = 1 | 4
-                    if not present_bit:
-                        pass
-                # Program VectorAppend Region
-                vec_167.append(var_163)
-            # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            var_166 = self._resolve_sectype(var_166)
-            tuple_163_164_165_166 = (var_163, var_164, var_165, var_166)
-            prev_state = self.table_30[tuple_163_164_165_166]
-            state = prev_state & 3
-            present_bit = prev_state & 4
-            if state == 0 or state == 2:
-                self.table_30[tuple_163_164_165_166] = 1 | 4
-                if not present_bit:
-                    self.index_170[tuple_163_164_165_166[0]].append((tuple_163_164_165_166[1], tuple_163_164_165_166[2], tuple_163_164_165_166[3]))
-                # Program Parallel Region
-                # Program TransitionState Region
-                tuple_163 = var_163
-                prev_state = self.table_19[tuple_163]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_19[tuple_163] = 1 | 4
-                    if not present_bit:
-                        pass
-                # Program VectorAppend Region
-                vec_167.append(var_163)
-        # Program VectorUnique Region
-        vec_167 = list(set(vec_167))
-        vec_index167 = 0
-        # Program TableJoin Region
-        while vec_index167 < len(vec_167):
-            var_169 = vec_167[vec_index167]
-            vec_index167 += 1
-            tuple_168_0_index: int = 0
-            tuple_168_0_vec: List[Tuple[int, int, int]] = self.index_170[var_169]
-            while tuple_168_0_index < len(tuple_168_0_vec):
-                tuple_168_0 = tuple_168_0_vec[tuple_168_0_index]
-                tuple_168_0_index += 1
-                var_172 = tuple_168_0[0]
-                var_173 = tuple_168_0[1]
-                var_174 = tuple_168_0[2]
-                tuple_168_1_index: int = 0
-                tuple_168_1_vec: List[Tuple[int, int, bytes]] = self.index_171[var_169]
-                while tuple_168_1_index < len(tuple_168_1_vec):
-                    tuple_168_1 = tuple_168_1_vec[tuple_168_1_index]
-                    tuple_168_1_index += 1
-                    var_175 = tuple_168_1[0]
-                    var_176 = tuple_168_1[1]
-                    var_177 = tuple_168_1[2]
-                    # Program TransitionState Region
-                    tuple_169_175 = (var_169, var_175)
-                    prev_state = self.table_23[tuple_169_175]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_23[tuple_169_175] = 1 | 4
-                        if not present_bit:
-                            self.index_1036[tuple_169_175[0]].append(tuple_169_175[1])
-        # Program VectorClear Region
-        del vec_167[:]
-        vec_index167 = 0
+                    pass
         # Program Return Region
         return False
+        return False
 
-    def instruction_4(self, vec_179: List[Tuple[int, int, bytes, bytes]]) -> bool:
+    def instruction_3(self, vec_107: List[Tuple[int, int, bytes]]) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
-        vec_index179: int = 0
-        vec_184: List[int] = list()
-        vec_index184: int = 0
-        vec_196: List[Tuple[int, int]] = list()
-        vec_index196: int = 0
-        vec_200: List[Tuple[int, int]] = list()
-        vec_index200: int = 0
-        vec_208: List[int] = list()
-        vec_index208: int = 0
-        vec_215: List[Tuple[int, int]] = list()
-        vec_index215: int = 0
-        vec_219: List[bytes] = list()
-        vec_index219: int = 0
-        vec_228: List[int] = list()
-        vec_index228: int = 0
+        vec_index107: int = 0
+        vec_111: List[int] = list()
+        vec_index111: int = 0
+        vec_117: List[int] = list()
+        vec_index117: int = 0
+        vec_131: List[Tuple[int, int]] = list()
+        vec_index131: int = 0
+        vec_134: List[int] = list()
+        vec_index134: int = 0
+        vec_138: List[int] = list()
+        vec_index138: int = 0
+        vec_142: List[int] = list()
+        vec_index142: int = 0
+        vec_148: List[int] = list()
+        vec_index148: int = 0
+        vec_153: List[int] = list()
+        vec_index153: int = 0
+        vec_168: List[int] = list()
+        vec_index168: int = 0
+        vec_172: List[int] = list()
+        vec_index172: int = 0
+        vec_176: List[int] = list()
+        vec_index176: int = 0
+        vec_180: List[int] = list()
+        vec_index180: int = 0
+        vec_187: List[int] = list()
+        vec_index187: int = 0
+        vec_195: List[int] = list()
+        vec_index195: int = 0
+        vec_199: List[int] = list()
+        vec_index199: int = 0
+        vec_205: List[int] = list()
+        vec_index205: int = 0
+        vec_213: List[int] = list()
+        vec_index213: int = 0
+        vec_217: List[int] = list()
+        vec_index217: int = 0
+        vec_225: List[int] = list()
+        vec_index225: int = 0
+        vec_229: List[int] = list()
+        vec_index229: int = 0
         vec_237: List[int] = list()
         vec_index237: int = 0
-        vec_245: List[int] = list()
-        vec_index245: int = 0
-        vec_255: List[int] = list()
-        vec_index255: int = 0
-        vec_264: List[int] = list()
-        vec_index264: int = 0
-        vec_280: List[Tuple[int, int]] = list()
-        vec_index280: int = 0
-        vec_284: List[int] = list()
-        vec_index284: int = 0
-        vec_296: List[Tuple[int, int]] = list()
-        vec_index296: int = 0
-        vec_300: List[int] = list()
-        vec_index300: int = 0
-        vec_312: List[Tuple[int, int]] = list()
-        vec_index312: int = 0
-        vec_316: List[int] = list()
-        vec_index316: int = 0
-        vec_327: List[Tuple[int, int]] = list()
-        vec_index327: int = 0
-        vec_331: List[int] = list()
-        vec_index331: int = 0
-        vec_335: List[Tuple[int, int]] = list()
-        vec_index335: int = 0
-        vec_339: List[int] = list()
-        vec_index339: int = 0
-        vec_350: List[Tuple[int, int]] = list()
-        vec_index350: int = 0
-        vec_354: List[int] = list()
-        vec_index354: int = 0
-        vec_365: List[Tuple[int, int]] = list()
-        vec_index365: int = 0
-        vec_369: List[int] = list()
-        vec_index369: int = 0
-        vec_377: List[Tuple[int, int]] = list()
-        vec_index377: int = 0
-        vec_381: List[int] = list()
-        vec_index381: int = 0
-        vec_391: List[int] = list()
-        vec_index391: int = 0
-        vec_401: List[Tuple[int, int]] = list()
-        vec_index401: int = 0
-        vec_405: List[int] = list()
-        vec_index405: int = 0
-        vec_411: List[int] = list()
-        vec_index411: int = 0
-        vec_430: List[int] = list()
-        vec_index430: int = 0
+        vec_241: List[int] = list()
+        vec_index241: int = 0
+        vec_249: List[int] = list()
+        vec_index249: int = 0
+        vec_253: List[int] = list()
+        vec_index253: int = 0
+        vec_258: List[int] = list()
+        vec_index258: int = 0
+        vec_262: List[int] = list()
+        vec_index262: int = 0
+        vec_267: List[int] = list()
+        vec_index267: int = 0
+        vec_272: List[int] = list()
+        vec_index272: int = 0
+        vec_276: List[int] = list()
+        vec_index276: int = 0
+        vec_282: List[int] = list()
+        vec_index282: int = 0
+        vec_287: List[int] = list()
+        vec_index287: int = 0
         # Program Series Region
         # Program Induction Init Region
         # Program Series Region
         # Program VectorLoop Region
-        vec_index179 = 0
-        while vec_index179 < len(vec_179):
-            var_180, var_181, var_182, var_183 = vec_179[vec_index179]
-            vec_index179 += 1
+        vec_index107 = 0
+        while vec_index107 < len(vec_107):
+            var_108, var_109, var_110 = vec_107[vec_index107]
+            vec_index107 += 1
             # Program Parallel Region
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            var_181 = self._resolve_insntype(var_181)
-            tuple_180_181_182_183 = (var_180, var_181, var_182, var_183)
-            prev_state = self.table_35[tuple_180_181_182_183]
+            tuple_108 = var_108
+            prev_state = self.table_48[tuple_108]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_35[tuple_180_181_182_183] = 1 | 4
+                self.table_48[tuple_108] = 1 | 4
                 if not present_bit:
-                    self.index_171[tuple_180_181_182_183[3]].append((tuple_180_181_182_183[0], tuple_180_181_182_183[1], tuple_180_181_182_183[2]))
-                    self.index_188[tuple_180_181_182_183[0]].append((tuple_180_181_182_183[1], tuple_180_181_182_183[2], tuple_180_181_182_183[3]))
+                    pass
                 # Program Parallel Region
                 # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_21[tuple_180]
+                tuple_108 = var_108
+                prev_state = self.table_36[tuple_108]
                 state = prev_state & 3
                 present_bit = prev_state & 4
                 if state == 0 or state == 2:
-                    self.table_21[tuple_180] = 1 | 4
-                    if not present_bit:
-                        pass
-                # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_49[tuple_180]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_49[tuple_180] = 1 | 4
+                    self.table_36[tuple_108] = 1 | 4
                     if not present_bit:
                         pass
                     # Program Parallel Region
                     # Program VectorAppend Region
-                    vec_331.append(var_180)
+                    vec_172.append(var_108)
                     # Program VectorAppend Region
-                    vec_316.append(var_180)
+                    vec_153.append(var_108)
                     # Program VectorAppend Region
-                    vec_354.append(var_180)
+                    vec_217.append(var_108)
                     # Program VectorAppend Region
-                    vec_339.append(var_180)
+                    vec_205.append(var_108)
                     # Program VectorAppend Region
-                    vec_300.append(var_180)
+                    vec_241.append(var_108)
                     # Program VectorAppend Region
-                    vec_284.append(var_180)
+                    vec_229.append(var_108)
                     # Program VectorAppend Region
-                    vec_264.append(var_180)
+                    vec_187.append(var_108)
                 # Program VectorAppend Region
-                vec_219.append(var_183)
+                vec_134.append(var_108)
                 # Program VectorAppend Region
-                vec_208.append(var_180)
-                # Program VectorAppend Region
-                vec_184.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_51[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_51[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_384[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_381.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_105[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_105[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_240[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_237.append(var_180)
-                # Program TupleCompare Region
-                if self.var_4 == var_181:
-                    # Program TransitionState Region
-                    tuple_4_180_182_183 = (self.var_4, var_180, var_182, var_183)
-                    prev_state = self.table_129[tuple_4_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_129[tuple_4_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_231[tuple_4_180_182_183[1]].append((tuple_4_180_182_183[0], tuple_4_180_182_183[2], tuple_4_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_228.append(var_180)
+                vec_111.append(var_108)
+            # Program TupleCompare Region
+            if self.var_1 == var_109:
+                # Program TransitionState Region
+                tuple_108 = var_108
+                prev_state = self.table_38[tuple_108]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_38[tuple_108] = 1 | 4
+                    if not present_bit:
+                        pass
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_262.append(var_108)
+                    # Program VectorAppend Region
+                    vec_148.append(var_108)
+            # Program TupleCompare Region
+            if self.var_4 == var_109:
+                # Program TransitionState Region
+                tuple_108 = var_108
+                prev_state = self.table_83[tuple_108]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_83[tuple_108] = 1 | 4
+                    if not present_bit:
+                        pass
+                    # Program VectorAppend Region
+                    vec_142.append(var_108)
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            var_181 = self._resolve_insntype(var_181)
-            tuple_180_181_182_183 = (var_180, var_181, var_182, var_183)
-            prev_state = self.table_35[tuple_180_181_182_183]
+            tuple_108 = var_108
+            prev_state = self.table_20[tuple_108]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_35[tuple_180_181_182_183] = 1 | 4
+                self.table_20[tuple_108] = 1 | 4
                 if not present_bit:
-                    self.index_171[tuple_180_181_182_183[3]].append((tuple_180_181_182_183[0], tuple_180_181_182_183[1], tuple_180_181_182_183[2]))
-                    self.index_188[tuple_180_181_182_183[0]].append((tuple_180_181_182_183[1], tuple_180_181_182_183[2], tuple_180_181_182_183[3]))
-                # Program Parallel Region
-                # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_21[tuple_180]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_21[tuple_180] = 1 | 4
-                    if not present_bit:
-                        pass
-                # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_49[tuple_180]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_49[tuple_180] = 1 | 4
-                    if not present_bit:
-                        pass
-                    # Program Parallel Region
-                    # Program VectorAppend Region
-                    vec_331.append(var_180)
-                    # Program VectorAppend Region
-                    vec_316.append(var_180)
-                    # Program VectorAppend Region
-                    vec_354.append(var_180)
-                    # Program VectorAppend Region
-                    vec_339.append(var_180)
-                    # Program VectorAppend Region
-                    vec_300.append(var_180)
-                    # Program VectorAppend Region
-                    vec_284.append(var_180)
-                    # Program VectorAppend Region
-                    vec_264.append(var_180)
-                # Program VectorAppend Region
-                vec_219.append(var_183)
-                # Program VectorAppend Region
-                vec_208.append(var_180)
-                # Program VectorAppend Region
-                vec_184.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_51[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_51[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_384[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_381.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_105[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_105[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_240[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_237.append(var_180)
-                # Program TupleCompare Region
-                if self.var_4 == var_181:
-                    # Program TransitionState Region
-                    tuple_4_180_182_183 = (self.var_4, var_180, var_182, var_183)
-                    prev_state = self.table_129[tuple_4_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_129[tuple_4_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_231[tuple_4_180_182_183[1]].append((tuple_4_180_182_183[0], tuple_4_180_182_183[2], tuple_4_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_228.append(var_180)
+                    pass
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            var_181 = self._resolve_insntype(var_181)
-            tuple_180_181_182_183 = (var_180, var_181, var_182, var_183)
-            prev_state = self.table_35[tuple_180_181_182_183]
+            tuple_108 = var_108
+            prev_state = self.table_48[tuple_108]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_35[tuple_180_181_182_183] = 1 | 4
+                self.table_48[tuple_108] = 1 | 4
                 if not present_bit:
-                    self.index_171[tuple_180_181_182_183[3]].append((tuple_180_181_182_183[0], tuple_180_181_182_183[1], tuple_180_181_182_183[2]))
-                    self.index_188[tuple_180_181_182_183[0]].append((tuple_180_181_182_183[1], tuple_180_181_182_183[2], tuple_180_181_182_183[3]))
+                    pass
                 # Program Parallel Region
                 # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_21[tuple_180]
+                tuple_108 = var_108
+                prev_state = self.table_36[tuple_108]
                 state = prev_state & 3
                 present_bit = prev_state & 4
                 if state == 0 or state == 2:
-                    self.table_21[tuple_180] = 1 | 4
-                    if not present_bit:
-                        pass
-                # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_49[tuple_180]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_49[tuple_180] = 1 | 4
+                    self.table_36[tuple_108] = 1 | 4
                     if not present_bit:
                         pass
                     # Program Parallel Region
                     # Program VectorAppend Region
-                    vec_331.append(var_180)
+                    vec_172.append(var_108)
                     # Program VectorAppend Region
-                    vec_316.append(var_180)
+                    vec_153.append(var_108)
                     # Program VectorAppend Region
-                    vec_354.append(var_180)
+                    vec_217.append(var_108)
                     # Program VectorAppend Region
-                    vec_339.append(var_180)
+                    vec_205.append(var_108)
                     # Program VectorAppend Region
-                    vec_300.append(var_180)
+                    vec_241.append(var_108)
                     # Program VectorAppend Region
-                    vec_284.append(var_180)
+                    vec_229.append(var_108)
                     # Program VectorAppend Region
-                    vec_264.append(var_180)
+                    vec_187.append(var_108)
                 # Program VectorAppend Region
-                vec_219.append(var_183)
+                vec_134.append(var_108)
                 # Program VectorAppend Region
-                vec_208.append(var_180)
-                # Program VectorAppend Region
-                vec_184.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_51[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_51[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_384[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_381.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_105[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_105[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_240[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_237.append(var_180)
-                # Program TupleCompare Region
-                if self.var_4 == var_181:
-                    # Program TransitionState Region
-                    tuple_4_180_182_183 = (self.var_4, var_180, var_182, var_183)
-                    prev_state = self.table_129[tuple_4_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_129[tuple_4_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_231[tuple_4_180_182_183[1]].append((tuple_4_180_182_183[0], tuple_4_180_182_183[2], tuple_4_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_228.append(var_180)
+                vec_111.append(var_108)
+            # Program TupleCompare Region
+            if self.var_1 == var_109:
+                # Program TransitionState Region
+                tuple_108 = var_108
+                prev_state = self.table_38[tuple_108]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_38[tuple_108] = 1 | 4
+                    if not present_bit:
+                        pass
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_262.append(var_108)
+                    # Program VectorAppend Region
+                    vec_148.append(var_108)
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            var_181 = self._resolve_insntype(var_181)
-            tuple_180_181_182_183 = (var_180, var_181, var_182, var_183)
-            prev_state = self.table_35[tuple_180_181_182_183]
+            tuple_108 = var_108
+            prev_state = self.table_48[tuple_108]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_35[tuple_180_181_182_183] = 1 | 4
+                self.table_48[tuple_108] = 1 | 4
                 if not present_bit:
-                    self.index_171[tuple_180_181_182_183[3]].append((tuple_180_181_182_183[0], tuple_180_181_182_183[1], tuple_180_181_182_183[2]))
-                    self.index_188[tuple_180_181_182_183[0]].append((tuple_180_181_182_183[1], tuple_180_181_182_183[2], tuple_180_181_182_183[3]))
+                    pass
                 # Program Parallel Region
                 # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_21[tuple_180]
+                tuple_108 = var_108
+                prev_state = self.table_36[tuple_108]
                 state = prev_state & 3
                 present_bit = prev_state & 4
                 if state == 0 or state == 2:
-                    self.table_21[tuple_180] = 1 | 4
-                    if not present_bit:
-                        pass
-                # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_49[tuple_180]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_49[tuple_180] = 1 | 4
+                    self.table_36[tuple_108] = 1 | 4
                     if not present_bit:
                         pass
                     # Program Parallel Region
                     # Program VectorAppend Region
-                    vec_331.append(var_180)
+                    vec_172.append(var_108)
                     # Program VectorAppend Region
-                    vec_316.append(var_180)
+                    vec_153.append(var_108)
                     # Program VectorAppend Region
-                    vec_354.append(var_180)
+                    vec_217.append(var_108)
                     # Program VectorAppend Region
-                    vec_339.append(var_180)
+                    vec_205.append(var_108)
                     # Program VectorAppend Region
-                    vec_300.append(var_180)
+                    vec_241.append(var_108)
                     # Program VectorAppend Region
-                    vec_284.append(var_180)
+                    vec_229.append(var_108)
                     # Program VectorAppend Region
-                    vec_264.append(var_180)
+                    vec_187.append(var_108)
                 # Program VectorAppend Region
-                vec_219.append(var_183)
+                vec_134.append(var_108)
                 # Program VectorAppend Region
-                vec_208.append(var_180)
-                # Program VectorAppend Region
-                vec_184.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_51[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_51[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_384[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_381.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_105[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_105[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_240[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_237.append(var_180)
-                # Program TupleCompare Region
-                if self.var_4 == var_181:
-                    # Program TransitionState Region
-                    tuple_4_180_182_183 = (self.var_4, var_180, var_182, var_183)
-                    prev_state = self.table_129[tuple_4_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_129[tuple_4_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_231[tuple_4_180_182_183[1]].append((tuple_4_180_182_183[0], tuple_4_180_182_183[2], tuple_4_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_228.append(var_180)
+                vec_111.append(var_108)
+            # Program TupleCompare Region
+            if self.var_1 == var_109:
+                # Program TransitionState Region
+                tuple_108 = var_108
+                prev_state = self.table_38[tuple_108]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_38[tuple_108] = 1 | 4
+                    if not present_bit:
+                        pass
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_262.append(var_108)
+                    # Program VectorAppend Region
+                    vec_148.append(var_108)
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            var_181 = self._resolve_insntype(var_181)
-            tuple_180_181_182_183 = (var_180, var_181, var_182, var_183)
-            prev_state = self.table_35[tuple_180_181_182_183]
+            tuple_108 = var_108
+            prev_state = self.table_48[tuple_108]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_35[tuple_180_181_182_183] = 1 | 4
+                self.table_48[tuple_108] = 1 | 4
                 if not present_bit:
-                    self.index_171[tuple_180_181_182_183[3]].append((tuple_180_181_182_183[0], tuple_180_181_182_183[1], tuple_180_181_182_183[2]))
-                    self.index_188[tuple_180_181_182_183[0]].append((tuple_180_181_182_183[1], tuple_180_181_182_183[2], tuple_180_181_182_183[3]))
+                    pass
                 # Program Parallel Region
                 # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_21[tuple_180]
+                tuple_108 = var_108
+                prev_state = self.table_36[tuple_108]
                 state = prev_state & 3
                 present_bit = prev_state & 4
                 if state == 0 or state == 2:
-                    self.table_21[tuple_180] = 1 | 4
-                    if not present_bit:
-                        pass
-                # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_49[tuple_180]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_49[tuple_180] = 1 | 4
+                    self.table_36[tuple_108] = 1 | 4
                     if not present_bit:
                         pass
                     # Program Parallel Region
                     # Program VectorAppend Region
-                    vec_331.append(var_180)
+                    vec_172.append(var_108)
                     # Program VectorAppend Region
-                    vec_316.append(var_180)
+                    vec_153.append(var_108)
                     # Program VectorAppend Region
-                    vec_354.append(var_180)
+                    vec_217.append(var_108)
                     # Program VectorAppend Region
-                    vec_339.append(var_180)
+                    vec_205.append(var_108)
                     # Program VectorAppend Region
-                    vec_300.append(var_180)
+                    vec_241.append(var_108)
                     # Program VectorAppend Region
-                    vec_284.append(var_180)
+                    vec_229.append(var_108)
                     # Program VectorAppend Region
-                    vec_264.append(var_180)
+                    vec_187.append(var_108)
                 # Program VectorAppend Region
-                vec_219.append(var_183)
+                vec_134.append(var_108)
                 # Program VectorAppend Region
-                vec_208.append(var_180)
-                # Program VectorAppend Region
-                vec_184.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_51[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_51[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_384[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_381.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_105[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_105[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_240[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_237.append(var_180)
-                # Program TupleCompare Region
-                if self.var_4 == var_181:
-                    # Program TransitionState Region
-                    tuple_4_180_182_183 = (self.var_4, var_180, var_182, var_183)
-                    prev_state = self.table_129[tuple_4_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_129[tuple_4_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_231[tuple_4_180_182_183[1]].append((tuple_4_180_182_183[0], tuple_4_180_182_183[2], tuple_4_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_228.append(var_180)
+                vec_111.append(var_108)
+            # Program TupleCompare Region
+            if self.var_1 == var_109:
+                # Program TransitionState Region
+                tuple_108 = var_108
+                prev_state = self.table_38[tuple_108]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_38[tuple_108] = 1 | 4
+                    if not present_bit:
+                        pass
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_262.append(var_108)
+                    # Program VectorAppend Region
+                    vec_148.append(var_108)
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            var_181 = self._resolve_insntype(var_181)
-            tuple_180_181_182_183 = (var_180, var_181, var_182, var_183)
-            prev_state = self.table_35[tuple_180_181_182_183]
+            tuple_108 = var_108
+            prev_state = self.table_48[tuple_108]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_35[tuple_180_181_182_183] = 1 | 4
+                self.table_48[tuple_108] = 1 | 4
                 if not present_bit:
-                    self.index_171[tuple_180_181_182_183[3]].append((tuple_180_181_182_183[0], tuple_180_181_182_183[1], tuple_180_181_182_183[2]))
-                    self.index_188[tuple_180_181_182_183[0]].append((tuple_180_181_182_183[1], tuple_180_181_182_183[2], tuple_180_181_182_183[3]))
+                    pass
                 # Program Parallel Region
                 # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_21[tuple_180]
+                tuple_108 = var_108
+                prev_state = self.table_36[tuple_108]
                 state = prev_state & 3
                 present_bit = prev_state & 4
                 if state == 0 or state == 2:
-                    self.table_21[tuple_180] = 1 | 4
-                    if not present_bit:
-                        pass
-                # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_49[tuple_180]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_49[tuple_180] = 1 | 4
+                    self.table_36[tuple_108] = 1 | 4
                     if not present_bit:
                         pass
                     # Program Parallel Region
                     # Program VectorAppend Region
-                    vec_331.append(var_180)
+                    vec_172.append(var_108)
                     # Program VectorAppend Region
-                    vec_316.append(var_180)
+                    vec_153.append(var_108)
                     # Program VectorAppend Region
-                    vec_354.append(var_180)
+                    vec_217.append(var_108)
                     # Program VectorAppend Region
-                    vec_339.append(var_180)
+                    vec_205.append(var_108)
                     # Program VectorAppend Region
-                    vec_300.append(var_180)
+                    vec_241.append(var_108)
                     # Program VectorAppend Region
-                    vec_284.append(var_180)
+                    vec_229.append(var_108)
                     # Program VectorAppend Region
-                    vec_264.append(var_180)
+                    vec_187.append(var_108)
                 # Program VectorAppend Region
-                vec_219.append(var_183)
+                vec_134.append(var_108)
                 # Program VectorAppend Region
-                vec_208.append(var_180)
-                # Program VectorAppend Region
-                vec_184.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_51[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_51[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_384[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_381.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_105[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_105[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_240[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_237.append(var_180)
-                # Program TupleCompare Region
-                if self.var_4 == var_181:
-                    # Program TransitionState Region
-                    tuple_4_180_182_183 = (self.var_4, var_180, var_182, var_183)
-                    prev_state = self.table_129[tuple_4_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_129[tuple_4_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_231[tuple_4_180_182_183[1]].append((tuple_4_180_182_183[0], tuple_4_180_182_183[2], tuple_4_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_228.append(var_180)
+                vec_111.append(var_108)
+            # Program TupleCompare Region
+            if self.var_1 == var_109:
+                # Program TransitionState Region
+                tuple_108 = var_108
+                prev_state = self.table_38[tuple_108]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_38[tuple_108] = 1 | 4
+                    if not present_bit:
+                        pass
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_262.append(var_108)
+                    # Program VectorAppend Region
+                    vec_148.append(var_108)
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            var_181 = self._resolve_insntype(var_181)
-            tuple_180_181_182_183 = (var_180, var_181, var_182, var_183)
-            prev_state = self.table_35[tuple_180_181_182_183]
+            tuple_108 = var_108
+            prev_state = self.table_48[tuple_108]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_35[tuple_180_181_182_183] = 1 | 4
+                self.table_48[tuple_108] = 1 | 4
                 if not present_bit:
-                    self.index_171[tuple_180_181_182_183[3]].append((tuple_180_181_182_183[0], tuple_180_181_182_183[1], tuple_180_181_182_183[2]))
-                    self.index_188[tuple_180_181_182_183[0]].append((tuple_180_181_182_183[1], tuple_180_181_182_183[2], tuple_180_181_182_183[3]))
+                    pass
                 # Program Parallel Region
                 # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_21[tuple_180]
+                tuple_108 = var_108
+                prev_state = self.table_36[tuple_108]
                 state = prev_state & 3
                 present_bit = prev_state & 4
                 if state == 0 or state == 2:
-                    self.table_21[tuple_180] = 1 | 4
-                    if not present_bit:
-                        pass
-                # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_49[tuple_180]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_49[tuple_180] = 1 | 4
+                    self.table_36[tuple_108] = 1 | 4
                     if not present_bit:
                         pass
                     # Program Parallel Region
                     # Program VectorAppend Region
-                    vec_331.append(var_180)
+                    vec_172.append(var_108)
                     # Program VectorAppend Region
-                    vec_316.append(var_180)
+                    vec_153.append(var_108)
                     # Program VectorAppend Region
-                    vec_354.append(var_180)
+                    vec_217.append(var_108)
                     # Program VectorAppend Region
-                    vec_339.append(var_180)
+                    vec_205.append(var_108)
                     # Program VectorAppend Region
-                    vec_300.append(var_180)
+                    vec_241.append(var_108)
                     # Program VectorAppend Region
-                    vec_284.append(var_180)
+                    vec_229.append(var_108)
                     # Program VectorAppend Region
-                    vec_264.append(var_180)
+                    vec_187.append(var_108)
                 # Program VectorAppend Region
-                vec_219.append(var_183)
+                vec_134.append(var_108)
                 # Program VectorAppend Region
-                vec_208.append(var_180)
-                # Program VectorAppend Region
-                vec_184.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_51[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_51[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_384[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_381.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_105[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_105[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_240[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_237.append(var_180)
-                # Program TupleCompare Region
-                if self.var_4 == var_181:
-                    # Program TransitionState Region
-                    tuple_4_180_182_183 = (self.var_4, var_180, var_182, var_183)
-                    prev_state = self.table_129[tuple_4_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_129[tuple_4_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_231[tuple_4_180_182_183[1]].append((tuple_4_180_182_183[0], tuple_4_180_182_183[2], tuple_4_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_228.append(var_180)
+                vec_111.append(var_108)
+            # Program TupleCompare Region
+            if self.var_1 == var_109:
+                # Program TransitionState Region
+                tuple_108 = var_108
+                prev_state = self.table_38[tuple_108]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_38[tuple_108] = 1 | 4
+                    if not present_bit:
+                        pass
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_262.append(var_108)
+                    # Program VectorAppend Region
+                    vec_148.append(var_108)
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            var_181 = self._resolve_insntype(var_181)
-            tuple_180_181_182_183 = (var_180, var_181, var_182, var_183)
-            prev_state = self.table_35[tuple_180_181_182_183]
+            tuple_108 = var_108
+            prev_state = self.table_48[tuple_108]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_35[tuple_180_181_182_183] = 1 | 4
+                self.table_48[tuple_108] = 1 | 4
                 if not present_bit:
-                    self.index_171[tuple_180_181_182_183[3]].append((tuple_180_181_182_183[0], tuple_180_181_182_183[1], tuple_180_181_182_183[2]))
-                    self.index_188[tuple_180_181_182_183[0]].append((tuple_180_181_182_183[1], tuple_180_181_182_183[2], tuple_180_181_182_183[3]))
+                    pass
                 # Program Parallel Region
                 # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_21[tuple_180]
+                tuple_108 = var_108
+                prev_state = self.table_36[tuple_108]
                 state = prev_state & 3
                 present_bit = prev_state & 4
                 if state == 0 or state == 2:
-                    self.table_21[tuple_180] = 1 | 4
-                    if not present_bit:
-                        pass
-                # Program TransitionState Region
-                tuple_180 = var_180
-                prev_state = self.table_49[tuple_180]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_49[tuple_180] = 1 | 4
+                    self.table_36[tuple_108] = 1 | 4
                     if not present_bit:
                         pass
                     # Program Parallel Region
                     # Program VectorAppend Region
-                    vec_331.append(var_180)
+                    vec_172.append(var_108)
                     # Program VectorAppend Region
-                    vec_316.append(var_180)
+                    vec_153.append(var_108)
                     # Program VectorAppend Region
-                    vec_354.append(var_180)
+                    vec_217.append(var_108)
                     # Program VectorAppend Region
-                    vec_339.append(var_180)
+                    vec_205.append(var_108)
                     # Program VectorAppend Region
-                    vec_300.append(var_180)
+                    vec_241.append(var_108)
                     # Program VectorAppend Region
-                    vec_284.append(var_180)
+                    vec_229.append(var_108)
                     # Program VectorAppend Region
-                    vec_264.append(var_180)
+                    vec_187.append(var_108)
                 # Program VectorAppend Region
-                vec_219.append(var_183)
+                vec_134.append(var_108)
                 # Program VectorAppend Region
-                vec_208.append(var_180)
-                # Program VectorAppend Region
-                vec_184.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_51[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_51[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_384[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_381.append(var_180)
-                # Program TupleCompare Region
-                if self.var_1 == var_181:
-                    # Program TransitionState Region
-                    tuple_1_180_182_183 = (self.var_1, var_180, var_182, var_183)
-                    prev_state = self.table_105[tuple_1_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_105[tuple_1_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_240[tuple_1_180_182_183[1]].append((tuple_1_180_182_183[0], tuple_1_180_182_183[2], tuple_1_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_237.append(var_180)
-                # Program TupleCompare Region
-                if self.var_4 == var_181:
-                    # Program TransitionState Region
-                    tuple_4_180_182_183 = (self.var_4, var_180, var_182, var_183)
-                    prev_state = self.table_129[tuple_4_180_182_183]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_129[tuple_4_180_182_183] = 1 | 4
-                        if not present_bit:
-                            self.index_231[tuple_4_180_182_183[1]].append((tuple_4_180_182_183[0], tuple_4_180_182_183[2], tuple_4_180_182_183[3]))
-                        # Program VectorAppend Region
-                        vec_228.append(var_180)
+                vec_111.append(var_108)
+            # Program TupleCompare Region
+            if self.var_1 == var_109:
+                # Program TransitionState Region
+                tuple_108 = var_108
+                prev_state = self.table_38[tuple_108]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_38[tuple_108] = 1 | 4
+                    if not present_bit:
+                        pass
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_262.append(var_108)
+                    # Program VectorAppend Region
+                    vec_148.append(var_108)
         # Program VectorUnique Region
-        vec_184 = list(set(vec_184))
-        vec_index184 = 0
+        vec_111 = list(set(vec_111))
+        vec_index111 = 0
         # Program TableJoin Region
-        while vec_index184 < len(vec_184):
-            var_186 = vec_184[vec_index184]
-            vec_index184 += 1
-            if var_186 in self.index_187:
-                tuple_185_1_index: int = 0
-                tuple_185_1_vec: List[Tuple[int, bytes, bytes]] = self.index_188[var_186]
-                while tuple_185_1_index < len(tuple_185_1_vec):
-                    tuple_185_1 = tuple_185_1_vec[tuple_185_1_index]
-                    tuple_185_1_index += 1
-                    var_189 = tuple_185_1[0]
-                    var_190 = tuple_185_1[1]
-                    var_191 = tuple_185_1[2]
+        while vec_index111 < len(vec_111):
+            var_113 = vec_111[vec_index111]
+            vec_index111 += 1
+            if var_113 in self.index_114:
+                if var_113 in self.index_115:
                     # Program TransitionState Region
-                    tuple_186 = var_186
-                    prev_state = self.table_17[tuple_186]
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_113 = var_113
+                    prev_state = self.table_18[tuple_113]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_17[tuple_186] = 1 | 4
+                        self.table_18[tuple_113] = 1 | 4
                         if not present_bit:
                             pass
                         # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_276.append(var_113)
                         # Program Series Region
                         # Program TableScan Region
-                        scan_tuple_200: Tuple[int, int]
-                        scan_index_200: int = 0
-                        scan_tuple_200_vec: List[Tuple[int, int]] = self.index_199[var_186]
-                        while scan_index_200 < len(scan_tuple_200_vec):
-                            scan_tuple_200 = scan_tuple_200_vec[scan_index_200]
-                            scan_index_200 += 1
-                            vec_200.append(scan_tuple_200)
+                        scan_tuple_117: int
+                        scan_index_117: int = 0
+                        scan_tuple_117_vec: List[int] = self.index_116[var_113]
+                        while scan_index_117 < len(scan_tuple_117_vec):
+                            scan_tuple_117 = scan_tuple_117_vec[scan_index_117]
+                            scan_index_117 += 1
+                            vec_117.append(scan_tuple_117)
                         # Program VectorLoop Region
-                        vec_index200 = 0
-                        while vec_index200 < len(vec_200):
-                            var_201, var_202 = vec_200[vec_index200]
-                            vec_index200 += 1
+                        vec_index117 = 0
+                        while vec_index117 < len(vec_117):
+                            var_118 = vec_117[vec_index117]
+                            vec_index117 += 1
                             # Program TransitionState Region
                             # Remove from negated view
-                            var_202 = self._resolve_edgetype(var_202)
-                            tuple_186_201_202 = (var_186, var_201, var_202)
-                            prev_state = self.table_26[tuple_186_201_202]
+                            tuple_113_118 = (var_113, var_118)
+                            prev_state = self.table_27[tuple_113_118]
                             state = prev_state & 3
                             present_bit = prev_state & 4
                             if state == 1:
-                                self.table_26[tuple_186_201_202] = 0 | 4
+                                self.table_27[tuple_113_118] = 0 | 4
+                                # Program Parallel Region
                                 # Program Call Region
-                                ret = self.proc_203_(var_186, var_201, var_202)
+                                ret = self.proc_119_(var_113, var_118)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_113, var_118)
 
                         # Program TransitionState Region
-                        tuple_186_186 = (var_186, var_186)
-                        prev_state = self.table_6[tuple_186_186]
+                        tuple_113_113 = (var_113, var_113)
+                        prev_state = self.table_6[tuple_113_113]
                         state = prev_state & 3
                         present_bit = prev_state & 4
                         if state == 0 or state == 2:
-                            self.table_6[tuple_186_186] = 1 | 4
+                            self.table_6[tuple_113_113] = 1 | 4
                             if not present_bit:
-                                self.index_414[tuple_186_186[1]].append(tuple_186_186[0])
-                                self.index_1029[tuple_186_186[0]].append(tuple_186_186[1])
+                                self.index_290[tuple_113_113[1]].append(tuple_113_113[0])
+                                self.index_756[tuple_113_113[0]].append(tuple_113_113[1])
                             # Program VectorAppend Region
-                            vec_196.append((var_186, var_186))
-                        # Program VectorAppend Region
-                        vec_405.append(var_186)
+                            vec_131.append((var_113, var_113))
         # Program VectorClear Region
-        del vec_184[:]
-        vec_index184 = 0
+        del vec_111[:]
+        vec_index111 = 0
         # Program VectorUnique Region
-        vec_208 = list(set(vec_208))
-        vec_index208 = 0
+        vec_134 = list(set(vec_134))
+        vec_index134 = 0
         # Program TableJoin Region
-        while vec_index208 < len(vec_208):
-            var_210 = vec_208[vec_index208]
-            vec_index208 += 1
-            if var_210 in self.index_211:
-                tuple_209_1_index: int = 0
-                tuple_209_1_vec: List[Tuple[int, bytes, bytes]] = self.index_188[var_210]
-                while tuple_209_1_index < len(tuple_209_1_vec):
-                    tuple_209_1 = tuple_209_1_vec[tuple_209_1_index]
-                    tuple_209_1_index += 1
-                    var_212 = tuple_209_1[0]
-                    var_213 = tuple_209_1[1]
-                    var_214 = tuple_209_1[2]
+        while vec_index134 < len(vec_134):
+            var_136 = vec_134[vec_index134]
+            vec_index134 += 1
+            if var_136 in self.index_137:
+                if var_136 in self.index_115:
                     # Program TransitionState Region
-                    tuple_210 = var_210
-                    prev_state = self.table_17[tuple_210]
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_136 = var_136
+                    prev_state = self.table_18[tuple_136]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_17[tuple_210] = 1 | 4
+                        self.table_18[tuple_136] = 1 | 4
                         if not present_bit:
                             pass
                         # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_276.append(var_136)
                         # Program Series Region
                         # Program TableScan Region
-                        scan_tuple_215: Tuple[int, int]
-                        scan_index_215: int = 0
-                        scan_tuple_215_vec: List[Tuple[int, int]] = self.index_199[var_210]
-                        while scan_index_215 < len(scan_tuple_215_vec):
-                            scan_tuple_215 = scan_tuple_215_vec[scan_index_215]
-                            scan_index_215 += 1
-                            vec_215.append(scan_tuple_215)
+                        scan_tuple_138: int
+                        scan_index_138: int = 0
+                        scan_tuple_138_vec: List[int] = self.index_116[var_136]
+                        while scan_index_138 < len(scan_tuple_138_vec):
+                            scan_tuple_138 = scan_tuple_138_vec[scan_index_138]
+                            scan_index_138 += 1
+                            vec_138.append(scan_tuple_138)
                         # Program VectorLoop Region
-                        vec_index215 = 0
-                        while vec_index215 < len(vec_215):
-                            var_216, var_217 = vec_215[vec_index215]
-                            vec_index215 += 1
+                        vec_index138 = 0
+                        while vec_index138 < len(vec_138):
+                            var_139 = vec_138[vec_index138]
+                            vec_index138 += 1
                             # Program TransitionState Region
                             # Remove from negated view
-                            var_217 = self._resolve_edgetype(var_217)
-                            tuple_210_216_217 = (var_210, var_216, var_217)
-                            prev_state = self.table_26[tuple_210_216_217]
+                            tuple_136_139 = (var_136, var_139)
+                            prev_state = self.table_27[tuple_136_139]
                             state = prev_state & 3
                             present_bit = prev_state & 4
                             if state == 1:
-                                self.table_26[tuple_210_216_217] = 0 | 4
+                                self.table_27[tuple_136_139] = 0 | 4
+                                # Program Parallel Region
                                 # Program Call Region
-                                ret = self.proc_203_(var_210, var_216, var_217)
+                                ret = self.proc_119_(var_136, var_139)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_136, var_139)
 
                         # Program TransitionState Region
-                        tuple_210_210 = (var_210, var_210)
-                        prev_state = self.table_6[tuple_210_210]
+                        tuple_136_136 = (var_136, var_136)
+                        prev_state = self.table_6[tuple_136_136]
                         state = prev_state & 3
                         present_bit = prev_state & 4
                         if state == 0 or state == 2:
-                            self.table_6[tuple_210_210] = 1 | 4
+                            self.table_6[tuple_136_136] = 1 | 4
                             if not present_bit:
-                                self.index_414[tuple_210_210[1]].append(tuple_210_210[0])
-                                self.index_1029[tuple_210_210[0]].append(tuple_210_210[1])
+                                self.index_290[tuple_136_136[1]].append(tuple_136_136[0])
+                                self.index_756[tuple_136_136[0]].append(tuple_136_136[1])
                             # Program VectorAppend Region
-                            vec_196.append((var_210, var_210))
-                        # Program VectorAppend Region
-                        vec_405.append(var_210)
+                            vec_131.append((var_136, var_136))
         # Program VectorClear Region
-        del vec_208[:]
-        vec_index208 = 0
+        del vec_134[:]
+        vec_index134 = 0
         # Program VectorUnique Region
-        vec_219 = list(set(vec_219))
-        vec_index219 = 0
+        vec_142 = list(set(vec_142))
+        vec_index142 = 0
         # Program TableJoin Region
-        while vec_index219 < len(vec_219):
-            var_221 = vec_219[vec_index219]
-            vec_index219 += 1
-            tuple_220_0_index: int = 0
-            tuple_220_0_vec: List[Tuple[int, int, int]] = self.index_170[var_221]
-            while tuple_220_0_index < len(tuple_220_0_vec):
-                tuple_220_0 = tuple_220_0_vec[tuple_220_0_index]
-                tuple_220_0_index += 1
-                var_222 = tuple_220_0[0]
-                var_223 = tuple_220_0[1]
-                var_224 = tuple_220_0[2]
-                tuple_220_1_index: int = 0
-                tuple_220_1_vec: List[Tuple[int, int, bytes]] = self.index_171[var_221]
-                while tuple_220_1_index < len(tuple_220_1_vec):
-                    tuple_220_1 = tuple_220_1_vec[tuple_220_1_index]
-                    tuple_220_1_index += 1
-                    var_225 = tuple_220_1[0]
-                    var_226 = tuple_220_1[1]
-                    var_227 = tuple_220_1[2]
+        while vec_index142 < len(vec_142):
+            var_144 = vec_142[vec_index142]
+            vec_index142 += 1
+            if var_144 in self.index_145:
+                tuple_143_1_index: int = 0
+                tuple_143_1_vec: List[int] = self.index_146[var_144]
+                while tuple_143_1_index < len(tuple_143_1_vec):
+                    tuple_143_1 = tuple_143_1_vec[tuple_143_1_index]
+                    tuple_143_1_index += 1
+                    var_147 = tuple_143_1
                     # Program TransitionState Region
-                    tuple_221_225 = (var_221, var_225)
-                    prev_state = self.table_23[tuple_221_225]
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_144_147 = (var_144, var_147)
+                    prev_state = self.table_85[tuple_144_147]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_23[tuple_221_225] = 1 | 4
+                        self.table_85[tuple_144_147] = 1 | 4
                         if not present_bit:
-                            self.index_1036[tuple_221_225[0]].append(tuple_221_225[1])
+                            self.index_184[tuple_144_147[1]].append(tuple_144_147[0])
+                        # Program VectorAppend Region
+                        vec_180.append(var_147)
         # Program VectorClear Region
-        del vec_219[:]
-        vec_index219 = 0
+        del vec_142[:]
+        vec_index142 = 0
         # Program VectorUnique Region
-        vec_228 = list(set(vec_228))
-        vec_index228 = 0
+        vec_148 = list(set(vec_148))
+        vec_index148 = 0
         # Program TableJoin Region
-        while vec_index228 < len(vec_228):
-            var_230 = vec_228[vec_index228]
-            vec_index228 += 1
-            tuple_229_0_index: int = 0
-            tuple_229_0_vec: List[Tuple[int, bytes, bytes]] = self.index_231[var_230]
-            while tuple_229_0_index < len(tuple_229_0_vec):
-                tuple_229_0 = tuple_229_0_vec[tuple_229_0_index]
-                tuple_229_0_index += 1
-                var_233 = tuple_229_0[0]
-                var_234 = tuple_229_0[1]
-                var_235 = tuple_229_0[2]
-                tuple_229_1_index: int = 0
-                tuple_229_1_vec: List[int] = self.index_232[var_230]
-                while tuple_229_1_index < len(tuple_229_1_vec):
-                    tuple_229_1 = tuple_229_1_vec[tuple_229_1_index]
-                    tuple_229_1_index += 1
-                    var_236 = tuple_229_1
-                    # Program TupleCompare Region
-                    if self.var_4 == var_233:
+        while vec_index148 < len(vec_148):
+            var_150 = vec_148[vec_index148]
+            vec_index148 += 1
+            if var_150 in self.index_151:
+                tuple_149_1_index: int = 0
+                tuple_149_1_vec: List[int] = self.index_146[var_150]
+                while tuple_149_1_index < len(tuple_149_1_vec):
+                    tuple_149_1 = tuple_149_1_vec[tuple_149_1_index]
+                    tuple_149_1_index += 1
+                    var_152 = tuple_149_1
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_150_152 = (var_150, var_152)
+                    prev_state = self.table_77[tuple_150_152]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_77[tuple_150_152] = 1 | 4
+                        if not present_bit:
+                            self.index_202[tuple_150_152[1]].append(tuple_150_152[0])
+                        # Program VectorAppend Region
+                        vec_199.append(var_152)
+        # Program VectorClear Region
+        del vec_148[:]
+        vec_index148 = 0
+        # Program VectorUnique Region
+        vec_153 = list(set(vec_153))
+        vec_index153 = 0
+        # Program TableJoin Region
+        while vec_index153 < len(vec_153):
+            var_155 = vec_153[vec_index153]
+            vec_index153 += 1
+            tuple_154_0_index: int = 0
+            tuple_154_0_vec: List[Tuple[int, int]] = self.index_156[var_155]
+            while tuple_154_0_index < len(tuple_154_0_vec):
+                tuple_154_0 = tuple_154_0_vec[tuple_154_0_index]
+                tuple_154_0_index += 1
+                var_158 = tuple_154_0[0]
+                var_159 = tuple_154_0[1]
+                if var_155 in self.index_157:
+                    # Program TransitionState Region
+                    var_158 = self._resolve_edgetype(var_158)
+                    tuple_159_155_158 = (var_159, var_155, var_158)
+                    prev_state = self.table_9[tuple_159_155_158]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_159_155_158] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_159_155_158[0], tuple_159_155_158[1])].append(tuple_159_155_158[2])
+                        # Program Parallel Region
+                        # Program Series Region
                         # Program TransitionState Region
-                        tuple_4_230_234_235_236 = (self.var_4, var_230, var_234, var_235, var_236)
-                        prev_state = self.table_134[tuple_4_230_234_235_236]
+                        # Eager insert before negation to prevent race
+                        tuple_155_159 = (var_155, var_159)
+                        prev_state = self.table_27[tuple_155_159]
                         state = prev_state & 3
                         present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_134[tuple_4_230_234_235_236] = 1 | 4
+                        if state == 0:
+                            self.table_27[tuple_155_159] = 2 | 4
                             if not present_bit:
-                                self.index_258[tuple_4_230_234_235_236[4]].append((tuple_4_230_234_235_236[0], tuple_4_230_234_235_236[1], tuple_4_230_234_235_236[2], tuple_4_230_234_235_236[3]))
-                            # Program VectorAppend Region
-                            vec_255.append(var_236)
-        # Program VectorClear Region
-        del vec_228[:]
-        vec_index228 = 0
-        # Program VectorUnique Region
-        vec_237 = list(set(vec_237))
-        vec_index237 = 0
-        # Program TableJoin Region
-        while vec_index237 < len(vec_237):
-            var_239 = vec_237[vec_index237]
-            vec_index237 += 1
-            tuple_238_0_index: int = 0
-            tuple_238_0_vec: List[Tuple[int, bytes, bytes]] = self.index_240[var_239]
-            while tuple_238_0_index < len(tuple_238_0_vec):
-                tuple_238_0 = tuple_238_0_vec[tuple_238_0_index]
-                tuple_238_0_index += 1
-                var_241 = tuple_238_0[0]
-                var_242 = tuple_238_0[1]
-                var_243 = tuple_238_0[2]
-                tuple_238_1_index: int = 0
-                tuple_238_1_vec: List[int] = self.index_232[var_239]
-                while tuple_238_1_index < len(tuple_238_1_vec):
-                    tuple_238_1 = tuple_238_1_vec[tuple_238_1_index]
-                    tuple_238_1_index += 1
-                    var_244 = tuple_238_1
-                    # Program TupleCompare Region
-                    if self.var_1 == var_241:
-                        # Program TransitionState Region
-                        tuple_1_239_242_243_244 = (self.var_1, var_239, var_242, var_243, var_244)
-                        prev_state = self.table_116[tuple_1_239_242_243_244]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_116[tuple_1_239_242_243_244] = 1 | 4
-                            if not present_bit:
-                                self.index_249[tuple_1_239_242_243_244[4]].append((tuple_1_239_242_243_244[0], tuple_1_239_242_243_244[1], tuple_1_239_242_243_244[2], tuple_1_239_242_243_244[3]))
-                            # Program VectorAppend Region
-                            vec_245.append(var_244)
-        # Program VectorClear Region
-        del vec_237[:]
-        vec_index237 = 0
-        # Program VectorUnique Region
-        vec_245 = list(set(vec_245))
-        vec_index245 = 0
-        # Program TableJoin Region
-        while vec_index245 < len(vec_245):
-            var_247 = vec_245[vec_index245]
-            vec_index245 += 1
-            tuple_246_0_index: int = 0
-            tuple_246_0_vec: List[int] = self.index_248[var_247]
-            while tuple_246_0_index < len(tuple_246_0_vec):
-                tuple_246_0 = tuple_246_0_vec[tuple_246_0_index]
-                tuple_246_0_index += 1
-                var_250 = tuple_246_0
-                tuple_246_1_index: int = 0
-                tuple_246_1_vec: List[Tuple[int, int, bytes, bytes]] = self.index_249[var_247]
-                while tuple_246_1_index < len(tuple_246_1_vec):
-                    tuple_246_1 = tuple_246_1_vec[tuple_246_1_index]
-                    tuple_246_1_index += 1
-                    var_251 = tuple_246_1[0]
-                    var_252 = tuple_246_1[1]
-                    var_253 = tuple_246_1[2]
-                    var_254 = tuple_246_1[3]
-                    # Program TupleCompare Region
-                    if self.var_1 == var_251:
-                        # Program TransitionState Region
-                        tuple_1_247_250_252_253_254 = (self.var_1, var_247, var_250, var_252, var_253, var_254)
-                        prev_state = self.table_122[tuple_1_247_250_252_253_254]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_122[tuple_1_247_250_252_253_254] = 1 | 4
-                            if not present_bit:
-                                self.index_303[tuple_1_247_250_252_253_254[2]].append((tuple_1_247_250_252_253_254[0], tuple_1_247_250_252_253_254[1], tuple_1_247_250_252_253_254[3], tuple_1_247_250_252_253_254[4], tuple_1_247_250_252_253_254[5]))
-                            # Program VectorAppend Region
-                            vec_300.append(var_250)
-        # Program VectorClear Region
-        del vec_245[:]
-        vec_index245 = 0
-        # Program VectorUnique Region
-        vec_255 = list(set(vec_255))
-        vec_index255 = 0
-        # Program TableJoin Region
-        while vec_index255 < len(vec_255):
-            var_257 = vec_255[vec_index255]
-            vec_index255 += 1
-            tuple_256_0_index: int = 0
-            tuple_256_0_vec: List[int] = self.index_248[var_257]
-            while tuple_256_0_index < len(tuple_256_0_vec):
-                tuple_256_0 = tuple_256_0_vec[tuple_256_0_index]
-                tuple_256_0_index += 1
-                var_259 = tuple_256_0
-                tuple_256_1_index: int = 0
-                tuple_256_1_vec: List[Tuple[int, int, bytes, bytes]] = self.index_258[var_257]
-                while tuple_256_1_index < len(tuple_256_1_vec):
-                    tuple_256_1 = tuple_256_1_vec[tuple_256_1_index]
-                    tuple_256_1_index += 1
-                    var_260 = tuple_256_1[0]
-                    var_261 = tuple_256_1[1]
-                    var_262 = tuple_256_1[2]
-                    var_263 = tuple_256_1[3]
-                    # Program TupleCompare Region
-                    if self.var_4 == var_260:
-                        # Program TransitionState Region
-                        tuple_4_257_259_261_262_263 = (self.var_4, var_257, var_259, var_261, var_262, var_263)
-                        prev_state = self.table_140[tuple_4_257_259_261_262_263]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_140[tuple_4_257_259_261_262_263] = 1 | 4
-                            if not present_bit:
-                                self.index_287[tuple_4_257_259_261_262_263[2]].append((tuple_4_257_259_261_262_263[0], tuple_4_257_259_261_262_263[1], tuple_4_257_259_261_262_263[3], tuple_4_257_259_261_262_263[4], tuple_4_257_259_261_262_263[5]))
-                            # Program VectorAppend Region
-                            vec_284.append(var_259)
-        # Program VectorClear Region
-        del vec_255[:]
-        vec_index255 = 0
-        # Program VectorUnique Region
-        vec_264 = list(set(vec_264))
-        vec_index264 = 0
-        # Program TableJoin Region
-        while vec_index264 < len(vec_264):
-            var_266 = vec_264[vec_index264]
-            vec_index264 += 1
-            if var_266 in self.index_267:
-                tuple_265_1_index: int = 0
-                tuple_265_1_vec: List[Tuple[int, int, int]] = self.index_268[var_266]
-                while tuple_265_1_index < len(tuple_265_1_vec):
-                    tuple_265_1 = tuple_265_1_vec[tuple_265_1_index]
-                    tuple_265_1_index += 1
-                    var_269 = tuple_265_1[0]
-                    var_270 = tuple_265_1[1]
-                    var_271 = tuple_265_1[2]
-                    # Program TupleCompare Region
-                    if (self.var_0, self.var_3, ) == (var_270, var_269, ):
-                        # Program TransitionState Region
-                        tuple_271_266_5 = (var_271, var_266, self.var_5)
-                        prev_state = self.table_43[tuple_271_266_5]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_271_266_5] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_271_266_5[1]].append((tuple_271_266_5[0], tuple_271_266_5[2]))
-                            # Program Parallel Region
-                            # Program Series Region
+                                self.index_116[tuple_155_159[0]].append(tuple_155_159[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_155)
+                        if not ret:
                             # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_266_271_5 = (var_266, var_271, self.var_5)
-                            prev_state = self.table_26[tuple_266_271_5]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_266_271_5] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_266_271_5[0]].append((tuple_266_271_5[1], tuple_266_271_5[2]))
-                                    self.index_1053[(tuple_266_271_5[0], tuple_266_271_5[1])].append(tuple_266_271_5[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_266)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_266_271_5 = (var_266, var_271, self.var_5)
-                                prev_state = self.table_26[tuple_266_271_5]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_266_271_5] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_266_271_5[0]].append((tuple_266_271_5[1], tuple_266_271_5[2]))
-                                        self.index_1053[(tuple_266_271_5[0], tuple_266_271_5[1])].append(tuple_266_271_5[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_271, var_266)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_271_266 = (var_271, var_266)
-                                        prev_state = self.table_9[tuple_271_266]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_271_266] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_271_266[0]].append(tuple_271_266[1])
-                                                self.index_1079[tuple_271_266[1]].append(tuple_271_266[0])
-                                            # Program VectorAppend Region
-                                            vec_411.append(var_271)
-                            # Program VectorAppend Region
-                            vec_369.append(var_266)
-                            # Program VectorAppend Region
-                            vec_405.append(var_266)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_5:
-                                # Program TransitionState Region
-                                tuple_266 = var_266
-                                prev_state = self.table_17[tuple_266]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_17[tuple_266] = 1 | 4
-                                    if not present_bit:
-                                        pass
-                                    # Program Parallel Region
-                                    # Program Series Region
-                                    # Program TableScan Region
-                                    scan_tuple_280: Tuple[int, int]
-                                    scan_index_280: int = 0
-                                    scan_tuple_280_vec: List[Tuple[int, int]] = self.index_199[var_266]
-                                    while scan_index_280 < len(scan_tuple_280_vec):
-                                        scan_tuple_280 = scan_tuple_280_vec[scan_index_280]
-                                        scan_index_280 += 1
-                                        vec_280.append(scan_tuple_280)
-                                    # Program VectorLoop Region
-                                    vec_index280 = 0
-                                    while vec_index280 < len(vec_280):
-                                        var_281, var_282 = vec_280[vec_index280]
-                                        vec_index280 += 1
-                                        # Program TransitionState Region
-                                        # Remove from negated view
-                                        var_282 = self._resolve_edgetype(var_282)
-                                        tuple_266_281_282 = (var_266, var_281, var_282)
-                                        prev_state = self.table_26[tuple_266_281_282]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 1:
-                                            self.table_26[tuple_266_281_282] = 0 | 4
-                                            # Program Call Region
-                                            ret = self.proc_203_(var_266, var_281, var_282)
-
-                                    # Program TransitionState Region
-                                    tuple_266_266 = (var_266, var_266)
-                                    prev_state = self.table_6[tuple_266_266]
-                                    state = prev_state & 3
-                                    present_bit = prev_state & 4
-                                    if state == 0 or state == 2:
-                                        self.table_6[tuple_266_266] = 1 | 4
-                                        if not present_bit:
-                                            self.index_414[tuple_266_266[1]].append(tuple_266_266[0])
-                                            self.index_1029[tuple_266_266[0]].append(tuple_266_266[1])
-                                        # Program VectorAppend Region
-                                        vec_196.append((var_266, var_266))
-                                    # Program VectorAppend Region
-                                    vec_405.append(var_266)
-                            # Program TupleCompare Region
-                            if self.var_2 == self.var_5:
-                                # Program TransitionState Region
-                                tuple_2_271_266 = (self.var_2, var_271, var_266)
-                                prev_state = self.table_56[tuple_2_271_266]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_56[tuple_2_271_266] = 1 | 4
-                                    if not present_bit:
-                                        self.index_385[tuple_2_271_266[1]].append((tuple_2_271_266[0], tuple_2_271_266[2]))
-                                    # Program VectorAppend Region
-                                    vec_381.append(var_271)
-        # Program VectorClear Region
-        del vec_264[:]
-        vec_index264 = 0
-        # Program VectorUnique Region
-        vec_284 = list(set(vec_284))
-        vec_index284 = 0
-        # Program TableJoin Region
-        while vec_index284 < len(vec_284):
-            var_286 = vec_284[vec_index284]
-            vec_index284 += 1
-            if var_286 in self.index_267:
-                tuple_285_1_index: int = 0
-                tuple_285_1_vec: List[Tuple[int, int, int, bytes, bytes]] = self.index_287[var_286]
-                while tuple_285_1_index < len(tuple_285_1_vec):
-                    tuple_285_1 = tuple_285_1_vec[tuple_285_1_index]
-                    tuple_285_1_index += 1
-                    var_288 = tuple_285_1[0]
-                    var_289 = tuple_285_1[1]
-                    var_290 = tuple_285_1[2]
-                    var_291 = tuple_285_1[3]
-                    var_292 = tuple_285_1[4]
-                    # Program TupleCompare Region
-                    if self.var_4 == var_288:
-                        # Program TransitionState Region
-                        tuple_290_286_0 = (var_290, var_286, self.var_0)
-                        prev_state = self.table_43[tuple_290_286_0]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_290_286_0] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_290_286_0[1]].append((tuple_290_286_0[0], tuple_290_286_0[2]))
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_286_290_0 = (var_286, var_290, self.var_0)
-                            prev_state = self.table_26[tuple_286_290_0]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_286_290_0] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_286_290_0[0]].append((tuple_286_290_0[1], tuple_286_290_0[2]))
-                                    self.index_1053[(tuple_286_290_0[0], tuple_286_290_0[1])].append(tuple_286_290_0[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_286)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_286_290_0 = (var_286, var_290, self.var_0)
-                                prev_state = self.table_26[tuple_286_290_0]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_286_290_0] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_286_290_0[0]].append((tuple_286_290_0[1], tuple_286_290_0[2]))
-                                        self.index_1053[(tuple_286_290_0[0], tuple_286_290_0[1])].append(tuple_286_290_0[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_290, var_286)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_290_286 = (var_290, var_286)
-                                        prev_state = self.table_9[tuple_290_286]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_290_286] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_290_286[0]].append(tuple_290_286[1])
-                                                self.index_1079[tuple_290_286[1]].append(tuple_290_286[0])
-                                            # Program VectorAppend Region
-                                            vec_411.append(var_290)
-                            # Program VectorAppend Region
-                            vec_369.append(var_286)
-                            # Program VectorAppend Region
-                            vec_405.append(var_286)
-                            # Program TransitionState Region
-                            tuple_286 = var_286
-                            prev_state = self.table_17[tuple_286]
+                            tuple_155_159 = (var_155, var_159)
+                            prev_state = self.table_27[tuple_155_159]
                             state = prev_state & 3
                             present_bit = prev_state & 4
                             if state == 0 or state == 2:
-                                self.table_17[tuple_286] = 1 | 4
+                                self.table_27[tuple_155_159] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_155_159[0]].append(tuple_155_159[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_159, var_155)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_159_155 = (var_159, var_155)
+                                    prev_state = self.table_52[tuple_159_155]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_159_155] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_159_155[0]].append(tuple_159_155[1])
+                                            self.index_778[tuple_159_155[1]].append(tuple_159_155[0])
+                                        # Program VectorAppend Region
+                                        vec_287.append(var_159)
+                                # Program TransitionState Region
+                                tuple_159_155 = (var_159, var_155)
+                                prev_state = self.table_15[tuple_159_155]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_159_155] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_159_155[0]].append(tuple_159_155[1])
+                        # Program TransitionState Region
+                        tuple_159_155 = (var_159, var_155)
+                        prev_state = self.table_94[tuple_159_155]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_159_155] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_159_155[1]].append(tuple_159_155[0])
+                            # Program VectorAppend Region
+                            vec_276.append(var_155)
+                        # Program TransitionState Region
+                        tuple_155 = var_155
+                        prev_state = self.table_32[tuple_155]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_155] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_253.append(var_155)
+                        # Program TupleCompare Region
+                        if self.var_0 == var_158:
+                            # Program TransitionState Region
+                            tuple_155 = var_155
+                            prev_state = self.table_18[tuple_155]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_18[tuple_155] = 1 | 4
                                 if not present_bit:
                                     pass
                                 # Program Parallel Region
+                                # Program VectorAppend Region
+                                vec_276.append(var_155)
                                 # Program Series Region
                                 # Program TableScan Region
-                                scan_tuple_296: Tuple[int, int]
-                                scan_index_296: int = 0
-                                scan_tuple_296_vec: List[Tuple[int, int]] = self.index_199[var_286]
-                                while scan_index_296 < len(scan_tuple_296_vec):
-                                    scan_tuple_296 = scan_tuple_296_vec[scan_index_296]
-                                    scan_index_296 += 1
-                                    vec_296.append(scan_tuple_296)
+                                scan_tuple_168: int
+                                scan_index_168: int = 0
+                                scan_tuple_168_vec: List[int] = self.index_116[var_155]
+                                while scan_index_168 < len(scan_tuple_168_vec):
+                                    scan_tuple_168 = scan_tuple_168_vec[scan_index_168]
+                                    scan_index_168 += 1
+                                    vec_168.append(scan_tuple_168)
                                 # Program VectorLoop Region
-                                vec_index296 = 0
-                                while vec_index296 < len(vec_296):
-                                    var_297, var_298 = vec_296[vec_index296]
-                                    vec_index296 += 1
+                                vec_index168 = 0
+                                while vec_index168 < len(vec_168):
+                                    var_169 = vec_168[vec_index168]
+                                    vec_index168 += 1
                                     # Program TransitionState Region
                                     # Remove from negated view
-                                    var_298 = self._resolve_edgetype(var_298)
-                                    tuple_286_297_298 = (var_286, var_297, var_298)
-                                    prev_state = self.table_26[tuple_286_297_298]
+                                    tuple_155_169 = (var_155, var_169)
+                                    prev_state = self.table_27[tuple_155_169]
                                     state = prev_state & 3
                                     present_bit = prev_state & 4
                                     if state == 1:
-                                        self.table_26[tuple_286_297_298] = 0 | 4
+                                        self.table_27[tuple_155_169] = 0 | 4
+                                        # Program Parallel Region
                                         # Program Call Region
-                                        ret = self.proc_203_(var_286, var_297, var_298)
+                                        ret = self.proc_119_(var_155, var_169)
+
+                                        # Program Call Region
+                                        ret = self.proc_123_(var_155, var_169)
 
                                 # Program TransitionState Region
-                                tuple_286_286 = (var_286, var_286)
-                                prev_state = self.table_6[tuple_286_286]
+                                tuple_155_155 = (var_155, var_155)
+                                prev_state = self.table_6[tuple_155_155]
                                 state = prev_state & 3
                                 present_bit = prev_state & 4
                                 if state == 0 or state == 2:
-                                    self.table_6[tuple_286_286] = 1 | 4
+                                    self.table_6[tuple_155_155] = 1 | 4
                                     if not present_bit:
-                                        self.index_414[tuple_286_286[1]].append(tuple_286_286[0])
-                                        self.index_1029[tuple_286_286[0]].append(tuple_286_286[1])
+                                        self.index_290[tuple_155_155[1]].append(tuple_155_155[0])
+                                        self.index_756[tuple_155_155[0]].append(tuple_155_155[1])
                                     # Program VectorAppend Region
-                                    vec_196.append((var_286, var_286))
-                                # Program VectorAppend Region
-                                vec_405.append(var_286)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_2:
-                                # Program TransitionState Region
-                                tuple_0_290_286 = (self.var_0, var_290, var_286)
-                                prev_state = self.table_56[tuple_0_290_286]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_56[tuple_0_290_286] = 1 | 4
-                                    if not present_bit:
-                                        self.index_385[tuple_0_290_286[1]].append((tuple_0_290_286[0], tuple_0_290_286[2]))
-                                    # Program VectorAppend Region
-                                    vec_381.append(var_290)
-        # Program VectorClear Region
-        del vec_284[:]
-        vec_index284 = 0
-        # Program VectorUnique Region
-        vec_300 = list(set(vec_300))
-        vec_index300 = 0
-        # Program TableJoin Region
-        while vec_index300 < len(vec_300):
-            var_302 = vec_300[vec_index300]
-            vec_index300 += 1
-            if var_302 in self.index_267:
-                tuple_301_1_index: int = 0
-                tuple_301_1_vec: List[Tuple[int, int, int, bytes, bytes]] = self.index_303[var_302]
-                while tuple_301_1_index < len(tuple_301_1_vec):
-                    tuple_301_1 = tuple_301_1_vec[tuple_301_1_index]
-                    tuple_301_1_index += 1
-                    var_304 = tuple_301_1[0]
-                    var_305 = tuple_301_1[1]
-                    var_306 = tuple_301_1[2]
-                    var_307 = tuple_301_1[3]
-                    var_308 = tuple_301_1[4]
-                    # Program TupleCompare Region
-                    if self.var_1 == var_304:
-                        # Program TransitionState Region
-                        tuple_306_302_2 = (var_306, var_302, self.var_2)
-                        prev_state = self.table_43[tuple_306_302_2]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_306_302_2] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_306_302_2[1]].append((tuple_306_302_2[0], tuple_306_302_2[2]))
-                            # Program Parallel Region
-                            # Program Series Region
+                                    vec_131.append((var_155, var_155))
+                        # Program TupleCompare Region
+                        if self.var_2 == var_158:
                             # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_302_306_2 = (var_302, var_306, self.var_2)
-                            prev_state = self.table_26[tuple_302_306_2]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_302_306_2] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_302_306_2[0]].append((tuple_302_306_2[1], tuple_302_306_2[2]))
-                                    self.index_1053[(tuple_302_306_2[0], tuple_302_306_2[1])].append(tuple_302_306_2[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_302)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_302_306_2 = (var_302, var_306, self.var_2)
-                                prev_state = self.table_26[tuple_302_306_2]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_302_306_2] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_302_306_2[0]].append((tuple_302_306_2[1], tuple_302_306_2[2]))
-                                        self.index_1053[(tuple_302_306_2[0], tuple_302_306_2[1])].append(tuple_302_306_2[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_306, var_302)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_306_302 = (var_306, var_302)
-                                        prev_state = self.table_9[tuple_306_302]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_306_302] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_306_302[0]].append(tuple_306_302[1])
-                                                self.index_1079[tuple_306_302[1]].append(tuple_306_302[0])
-                                            # Program VectorAppend Region
-                                            vec_411.append(var_306)
-                            # Program VectorAppend Region
-                            vec_369.append(var_302)
-                            # Program VectorAppend Region
-                            vec_405.append(var_302)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_2:
-                                # Program TransitionState Region
-                                tuple_302 = var_302
-                                prev_state = self.table_17[tuple_302]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_17[tuple_302] = 1 | 4
-                                    if not present_bit:
-                                        pass
-                                    # Program Parallel Region
-                                    # Program Series Region
-                                    # Program TableScan Region
-                                    scan_tuple_312: Tuple[int, int]
-                                    scan_index_312: int = 0
-                                    scan_tuple_312_vec: List[Tuple[int, int]] = self.index_199[var_302]
-                                    while scan_index_312 < len(scan_tuple_312_vec):
-                                        scan_tuple_312 = scan_tuple_312_vec[scan_index_312]
-                                        scan_index_312 += 1
-                                        vec_312.append(scan_tuple_312)
-                                    # Program VectorLoop Region
-                                    vec_index312 = 0
-                                    while vec_index312 < len(vec_312):
-                                        var_313, var_314 = vec_312[vec_index312]
-                                        vec_index312 += 1
-                                        # Program TransitionState Region
-                                        # Remove from negated view
-                                        var_314 = self._resolve_edgetype(var_314)
-                                        tuple_302_313_314 = (var_302, var_313, var_314)
-                                        prev_state = self.table_26[tuple_302_313_314]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 1:
-                                            self.table_26[tuple_302_313_314] = 0 | 4
-                                            # Program Call Region
-                                            ret = self.proc_203_(var_302, var_313, var_314)
-
-                                    # Program TransitionState Region
-                                    tuple_302_302 = (var_302, var_302)
-                                    prev_state = self.table_6[tuple_302_302]
-                                    state = prev_state & 3
-                                    present_bit = prev_state & 4
-                                    if state == 0 or state == 2:
-                                        self.table_6[tuple_302_302] = 1 | 4
-                                        if not present_bit:
-                                            self.index_414[tuple_302_302[1]].append(tuple_302_302[0])
-                                            self.index_1029[tuple_302_302[0]].append(tuple_302_302[1])
-                                        # Program VectorAppend Region
-                                        vec_196.append((var_302, var_302))
-                                    # Program VectorAppend Region
-                                    vec_405.append(var_302)
-                            # Program TransitionState Region
-                            tuple_2_306_302 = (self.var_2, var_306, var_302)
-                            prev_state = self.table_56[tuple_2_306_302]
+                            tuple_159_155 = (var_159, var_155)
+                            prev_state = self.table_40[tuple_159_155]
                             state = prev_state & 3
                             present_bit = prev_state & 4
                             if state == 0 or state == 2:
-                                self.table_56[tuple_2_306_302] = 1 | 4
+                                self.table_40[tuple_159_155] = 1 | 4
                                 if not present_bit:
-                                    self.index_385[tuple_2_306_302[1]].append((tuple_2_306_302[0], tuple_2_306_302[2]))
+                                    self.index_265[tuple_159_155[0]].append(tuple_159_155[1])
                                 # Program VectorAppend Region
-                                vec_381.append(var_306)
+                                vec_262.append(var_159)
         # Program VectorClear Region
-        del vec_300[:]
-        vec_index300 = 0
+        del vec_153[:]
+        vec_index153 = 0
         # Program VectorUnique Region
-        vec_316 = list(set(vec_316))
-        vec_index316 = 0
+        vec_172 = list(set(vec_172))
+        vec_index172 = 0
         # Program TableJoin Region
-        while vec_index316 < len(vec_316):
-            var_318 = vec_316[vec_index316]
-            vec_index316 += 1
-            tuple_317_0_index: int = 0
-            tuple_317_0_vec: List[Tuple[int, int, int, int]] = self.index_319[var_318]
-            while tuple_317_0_index < len(tuple_317_0_vec):
-                tuple_317_0 = tuple_317_0_vec[tuple_317_0_index]
-                tuple_317_0_index += 1
-                var_320 = tuple_317_0[0]
-                var_321 = tuple_317_0[1]
-                var_322 = tuple_317_0[2]
-                var_323 = tuple_317_0[3]
-                if var_318 in self.index_267:
-                    # Program TupleCompare Region
-                    if (self.var_0, self.var_3, ) == (var_322, var_321, ):
-                        # Program TransitionState Region
-                        var_320 = self._resolve_edgetype(var_320)
-                        tuple_323_318_320 = (var_323, var_318, var_320)
-                        prev_state = self.table_43[tuple_323_318_320]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_323_318_320] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_323_318_320[1]].append((tuple_323_318_320[0], tuple_323_318_320[2]))
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            var_320 = self._resolve_edgetype(var_320)
-                            tuple_318_323_320 = (var_318, var_323, var_320)
-                            prev_state = self.table_26[tuple_318_323_320]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_318_323_320] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_318_323_320[0]].append((tuple_318_323_320[1], tuple_318_323_320[2]))
-                                    self.index_1053[(tuple_318_323_320[0], tuple_318_323_320[1])].append(tuple_318_323_320[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_318)
-                            if not ret:
-                                # Program TransitionState Region
-                                var_320 = self._resolve_edgetype(var_320)
-                                tuple_318_323_320 = (var_318, var_323, var_320)
-                                prev_state = self.table_26[tuple_318_323_320]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_318_323_320] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_318_323_320[0]].append((tuple_318_323_320[1], tuple_318_323_320[2]))
-                                        self.index_1053[(tuple_318_323_320[0], tuple_318_323_320[1])].append(tuple_318_323_320[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_323, var_318)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_323_318 = (var_323, var_318)
-                                        prev_state = self.table_9[tuple_323_318]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_323_318] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_323_318[0]].append(tuple_323_318[1])
-                                                self.index_1079[tuple_323_318[1]].append(tuple_323_318[0])
-                                            # Program VectorAppend Region
-                                            vec_411.append(var_323)
-                            # Program VectorAppend Region
-                            vec_369.append(var_318)
-                            # Program VectorAppend Region
-                            vec_405.append(var_318)
-                            # Program TupleCompare Region
-                            if self.var_0 == var_320:
-                                # Program TransitionState Region
-                                tuple_318 = var_318
-                                prev_state = self.table_17[tuple_318]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_17[tuple_318] = 1 | 4
-                                    if not present_bit:
-                                        pass
-                                    # Program Parallel Region
-                                    # Program Series Region
-                                    # Program TableScan Region
-                                    scan_tuple_327: Tuple[int, int]
-                                    scan_index_327: int = 0
-                                    scan_tuple_327_vec: List[Tuple[int, int]] = self.index_199[var_318]
-                                    while scan_index_327 < len(scan_tuple_327_vec):
-                                        scan_tuple_327 = scan_tuple_327_vec[scan_index_327]
-                                        scan_index_327 += 1
-                                        vec_327.append(scan_tuple_327)
-                                    # Program VectorLoop Region
-                                    vec_index327 = 0
-                                    while vec_index327 < len(vec_327):
-                                        var_328, var_329 = vec_327[vec_index327]
-                                        vec_index327 += 1
-                                        # Program TransitionState Region
-                                        # Remove from negated view
-                                        var_329 = self._resolve_edgetype(var_329)
-                                        tuple_318_328_329 = (var_318, var_328, var_329)
-                                        prev_state = self.table_26[tuple_318_328_329]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 1:
-                                            self.table_26[tuple_318_328_329] = 0 | 4
-                                            # Program Call Region
-                                            ret = self.proc_203_(var_318, var_328, var_329)
-
-                                    # Program TransitionState Region
-                                    tuple_318_318 = (var_318, var_318)
-                                    prev_state = self.table_6[tuple_318_318]
-                                    state = prev_state & 3
-                                    present_bit = prev_state & 4
-                                    if state == 0 or state == 2:
-                                        self.table_6[tuple_318_318] = 1 | 4
-                                        if not present_bit:
-                                            self.index_414[tuple_318_318[1]].append(tuple_318_318[0])
-                                            self.index_1029[tuple_318_318[0]].append(tuple_318_318[1])
-                                        # Program VectorAppend Region
-                                        vec_196.append((var_318, var_318))
-                                    # Program VectorAppend Region
-                                    vec_405.append(var_318)
-                            # Program TupleCompare Region
-                            if self.var_2 == var_320:
-                                # Program TransitionState Region
-                                tuple_2_323_318 = (self.var_2, var_323, var_318)
-                                prev_state = self.table_56[tuple_2_323_318]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_56[tuple_2_323_318] = 1 | 4
-                                    if not present_bit:
-                                        self.index_385[tuple_2_323_318[1]].append((tuple_2_323_318[0], tuple_2_323_318[2]))
-                                    # Program VectorAppend Region
-                                    vec_381.append(var_323)
-        # Program VectorClear Region
-        del vec_316[:]
-        vec_index316 = 0
-        # Program VectorUnique Region
-        vec_331 = list(set(vec_331))
-        vec_index331 = 0
-        # Program TableJoin Region
-        while vec_index331 < len(vec_331):
-            var_333 = vec_331[vec_index331]
-            vec_index331 += 1
-            if var_333 in self.index_334:
-                if var_333 in self.index_267:
+        while vec_index172 < len(vec_172):
+            var_174 = vec_172[vec_index172]
+            vec_index172 += 1
+            if var_174 in self.index_175:
+                if var_174 in self.index_157:
                     # Program TransitionState Region
-                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-                    tuple_333 = var_333
-                    prev_state = self.table_17[tuple_333]
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_174 = var_174
+                    prev_state = self.table_18[tuple_174]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_17[tuple_333] = 1 | 4
+                        self.table_18[tuple_174] = 1 | 4
                         if not present_bit:
                             pass
                         # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_276.append(var_174)
                         # Program Series Region
                         # Program TableScan Region
-                        scan_tuple_335: Tuple[int, int]
-                        scan_index_335: int = 0
-                        scan_tuple_335_vec: List[Tuple[int, int]] = self.index_199[var_333]
-                        while scan_index_335 < len(scan_tuple_335_vec):
-                            scan_tuple_335 = scan_tuple_335_vec[scan_index_335]
-                            scan_index_335 += 1
-                            vec_335.append(scan_tuple_335)
+                        scan_tuple_176: int
+                        scan_index_176: int = 0
+                        scan_tuple_176_vec: List[int] = self.index_116[var_174]
+                        while scan_index_176 < len(scan_tuple_176_vec):
+                            scan_tuple_176 = scan_tuple_176_vec[scan_index_176]
+                            scan_index_176 += 1
+                            vec_176.append(scan_tuple_176)
                         # Program VectorLoop Region
-                        vec_index335 = 0
-                        while vec_index335 < len(vec_335):
-                            var_336, var_337 = vec_335[vec_index335]
-                            vec_index335 += 1
+                        vec_index176 = 0
+                        while vec_index176 < len(vec_176):
+                            var_177 = vec_176[vec_index176]
+                            vec_index176 += 1
                             # Program TransitionState Region
                             # Remove from negated view
-                            var_337 = self._resolve_edgetype(var_337)
-                            tuple_333_336_337 = (var_333, var_336, var_337)
-                            prev_state = self.table_26[tuple_333_336_337]
+                            tuple_174_177 = (var_174, var_177)
+                            prev_state = self.table_27[tuple_174_177]
                             state = prev_state & 3
                             present_bit = prev_state & 4
                             if state == 1:
-                                self.table_26[tuple_333_336_337] = 0 | 4
+                                self.table_27[tuple_174_177] = 0 | 4
+                                # Program Parallel Region
                                 # Program Call Region
-                                ret = self.proc_203_(var_333, var_336, var_337)
+                                ret = self.proc_119_(var_174, var_177)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_174, var_177)
 
                         # Program TransitionState Region
-                        tuple_333_333 = (var_333, var_333)
-                        prev_state = self.table_6[tuple_333_333]
+                        tuple_174_174 = (var_174, var_174)
+                        prev_state = self.table_6[tuple_174_174]
                         state = prev_state & 3
                         present_bit = prev_state & 4
                         if state == 0 or state == 2:
-                            self.table_6[tuple_333_333] = 1 | 4
+                            self.table_6[tuple_174_174] = 1 | 4
                             if not present_bit:
-                                self.index_414[tuple_333_333[1]].append(tuple_333_333[0])
-                                self.index_1029[tuple_333_333[0]].append(tuple_333_333[1])
+                                self.index_290[tuple_174_174[1]].append(tuple_174_174[0])
+                                self.index_756[tuple_174_174[0]].append(tuple_174_174[1])
                             # Program VectorAppend Region
-                            vec_196.append((var_333, var_333))
+                            vec_131.append((var_174, var_174))
+        # Program VectorClear Region
+        del vec_172[:]
+        vec_index172 = 0
+        # Program VectorUnique Region
+        vec_180 = list(set(vec_180))
+        vec_index180 = 0
+        # Program TableJoin Region
+        while vec_index180 < len(vec_180):
+            var_182 = vec_180[vec_index180]
+            vec_index180 += 1
+            tuple_181_0_index: int = 0
+            tuple_181_0_vec: List[int] = self.index_183[var_182]
+            while tuple_181_0_index < len(tuple_181_0_vec):
+                tuple_181_0 = tuple_181_0_vec[tuple_181_0_index]
+                tuple_181_0_index += 1
+                var_185 = tuple_181_0
+                tuple_181_1_index: int = 0
+                tuple_181_1_vec: List[int] = self.index_184[var_182]
+                while tuple_181_1_index < len(tuple_181_1_vec):
+                    tuple_181_1 = tuple_181_1_vec[tuple_181_1_index]
+                    tuple_181_1_index += 1
+                    var_186 = tuple_181_1
+                    # Program TransitionState Region
+                    tuple_185_186 = (var_185, var_186)
+                    prev_state = self.table_88[tuple_185_186]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_88[tuple_185_186] = 1 | 4
+                        if not present_bit:
+                            self.index_232[tuple_185_186[0]].append(tuple_185_186[1])
                         # Program VectorAppend Region
-                        vec_405.append(var_333)
+                        vec_229.append(var_185)
         # Program VectorClear Region
-        del vec_331[:]
-        vec_index331 = 0
+        del vec_180[:]
+        vec_index180 = 0
         # Program VectorUnique Region
-        vec_339 = list(set(vec_339))
-        vec_index339 = 0
+        vec_187 = list(set(vec_187))
+        vec_index187 = 0
         # Program TableJoin Region
-        while vec_index339 < len(vec_339):
-            var_341 = vec_339[vec_index339]
-            vec_index339 += 1
-            if var_341 in self.index_267:
-                tuple_340_1_index: int = 0
-                tuple_340_1_vec: List[Tuple[int, int, int, int]] = self.index_342[var_341]
-                while tuple_340_1_index < len(tuple_340_1_vec):
-                    tuple_340_1 = tuple_340_1_vec[tuple_340_1_index]
-                    tuple_340_1_index += 1
-                    var_343 = tuple_340_1[0]
-                    var_344 = tuple_340_1[1]
-                    var_345 = tuple_340_1[2]
-                    var_346 = tuple_340_1[3]
-                    # Program TupleCompare Region
-                    if (self.var_3, self.var_0, ) == (var_344, var_345, ):
+        while vec_index187 < len(vec_187):
+            var_189 = vec_187[vec_index187]
+            vec_index187 += 1
+            if var_189 in self.index_157:
+                tuple_188_1_index: int = 0
+                tuple_188_1_vec: List[int] = self.index_190[var_189]
+                while tuple_188_1_index < len(tuple_188_1_vec):
+                    tuple_188_1 = tuple_188_1_vec[tuple_188_1_index]
+                    tuple_188_1_index += 1
+                    var_191 = tuple_188_1
+                    # Program TransitionState Region
+                    tuple_191_189_5 = (var_191, var_189, self.var_5)
+                    prev_state = self.table_9[tuple_191_189_5]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_191_189_5] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_191_189_5[0], tuple_191_189_5[1])].append(tuple_191_189_5[2])
+                        # Program Parallel Region
+                        # Program Series Region
                         # Program TransitionState Region
-                        tuple_346_341_3 = (var_346, var_341, self.var_3)
-                        prev_state = self.table_43[tuple_346_341_3]
+                        # Eager insert before negation to prevent race
+                        tuple_189_191 = (var_189, var_191)
+                        prev_state = self.table_27[tuple_189_191]
                         state = prev_state & 3
                         present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_346_341_3] = 1 | 4
+                        if state == 0:
+                            self.table_27[tuple_189_191] = 2 | 4
                             if not present_bit:
-                                self.index_373[tuple_346_341_3[1]].append((tuple_346_341_3[0], tuple_346_341_3[2]))
-                            # Program Parallel Region
-                            # Program Series Region
+                                self.index_116[tuple_189_191[0]].append(tuple_189_191[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_189)
+                        if not ret:
                             # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_341_346_3 = (var_341, var_346, self.var_3)
-                            prev_state = self.table_26[tuple_341_346_3]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_341_346_3] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_341_346_3[0]].append((tuple_341_346_3[1], tuple_341_346_3[2]))
-                                    self.index_1053[(tuple_341_346_3[0], tuple_341_346_3[1])].append(tuple_341_346_3[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_341)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_341_346_3 = (var_341, var_346, self.var_3)
-                                prev_state = self.table_26[tuple_341_346_3]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_341_346_3] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_341_346_3[0]].append((tuple_341_346_3[1], tuple_341_346_3[2]))
-                                        self.index_1053[(tuple_341_346_3[0], tuple_341_346_3[1])].append(tuple_341_346_3[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_346, var_341)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_346_341 = (var_346, var_341)
-                                        prev_state = self.table_9[tuple_346_341]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_346_341] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_346_341[0]].append(tuple_346_341[1])
-                                                self.index_1079[tuple_346_341[1]].append(tuple_346_341[0])
-                                            # Program VectorAppend Region
-                                            vec_411.append(var_346)
-                            # Program VectorAppend Region
-                            vec_369.append(var_341)
-                            # Program VectorAppend Region
-                            vec_405.append(var_341)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_3:
-                                # Program TransitionState Region
-                                tuple_341 = var_341
-                                prev_state = self.table_17[tuple_341]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_17[tuple_341] = 1 | 4
-                                    if not present_bit:
-                                        pass
-                                    # Program Parallel Region
-                                    # Program Series Region
-                                    # Program TableScan Region
-                                    scan_tuple_350: Tuple[int, int]
-                                    scan_index_350: int = 0
-                                    scan_tuple_350_vec: List[Tuple[int, int]] = self.index_199[var_341]
-                                    while scan_index_350 < len(scan_tuple_350_vec):
-                                        scan_tuple_350 = scan_tuple_350_vec[scan_index_350]
-                                        scan_index_350 += 1
-                                        vec_350.append(scan_tuple_350)
-                                    # Program VectorLoop Region
-                                    vec_index350 = 0
-                                    while vec_index350 < len(vec_350):
-                                        var_351, var_352 = vec_350[vec_index350]
-                                        vec_index350 += 1
-                                        # Program TransitionState Region
-                                        # Remove from negated view
-                                        var_352 = self._resolve_edgetype(var_352)
-                                        tuple_341_351_352 = (var_341, var_351, var_352)
-                                        prev_state = self.table_26[tuple_341_351_352]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 1:
-                                            self.table_26[tuple_341_351_352] = 0 | 4
-                                            # Program Call Region
-                                            ret = self.proc_203_(var_341, var_351, var_352)
-
-                                    # Program TransitionState Region
-                                    tuple_341_341 = (var_341, var_341)
-                                    prev_state = self.table_6[tuple_341_341]
-                                    state = prev_state & 3
-                                    present_bit = prev_state & 4
-                                    if state == 0 or state == 2:
-                                        self.table_6[tuple_341_341] = 1 | 4
-                                        if not present_bit:
-                                            self.index_414[tuple_341_341[1]].append(tuple_341_341[0])
-                                            self.index_1029[tuple_341_341[0]].append(tuple_341_341[1])
-                                        # Program VectorAppend Region
-                                        vec_196.append((var_341, var_341))
-                                    # Program VectorAppend Region
-                                    vec_405.append(var_341)
-                            # Program TupleCompare Region
-                            if self.var_2 == self.var_3:
-                                # Program TransitionState Region
-                                tuple_2_346_341 = (self.var_2, var_346, var_341)
-                                prev_state = self.table_56[tuple_2_346_341]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_56[tuple_2_346_341] = 1 | 4
-                                    if not present_bit:
-                                        self.index_385[tuple_2_346_341[1]].append((tuple_2_346_341[0], tuple_2_346_341[2]))
-                                    # Program VectorAppend Region
-                                    vec_381.append(var_346)
-        # Program VectorClear Region
-        del vec_339[:]
-        vec_index339 = 0
-        # Program VectorUnique Region
-        vec_354 = list(set(vec_354))
-        vec_index354 = 0
-        # Program TableJoin Region
-        while vec_index354 < len(vec_354):
-            var_356 = vec_354[vec_index354]
-            vec_index354 += 1
-            if var_356 in self.index_267:
-                tuple_355_1_index: int = 0
-                tuple_355_1_vec: List[Tuple[int, int, int, int]] = self.index_357[var_356]
-                while tuple_355_1_index < len(tuple_355_1_vec):
-                    tuple_355_1 = tuple_355_1_vec[tuple_355_1_index]
-                    tuple_355_1_index += 1
-                    var_358 = tuple_355_1[0]
-                    var_359 = tuple_355_1[1]
-                    var_360 = tuple_355_1[2]
-                    var_361 = tuple_355_1[3]
-                    # Program TupleCompare Region
-                    if (self.var_0, self.var_3, ) == (var_360, var_359, ):
-                        # Program TransitionState Region
-                        tuple_361_356_0 = (var_361, var_356, self.var_0)
-                        prev_state = self.table_43[tuple_361_356_0]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_361_356_0] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_361_356_0[1]].append((tuple_361_356_0[0], tuple_361_356_0[2]))
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_356_361_0 = (var_356, var_361, self.var_0)
-                            prev_state = self.table_26[tuple_356_361_0]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_356_361_0] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_356_361_0[0]].append((tuple_356_361_0[1], tuple_356_361_0[2]))
-                                    self.index_1053[(tuple_356_361_0[0], tuple_356_361_0[1])].append(tuple_356_361_0[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_356)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_356_361_0 = (var_356, var_361, self.var_0)
-                                prev_state = self.table_26[tuple_356_361_0]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_356_361_0] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_356_361_0[0]].append((tuple_356_361_0[1], tuple_356_361_0[2]))
-                                        self.index_1053[(tuple_356_361_0[0], tuple_356_361_0[1])].append(tuple_356_361_0[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_361, var_356)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_361_356 = (var_361, var_356)
-                                        prev_state = self.table_9[tuple_361_356]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_361_356] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_361_356[0]].append(tuple_361_356[1])
-                                                self.index_1079[tuple_361_356[1]].append(tuple_361_356[0])
-                                            # Program VectorAppend Region
-                                            vec_411.append(var_361)
-                            # Program VectorAppend Region
-                            vec_369.append(var_356)
-                            # Program VectorAppend Region
-                            vec_405.append(var_356)
-                            # Program TransitionState Region
-                            tuple_356 = var_356
-                            prev_state = self.table_17[tuple_356]
+                            tuple_189_191 = (var_189, var_191)
+                            prev_state = self.table_27[tuple_189_191]
                             state = prev_state & 3
                             present_bit = prev_state & 4
                             if state == 0 or state == 2:
-                                self.table_17[tuple_356] = 1 | 4
+                                self.table_27[tuple_189_191] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_189_191[0]].append(tuple_189_191[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_191, var_189)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_191_189 = (var_191, var_189)
+                                    prev_state = self.table_52[tuple_191_189]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_191_189] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_191_189[0]].append(tuple_191_189[1])
+                                            self.index_778[tuple_191_189[1]].append(tuple_191_189[0])
+                                        # Program VectorAppend Region
+                                        vec_287.append(var_191)
+                                # Program TransitionState Region
+                                tuple_191_189 = (var_191, var_189)
+                                prev_state = self.table_15[tuple_191_189]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_191_189] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_191_189[0]].append(tuple_191_189[1])
+                        # Program TransitionState Region
+                        tuple_191_189 = (var_191, var_189)
+                        prev_state = self.table_94[tuple_191_189]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_191_189] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_191_189[1]].append(tuple_191_189[0])
+                            # Program VectorAppend Region
+                            vec_276.append(var_189)
+                        # Program TransitionState Region
+                        tuple_189 = var_189
+                        prev_state = self.table_32[tuple_189]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_189] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_253.append(var_189)
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_5:
+                            # Program TransitionState Region
+                            tuple_189 = var_189
+                            prev_state = self.table_18[tuple_189]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_18[tuple_189] = 1 | 4
                                 if not present_bit:
                                     pass
                                 # Program Parallel Region
+                                # Program VectorAppend Region
+                                vec_276.append(var_189)
                                 # Program Series Region
                                 # Program TableScan Region
-                                scan_tuple_365: Tuple[int, int]
-                                scan_index_365: int = 0
-                                scan_tuple_365_vec: List[Tuple[int, int]] = self.index_199[var_356]
-                                while scan_index_365 < len(scan_tuple_365_vec):
-                                    scan_tuple_365 = scan_tuple_365_vec[scan_index_365]
-                                    scan_index_365 += 1
-                                    vec_365.append(scan_tuple_365)
+                                scan_tuple_195: int
+                                scan_index_195: int = 0
+                                scan_tuple_195_vec: List[int] = self.index_116[var_189]
+                                while scan_index_195 < len(scan_tuple_195_vec):
+                                    scan_tuple_195 = scan_tuple_195_vec[scan_index_195]
+                                    scan_index_195 += 1
+                                    vec_195.append(scan_tuple_195)
                                 # Program VectorLoop Region
-                                vec_index365 = 0
-                                while vec_index365 < len(vec_365):
-                                    var_366, var_367 = vec_365[vec_index365]
-                                    vec_index365 += 1
+                                vec_index195 = 0
+                                while vec_index195 < len(vec_195):
+                                    var_196 = vec_195[vec_index195]
+                                    vec_index195 += 1
                                     # Program TransitionState Region
                                     # Remove from negated view
-                                    var_367 = self._resolve_edgetype(var_367)
-                                    tuple_356_366_367 = (var_356, var_366, var_367)
-                                    prev_state = self.table_26[tuple_356_366_367]
+                                    tuple_189_196 = (var_189, var_196)
+                                    prev_state = self.table_27[tuple_189_196]
                                     state = prev_state & 3
                                     present_bit = prev_state & 4
                                     if state == 1:
-                                        self.table_26[tuple_356_366_367] = 0 | 4
+                                        self.table_27[tuple_189_196] = 0 | 4
+                                        # Program Parallel Region
                                         # Program Call Region
-                                        ret = self.proc_203_(var_356, var_366, var_367)
+                                        ret = self.proc_119_(var_189, var_196)
+
+                                        # Program Call Region
+                                        ret = self.proc_123_(var_189, var_196)
 
                                 # Program TransitionState Region
-                                tuple_356_356 = (var_356, var_356)
-                                prev_state = self.table_6[tuple_356_356]
+                                tuple_189_189 = (var_189, var_189)
+                                prev_state = self.table_6[tuple_189_189]
                                 state = prev_state & 3
                                 present_bit = prev_state & 4
                                 if state == 0 or state == 2:
-                                    self.table_6[tuple_356_356] = 1 | 4
+                                    self.table_6[tuple_189_189] = 1 | 4
                                     if not present_bit:
-                                        self.index_414[tuple_356_356[1]].append(tuple_356_356[0])
-                                        self.index_1029[tuple_356_356[0]].append(tuple_356_356[1])
+                                        self.index_290[tuple_189_189[1]].append(tuple_189_189[0])
+                                        self.index_756[tuple_189_189[0]].append(tuple_189_189[1])
                                     # Program VectorAppend Region
-                                    vec_196.append((var_356, var_356))
+                                    vec_131.append((var_189, var_189))
+                        # Program TupleCompare Region
+                        if self.var_2 == self.var_5:
+                            # Program TransitionState Region
+                            tuple_191_189 = (var_191, var_189)
+                            prev_state = self.table_40[tuple_191_189]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_40[tuple_191_189] = 1 | 4
+                                if not present_bit:
+                                    self.index_265[tuple_191_189[0]].append(tuple_191_189[1])
                                 # Program VectorAppend Region
-                                vec_405.append(var_356)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_2:
-                                # Program TransitionState Region
-                                tuple_0_361_356 = (self.var_0, var_361, var_356)
-                                prev_state = self.table_56[tuple_0_361_356]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_56[tuple_0_361_356] = 1 | 4
-                                    if not present_bit:
-                                        self.index_385[tuple_0_361_356[1]].append((tuple_0_361_356[0], tuple_0_361_356[2]))
-                                    # Program VectorAppend Region
-                                    vec_381.append(var_361)
+                                vec_262.append(var_191)
         # Program VectorClear Region
-        del vec_354[:]
-        vec_index354 = 0
+        del vec_187[:]
+        vec_index187 = 0
         # Program VectorUnique Region
-        vec_369 = list(set(vec_369))
-        vec_index369 = 0
+        vec_199 = list(set(vec_199))
+        vec_index199 = 0
         # Program TableJoin Region
-        while vec_index369 < len(vec_369):
-            var_371 = vec_369[vec_index369]
-            vec_index369 += 1
-            tuple_370_0_index: int = 0
-            tuple_370_0_vec: List[bytes] = self.index_372[var_371]
-            while tuple_370_0_index < len(tuple_370_0_vec):
-                tuple_370_0 = tuple_370_0_vec[tuple_370_0_index]
-                tuple_370_0_index += 1
-                var_374 = tuple_370_0
-                tuple_370_1_index: int = 0
-                tuple_370_1_vec: List[Tuple[int, int]] = self.index_373[var_371]
-                while tuple_370_1_index < len(tuple_370_1_vec):
-                    tuple_370_1 = tuple_370_1_vec[tuple_370_1_index]
-                    tuple_370_1_index += 1
-                    var_375 = tuple_370_1[0]
-                    var_376 = tuple_370_1[1]
+        while vec_index199 < len(vec_199):
+            var_201 = vec_199[vec_index199]
+            vec_index199 += 1
+            tuple_200_0_index: int = 0
+            tuple_200_0_vec: List[int] = self.index_183[var_201]
+            while tuple_200_0_index < len(tuple_200_0_vec):
+                tuple_200_0 = tuple_200_0_vec[tuple_200_0_index]
+                tuple_200_0_index += 1
+                var_203 = tuple_200_0
+                tuple_200_1_index: int = 0
+                tuple_200_1_vec: List[int] = self.index_202[var_201]
+                while tuple_200_1_index < len(tuple_200_1_vec):
+                    tuple_200_1 = tuple_200_1_vec[tuple_200_1_index]
+                    tuple_200_1_index += 1
+                    var_204 = tuple_200_1
                     # Program TransitionState Region
-                    tuple_371 = var_371
-                    prev_state = self.table_17[tuple_371]
+                    tuple_203_204 = (var_203, var_204)
+                    prev_state = self.table_80[tuple_203_204]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_17[tuple_371] = 1 | 4
+                        self.table_80[tuple_203_204] = 1 | 4
                         if not present_bit:
-                            pass
+                            self.index_244[tuple_203_204[0]].append(tuple_203_204[1])
+                        # Program VectorAppend Region
+                        vec_241.append(var_203)
+        # Program VectorClear Region
+        del vec_199[:]
+        vec_index199 = 0
+        # Program VectorUnique Region
+        vec_205 = list(set(vec_205))
+        vec_index205 = 0
+        # Program TableJoin Region
+        while vec_index205 < len(vec_205):
+            var_207 = vec_205[vec_index205]
+            vec_index205 += 1
+            if var_207 in self.index_157:
+                tuple_206_1_index: int = 0
+                tuple_206_1_vec: List[int] = self.index_208[var_207]
+                while tuple_206_1_index < len(tuple_206_1_vec):
+                    tuple_206_1 = tuple_206_1_vec[tuple_206_1_index]
+                    tuple_206_1_index += 1
+                    var_209 = tuple_206_1
+                    # Program TransitionState Region
+                    tuple_209_207_3 = (var_209, var_207, self.var_3)
+                    prev_state = self.table_9[tuple_209_207_3]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_209_207_3] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_209_207_3[0], tuple_209_207_3[1])].append(tuple_209_207_3[2])
                         # Program Parallel Region
                         # Program Series Region
-                        # Program TableScan Region
-                        scan_tuple_377: Tuple[int, int]
-                        scan_index_377: int = 0
-                        scan_tuple_377_vec: List[Tuple[int, int]] = self.index_199[var_371]
-                        while scan_index_377 < len(scan_tuple_377_vec):
-                            scan_tuple_377 = scan_tuple_377_vec[scan_index_377]
-                            scan_index_377 += 1
-                            vec_377.append(scan_tuple_377)
-                        # Program VectorLoop Region
-                        vec_index377 = 0
-                        while vec_index377 < len(vec_377):
-                            var_378, var_379 = vec_377[vec_index377]
-                            vec_index377 += 1
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_207_209 = (var_207, var_209)
+                        prev_state = self.table_27[tuple_207_209]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_207_209] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_207_209[0]].append(tuple_207_209[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_207)
+                        if not ret:
                             # Program TransitionState Region
-                            # Remove from negated view
-                            var_379 = self._resolve_edgetype(var_379)
-                            tuple_371_378_379 = (var_371, var_378, var_379)
-                            prev_state = self.table_26[tuple_371_378_379]
+                            tuple_207_209 = (var_207, var_209)
+                            prev_state = self.table_27[tuple_207_209]
                             state = prev_state & 3
                             present_bit = prev_state & 4
-                            if state == 1:
-                                self.table_26[tuple_371_378_379] = 0 | 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_207_209] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_207_209[0]].append(tuple_207_209[1])
+                                # Program Parallel Region
                                 # Program Call Region
-                                ret = self.proc_203_(var_371, var_378, var_379)
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_209, var_207)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_209_207 = (var_209, var_207)
+                                    prev_state = self.table_52[tuple_209_207]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_209_207] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_209_207[0]].append(tuple_209_207[1])
+                                            self.index_778[tuple_209_207[1]].append(tuple_209_207[0])
+                                        # Program VectorAppend Region
+                                        vec_287.append(var_209)
+                                # Program TransitionState Region
+                                tuple_209_207 = (var_209, var_207)
+                                prev_state = self.table_15[tuple_209_207]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_209_207] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_209_207[0]].append(tuple_209_207[1])
+                        # Program TransitionState Region
+                        tuple_209_207 = (var_209, var_207)
+                        prev_state = self.table_94[tuple_209_207]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_209_207] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_209_207[1]].append(tuple_209_207[0])
+                            # Program VectorAppend Region
+                            vec_276.append(var_207)
+                        # Program TransitionState Region
+                        tuple_207 = var_207
+                        prev_state = self.table_32[tuple_207]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_207] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_253.append(var_207)
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_3:
+                            # Program TransitionState Region
+                            tuple_207 = var_207
+                            prev_state = self.table_18[tuple_207]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_18[tuple_207] = 1 | 4
+                                if not present_bit:
+                                    pass
+                                # Program Parallel Region
+                                # Program VectorAppend Region
+                                vec_276.append(var_207)
+                                # Program Series Region
+                                # Program TableScan Region
+                                scan_tuple_213: int
+                                scan_index_213: int = 0
+                                scan_tuple_213_vec: List[int] = self.index_116[var_207]
+                                while scan_index_213 < len(scan_tuple_213_vec):
+                                    scan_tuple_213 = scan_tuple_213_vec[scan_index_213]
+                                    scan_index_213 += 1
+                                    vec_213.append(scan_tuple_213)
+                                # Program VectorLoop Region
+                                vec_index213 = 0
+                                while vec_index213 < len(vec_213):
+                                    var_214 = vec_213[vec_index213]
+                                    vec_index213 += 1
+                                    # Program TransitionState Region
+                                    # Remove from negated view
+                                    tuple_207_214 = (var_207, var_214)
+                                    prev_state = self.table_27[tuple_207_214]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 1:
+                                        self.table_27[tuple_207_214] = 0 | 4
+                                        # Program Parallel Region
+                                        # Program Call Region
+                                        ret = self.proc_119_(var_207, var_214)
 
-                        # Program TransitionState Region
-                        tuple_371_371 = (var_371, var_371)
-                        prev_state = self.table_6[tuple_371_371]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_6[tuple_371_371] = 1 | 4
-                            if not present_bit:
-                                self.index_414[tuple_371_371[1]].append(tuple_371_371[0])
-                                self.index_1029[tuple_371_371[0]].append(tuple_371_371[1])
-                            # Program VectorAppend Region
-                            vec_196.append((var_371, var_371))
-                        # Program VectorAppend Region
-                        vec_405.append(var_371)
+                                        # Program Call Region
+                                        ret = self.proc_123_(var_207, var_214)
+
+                                # Program TransitionState Region
+                                tuple_207_207 = (var_207, var_207)
+                                prev_state = self.table_6[tuple_207_207]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_207_207] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_207_207[1]].append(tuple_207_207[0])
+                                        self.index_756[tuple_207_207[0]].append(tuple_207_207[1])
+                                    # Program VectorAppend Region
+                                    vec_131.append((var_207, var_207))
+                        # Program TupleCompare Region
+                        if self.var_2 == self.var_3:
+                            # Program TransitionState Region
+                            tuple_209_207 = (var_209, var_207)
+                            prev_state = self.table_40[tuple_209_207]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_40[tuple_209_207] = 1 | 4
+                                if not present_bit:
+                                    self.index_265[tuple_209_207[0]].append(tuple_209_207[1])
+                                # Program VectorAppend Region
+                                vec_262.append(var_209)
         # Program VectorClear Region
-        del vec_369[:]
-        vec_index369 = 0
+        del vec_205[:]
+        vec_index205 = 0
         # Program VectorUnique Region
-        vec_381 = list(set(vec_381))
-        vec_index381 = 0
+        vec_217 = list(set(vec_217))
+        vec_index217 = 0
         # Program TableJoin Region
-        while vec_index381 < len(vec_381):
-            var_383 = vec_381[vec_index381]
-            vec_index381 += 1
-            tuple_382_0_index: int = 0
-            tuple_382_0_vec: List[Tuple[int, bytes, bytes]] = self.index_384[var_383]
-            while tuple_382_0_index < len(tuple_382_0_vec):
-                tuple_382_0 = tuple_382_0_vec[tuple_382_0_index]
-                tuple_382_0_index += 1
-                var_386 = tuple_382_0[0]
-                var_387 = tuple_382_0[1]
-                var_388 = tuple_382_0[2]
-                tuple_382_1_index: int = 0
-                tuple_382_1_vec: List[Tuple[int, int]] = self.index_385[var_383]
-                while tuple_382_1_index < len(tuple_382_1_vec):
-                    tuple_382_1 = tuple_382_1_vec[tuple_382_1_index]
-                    tuple_382_1_index += 1
-                    var_389 = tuple_382_1[0]
-                    var_390 = tuple_382_1[1]
-                    # Program TupleCompare Region
-                    if (self.var_1, self.var_2, ) == (var_386, var_389, ):
+        while vec_index217 < len(vec_217):
+            var_219 = vec_217[vec_index217]
+            vec_index217 += 1
+            if var_219 in self.index_157:
+                tuple_218_1_index: int = 0
+                tuple_218_1_vec: List[int] = self.index_220[var_219]
+                while tuple_218_1_index < len(tuple_218_1_vec):
+                    tuple_218_1 = tuple_218_1_vec[tuple_218_1_index]
+                    tuple_218_1_index += 1
+                    var_221 = tuple_218_1
+                    # Program TransitionState Region
+                    tuple_221_219_0 = (var_221, var_219, self.var_0)
+                    prev_state = self.table_9[tuple_221_219_0]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_221_219_0] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_221_219_0[0], tuple_221_219_0[1])].append(tuple_221_219_0[2])
+                        # Program Parallel Region
+                        # Program Series Region
                         # Program TransitionState Region
-                        tuple_2_1_383_387_388_390 = (self.var_2, self.var_1, var_383, var_387, var_388, var_390)
-                        prev_state = self.table_60[tuple_2_1_383_387_388_390]
+                        # Eager insert before negation to prevent race
+                        tuple_219_221 = (var_219, var_221)
+                        prev_state = self.table_27[tuple_219_221]
                         state = prev_state & 3
                         present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_60[tuple_2_1_383_387_388_390] = 1 | 4
+                        if state == 0:
+                            self.table_27[tuple_219_221] = 2 | 4
                             if not present_bit:
-                                self.index_394[tuple_2_1_383_387_388_390[5]].append((tuple_2_1_383_387_388_390[0], tuple_2_1_383_387_388_390[1], tuple_2_1_383_387_388_390[2], tuple_2_1_383_387_388_390[3], tuple_2_1_383_387_388_390[4]))
-                            # Program VectorAppend Region
-                            vec_391.append(var_390)
-        # Program VectorClear Region
-        del vec_381[:]
-        vec_index381 = 0
-        # Program VectorUnique Region
-        vec_391 = list(set(vec_391))
-        vec_index391 = 0
-        # Program TableJoin Region
-        while vec_index391 < len(vec_391):
-            var_393 = vec_391[vec_index391]
-            vec_index391 += 1
-            tuple_392_0_index: int = 0
-            tuple_392_0_vec: List[bytes] = self.index_372[var_393]
-            while tuple_392_0_index < len(tuple_392_0_vec):
-                tuple_392_0 = tuple_392_0_vec[tuple_392_0_index]
-                tuple_392_0_index += 1
-                var_395 = tuple_392_0
-                tuple_392_1_index: int = 0
-                tuple_392_1_vec: List[Tuple[int, int, int, bytes, bytes]] = self.index_394[var_393]
-                while tuple_392_1_index < len(tuple_392_1_vec):
-                    tuple_392_1 = tuple_392_1_vec[tuple_392_1_index]
-                    tuple_392_1_index += 1
-                    var_396 = tuple_392_1[0]
-                    var_397 = tuple_392_1[1]
-                    var_398 = tuple_392_1[2]
-                    var_399 = tuple_392_1[3]
-                    var_400 = tuple_392_1[4]
-                    # Program TupleCompare Region
-                    if (self.var_1, self.var_2, ) == (var_397, var_396, ):
+                                self.index_116[tuple_219_221[0]].append(tuple_219_221[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_219)
+                        if not ret:
+                            # Program TransitionState Region
+                            tuple_219_221 = (var_219, var_221)
+                            prev_state = self.table_27[tuple_219_221]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_219_221] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_219_221[0]].append(tuple_219_221[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_221, var_219)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_221_219 = (var_221, var_219)
+                                    prev_state = self.table_52[tuple_221_219]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_221_219] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_221_219[0]].append(tuple_221_219[1])
+                                            self.index_778[tuple_221_219[1]].append(tuple_221_219[0])
+                                        # Program VectorAppend Region
+                                        vec_287.append(var_221)
+                                # Program TransitionState Region
+                                tuple_221_219 = (var_221, var_219)
+                                prev_state = self.table_15[tuple_221_219]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_221_219] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_221_219[0]].append(tuple_221_219[1])
                         # Program TransitionState Region
-                        tuple_398 = var_398
-                        prev_state = self.table_17[tuple_398]
+                        tuple_221_219 = (var_221, var_219)
+                        prev_state = self.table_94[tuple_221_219]
                         state = prev_state & 3
                         present_bit = prev_state & 4
                         if state == 0 or state == 2:
-                            self.table_17[tuple_398] = 1 | 4
+                            self.table_94[tuple_221_219] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_221_219[1]].append(tuple_221_219[0])
+                            # Program VectorAppend Region
+                            vec_276.append(var_219)
+                        # Program TransitionState Region
+                        tuple_219 = var_219
+                        prev_state = self.table_32[tuple_219]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_219] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_253.append(var_219)
+                        # Program TransitionState Region
+                        tuple_219 = var_219
+                        prev_state = self.table_18[tuple_219]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_18[tuple_219] = 1 | 4
                             if not present_bit:
                                 pass
                             # Program Parallel Region
+                            # Program VectorAppend Region
+                            vec_276.append(var_219)
                             # Program Series Region
                             # Program TableScan Region
-                            scan_tuple_401: Tuple[int, int]
-                            scan_index_401: int = 0
-                            scan_tuple_401_vec: List[Tuple[int, int]] = self.index_199[var_398]
-                            while scan_index_401 < len(scan_tuple_401_vec):
-                                scan_tuple_401 = scan_tuple_401_vec[scan_index_401]
-                                scan_index_401 += 1
-                                vec_401.append(scan_tuple_401)
+                            scan_tuple_225: int
+                            scan_index_225: int = 0
+                            scan_tuple_225_vec: List[int] = self.index_116[var_219]
+                            while scan_index_225 < len(scan_tuple_225_vec):
+                                scan_tuple_225 = scan_tuple_225_vec[scan_index_225]
+                                scan_index_225 += 1
+                                vec_225.append(scan_tuple_225)
                             # Program VectorLoop Region
-                            vec_index401 = 0
-                            while vec_index401 < len(vec_401):
-                                var_402, var_403 = vec_401[vec_index401]
-                                vec_index401 += 1
+                            vec_index225 = 0
+                            while vec_index225 < len(vec_225):
+                                var_226 = vec_225[vec_index225]
+                                vec_index225 += 1
                                 # Program TransitionState Region
                                 # Remove from negated view
-                                var_403 = self._resolve_edgetype(var_403)
-                                tuple_398_402_403 = (var_398, var_402, var_403)
-                                prev_state = self.table_26[tuple_398_402_403]
+                                tuple_219_226 = (var_219, var_226)
+                                prev_state = self.table_27[tuple_219_226]
                                 state = prev_state & 3
                                 present_bit = prev_state & 4
                                 if state == 1:
-                                    self.table_26[tuple_398_402_403] = 0 | 4
+                                    self.table_27[tuple_219_226] = 0 | 4
+                                    # Program Parallel Region
                                     # Program Call Region
-                                    ret = self.proc_203_(var_398, var_402, var_403)
+                                    ret = self.proc_119_(var_219, var_226)
+
+                                    # Program Call Region
+                                    ret = self.proc_123_(var_219, var_226)
 
                             # Program TransitionState Region
-                            tuple_398_398 = (var_398, var_398)
-                            prev_state = self.table_6[tuple_398_398]
+                            tuple_219_219 = (var_219, var_219)
+                            prev_state = self.table_6[tuple_219_219]
                             state = prev_state & 3
                             present_bit = prev_state & 4
                             if state == 0 or state == 2:
-                                self.table_6[tuple_398_398] = 1 | 4
+                                self.table_6[tuple_219_219] = 1 | 4
                                 if not present_bit:
-                                    self.index_414[tuple_398_398[1]].append(tuple_398_398[0])
-                                    self.index_1029[tuple_398_398[0]].append(tuple_398_398[1])
+                                    self.index_290[tuple_219_219[1]].append(tuple_219_219[0])
+                                    self.index_756[tuple_219_219[0]].append(tuple_219_219[1])
                                 # Program VectorAppend Region
-                                vec_196.append((var_398, var_398))
-                            # Program VectorAppend Region
-                            vec_405.append(var_398)
+                                vec_131.append((var_219, var_219))
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_2:
+                            # Program TransitionState Region
+                            tuple_221_219 = (var_221, var_219)
+                            prev_state = self.table_40[tuple_221_219]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_40[tuple_221_219] = 1 | 4
+                                if not present_bit:
+                                    self.index_265[tuple_221_219[0]].append(tuple_221_219[1])
+                                # Program VectorAppend Region
+                                vec_262.append(var_221)
         # Program VectorClear Region
-        del vec_391[:]
-        vec_index391 = 0
+        del vec_217[:]
+        vec_index217 = 0
         # Program VectorUnique Region
-        vec_405 = list(set(vec_405))
-        vec_index405 = 0
+        vec_229 = list(set(vec_229))
+        vec_index229 = 0
         # Program TableJoin Region
-        while vec_index405 < len(vec_405):
-            var_407 = vec_405[vec_index405]
-            vec_index405 += 1
-            tuple_406_0_index: int = 0
-            tuple_406_0_vec: List[Tuple[int, int]] = self.index_373[var_407]
-            while tuple_406_0_index < len(tuple_406_0_vec):
-                tuple_406_0 = tuple_406_0_vec[tuple_406_0_index]
-                tuple_406_0_index += 1
-                var_409 = tuple_406_0[0]
-                var_410 = tuple_406_0[1]
-                if var_407 in self.index_408:
+        while vec_index229 < len(vec_229):
+            var_231 = vec_229[vec_index229]
+            vec_index229 += 1
+            if var_231 in self.index_157:
+                tuple_230_1_index: int = 0
+                tuple_230_1_vec: List[int] = self.index_232[var_231]
+                while tuple_230_1_index < len(tuple_230_1_vec):
+                    tuple_230_1 = tuple_230_1_vec[tuple_230_1_index]
+                    tuple_230_1_index += 1
+                    var_233 = tuple_230_1
                     # Program TransitionState Region
-                    tuple_409_407 = (var_409, var_407)
-                    prev_state = self.table_12[tuple_409_407]
+                    tuple_233_231_0 = (var_233, var_231, self.var_0)
+                    prev_state = self.table_9[tuple_233_231_0]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_12[tuple_409_407] = 1 | 4
+                        self.table_9[tuple_233_231_0] = 1 | 4
                         if not present_bit:
-                            self.index_433[tuple_409_407[1]].append(tuple_409_407[0])
-                            self.index_1028[tuple_409_407[0]].append(tuple_409_407[1])
-                        # Program VectorAppend Region
-                        vec_430.append(var_407)
-        # Program VectorClear Region
-        del vec_405[:]
-        vec_index405 = 0
-        # Program VectorUnique Region
-        vec_411 = list(set(vec_411))
-        vec_index411 = 0
-        # Program TableJoin Region
-        while vec_index411 < len(vec_411):
-            var_413 = vec_411[vec_index411]
-            vec_index411 += 1
-            tuple_412_0_index: int = 0
-            tuple_412_0_vec: List[int] = self.index_414[var_413]
-            while tuple_412_0_index < len(tuple_412_0_vec):
-                tuple_412_0 = tuple_412_0_vec[tuple_412_0_index]
-                tuple_412_0_index += 1
-                var_416 = tuple_412_0
-                tuple_412_1_index: int = 0
-                tuple_412_1_vec: List[int] = self.index_415[var_413]
-                while tuple_412_1_index < len(tuple_412_1_vec):
-                    tuple_412_1 = tuple_412_1_vec[tuple_412_1_index]
-                    tuple_412_1_index += 1
-                    var_417 = tuple_412_1
-                    # Program Call Region
-                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
-                    ret = self.proc_1030_(var_416, var_413)
-                    if ret:
+                            self.index_799[(tuple_233_231_0[0], tuple_233_231_0[1])].append(tuple_233_231_0[2])
+                        # Program Parallel Region
+                        # Program Series Region
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_231_233 = (var_231, var_233)
+                        prev_state = self.table_27[tuple_231_233]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_231_233] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_231_233[0]].append(tuple_231_233[1])
                         # Program Call Region
-                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
-                        ret = self.proc_1033_(var_413, var_417)
-                        if ret:
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                            ret = self.proc_426_(var_416, var_417)
-                            if not ret:
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_231)
+                        if not ret:
+                            # Program TransitionState Region
+                            tuple_231_233 = (var_231, var_233)
+                            prev_state = self.table_27[tuple_231_233]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_231_233] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_231_233[0]].append(tuple_231_233[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_233, var_231)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_233_231 = (var_233, var_231)
+                                    prev_state = self.table_52[tuple_233_231]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_233_231] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_233_231[0]].append(tuple_233_231[1])
+                                            self.index_778[tuple_233_231[1]].append(tuple_233_231[0])
+                                        # Program VectorAppend Region
+                                        vec_287.append(var_233)
                                 # Program TransitionState Region
-                                tuple_416_417 = (var_416, var_417)
-                                prev_state = self.table_6[tuple_416_417]
+                                tuple_233_231 = (var_233, var_231)
+                                prev_state = self.table_15[tuple_233_231]
                                 state = prev_state & 3
                                 present_bit = prev_state & 4
                                 if state == 0 or state == 2:
-                                    self.table_6[tuple_416_417] = 1 | 4
+                                    self.table_15[tuple_233_231] = 1 | 4
                                     if not present_bit:
-                                        self.index_414[tuple_416_417[1]].append(tuple_416_417[0])
-                                        self.index_1029[tuple_416_417[0]].append(tuple_416_417[1])
-                                    # Program VectorAppend Region
-                                    vec_196.append((var_416, var_417))
+                                        self.index_752[tuple_233_231[0]].append(tuple_233_231[1])
+                        # Program TransitionState Region
+                        tuple_233_231 = (var_233, var_231)
+                        prev_state = self.table_94[tuple_233_231]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_233_231] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_233_231[1]].append(tuple_233_231[0])
+                            # Program VectorAppend Region
+                            vec_276.append(var_231)
+                        # Program TransitionState Region
+                        tuple_231 = var_231
+                        prev_state = self.table_32[tuple_231]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_231] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_253.append(var_231)
+                        # Program TransitionState Region
+                        tuple_231 = var_231
+                        prev_state = self.table_18[tuple_231]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_18[tuple_231] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program Parallel Region
+                            # Program VectorAppend Region
+                            vec_276.append(var_231)
+                            # Program Series Region
+                            # Program TableScan Region
+                            scan_tuple_237: int
+                            scan_index_237: int = 0
+                            scan_tuple_237_vec: List[int] = self.index_116[var_231]
+                            while scan_index_237 < len(scan_tuple_237_vec):
+                                scan_tuple_237 = scan_tuple_237_vec[scan_index_237]
+                                scan_index_237 += 1
+                                vec_237.append(scan_tuple_237)
+                            # Program VectorLoop Region
+                            vec_index237 = 0
+                            while vec_index237 < len(vec_237):
+                                var_238 = vec_237[vec_index237]
+                                vec_index237 += 1
+                                # Program TransitionState Region
+                                # Remove from negated view
+                                tuple_231_238 = (var_231, var_238)
+                                prev_state = self.table_27[tuple_231_238]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 1:
+                                    self.table_27[tuple_231_238] = 0 | 4
+                                    # Program Parallel Region
+                                    # Program Call Region
+                                    ret = self.proc_119_(var_231, var_238)
+
+                                    # Program Call Region
+                                    ret = self.proc_123_(var_231, var_238)
+
+                            # Program TransitionState Region
+                            tuple_231_231 = (var_231, var_231)
+                            prev_state = self.table_6[tuple_231_231]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_6[tuple_231_231] = 1 | 4
+                                if not present_bit:
+                                    self.index_290[tuple_231_231[1]].append(tuple_231_231[0])
+                                    self.index_756[tuple_231_231[0]].append(tuple_231_231[1])
+                                # Program VectorAppend Region
+                                vec_131.append((var_231, var_231))
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_2:
+                            # Program TransitionState Region
+                            tuple_233_231 = (var_233, var_231)
+                            prev_state = self.table_40[tuple_233_231]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_40[tuple_233_231] = 1 | 4
+                                if not present_bit:
+                                    self.index_265[tuple_233_231[0]].append(tuple_233_231[1])
+                                # Program VectorAppend Region
+                                vec_262.append(var_233)
         # Program VectorClear Region
-        del vec_411[:]
-        vec_index411 = 0
+        del vec_229[:]
+        vec_index229 = 0
         # Program VectorUnique Region
-        vec_430 = list(set(vec_430))
-        vec_index430 = 0
+        vec_241 = list(set(vec_241))
+        vec_index241 = 0
         # Program TableJoin Region
-        while vec_index430 < len(vec_430):
-            var_432 = vec_430[vec_index430]
-            vec_index430 += 1
-            tuple_431_0_index: int = 0
-            tuple_431_0_vec: List[int] = self.index_433[var_432]
-            while tuple_431_0_index < len(tuple_431_0_vec):
-                tuple_431_0 = tuple_431_0_vec[tuple_431_0_index]
-                tuple_431_0_index += 1
-                var_434 = tuple_431_0
-                tuple_431_1_index: int = 0
-                tuple_431_1_vec: List[bytes] = self.index_372[var_432]
-                while tuple_431_1_index < len(tuple_431_1_vec):
-                    tuple_431_1 = tuple_431_1_vec[tuple_431_1_index]
-                    tuple_431_1_index += 1
-                    var_435 = tuple_431_1
+        while vec_index241 < len(vec_241):
+            var_243 = vec_241[vec_index241]
+            vec_index241 += 1
+            if var_243 in self.index_157:
+                tuple_242_1_index: int = 0
+                tuple_242_1_vec: List[int] = self.index_244[var_243]
+                while tuple_242_1_index < len(tuple_242_1_vec):
+                    tuple_242_1 = tuple_242_1_vec[tuple_242_1_index]
+                    tuple_242_1_index += 1
+                    var_245 = tuple_242_1
                     # Program TransitionState Region
-                    tuple_434 = var_434
-                    prev_state = self.table_15[tuple_434]
+                    tuple_245_243_2 = (var_245, var_243, self.var_2)
+                    prev_state = self.table_9[tuple_245_243_2]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_15[tuple_434] = 1 | 4
+                        self.table_9[tuple_245_243_2] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_245_243_2[0], tuple_245_243_2[1])].append(tuple_245_243_2[2])
+                        # Program Parallel Region
+                        # Program Series Region
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_243_245 = (var_243, var_245)
+                        prev_state = self.table_27[tuple_243_245]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_243_245] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_243_245[0]].append(tuple_243_245[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_243)
+                        if not ret:
+                            # Program TransitionState Region
+                            tuple_243_245 = (var_243, var_245)
+                            prev_state = self.table_27[tuple_243_245]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_243_245] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_243_245[0]].append(tuple_243_245[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_245, var_243)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_245_243 = (var_245, var_243)
+                                    prev_state = self.table_52[tuple_245_243]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_245_243] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_245_243[0]].append(tuple_245_243[1])
+                                            self.index_778[tuple_245_243[1]].append(tuple_245_243[0])
+                                        # Program VectorAppend Region
+                                        vec_287.append(var_245)
+                                # Program TransitionState Region
+                                tuple_245_243 = (var_245, var_243)
+                                prev_state = self.table_15[tuple_245_243]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_245_243] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_245_243[0]].append(tuple_245_243[1])
+                        # Program TransitionState Region
+                        tuple_245_243 = (var_245, var_243)
+                        prev_state = self.table_94[tuple_245_243]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_245_243] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_245_243[1]].append(tuple_245_243[0])
+                            # Program VectorAppend Region
+                            vec_276.append(var_243)
+                        # Program TransitionState Region
+                        tuple_243 = var_243
+                        prev_state = self.table_32[tuple_243]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_243] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_253.append(var_243)
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_2:
+                            # Program TransitionState Region
+                            tuple_243 = var_243
+                            prev_state = self.table_18[tuple_243]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_18[tuple_243] = 1 | 4
+                                if not present_bit:
+                                    pass
+                                # Program Parallel Region
+                                # Program VectorAppend Region
+                                vec_276.append(var_243)
+                                # Program Series Region
+                                # Program TableScan Region
+                                scan_tuple_249: int
+                                scan_index_249: int = 0
+                                scan_tuple_249_vec: List[int] = self.index_116[var_243]
+                                while scan_index_249 < len(scan_tuple_249_vec):
+                                    scan_tuple_249 = scan_tuple_249_vec[scan_index_249]
+                                    scan_index_249 += 1
+                                    vec_249.append(scan_tuple_249)
+                                # Program VectorLoop Region
+                                vec_index249 = 0
+                                while vec_index249 < len(vec_249):
+                                    var_250 = vec_249[vec_index249]
+                                    vec_index249 += 1
+                                    # Program TransitionState Region
+                                    # Remove from negated view
+                                    tuple_243_250 = (var_243, var_250)
+                                    prev_state = self.table_27[tuple_243_250]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 1:
+                                        self.table_27[tuple_243_250] = 0 | 4
+                                        # Program Parallel Region
+                                        # Program Call Region
+                                        ret = self.proc_119_(var_243, var_250)
+
+                                        # Program Call Region
+                                        ret = self.proc_123_(var_243, var_250)
+
+                                # Program TransitionState Region
+                                tuple_243_243 = (var_243, var_243)
+                                prev_state = self.table_6[tuple_243_243]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_243_243] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_243_243[1]].append(tuple_243_243[0])
+                                        self.index_756[tuple_243_243[0]].append(tuple_243_243[1])
+                                    # Program VectorAppend Region
+                                    vec_131.append((var_243, var_243))
+                        # Program TransitionState Region
+                        tuple_245_243 = (var_245, var_243)
+                        prev_state = self.table_40[tuple_245_243]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_40[tuple_245_243] = 1 | 4
+                            if not present_bit:
+                                self.index_265[tuple_245_243[0]].append(tuple_245_243[1])
+                            # Program VectorAppend Region
+                            vec_262.append(var_245)
+        # Program VectorClear Region
+        del vec_241[:]
+        vec_index241 = 0
+        # Program VectorUnique Region
+        vec_253 = list(set(vec_253))
+        vec_index253 = 0
+        # Program TableJoin Region
+        while vec_index253 < len(vec_253):
+            var_255 = vec_253[vec_index253]
+            vec_index253 += 1
+            if var_255 in self.index_256:
+                if var_255 in self.index_257:
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_255 = var_255
+                    prev_state = self.table_18[tuple_255]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_18[tuple_255] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_276.append(var_255)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_258: int
+                        scan_index_258: int = 0
+                        scan_tuple_258_vec: List[int] = self.index_116[var_255]
+                        while scan_index_258 < len(scan_tuple_258_vec):
+                            scan_tuple_258 = scan_tuple_258_vec[scan_index_258]
+                            scan_index_258 += 1
+                            vec_258.append(scan_tuple_258)
+                        # Program VectorLoop Region
+                        vec_index258 = 0
+                        while vec_index258 < len(vec_258):
+                            var_259 = vec_258[vec_index258]
+                            vec_index258 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_255_259 = (var_255, var_259)
+                            prev_state = self.table_27[tuple_255_259]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_255_259] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_255, var_259)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_255, var_259)
+
+                        # Program TransitionState Region
+                        tuple_255_255 = (var_255, var_255)
+                        prev_state = self.table_6[tuple_255_255]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_6[tuple_255_255] = 1 | 4
+                            if not present_bit:
+                                self.index_290[tuple_255_255[1]].append(tuple_255_255[0])
+                                self.index_756[tuple_255_255[0]].append(tuple_255_255[1])
+                            # Program VectorAppend Region
+                            vec_131.append((var_255, var_255))
+        # Program VectorClear Region
+        del vec_253[:]
+        vec_index253 = 0
+        # Program VectorUnique Region
+        vec_262 = list(set(vec_262))
+        vec_index262 = 0
+        # Program TableJoin Region
+        while vec_index262 < len(vec_262):
+            var_264 = vec_262[vec_index262]
+            vec_index262 += 1
+            if var_264 in self.index_151:
+                tuple_263_1_index: int = 0
+                tuple_263_1_vec: List[int] = self.index_265[var_264]
+                while tuple_263_1_index < len(tuple_263_1_vec):
+                    tuple_263_1 = tuple_263_1_vec[tuple_263_1_index]
+                    tuple_263_1_index += 1
+                    var_266 = tuple_263_1
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_264_266 = (var_264, var_266)
+                    prev_state = self.table_43[tuple_264_266]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_43[tuple_264_266] = 1 | 4
+                        if not present_bit:
+                            self.index_270[tuple_264_266[1]].append(tuple_264_266[0])
+                        # Program VectorAppend Region
+                        vec_267.append(var_266)
+        # Program VectorClear Region
+        del vec_262[:]
+        vec_index262 = 0
+        # Program VectorUnique Region
+        vec_267 = list(set(vec_267))
+        vec_index267 = 0
+        # Program TableJoin Region
+        while vec_index267 < len(vec_267):
+            var_269 = vec_267[vec_index267]
+            vec_index267 += 1
+            if var_269 in self.index_256:
+                tuple_268_1_index: int = 0
+                tuple_268_1_vec: List[int] = self.index_270[var_269]
+                while tuple_268_1_index < len(tuple_268_1_vec):
+                    tuple_268_1 = tuple_268_1_vec[tuple_268_1_index]
+                    tuple_268_1_index += 1
+                    var_271 = tuple_268_1
+                    # Program TransitionState Region
+                    tuple_271 = var_271
+                    prev_state = self.table_18[tuple_271]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_18[tuple_271] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_276.append(var_271)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_272: int
+                        scan_index_272: int = 0
+                        scan_tuple_272_vec: List[int] = self.index_116[var_271]
+                        while scan_index_272 < len(scan_tuple_272_vec):
+                            scan_tuple_272 = scan_tuple_272_vec[scan_index_272]
+                            scan_index_272 += 1
+                            vec_272.append(scan_tuple_272)
+                        # Program VectorLoop Region
+                        vec_index272 = 0
+                        while vec_index272 < len(vec_272):
+                            var_273 = vec_272[vec_index272]
+                            vec_index272 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_271_273 = (var_271, var_273)
+                            prev_state = self.table_27[tuple_271_273]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_271_273] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_271, var_273)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_271, var_273)
+
+                        # Program TransitionState Region
+                        tuple_271_271 = (var_271, var_271)
+                        prev_state = self.table_6[tuple_271_271]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_6[tuple_271_271] = 1 | 4
+                            if not present_bit:
+                                self.index_290[tuple_271_271[1]].append(tuple_271_271[0])
+                                self.index_756[tuple_271_271[0]].append(tuple_271_271[1])
+                            # Program VectorAppend Region
+                            vec_131.append((var_271, var_271))
+        # Program VectorClear Region
+        del vec_267[:]
+        vec_index267 = 0
+        # Program VectorUnique Region
+        vec_276 = list(set(vec_276))
+        vec_index276 = 0
+        # Program TableJoin Region
+        while vec_index276 < len(vec_276):
+            var_278 = vec_276[vec_index276]
+            vec_index276 += 1
+            tuple_277_0_index: int = 0
+            tuple_277_0_vec: List[int] = self.index_279[var_278]
+            while tuple_277_0_index < len(tuple_277_0_vec):
+                tuple_277_0 = tuple_277_0_vec[tuple_277_0_index]
+                tuple_277_0_index += 1
+                var_281 = tuple_277_0
+                if var_278 in self.index_280:
+                    # Program Parallel Region
+                    # Program TransitionState Region
+                    tuple_281_278 = (var_281, var_278)
+                    prev_state = self.table_97[tuple_281_278]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_97[tuple_281_278] = 1 | 4
+                        if not present_bit:
+                            self.index_285[tuple_281_278[1]].append(tuple_281_278[0])
+                        # Program VectorAppend Region
+                        vec_282.append(var_278)
+                    # Program TransitionState Region
+                    tuple_281_278 = (var_281, var_278)
+                    prev_state = self.table_22[tuple_281_278]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_22[tuple_281_278] = 1 | 4
+                        if not present_bit:
+                            self.index_760[tuple_281_278[0]].append(tuple_281_278[1])
+        # Program VectorClear Region
+        del vec_276[:]
+        vec_index276 = 0
+        # Program VectorUnique Region
+        vec_282 = list(set(vec_282))
+        vec_index282 = 0
+        # Program TableJoin Region
+        while vec_index282 < len(vec_282):
+            var_284 = vec_282[vec_index282]
+            vec_index282 += 1
+            tuple_283_0_index: int = 0
+            tuple_283_0_vec: List[int] = self.index_285[var_284]
+            while tuple_283_0_index < len(tuple_283_0_vec):
+                tuple_283_0 = tuple_283_0_vec[tuple_283_0_index]
+                tuple_283_0_index += 1
+                var_286 = tuple_283_0
+                if var_284 in self.index_256:
+                    # Program TransitionState Region
+                    tuple_286 = var_286
+                    prev_state = self.table_13[tuple_286]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_13[tuple_286] = 1 | 4
                         if not present_bit:
                             pass
         # Program VectorClear Region
-        del vec_430[:]
-        vec_index430 = 0
-        # Induction Fixpoint Loop Region
-        while len(vec_196):
-            # Program Call Region
-            param_198_0 = [vec_196]
-            ret = self.proc_192_(param_198_0)
-            vec_196 = param_198_0[0]
-
-        vec_index196 = 0
-        # Induction Output Region
-        # Program VectorClear Region
-        del vec_196[:]
-        vec_index196 = 0
-        # Program Return Region
-        return False
-
-    def proc_192_(self, param_0: List[List[Tuple[int, int]]]) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        vec_193 = param_0[0]
-        vec_index193: int = 0
-        vec_436: List[Tuple[int, int]] = list()
-        vec_index436: int = 0
-        vec_439: List[int] = list()
-        vec_index439: int = 0
-        # Program Series Region
-        # Program VectorSwap Region
-        vec_193, vec_436 = vec_436, vec_193
-        # Program VectorLoop Region
-        while vec_index436 < len(vec_436):
-            var_437, var_438 = vec_436[vec_index436]
-            vec_index436 += 1
-            # Program VectorAppend Region
-            vec_439.append(var_438)
+        del vec_282[:]
+        vec_index282 = 0
         # Program VectorUnique Region
-        vec_439 = list(set(vec_439))
-        vec_index439 = 0
+        vec_287 = list(set(vec_287))
+        vec_index287 = 0
         # Program TableJoin Region
-        while vec_index439 < len(vec_439):
-            var_441 = vec_439[vec_index439]
-            vec_index439 += 1
-            tuple_440_0_index: int = 0
-            tuple_440_0_vec: List[int] = self.index_414[var_441]
-            while tuple_440_0_index < len(tuple_440_0_vec):
-                tuple_440_0 = tuple_440_0_vec[tuple_440_0_index]
-                tuple_440_0_index += 1
-                var_442 = tuple_440_0
-                tuple_440_1_index: int = 0
-                tuple_440_1_vec: List[int] = self.index_415[var_441]
-                while tuple_440_1_index < len(tuple_440_1_vec):
-                    tuple_440_1 = tuple_440_1_vec[tuple_440_1_index]
-                    tuple_440_1_index += 1
-                    var_443 = tuple_440_1
+        while vec_index287 < len(vec_287):
+            var_289 = vec_287[vec_index287]
+            vec_index287 += 1
+            tuple_288_0_index: int = 0
+            tuple_288_0_vec: List[int] = self.index_290[var_289]
+            while tuple_288_0_index < len(tuple_288_0_vec):
+                tuple_288_0 = tuple_288_0_vec[tuple_288_0_index]
+                tuple_288_0_index += 1
+                var_292 = tuple_288_0
+                tuple_288_1_index: int = 0
+                tuple_288_1_vec: List[int] = self.index_291[var_289]
+                while tuple_288_1_index < len(tuple_288_1_vec):
+                    tuple_288_1 = tuple_288_1_vec[tuple_288_1_index]
+                    tuple_288_1_index += 1
+                    var_293 = tuple_288_1
                     # Program Call Region
-                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
-                    ret = self.proc_1030_(var_442, var_441)
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    ret = self.proc_294_(var_292, var_289)
                     if ret:
                         # Program Call Region
-                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
-                        ret = self.proc_1033_(var_441, var_443)
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        ret = self.proc_164_(var_289, var_293)
                         if ret:
                             # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                            ret = self.proc_426_(var_442, var_443)
+                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            ret = self.proc_299_(var_292, var_293)
                             if not ret:
                                 # Program TransitionState Region
-                                tuple_442_443 = (var_442, var_443)
-                                prev_state = self.table_6[tuple_442_443]
+                                tuple_292_293 = (var_292, var_293)
+                                prev_state = self.table_6[tuple_292_293]
                                 state = prev_state & 3
                                 present_bit = prev_state & 4
                                 if state == 0 or state == 2:
-                                    self.table_6[tuple_442_443] = 1 | 4
+                                    self.table_6[tuple_292_293] = 1 | 4
                                     if not present_bit:
-                                        self.index_414[tuple_442_443[1]].append(tuple_442_443[0])
-                                        self.index_1029[tuple_442_443[0]].append(tuple_442_443[1])
+                                        self.index_290[tuple_292_293[1]].append(tuple_292_293[0])
+                                        self.index_756[tuple_292_293[0]].append(tuple_292_293[1])
                                     # Program VectorAppend Region
-                                    vec_193.append((var_442, var_443))
+                                    vec_131.append((var_292, var_293))
         # Program VectorClear Region
-        del vec_439[:]
-        vec_index439 = 0
+        del vec_287[:]
+        vec_index287 = 0
+        # Induction Fixpoint Loop Region
+        while len(vec_131):
+            # Program Call Region
+            param_133_0 = [vec_131]
+            ret = self.proc_127_(param_133_0)
+            vec_131 = param_133_0[0]
+
+        vec_index131 = 0
+        # Induction Output Region
         # Program VectorClear Region
-        del vec_436[:]
-        vec_index436 = 0
+        del vec_131[:]
+        vec_index131 = 0
         # Program Return Region
-        param_0[0] = vec_193
+        return False
         return False
 
-    def proc_203_(self, var_204: int, var_205: int, var_206: int) -> bool:
+    def proc_119_(self, var_120: int, var_121: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
@@ -2745,40 +2300,117 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program TransitionState Region
-        tuple_205_204 = (var_205, var_204)
-        prev_state = self.table_9[tuple_205_204]
+        tuple_121_120 = (var_121, var_120)
+        prev_state = self.table_52[tuple_121_120]
         state = prev_state & 3
         present_bit = prev_state & 4
         if state == 1:
-            self.table_9[tuple_205_204] = 2 | 4
-            # Program Parallel Region
+            self.table_52[tuple_121_120] = 2 | 4
             # Program Call Region
-            ret = self.proc_1114_(var_205, var_204)
-
-            # Program Call Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Optimize.cpp: InlineCalls: /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
-            ret = self.proc_1110_(var_205, var_204)
+            ret = self.proc_822_(var_121, var_120)
 
         # Program Return Region
         return False
+        return False
 
-    def proc_273_(self, var_274: int) -> bool:
+    def proc_123_(self, var_124: int, var_125: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
         # Program Series Region
-        # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
-        ret = self.proc_1091_(var_274)
-        if ret:
-            # Program Return Region
-            return True
+        # Program TransitionState Region
+        tuple_125_124 = (var_125, var_124)
+        prev_state = self.table_15[tuple_125_124]
+        state = prev_state & 3
+        present_bit = prev_state & 4
+        if state == 1:
+            self.table_15[tuple_125_124] = 2 | 4
+            # Program Call Region
+            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
+            ret = self.proc_787_(var_124, var_125)
+
         # Program Return Region
         return False
+        return False
 
-    def proc_276_(self, var_277: int, var_278: int) -> bool:
+    def proc_127_(self, param_0: List[List[Tuple[int, int]]]) -> bool:
+        state: int = 2
+        prev_state: int = 2
+        present_bit: int = 0
+        ret: bool = False
+        found: bool = False
+        vec_128 = param_0[0]
+        vec_index128: int = 0
+        vec_303: List[Tuple[int, int]] = list()
+        vec_index303: int = 0
+        vec_306: List[int] = list()
+        vec_index306: int = 0
+        # Program Series Region
+        # Program VectorSwap Region
+        vec_128, vec_303 = vec_303, vec_128
+        # Program VectorLoop Region
+        while vec_index303 < len(vec_303):
+            var_304, var_305 = vec_303[vec_index303]
+            vec_index303 += 1
+            # Program VectorAppend Region
+            vec_306.append(var_305)
+        # Program VectorUnique Region
+        vec_306 = list(set(vec_306))
+        vec_index306 = 0
+        # Program TableJoin Region
+        while vec_index306 < len(vec_306):
+            var_308 = vec_306[vec_index306]
+            vec_index306 += 1
+            tuple_307_0_index: int = 0
+            tuple_307_0_vec: List[int] = self.index_290[var_308]
+            while tuple_307_0_index < len(tuple_307_0_vec):
+                tuple_307_0 = tuple_307_0_vec[tuple_307_0_index]
+                tuple_307_0_index += 1
+                var_309 = tuple_307_0
+                tuple_307_1_index: int = 0
+                tuple_307_1_vec: List[int] = self.index_291[var_308]
+                while tuple_307_1_index < len(tuple_307_1_vec):
+                    tuple_307_1 = tuple_307_1_vec[tuple_307_1_index]
+                    tuple_307_1_index += 1
+                    var_310 = tuple_307_1
+                    # Program Call Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    ret = self.proc_294_(var_309, var_308)
+                    if ret:
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        ret = self.proc_164_(var_308, var_310)
+                        if ret:
+                            # Program Call Region
+                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            ret = self.proc_299_(var_309, var_310)
+                            if not ret:
+                                # Program TransitionState Region
+                                tuple_309_310 = (var_309, var_310)
+                                prev_state = self.table_6[tuple_309_310]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_309_310] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_309_310[1]].append(tuple_309_310[0])
+                                        self.index_756[tuple_309_310[0]].append(tuple_309_310[1])
+                                    # Program VectorAppend Region
+                                    vec_128.append((var_309, var_310))
+        # Program VectorClear Region
+        del vec_306[:]
+        vec_index306 = 0
+        # Program VectorClear Region
+        del vec_303[:]
+        vec_index303 = 0
+        # Program Return Region
+        param_0[0] = vec_128
+        return False
+        return False
+
+    def proc_161_(self, var_162: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
@@ -2786,42 +2418,23 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program CheckState Region
-        state = self.table_9[(var_277, var_278)] & 3
-        if state == 0:
-            # Program Return Region
-            return False
-        elif state == 1:
+        state = self.table_18[var_162] & 3
+        if state == 1:
             # Program Return Region
             return True
         elif state == 2:
             # Program TransitionState Region
-            tuple_277_278 = (var_277, var_278)
-            prev_state = self.table_9[tuple_277_278]
+            tuple_162 = var_162
+            prev_state = self.table_18[tuple_162]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 2:
-                self.table_9[tuple_277_278] = 0 | 4
-                # Program Call Region
-                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
-                ret = self.proc_1049_(var_278, var_277)
-                if ret:
-                    # Program Series Region
-                    # Program TransitionState Region
-                    tuple_277_278 = (var_277, var_278)
-                    prev_state = self.table_9[tuple_277_278]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_9[tuple_277_278] = 1 | 4
-                        if not present_bit:
-                            self.index_415[tuple_277_278[0]].append(tuple_277_278[1])
-                            self.index_1079[tuple_277_278[1]].append(tuple_277_278[0])
-                    # Program Return Region
-                    return True
+                self.table_18[tuple_162] = 0 | 4
         # Program Return Region
         return False
+        return False
 
-    def proc_426_(self, var_427: int, var_428: int) -> bool:
+    def proc_164_(self, var_165: int, var_166: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
@@ -2829,839 +2442,2612 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program CheckState Region
-        state = self.table_6[(var_427, var_428)] & 3
-        if state == 0:
-            # Program Return Region
-            return False
-        elif state == 1:
+        state = self.table_52[(var_165, var_166)] & 3
+        if state == 1:
             # Program Return Region
             return True
         elif state == 2:
             # Program TransitionState Region
-            tuple_427_428 = (var_427, var_428)
-            prev_state = self.table_6[tuple_427_428]
+            tuple_165_166 = (var_165, var_166)
+            prev_state = self.table_52[tuple_165_166]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 2:
-                self.table_6[tuple_427_428] = 0 | 4
+                self.table_52[tuple_165_166] = 0 | 4
                 # Program Call Region
-                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
-                ret = self.proc_1074_(var_427, var_428)
+                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                ret = self.proc_787_(var_166, var_165)
                 if ret:
                     # Program Series Region
                     # Program TransitionState Region
-                    tuple_427_428 = (var_427, var_428)
-                    prev_state = self.table_6[tuple_427_428]
+                    tuple_165_166 = (var_165, var_166)
+                    prev_state = self.table_52[tuple_165_166]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_6[tuple_427_428] = 1 | 4
+                        self.table_52[tuple_165_166] = 1 | 4
                         if not present_bit:
-                            self.index_414[tuple_427_428[1]].append(tuple_427_428[0])
-                            self.index_1029[tuple_427_428[0]].append(tuple_427_428[1])
+                            self.index_291[tuple_165_166[0]].append(tuple_165_166[1])
+                            self.index_778[tuple_165_166[1]].append(tuple_165_166[0])
                     # Program Return Region
                     return True
         # Program Return Region
         return False
+        return False
 
-    def external_symbol_2(self, vec_450: List[Tuple[int, bytes]]) -> bool:
+    def proc_294_(self, var_295: int, var_296: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
-        vec_index450: int = 0
-        vec_453: List[int] = list()
-        vec_index453: int = 0
-        vec_462: List[Tuple[int, int]] = list()
-        vec_index462: int = 0
-        vec_465: List[Tuple[int, int]] = list()
-        vec_index465: int = 0
-        vec_469: List[int] = list()
-        vec_index469: int = 0
-        vec_480: List[Tuple[int, int]] = list()
-        vec_index480: int = 0
-        vec_484: List[int] = list()
-        vec_index484: int = 0
-        vec_495: List[Tuple[int, int]] = list()
-        vec_index495: int = 0
-        vec_499: List[int] = list()
-        vec_index499: int = 0
-        vec_509: List[Tuple[int, int]] = list()
-        vec_index509: int = 0
-        vec_513: List[int] = list()
-        vec_index513: int = 0
-        vec_516: List[Tuple[int, int]] = list()
-        vec_index516: int = 0
-        vec_520: List[int] = list()
-        vec_index520: int = 0
-        vec_530: List[Tuple[int, int]] = list()
-        vec_index530: int = 0
-        vec_534: List[int] = list()
-        vec_index534: int = 0
-        vec_544: List[Tuple[int, int]] = list()
-        vec_index544: int = 0
-        vec_548: List[int] = list()
-        vec_index548: int = 0
-        vec_554: List[Tuple[int, int]] = list()
-        vec_index554: int = 0
-        vec_558: List[int] = list()
-        vec_index558: int = 0
-        vec_566: List[int] = list()
-        vec_index566: int = 0
-        vec_575: List[Tuple[int, int]] = list()
-        vec_index575: int = 0
-        vec_579: List[int] = list()
-        vec_index579: int = 0
-        vec_584: List[int] = list()
-        vec_index584: int = 0
-        vec_592: List[int] = list()
-        vec_index592: int = 0
+        # Program Series Region
+        # Program CheckState Region
+        state = self.table_6[(var_295, var_296)] & 3
+        if state == 1:
+            # Program Return Region
+            return True
+        elif state == 2:
+            # Program TransitionState Region
+            tuple_295_296 = (var_295, var_296)
+            prev_state = self.table_6[tuple_295_296]
+            state = prev_state & 3
+            present_bit = prev_state & 4
+            if state == 2:
+                self.table_6[tuple_295_296] = 0 | 4
+                # Program Call Region
+                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                ret = self.proc_803_(var_295, var_296)
+                if ret:
+                    # Program Series Region
+                    # Program TransitionState Region
+                    tuple_295_296 = (var_295, var_296)
+                    prev_state = self.table_6[tuple_295_296]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_6[tuple_295_296] = 1 | 4
+                        if not present_bit:
+                            self.index_290[tuple_295_296[1]].append(tuple_295_296[0])
+                            self.index_756[tuple_295_296[0]].append(tuple_295_296[1])
+                    # Program Return Region
+                    return True
+        # Program Return Region
+        return False
+        return False
+
+    def proc_299_(self, var_300: int, var_301: int) -> bool:
+        state: int = 2
+        prev_state: int = 2
+        present_bit: int = 0
+        ret: bool = False
+        found: bool = False
+        # Program Series Region
+        # Program CheckState Region
+        state = self.table_6[(var_300, var_301)] & 3
+        if state == 1:
+            # Program Return Region
+            return True
+        elif state == 2:
+            # Program TransitionState Region
+            tuple_300_301 = (var_300, var_301)
+            prev_state = self.table_6[tuple_300_301]
+            state = prev_state & 3
+            present_bit = prev_state & 4
+            if state == 2:
+                self.table_6[tuple_300_301] = 0 | 4
+                # Program Call Region
+                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                ret = self.proc_773_(var_300, var_301)
+                if ret:
+                    # Program Series Region
+                    # Program TransitionState Region
+                    tuple_300_301 = (var_300, var_301)
+                    prev_state = self.table_6[tuple_300_301]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_6[tuple_300_301] = 1 | 4
+                        if not present_bit:
+                            self.index_290[tuple_300_301[1]].append(tuple_300_301[0])
+                            self.index_756[tuple_300_301[0]].append(tuple_300_301[1])
+                    # Program Return Region
+                    return True
+        # Program Return Region
+        return False
+        return False
+
+    def external_symbol_2(self, vec_317: List[Tuple[int, bytes]]) -> bool:
+        state: int = 2
+        prev_state: int = 2
+        present_bit: int = 0
+        ret: bool = False
+        found: bool = False
+        vec_index317: int = 0
+        vec_320: List[int] = list()
+        vec_index320: int = 0
+        vec_328: List[int] = list()
+        vec_index328: int = 0
+        vec_332: List[Tuple[int, int]] = list()
+        vec_index332: int = 0
+        vec_335: List[int] = list()
+        vec_index335: int = 0
+        vec_338: List[int] = list()
+        vec_index338: int = 0
+        vec_342: List[int] = list()
+        vec_index342: int = 0
+        vec_349: List[int] = list()
+        vec_index349: int = 0
+        vec_353: List[int] = list()
+        vec_index353: int = 0
+        vec_360: List[int] = list()
+        vec_index360: int = 0
+        vec_364: List[int] = list()
+        vec_index364: int = 0
+        vec_371: List[int] = list()
+        vec_index371: int = 0
+        vec_375: List[int] = list()
+        vec_index375: int = 0
+        vec_382: List[int] = list()
+        vec_index382: int = 0
+        vec_386: List[int] = list()
+        vec_index386: int = 0
+        vec_393: List[int] = list()
+        vec_index393: int = 0
+        vec_397: List[int] = list()
+        vec_index397: int = 0
+        vec_400: List[int] = list()
+        vec_index400: int = 0
+        vec_404: List[int] = list()
+        vec_index404: int = 0
+        vec_408: List[int] = list()
+        vec_index408: int = 0
+        vec_412: List[int] = list()
+        vec_index412: int = 0
+        vec_416: List[int] = list()
+        vec_index416: int = 0
+        vec_420: List[int] = list()
+        vec_index420: int = 0
+        vec_428: List[int] = list()
+        vec_index428: int = 0
         # Program Series Region
         # Program Induction Init Region
         # Program Series Region
         # Program VectorLoop Region
-        vec_index450 = 0
-        while vec_index450 < len(vec_450):
-            var_451, var_452 = vec_450[vec_index450]
-            vec_index450 += 1
+        vec_index317 = 0
+        while vec_index317 < len(vec_317):
+            var_318, var_319 = vec_317[vec_index317]
+            vec_index317 += 1
             # Program Parallel Region
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            tuple_451_452 = (var_451, var_452)
-            prev_state = self.table_40[tuple_451_452]
+            tuple_318 = var_318
+            prev_state = self.table_30[tuple_318]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_40[tuple_451_452] = 1 | 4
+                self.table_30[tuple_318] = 1 | 4
                 if not present_bit:
-                    self.index_372[tuple_451_452[0]].append(tuple_451_452[1])
+                    pass
                 # Program Parallel Region
                 # Program TransitionState Region
-                tuple_451 = var_451
-                prev_state = self.table_49[tuple_451]
+                tuple_318 = var_318
+                prev_state = self.table_36[tuple_318]
                 state = prev_state & 3
                 present_bit = prev_state & 4
                 if state == 0 or state == 2:
-                    self.table_49[tuple_451] = 1 | 4
+                    self.table_36[tuple_318] = 1 | 4
                     if not present_bit:
                         pass
                     # Program Parallel Region
                     # Program VectorAppend Region
-                    vec_513.append(var_451)
+                    vec_335.append(var_318)
                     # Program VectorAppend Region
-                    vec_499.append(var_451)
+                    vec_320.append(var_318)
                     # Program VectorAppend Region
-                    vec_534.append(var_451)
+                    vec_364.append(var_318)
                     # Program VectorAppend Region
-                    vec_520.append(var_451)
+                    vec_353.append(var_318)
                     # Program VectorAppend Region
-                    vec_484.append(var_451)
+                    vec_386.append(var_318)
                     # Program VectorAppend Region
-                    vec_469.append(var_451)
+                    vec_375.append(var_318)
                     # Program VectorAppend Region
-                    vec_453.append(var_451)
+                    vec_342.append(var_318)
                 # Program VectorAppend Region
-                vec_548.append(var_451)
+                vec_397.append(var_318)
                 # Program VectorAppend Region
-                vec_566.append(var_451)
+                vec_408.append(var_318)
                 # Program VectorAppend Region
-                vec_592.append(var_451)
+                vec_428.append(var_318)
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            tuple_451_452 = (var_451, var_452)
-            prev_state = self.table_40[tuple_451_452]
+            tuple_318 = var_318
+            prev_state = self.table_30[tuple_318]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_40[tuple_451_452] = 1 | 4
+                self.table_30[tuple_318] = 1 | 4
                 if not present_bit:
-                    self.index_372[tuple_451_452[0]].append(tuple_451_452[1])
+                    pass
                 # Program Parallel Region
                 # Program TransitionState Region
-                tuple_451 = var_451
-                prev_state = self.table_49[tuple_451]
+                tuple_318 = var_318
+                prev_state = self.table_36[tuple_318]
                 state = prev_state & 3
                 present_bit = prev_state & 4
                 if state == 0 or state == 2:
-                    self.table_49[tuple_451] = 1 | 4
+                    self.table_36[tuple_318] = 1 | 4
                     if not present_bit:
                         pass
                     # Program Parallel Region
                     # Program VectorAppend Region
-                    vec_513.append(var_451)
+                    vec_335.append(var_318)
                     # Program VectorAppend Region
-                    vec_499.append(var_451)
+                    vec_320.append(var_318)
                     # Program VectorAppend Region
-                    vec_534.append(var_451)
+                    vec_364.append(var_318)
                     # Program VectorAppend Region
-                    vec_520.append(var_451)
+                    vec_353.append(var_318)
                     # Program VectorAppend Region
-                    vec_484.append(var_451)
+                    vec_386.append(var_318)
                     # Program VectorAppend Region
-                    vec_469.append(var_451)
+                    vec_375.append(var_318)
                     # Program VectorAppend Region
-                    vec_453.append(var_451)
+                    vec_342.append(var_318)
                 # Program VectorAppend Region
-                vec_548.append(var_451)
+                vec_397.append(var_318)
                 # Program VectorAppend Region
-                vec_566.append(var_451)
+                vec_408.append(var_318)
                 # Program VectorAppend Region
-                vec_592.append(var_451)
+                vec_428.append(var_318)
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            tuple_451_452 = (var_451, var_452)
-            prev_state = self.table_40[tuple_451_452]
+            tuple_318 = var_318
+            prev_state = self.table_30[tuple_318]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_40[tuple_451_452] = 1 | 4
+                self.table_30[tuple_318] = 1 | 4
                 if not present_bit:
-                    self.index_372[tuple_451_452[0]].append(tuple_451_452[1])
+                    pass
                 # Program Parallel Region
                 # Program TransitionState Region
-                tuple_451 = var_451
-                prev_state = self.table_49[tuple_451]
+                tuple_318 = var_318
+                prev_state = self.table_36[tuple_318]
                 state = prev_state & 3
                 present_bit = prev_state & 4
                 if state == 0 or state == 2:
-                    self.table_49[tuple_451] = 1 | 4
+                    self.table_36[tuple_318] = 1 | 4
                     if not present_bit:
                         pass
                     # Program Parallel Region
                     # Program VectorAppend Region
-                    vec_513.append(var_451)
+                    vec_335.append(var_318)
                     # Program VectorAppend Region
-                    vec_499.append(var_451)
+                    vec_320.append(var_318)
                     # Program VectorAppend Region
-                    vec_534.append(var_451)
+                    vec_364.append(var_318)
                     # Program VectorAppend Region
-                    vec_520.append(var_451)
+                    vec_353.append(var_318)
                     # Program VectorAppend Region
-                    vec_484.append(var_451)
+                    vec_386.append(var_318)
                     # Program VectorAppend Region
-                    vec_469.append(var_451)
+                    vec_375.append(var_318)
                     # Program VectorAppend Region
-                    vec_453.append(var_451)
+                    vec_342.append(var_318)
                 # Program VectorAppend Region
-                vec_548.append(var_451)
+                vec_397.append(var_318)
                 # Program VectorAppend Region
-                vec_566.append(var_451)
+                vec_408.append(var_318)
                 # Program VectorAppend Region
-                vec_592.append(var_451)
+                vec_428.append(var_318)
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            tuple_451_452 = (var_451, var_452)
-            prev_state = self.table_40[tuple_451_452]
+            tuple_318 = var_318
+            prev_state = self.table_30[tuple_318]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_40[tuple_451_452] = 1 | 4
+                self.table_30[tuple_318] = 1 | 4
                 if not present_bit:
-                    self.index_372[tuple_451_452[0]].append(tuple_451_452[1])
+                    pass
                 # Program Parallel Region
                 # Program TransitionState Region
-                tuple_451 = var_451
-                prev_state = self.table_49[tuple_451]
+                tuple_318 = var_318
+                prev_state = self.table_36[tuple_318]
                 state = prev_state & 3
                 present_bit = prev_state & 4
                 if state == 0 or state == 2:
-                    self.table_49[tuple_451] = 1 | 4
+                    self.table_36[tuple_318] = 1 | 4
                     if not present_bit:
                         pass
                     # Program Parallel Region
                     # Program VectorAppend Region
-                    vec_513.append(var_451)
+                    vec_335.append(var_318)
                     # Program VectorAppend Region
-                    vec_499.append(var_451)
+                    vec_320.append(var_318)
                     # Program VectorAppend Region
-                    vec_534.append(var_451)
+                    vec_364.append(var_318)
                     # Program VectorAppend Region
-                    vec_520.append(var_451)
+                    vec_353.append(var_318)
                     # Program VectorAppend Region
-                    vec_484.append(var_451)
+                    vec_386.append(var_318)
                     # Program VectorAppend Region
-                    vec_469.append(var_451)
+                    vec_375.append(var_318)
                     # Program VectorAppend Region
-                    vec_453.append(var_451)
+                    vec_342.append(var_318)
                 # Program VectorAppend Region
-                vec_548.append(var_451)
+                vec_397.append(var_318)
                 # Program VectorAppend Region
-                vec_566.append(var_451)
+                vec_408.append(var_318)
                 # Program VectorAppend Region
-                vec_592.append(var_451)
+                vec_428.append(var_318)
         # Program VectorUnique Region
-        vec_453 = list(set(vec_453))
-        vec_index453 = 0
+        vec_320 = list(set(vec_320))
+        vec_index320 = 0
         # Program TableJoin Region
-        while vec_index453 < len(vec_453):
-            var_455 = vec_453[vec_index453]
-            vec_index453 += 1
-            if var_455 in self.index_267:
-                tuple_454_1_index: int = 0
-                tuple_454_1_vec: List[Tuple[int, int, int]] = self.index_268[var_455]
-                while tuple_454_1_index < len(tuple_454_1_vec):
-                    tuple_454_1 = tuple_454_1_vec[tuple_454_1_index]
-                    tuple_454_1_index += 1
-                    var_456 = tuple_454_1[0]
-                    var_457 = tuple_454_1[1]
-                    var_458 = tuple_454_1[2]
-                    # Program TupleCompare Region
-                    if (self.var_0, self.var_3, ) == (var_457, var_456, ):
+        while vec_index320 < len(vec_320):
+            var_322 = vec_320[vec_index320]
+            vec_index320 += 1
+            tuple_321_0_index: int = 0
+            tuple_321_0_vec: List[Tuple[int, int]] = self.index_156[var_322]
+            while tuple_321_0_index < len(tuple_321_0_vec):
+                tuple_321_0 = tuple_321_0_vec[tuple_321_0_index]
+                tuple_321_0_index += 1
+                var_323 = tuple_321_0[0]
+                var_324 = tuple_321_0[1]
+                if var_322 in self.index_157:
+                    # Program TransitionState Region
+                    var_323 = self._resolve_edgetype(var_323)
+                    tuple_324_322_323 = (var_324, var_322, var_323)
+                    prev_state = self.table_9[tuple_324_322_323]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_324_322_323] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_324_322_323[0], tuple_324_322_323[1])].append(tuple_324_322_323[2])
+                        # Program Parallel Region
+                        # Program Series Region
                         # Program TransitionState Region
-                        tuple_458_455_5 = (var_458, var_455, self.var_5)
-                        prev_state = self.table_43[tuple_458_455_5]
+                        # Eager insert before negation to prevent race
+                        tuple_322_324 = (var_322, var_324)
+                        prev_state = self.table_27[tuple_322_324]
                         state = prev_state & 3
                         present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_458_455_5] = 1 | 4
+                        if state == 0:
+                            self.table_27[tuple_322_324] = 2 | 4
                             if not present_bit:
-                                self.index_373[tuple_458_455_5[1]].append((tuple_458_455_5[0], tuple_458_455_5[2]))
-                            # Program Parallel Region
-                            # Program Series Region
+                                self.index_116[tuple_322_324[0]].append(tuple_322_324[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_322)
+                        if not ret:
                             # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_455_458_5 = (var_455, var_458, self.var_5)
-                            prev_state = self.table_26[tuple_455_458_5]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_455_458_5] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_455_458_5[0]].append((tuple_455_458_5[1], tuple_455_458_5[2]))
-                                    self.index_1053[(tuple_455_458_5[0], tuple_455_458_5[1])].append(tuple_455_458_5[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_455)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_455_458_5 = (var_455, var_458, self.var_5)
-                                prev_state = self.table_26[tuple_455_458_5]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_455_458_5] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_455_458_5[0]].append((tuple_455_458_5[1], tuple_455_458_5[2]))
-                                        self.index_1053[(tuple_455_458_5[0], tuple_455_458_5[1])].append(tuple_455_458_5[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_458, var_455)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_458_455 = (var_458, var_455)
-                                        prev_state = self.table_9[tuple_458_455]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_458_455] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_458_455[0]].append(tuple_458_455[1])
-                                                self.index_1079[tuple_458_455[1]].append(tuple_458_455[0])
-                                            # Program VectorAppend Region
-                                            vec_584.append(var_458)
-                            # Program VectorAppend Region
-                            vec_548.append(var_455)
-                            # Program VectorAppend Region
-                            vec_579.append(var_455)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_5:
-                                # Program TransitionState Region
-                                tuple_455 = var_455
-                                prev_state = self.table_17[tuple_455]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_17[tuple_455] = 1 | 4
-                                    if not present_bit:
-                                        pass
-                                    # Program Parallel Region
-                                    # Program Series Region
-                                    # Program TableScan Region
-                                    scan_tuple_465: Tuple[int, int]
-                                    scan_index_465: int = 0
-                                    scan_tuple_465_vec: List[Tuple[int, int]] = self.index_199[var_455]
-                                    while scan_index_465 < len(scan_tuple_465_vec):
-                                        scan_tuple_465 = scan_tuple_465_vec[scan_index_465]
-                                        scan_index_465 += 1
-                                        vec_465.append(scan_tuple_465)
-                                    # Program VectorLoop Region
-                                    vec_index465 = 0
-                                    while vec_index465 < len(vec_465):
-                                        var_466, var_467 = vec_465[vec_index465]
-                                        vec_index465 += 1
-                                        # Program TransitionState Region
-                                        # Remove from negated view
-                                        var_467 = self._resolve_edgetype(var_467)
-                                        tuple_455_466_467 = (var_455, var_466, var_467)
-                                        prev_state = self.table_26[tuple_455_466_467]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 1:
-                                            self.table_26[tuple_455_466_467] = 0 | 4
-                                            # Program Call Region
-                                            ret = self.proc_203_(var_455, var_466, var_467)
-
-                                    # Program TransitionState Region
-                                    tuple_455_455 = (var_455, var_455)
-                                    prev_state = self.table_6[tuple_455_455]
-                                    state = prev_state & 3
-                                    present_bit = prev_state & 4
-                                    if state == 0 or state == 2:
-                                        self.table_6[tuple_455_455] = 1 | 4
-                                        if not present_bit:
-                                            self.index_414[tuple_455_455[1]].append(tuple_455_455[0])
-                                            self.index_1029[tuple_455_455[0]].append(tuple_455_455[1])
-                                        # Program VectorAppend Region
-                                        vec_462.append((var_455, var_455))
-                                    # Program VectorAppend Region
-                                    vec_579.append(var_455)
-                            # Program TupleCompare Region
-                            if self.var_2 == self.var_5:
-                                # Program TransitionState Region
-                                tuple_2_458_455 = (self.var_2, var_458, var_455)
-                                prev_state = self.table_56[tuple_2_458_455]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_56[tuple_2_458_455] = 1 | 4
-                                    if not present_bit:
-                                        self.index_385[tuple_2_458_455[1]].append((tuple_2_458_455[0], tuple_2_458_455[2]))
-                                    # Program VectorAppend Region
-                                    vec_558.append(var_458)
-        # Program VectorClear Region
-        del vec_453[:]
-        vec_index453 = 0
-        # Program VectorUnique Region
-        vec_469 = list(set(vec_469))
-        vec_index469 = 0
-        # Program TableJoin Region
-        while vec_index469 < len(vec_469):
-            var_471 = vec_469[vec_index469]
-            vec_index469 += 1
-            if var_471 in self.index_267:
-                tuple_470_1_index: int = 0
-                tuple_470_1_vec: List[Tuple[int, int, int, bytes, bytes]] = self.index_287[var_471]
-                while tuple_470_1_index < len(tuple_470_1_vec):
-                    tuple_470_1 = tuple_470_1_vec[tuple_470_1_index]
-                    tuple_470_1_index += 1
-                    var_472 = tuple_470_1[0]
-                    var_473 = tuple_470_1[1]
-                    var_474 = tuple_470_1[2]
-                    var_475 = tuple_470_1[3]
-                    var_476 = tuple_470_1[4]
-                    # Program TupleCompare Region
-                    if self.var_4 == var_472:
-                        # Program TransitionState Region
-                        tuple_474_471_0 = (var_474, var_471, self.var_0)
-                        prev_state = self.table_43[tuple_474_471_0]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_474_471_0] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_474_471_0[1]].append((tuple_474_471_0[0], tuple_474_471_0[2]))
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_471_474_0 = (var_471, var_474, self.var_0)
-                            prev_state = self.table_26[tuple_471_474_0]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_471_474_0] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_471_474_0[0]].append((tuple_471_474_0[1], tuple_471_474_0[2]))
-                                    self.index_1053[(tuple_471_474_0[0], tuple_471_474_0[1])].append(tuple_471_474_0[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_471)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_471_474_0 = (var_471, var_474, self.var_0)
-                                prev_state = self.table_26[tuple_471_474_0]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_471_474_0] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_471_474_0[0]].append((tuple_471_474_0[1], tuple_471_474_0[2]))
-                                        self.index_1053[(tuple_471_474_0[0], tuple_471_474_0[1])].append(tuple_471_474_0[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_474, var_471)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_474_471 = (var_474, var_471)
-                                        prev_state = self.table_9[tuple_474_471]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_474_471] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_474_471[0]].append(tuple_474_471[1])
-                                                self.index_1079[tuple_474_471[1]].append(tuple_474_471[0])
-                                            # Program VectorAppend Region
-                                            vec_584.append(var_474)
-                            # Program VectorAppend Region
-                            vec_548.append(var_471)
-                            # Program VectorAppend Region
-                            vec_579.append(var_471)
-                            # Program TransitionState Region
-                            tuple_471 = var_471
-                            prev_state = self.table_17[tuple_471]
+                            tuple_322_324 = (var_322, var_324)
+                            prev_state = self.table_27[tuple_322_324]
                             state = prev_state & 3
                             present_bit = prev_state & 4
                             if state == 0 or state == 2:
-                                self.table_17[tuple_471] = 1 | 4
+                                self.table_27[tuple_322_324] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_322_324[0]].append(tuple_322_324[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_324, var_322)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_324_322 = (var_324, var_322)
+                                    prev_state = self.table_52[tuple_324_322]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_324_322] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_324_322[0]].append(tuple_324_322[1])
+                                            self.index_778[tuple_324_322[1]].append(tuple_324_322[0])
+                                        # Program VectorAppend Region
+                                        vec_420.append(var_324)
+                                # Program TransitionState Region
+                                tuple_324_322 = (var_324, var_322)
+                                prev_state = self.table_15[tuple_324_322]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_324_322] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_324_322[0]].append(tuple_324_322[1])
+                        # Program TransitionState Region
+                        tuple_324_322 = (var_324, var_322)
+                        prev_state = self.table_94[tuple_324_322]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_324_322] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_324_322[1]].append(tuple_324_322[0])
+                            # Program VectorAppend Region
+                            vec_416.append(var_322)
+                        # Program TransitionState Region
+                        tuple_322 = var_322
+                        prev_state = self.table_32[tuple_322]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_322] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_397.append(var_322)
+                        # Program TupleCompare Region
+                        if self.var_0 == var_323:
+                            # Program TransitionState Region
+                            tuple_322 = var_322
+                            prev_state = self.table_18[tuple_322]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_18[tuple_322] = 1 | 4
                                 if not present_bit:
                                     pass
                                 # Program Parallel Region
+                                # Program VectorAppend Region
+                                vec_416.append(var_322)
                                 # Program Series Region
                                 # Program TableScan Region
-                                scan_tuple_480: Tuple[int, int]
-                                scan_index_480: int = 0
-                                scan_tuple_480_vec: List[Tuple[int, int]] = self.index_199[var_471]
-                                while scan_index_480 < len(scan_tuple_480_vec):
-                                    scan_tuple_480 = scan_tuple_480_vec[scan_index_480]
-                                    scan_index_480 += 1
-                                    vec_480.append(scan_tuple_480)
+                                scan_tuple_328: int
+                                scan_index_328: int = 0
+                                scan_tuple_328_vec: List[int] = self.index_116[var_322]
+                                while scan_index_328 < len(scan_tuple_328_vec):
+                                    scan_tuple_328 = scan_tuple_328_vec[scan_index_328]
+                                    scan_index_328 += 1
+                                    vec_328.append(scan_tuple_328)
                                 # Program VectorLoop Region
-                                vec_index480 = 0
-                                while vec_index480 < len(vec_480):
-                                    var_481, var_482 = vec_480[vec_index480]
-                                    vec_index480 += 1
+                                vec_index328 = 0
+                                while vec_index328 < len(vec_328):
+                                    var_329 = vec_328[vec_index328]
+                                    vec_index328 += 1
                                     # Program TransitionState Region
                                     # Remove from negated view
-                                    var_482 = self._resolve_edgetype(var_482)
-                                    tuple_471_481_482 = (var_471, var_481, var_482)
-                                    prev_state = self.table_26[tuple_471_481_482]
+                                    tuple_322_329 = (var_322, var_329)
+                                    prev_state = self.table_27[tuple_322_329]
                                     state = prev_state & 3
                                     present_bit = prev_state & 4
                                     if state == 1:
-                                        self.table_26[tuple_471_481_482] = 0 | 4
+                                        self.table_27[tuple_322_329] = 0 | 4
+                                        # Program Parallel Region
                                         # Program Call Region
-                                        ret = self.proc_203_(var_471, var_481, var_482)
+                                        ret = self.proc_119_(var_322, var_329)
+
+                                        # Program Call Region
+                                        ret = self.proc_123_(var_322, var_329)
 
                                 # Program TransitionState Region
-                                tuple_471_471 = (var_471, var_471)
-                                prev_state = self.table_6[tuple_471_471]
+                                tuple_322_322 = (var_322, var_322)
+                                prev_state = self.table_6[tuple_322_322]
                                 state = prev_state & 3
                                 present_bit = prev_state & 4
                                 if state == 0 or state == 2:
-                                    self.table_6[tuple_471_471] = 1 | 4
+                                    self.table_6[tuple_322_322] = 1 | 4
                                     if not present_bit:
-                                        self.index_414[tuple_471_471[1]].append(tuple_471_471[0])
-                                        self.index_1029[tuple_471_471[0]].append(tuple_471_471[1])
+                                        self.index_290[tuple_322_322[1]].append(tuple_322_322[0])
+                                        self.index_756[tuple_322_322[0]].append(tuple_322_322[1])
                                     # Program VectorAppend Region
-                                    vec_462.append((var_471, var_471))
-                                # Program VectorAppend Region
-                                vec_579.append(var_471)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_2:
-                                # Program TransitionState Region
-                                tuple_0_474_471 = (self.var_0, var_474, var_471)
-                                prev_state = self.table_56[tuple_0_474_471]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_56[tuple_0_474_471] = 1 | 4
-                                    if not present_bit:
-                                        self.index_385[tuple_0_474_471[1]].append((tuple_0_474_471[0], tuple_0_474_471[2]))
-                                    # Program VectorAppend Region
-                                    vec_558.append(var_474)
-        # Program VectorClear Region
-        del vec_469[:]
-        vec_index469 = 0
-        # Program VectorUnique Region
-        vec_484 = list(set(vec_484))
-        vec_index484 = 0
-        # Program TableJoin Region
-        while vec_index484 < len(vec_484):
-            var_486 = vec_484[vec_index484]
-            vec_index484 += 1
-            if var_486 in self.index_267:
-                tuple_485_1_index: int = 0
-                tuple_485_1_vec: List[Tuple[int, int, int, bytes, bytes]] = self.index_303[var_486]
-                while tuple_485_1_index < len(tuple_485_1_vec):
-                    tuple_485_1 = tuple_485_1_vec[tuple_485_1_index]
-                    tuple_485_1_index += 1
-                    var_487 = tuple_485_1[0]
-                    var_488 = tuple_485_1[1]
-                    var_489 = tuple_485_1[2]
-                    var_490 = tuple_485_1[3]
-                    var_491 = tuple_485_1[4]
-                    # Program TupleCompare Region
-                    if self.var_1 == var_487:
-                        # Program TransitionState Region
-                        tuple_489_486_2 = (var_489, var_486, self.var_2)
-                        prev_state = self.table_43[tuple_489_486_2]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_489_486_2] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_489_486_2[1]].append((tuple_489_486_2[0], tuple_489_486_2[2]))
-                            # Program Parallel Region
-                            # Program Series Region
+                                    vec_332.append((var_322, var_322))
+                        # Program TupleCompare Region
+                        if self.var_2 == var_323:
                             # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_486_489_2 = (var_486, var_489, self.var_2)
-                            prev_state = self.table_26[tuple_486_489_2]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_486_489_2] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_486_489_2[0]].append((tuple_486_489_2[1], tuple_486_489_2[2]))
-                                    self.index_1053[(tuple_486_489_2[0], tuple_486_489_2[1])].append(tuple_486_489_2[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_486)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_486_489_2 = (var_486, var_489, self.var_2)
-                                prev_state = self.table_26[tuple_486_489_2]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_486_489_2] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_486_489_2[0]].append((tuple_486_489_2[1], tuple_486_489_2[2]))
-                                        self.index_1053[(tuple_486_489_2[0], tuple_486_489_2[1])].append(tuple_486_489_2[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_489, var_486)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_489_486 = (var_489, var_486)
-                                        prev_state = self.table_9[tuple_489_486]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_489_486] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_489_486[0]].append(tuple_489_486[1])
-                                                self.index_1079[tuple_489_486[1]].append(tuple_489_486[0])
-                                            # Program VectorAppend Region
-                                            vec_584.append(var_489)
-                            # Program VectorAppend Region
-                            vec_548.append(var_486)
-                            # Program VectorAppend Region
-                            vec_579.append(var_486)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_2:
-                                # Program TransitionState Region
-                                tuple_486 = var_486
-                                prev_state = self.table_17[tuple_486]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_17[tuple_486] = 1 | 4
-                                    if not present_bit:
-                                        pass
-                                    # Program Parallel Region
-                                    # Program Series Region
-                                    # Program TableScan Region
-                                    scan_tuple_495: Tuple[int, int]
-                                    scan_index_495: int = 0
-                                    scan_tuple_495_vec: List[Tuple[int, int]] = self.index_199[var_486]
-                                    while scan_index_495 < len(scan_tuple_495_vec):
-                                        scan_tuple_495 = scan_tuple_495_vec[scan_index_495]
-                                        scan_index_495 += 1
-                                        vec_495.append(scan_tuple_495)
-                                    # Program VectorLoop Region
-                                    vec_index495 = 0
-                                    while vec_index495 < len(vec_495):
-                                        var_496, var_497 = vec_495[vec_index495]
-                                        vec_index495 += 1
-                                        # Program TransitionState Region
-                                        # Remove from negated view
-                                        var_497 = self._resolve_edgetype(var_497)
-                                        tuple_486_496_497 = (var_486, var_496, var_497)
-                                        prev_state = self.table_26[tuple_486_496_497]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 1:
-                                            self.table_26[tuple_486_496_497] = 0 | 4
-                                            # Program Call Region
-                                            ret = self.proc_203_(var_486, var_496, var_497)
-
-                                    # Program TransitionState Region
-                                    tuple_486_486 = (var_486, var_486)
-                                    prev_state = self.table_6[tuple_486_486]
-                                    state = prev_state & 3
-                                    present_bit = prev_state & 4
-                                    if state == 0 or state == 2:
-                                        self.table_6[tuple_486_486] = 1 | 4
-                                        if not present_bit:
-                                            self.index_414[tuple_486_486[1]].append(tuple_486_486[0])
-                                            self.index_1029[tuple_486_486[0]].append(tuple_486_486[1])
-                                        # Program VectorAppend Region
-                                        vec_462.append((var_486, var_486))
-                                    # Program VectorAppend Region
-                                    vec_579.append(var_486)
-                            # Program TransitionState Region
-                            tuple_2_489_486 = (self.var_2, var_489, var_486)
-                            prev_state = self.table_56[tuple_2_489_486]
+                            tuple_324_322 = (var_324, var_322)
+                            prev_state = self.table_40[tuple_324_322]
                             state = prev_state & 3
                             present_bit = prev_state & 4
                             if state == 0 or state == 2:
-                                self.table_56[tuple_2_489_486] = 1 | 4
+                                self.table_40[tuple_324_322] = 1 | 4
                                 if not present_bit:
-                                    self.index_385[tuple_2_489_486[1]].append((tuple_2_489_486[0], tuple_2_489_486[2]))
+                                    self.index_265[tuple_324_322[0]].append(tuple_324_322[1])
                                 # Program VectorAppend Region
-                                vec_558.append(var_489)
+                                vec_404.append(var_324)
         # Program VectorClear Region
-        del vec_484[:]
-        vec_index484 = 0
+        del vec_320[:]
+        vec_index320 = 0
         # Program VectorUnique Region
-        vec_499 = list(set(vec_499))
-        vec_index499 = 0
+        vec_335 = list(set(vec_335))
+        vec_index335 = 0
         # Program TableJoin Region
-        while vec_index499 < len(vec_499):
-            var_501 = vec_499[vec_index499]
-            vec_index499 += 1
-            tuple_500_0_index: int = 0
-            tuple_500_0_vec: List[Tuple[int, int, int, int]] = self.index_319[var_501]
-            while tuple_500_0_index < len(tuple_500_0_vec):
-                tuple_500_0 = tuple_500_0_vec[tuple_500_0_index]
-                tuple_500_0_index += 1
-                var_502 = tuple_500_0[0]
-                var_503 = tuple_500_0[1]
-                var_504 = tuple_500_0[2]
-                var_505 = tuple_500_0[3]
-                if var_501 in self.index_267:
-                    # Program TupleCompare Region
-                    if (self.var_0, self.var_3, ) == (var_504, var_503, ):
+        while vec_index335 < len(vec_335):
+            var_337 = vec_335[vec_index335]
+            vec_index335 += 1
+            if var_337 in self.index_175:
+                if var_337 in self.index_157:
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_337 = var_337
+                    prev_state = self.table_18[tuple_337]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_18[tuple_337] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_416.append(var_337)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_338: int
+                        scan_index_338: int = 0
+                        scan_tuple_338_vec: List[int] = self.index_116[var_337]
+                        while scan_index_338 < len(scan_tuple_338_vec):
+                            scan_tuple_338 = scan_tuple_338_vec[scan_index_338]
+                            scan_index_338 += 1
+                            vec_338.append(scan_tuple_338)
+                        # Program VectorLoop Region
+                        vec_index338 = 0
+                        while vec_index338 < len(vec_338):
+                            var_339 = vec_338[vec_index338]
+                            vec_index338 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_337_339 = (var_337, var_339)
+                            prev_state = self.table_27[tuple_337_339]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_337_339] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_337, var_339)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_337, var_339)
+
                         # Program TransitionState Region
-                        var_502 = self._resolve_edgetype(var_502)
-                        tuple_505_501_502 = (var_505, var_501, var_502)
-                        prev_state = self.table_43[tuple_505_501_502]
+                        tuple_337_337 = (var_337, var_337)
+                        prev_state = self.table_6[tuple_337_337]
                         state = prev_state & 3
                         present_bit = prev_state & 4
                         if state == 0 or state == 2:
-                            self.table_43[tuple_505_501_502] = 1 | 4
+                            self.table_6[tuple_337_337] = 1 | 4
                             if not present_bit:
-                                self.index_373[tuple_505_501_502[1]].append((tuple_505_501_502[0], tuple_505_501_502[2]))
-                            # Program Parallel Region
-                            # Program Series Region
+                                self.index_290[tuple_337_337[1]].append(tuple_337_337[0])
+                                self.index_756[tuple_337_337[0]].append(tuple_337_337[1])
+                            # Program VectorAppend Region
+                            vec_332.append((var_337, var_337))
+        # Program VectorClear Region
+        del vec_335[:]
+        vec_index335 = 0
+        # Program VectorUnique Region
+        vec_342 = list(set(vec_342))
+        vec_index342 = 0
+        # Program TableJoin Region
+        while vec_index342 < len(vec_342):
+            var_344 = vec_342[vec_index342]
+            vec_index342 += 1
+            if var_344 in self.index_157:
+                tuple_343_1_index: int = 0
+                tuple_343_1_vec: List[int] = self.index_190[var_344]
+                while tuple_343_1_index < len(tuple_343_1_vec):
+                    tuple_343_1 = tuple_343_1_vec[tuple_343_1_index]
+                    tuple_343_1_index += 1
+                    var_345 = tuple_343_1
+                    # Program TransitionState Region
+                    tuple_345_344_5 = (var_345, var_344, self.var_5)
+                    prev_state = self.table_9[tuple_345_344_5]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_345_344_5] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_345_344_5[0], tuple_345_344_5[1])].append(tuple_345_344_5[2])
+                        # Program Parallel Region
+                        # Program Series Region
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_344_345 = (var_344, var_345)
+                        prev_state = self.table_27[tuple_344_345]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_344_345] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_344_345[0]].append(tuple_344_345[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_344)
+                        if not ret:
                             # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            var_502 = self._resolve_edgetype(var_502)
-                            tuple_501_505_502 = (var_501, var_505, var_502)
-                            prev_state = self.table_26[tuple_501_505_502]
+                            tuple_344_345 = (var_344, var_345)
+                            prev_state = self.table_27[tuple_344_345]
                             state = prev_state & 3
                             present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_501_505_502] = 2 | 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_344_345] = 1 | 4
                                 if not present_bit:
-                                    self.index_199[tuple_501_505_502[0]].append((tuple_501_505_502[1], tuple_501_505_502[2]))
-                                    self.index_1053[(tuple_501_505_502[0], tuple_501_505_502[1])].append(tuple_501_505_502[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_501)
-                            if not ret:
-                                # Program TransitionState Region
-                                var_502 = self._resolve_edgetype(var_502)
-                                tuple_501_505_502 = (var_501, var_505, var_502)
-                                prev_state = self.table_26[tuple_501_505_502]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_501_505_502] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_501_505_502[0]].append((tuple_501_505_502[1], tuple_501_505_502[2]))
-                                        self.index_1053[(tuple_501_505_502[0], tuple_501_505_502[1])].append(tuple_501_505_502[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_505, var_501)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_505_501 = (var_505, var_501)
-                                        prev_state = self.table_9[tuple_505_501]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_505_501] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_505_501[0]].append(tuple_505_501[1])
-                                                self.index_1079[tuple_505_501[1]].append(tuple_505_501[0])
-                                            # Program VectorAppend Region
-                                            vec_584.append(var_505)
-                            # Program VectorAppend Region
-                            vec_548.append(var_501)
-                            # Program VectorAppend Region
-                            vec_579.append(var_501)
-                            # Program TupleCompare Region
-                            if self.var_0 == var_502:
-                                # Program TransitionState Region
-                                tuple_501 = var_501
-                                prev_state = self.table_17[tuple_501]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_17[tuple_501] = 1 | 4
-                                    if not present_bit:
-                                        pass
-                                    # Program Parallel Region
-                                    # Program Series Region
-                                    # Program TableScan Region
-                                    scan_tuple_509: Tuple[int, int]
-                                    scan_index_509: int = 0
-                                    scan_tuple_509_vec: List[Tuple[int, int]] = self.index_199[var_501]
-                                    while scan_index_509 < len(scan_tuple_509_vec):
-                                        scan_tuple_509 = scan_tuple_509_vec[scan_index_509]
-                                        scan_index_509 += 1
-                                        vec_509.append(scan_tuple_509)
-                                    # Program VectorLoop Region
-                                    vec_index509 = 0
-                                    while vec_index509 < len(vec_509):
-                                        var_510, var_511 = vec_509[vec_index509]
-                                        vec_index509 += 1
-                                        # Program TransitionState Region
-                                        # Remove from negated view
-                                        var_511 = self._resolve_edgetype(var_511)
-                                        tuple_501_510_511 = (var_501, var_510, var_511)
-                                        prev_state = self.table_26[tuple_501_510_511]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 1:
-                                            self.table_26[tuple_501_510_511] = 0 | 4
-                                            # Program Call Region
-                                            ret = self.proc_203_(var_501, var_510, var_511)
-
+                                    self.index_116[tuple_344_345[0]].append(tuple_344_345[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_345, var_344)
+                                if not ret:
                                     # Program TransitionState Region
-                                    tuple_501_501 = (var_501, var_501)
-                                    prev_state = self.table_6[tuple_501_501]
+                                    tuple_345_344 = (var_345, var_344)
+                                    prev_state = self.table_52[tuple_345_344]
                                     state = prev_state & 3
                                     present_bit = prev_state & 4
                                     if state == 0 or state == 2:
-                                        self.table_6[tuple_501_501] = 1 | 4
+                                        self.table_52[tuple_345_344] = 1 | 4
                                         if not present_bit:
-                                            self.index_414[tuple_501_501[1]].append(tuple_501_501[0])
-                                            self.index_1029[tuple_501_501[0]].append(tuple_501_501[1])
+                                            self.index_291[tuple_345_344[0]].append(tuple_345_344[1])
+                                            self.index_778[tuple_345_344[1]].append(tuple_345_344[0])
                                         # Program VectorAppend Region
-                                        vec_462.append((var_501, var_501))
-                                    # Program VectorAppend Region
-                                    vec_579.append(var_501)
-                            # Program TupleCompare Region
-                            if self.var_2 == var_502:
+                                        vec_420.append(var_345)
                                 # Program TransitionState Region
-                                tuple_2_505_501 = (self.var_2, var_505, var_501)
-                                prev_state = self.table_56[tuple_2_505_501]
+                                tuple_345_344 = (var_345, var_344)
+                                prev_state = self.table_15[tuple_345_344]
                                 state = prev_state & 3
                                 present_bit = prev_state & 4
                                 if state == 0 or state == 2:
-                                    self.table_56[tuple_2_505_501] = 1 | 4
+                                    self.table_15[tuple_345_344] = 1 | 4
                                     if not present_bit:
-                                        self.index_385[tuple_2_505_501[1]].append((tuple_2_505_501[0], tuple_2_505_501[2]))
+                                        self.index_752[tuple_345_344[0]].append(tuple_345_344[1])
+                        # Program TransitionState Region
+                        tuple_345_344 = (var_345, var_344)
+                        prev_state = self.table_94[tuple_345_344]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_345_344] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_345_344[1]].append(tuple_345_344[0])
+                            # Program VectorAppend Region
+                            vec_416.append(var_344)
+                        # Program TransitionState Region
+                        tuple_344 = var_344
+                        prev_state = self.table_32[tuple_344]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_344] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_397.append(var_344)
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_5:
+                            # Program TransitionState Region
+                            tuple_344 = var_344
+                            prev_state = self.table_18[tuple_344]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_18[tuple_344] = 1 | 4
+                                if not present_bit:
+                                    pass
+                                # Program Parallel Region
+                                # Program VectorAppend Region
+                                vec_416.append(var_344)
+                                # Program Series Region
+                                # Program TableScan Region
+                                scan_tuple_349: int
+                                scan_index_349: int = 0
+                                scan_tuple_349_vec: List[int] = self.index_116[var_344]
+                                while scan_index_349 < len(scan_tuple_349_vec):
+                                    scan_tuple_349 = scan_tuple_349_vec[scan_index_349]
+                                    scan_index_349 += 1
+                                    vec_349.append(scan_tuple_349)
+                                # Program VectorLoop Region
+                                vec_index349 = 0
+                                while vec_index349 < len(vec_349):
+                                    var_350 = vec_349[vec_index349]
+                                    vec_index349 += 1
+                                    # Program TransitionState Region
+                                    # Remove from negated view
+                                    tuple_344_350 = (var_344, var_350)
+                                    prev_state = self.table_27[tuple_344_350]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 1:
+                                        self.table_27[tuple_344_350] = 0 | 4
+                                        # Program Parallel Region
+                                        # Program Call Region
+                                        ret = self.proc_119_(var_344, var_350)
+
+                                        # Program Call Region
+                                        ret = self.proc_123_(var_344, var_350)
+
+                                # Program TransitionState Region
+                                tuple_344_344 = (var_344, var_344)
+                                prev_state = self.table_6[tuple_344_344]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_344_344] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_344_344[1]].append(tuple_344_344[0])
+                                        self.index_756[tuple_344_344[0]].append(tuple_344_344[1])
                                     # Program VectorAppend Region
-                                    vec_558.append(var_505)
+                                    vec_332.append((var_344, var_344))
+                        # Program TupleCompare Region
+                        if self.var_2 == self.var_5:
+                            # Program TransitionState Region
+                            tuple_345_344 = (var_345, var_344)
+                            prev_state = self.table_40[tuple_345_344]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_40[tuple_345_344] = 1 | 4
+                                if not present_bit:
+                                    self.index_265[tuple_345_344[0]].append(tuple_345_344[1])
+                                # Program VectorAppend Region
+                                vec_404.append(var_345)
         # Program VectorClear Region
-        del vec_499[:]
-        vec_index499 = 0
+        del vec_342[:]
+        vec_index342 = 0
+        # Program VectorUnique Region
+        vec_353 = list(set(vec_353))
+        vec_index353 = 0
+        # Program TableJoin Region
+        while vec_index353 < len(vec_353):
+            var_355 = vec_353[vec_index353]
+            vec_index353 += 1
+            if var_355 in self.index_157:
+                tuple_354_1_index: int = 0
+                tuple_354_1_vec: List[int] = self.index_208[var_355]
+                while tuple_354_1_index < len(tuple_354_1_vec):
+                    tuple_354_1 = tuple_354_1_vec[tuple_354_1_index]
+                    tuple_354_1_index += 1
+                    var_356 = tuple_354_1
+                    # Program TransitionState Region
+                    tuple_356_355_3 = (var_356, var_355, self.var_3)
+                    prev_state = self.table_9[tuple_356_355_3]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_356_355_3] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_356_355_3[0], tuple_356_355_3[1])].append(tuple_356_355_3[2])
+                        # Program Parallel Region
+                        # Program Series Region
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_355_356 = (var_355, var_356)
+                        prev_state = self.table_27[tuple_355_356]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_355_356] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_355_356[0]].append(tuple_355_356[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_355)
+                        if not ret:
+                            # Program TransitionState Region
+                            tuple_355_356 = (var_355, var_356)
+                            prev_state = self.table_27[tuple_355_356]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_355_356] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_355_356[0]].append(tuple_355_356[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_356, var_355)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_356_355 = (var_356, var_355)
+                                    prev_state = self.table_52[tuple_356_355]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_356_355] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_356_355[0]].append(tuple_356_355[1])
+                                            self.index_778[tuple_356_355[1]].append(tuple_356_355[0])
+                                        # Program VectorAppend Region
+                                        vec_420.append(var_356)
+                                # Program TransitionState Region
+                                tuple_356_355 = (var_356, var_355)
+                                prev_state = self.table_15[tuple_356_355]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_356_355] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_356_355[0]].append(tuple_356_355[1])
+                        # Program TransitionState Region
+                        tuple_356_355 = (var_356, var_355)
+                        prev_state = self.table_94[tuple_356_355]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_356_355] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_356_355[1]].append(tuple_356_355[0])
+                            # Program VectorAppend Region
+                            vec_416.append(var_355)
+                        # Program TransitionState Region
+                        tuple_355 = var_355
+                        prev_state = self.table_32[tuple_355]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_355] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_397.append(var_355)
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_3:
+                            # Program TransitionState Region
+                            tuple_355 = var_355
+                            prev_state = self.table_18[tuple_355]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_18[tuple_355] = 1 | 4
+                                if not present_bit:
+                                    pass
+                                # Program Parallel Region
+                                # Program VectorAppend Region
+                                vec_416.append(var_355)
+                                # Program Series Region
+                                # Program TableScan Region
+                                scan_tuple_360: int
+                                scan_index_360: int = 0
+                                scan_tuple_360_vec: List[int] = self.index_116[var_355]
+                                while scan_index_360 < len(scan_tuple_360_vec):
+                                    scan_tuple_360 = scan_tuple_360_vec[scan_index_360]
+                                    scan_index_360 += 1
+                                    vec_360.append(scan_tuple_360)
+                                # Program VectorLoop Region
+                                vec_index360 = 0
+                                while vec_index360 < len(vec_360):
+                                    var_361 = vec_360[vec_index360]
+                                    vec_index360 += 1
+                                    # Program TransitionState Region
+                                    # Remove from negated view
+                                    tuple_355_361 = (var_355, var_361)
+                                    prev_state = self.table_27[tuple_355_361]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 1:
+                                        self.table_27[tuple_355_361] = 0 | 4
+                                        # Program Parallel Region
+                                        # Program Call Region
+                                        ret = self.proc_119_(var_355, var_361)
+
+                                        # Program Call Region
+                                        ret = self.proc_123_(var_355, var_361)
+
+                                # Program TransitionState Region
+                                tuple_355_355 = (var_355, var_355)
+                                prev_state = self.table_6[tuple_355_355]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_355_355] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_355_355[1]].append(tuple_355_355[0])
+                                        self.index_756[tuple_355_355[0]].append(tuple_355_355[1])
+                                    # Program VectorAppend Region
+                                    vec_332.append((var_355, var_355))
+                        # Program TupleCompare Region
+                        if self.var_2 == self.var_3:
+                            # Program TransitionState Region
+                            tuple_356_355 = (var_356, var_355)
+                            prev_state = self.table_40[tuple_356_355]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_40[tuple_356_355] = 1 | 4
+                                if not present_bit:
+                                    self.index_265[tuple_356_355[0]].append(tuple_356_355[1])
+                                # Program VectorAppend Region
+                                vec_404.append(var_356)
+        # Program VectorClear Region
+        del vec_353[:]
+        vec_index353 = 0
+        # Program VectorUnique Region
+        vec_364 = list(set(vec_364))
+        vec_index364 = 0
+        # Program TableJoin Region
+        while vec_index364 < len(vec_364):
+            var_366 = vec_364[vec_index364]
+            vec_index364 += 1
+            if var_366 in self.index_157:
+                tuple_365_1_index: int = 0
+                tuple_365_1_vec: List[int] = self.index_220[var_366]
+                while tuple_365_1_index < len(tuple_365_1_vec):
+                    tuple_365_1 = tuple_365_1_vec[tuple_365_1_index]
+                    tuple_365_1_index += 1
+                    var_367 = tuple_365_1
+                    # Program TransitionState Region
+                    tuple_367_366_0 = (var_367, var_366, self.var_0)
+                    prev_state = self.table_9[tuple_367_366_0]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_367_366_0] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_367_366_0[0], tuple_367_366_0[1])].append(tuple_367_366_0[2])
+                        # Program Parallel Region
+                        # Program Series Region
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_366_367 = (var_366, var_367)
+                        prev_state = self.table_27[tuple_366_367]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_366_367] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_366_367[0]].append(tuple_366_367[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_366)
+                        if not ret:
+                            # Program TransitionState Region
+                            tuple_366_367 = (var_366, var_367)
+                            prev_state = self.table_27[tuple_366_367]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_366_367] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_366_367[0]].append(tuple_366_367[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_367, var_366)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_367_366 = (var_367, var_366)
+                                    prev_state = self.table_52[tuple_367_366]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_367_366] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_367_366[0]].append(tuple_367_366[1])
+                                            self.index_778[tuple_367_366[1]].append(tuple_367_366[0])
+                                        # Program VectorAppend Region
+                                        vec_420.append(var_367)
+                                # Program TransitionState Region
+                                tuple_367_366 = (var_367, var_366)
+                                prev_state = self.table_15[tuple_367_366]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_367_366] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_367_366[0]].append(tuple_367_366[1])
+                        # Program TransitionState Region
+                        tuple_367_366 = (var_367, var_366)
+                        prev_state = self.table_94[tuple_367_366]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_367_366] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_367_366[1]].append(tuple_367_366[0])
+                            # Program VectorAppend Region
+                            vec_416.append(var_366)
+                        # Program TransitionState Region
+                        tuple_366 = var_366
+                        prev_state = self.table_32[tuple_366]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_366] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_397.append(var_366)
+                        # Program TransitionState Region
+                        tuple_366 = var_366
+                        prev_state = self.table_18[tuple_366]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_18[tuple_366] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program Parallel Region
+                            # Program VectorAppend Region
+                            vec_416.append(var_366)
+                            # Program Series Region
+                            # Program TableScan Region
+                            scan_tuple_371: int
+                            scan_index_371: int = 0
+                            scan_tuple_371_vec: List[int] = self.index_116[var_366]
+                            while scan_index_371 < len(scan_tuple_371_vec):
+                                scan_tuple_371 = scan_tuple_371_vec[scan_index_371]
+                                scan_index_371 += 1
+                                vec_371.append(scan_tuple_371)
+                            # Program VectorLoop Region
+                            vec_index371 = 0
+                            while vec_index371 < len(vec_371):
+                                var_372 = vec_371[vec_index371]
+                                vec_index371 += 1
+                                # Program TransitionState Region
+                                # Remove from negated view
+                                tuple_366_372 = (var_366, var_372)
+                                prev_state = self.table_27[tuple_366_372]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 1:
+                                    self.table_27[tuple_366_372] = 0 | 4
+                                    # Program Parallel Region
+                                    # Program Call Region
+                                    ret = self.proc_119_(var_366, var_372)
+
+                                    # Program Call Region
+                                    ret = self.proc_123_(var_366, var_372)
+
+                            # Program TransitionState Region
+                            tuple_366_366 = (var_366, var_366)
+                            prev_state = self.table_6[tuple_366_366]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_6[tuple_366_366] = 1 | 4
+                                if not present_bit:
+                                    self.index_290[tuple_366_366[1]].append(tuple_366_366[0])
+                                    self.index_756[tuple_366_366[0]].append(tuple_366_366[1])
+                                # Program VectorAppend Region
+                                vec_332.append((var_366, var_366))
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_2:
+                            # Program TransitionState Region
+                            tuple_367_366 = (var_367, var_366)
+                            prev_state = self.table_40[tuple_367_366]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_40[tuple_367_366] = 1 | 4
+                                if not present_bit:
+                                    self.index_265[tuple_367_366[0]].append(tuple_367_366[1])
+                                # Program VectorAppend Region
+                                vec_404.append(var_367)
+        # Program VectorClear Region
+        del vec_364[:]
+        vec_index364 = 0
+        # Program VectorUnique Region
+        vec_375 = list(set(vec_375))
+        vec_index375 = 0
+        # Program TableJoin Region
+        while vec_index375 < len(vec_375):
+            var_377 = vec_375[vec_index375]
+            vec_index375 += 1
+            if var_377 in self.index_157:
+                tuple_376_1_index: int = 0
+                tuple_376_1_vec: List[int] = self.index_232[var_377]
+                while tuple_376_1_index < len(tuple_376_1_vec):
+                    tuple_376_1 = tuple_376_1_vec[tuple_376_1_index]
+                    tuple_376_1_index += 1
+                    var_378 = tuple_376_1
+                    # Program TransitionState Region
+                    tuple_378_377_0 = (var_378, var_377, self.var_0)
+                    prev_state = self.table_9[tuple_378_377_0]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_378_377_0] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_378_377_0[0], tuple_378_377_0[1])].append(tuple_378_377_0[2])
+                        # Program Parallel Region
+                        # Program Series Region
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_377_378 = (var_377, var_378)
+                        prev_state = self.table_27[tuple_377_378]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_377_378] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_377_378[0]].append(tuple_377_378[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_377)
+                        if not ret:
+                            # Program TransitionState Region
+                            tuple_377_378 = (var_377, var_378)
+                            prev_state = self.table_27[tuple_377_378]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_377_378] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_377_378[0]].append(tuple_377_378[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_378, var_377)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_378_377 = (var_378, var_377)
+                                    prev_state = self.table_52[tuple_378_377]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_378_377] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_378_377[0]].append(tuple_378_377[1])
+                                            self.index_778[tuple_378_377[1]].append(tuple_378_377[0])
+                                        # Program VectorAppend Region
+                                        vec_420.append(var_378)
+                                # Program TransitionState Region
+                                tuple_378_377 = (var_378, var_377)
+                                prev_state = self.table_15[tuple_378_377]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_378_377] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_378_377[0]].append(tuple_378_377[1])
+                        # Program TransitionState Region
+                        tuple_378_377 = (var_378, var_377)
+                        prev_state = self.table_94[tuple_378_377]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_378_377] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_378_377[1]].append(tuple_378_377[0])
+                            # Program VectorAppend Region
+                            vec_416.append(var_377)
+                        # Program TransitionState Region
+                        tuple_377 = var_377
+                        prev_state = self.table_32[tuple_377]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_377] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_397.append(var_377)
+                        # Program TransitionState Region
+                        tuple_377 = var_377
+                        prev_state = self.table_18[tuple_377]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_18[tuple_377] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program Parallel Region
+                            # Program VectorAppend Region
+                            vec_416.append(var_377)
+                            # Program Series Region
+                            # Program TableScan Region
+                            scan_tuple_382: int
+                            scan_index_382: int = 0
+                            scan_tuple_382_vec: List[int] = self.index_116[var_377]
+                            while scan_index_382 < len(scan_tuple_382_vec):
+                                scan_tuple_382 = scan_tuple_382_vec[scan_index_382]
+                                scan_index_382 += 1
+                                vec_382.append(scan_tuple_382)
+                            # Program VectorLoop Region
+                            vec_index382 = 0
+                            while vec_index382 < len(vec_382):
+                                var_383 = vec_382[vec_index382]
+                                vec_index382 += 1
+                                # Program TransitionState Region
+                                # Remove from negated view
+                                tuple_377_383 = (var_377, var_383)
+                                prev_state = self.table_27[tuple_377_383]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 1:
+                                    self.table_27[tuple_377_383] = 0 | 4
+                                    # Program Parallel Region
+                                    # Program Call Region
+                                    ret = self.proc_119_(var_377, var_383)
+
+                                    # Program Call Region
+                                    ret = self.proc_123_(var_377, var_383)
+
+                            # Program TransitionState Region
+                            tuple_377_377 = (var_377, var_377)
+                            prev_state = self.table_6[tuple_377_377]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_6[tuple_377_377] = 1 | 4
+                                if not present_bit:
+                                    self.index_290[tuple_377_377[1]].append(tuple_377_377[0])
+                                    self.index_756[tuple_377_377[0]].append(tuple_377_377[1])
+                                # Program VectorAppend Region
+                                vec_332.append((var_377, var_377))
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_2:
+                            # Program TransitionState Region
+                            tuple_378_377 = (var_378, var_377)
+                            prev_state = self.table_40[tuple_378_377]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_40[tuple_378_377] = 1 | 4
+                                if not present_bit:
+                                    self.index_265[tuple_378_377[0]].append(tuple_378_377[1])
+                                # Program VectorAppend Region
+                                vec_404.append(var_378)
+        # Program VectorClear Region
+        del vec_375[:]
+        vec_index375 = 0
+        # Program VectorUnique Region
+        vec_386 = list(set(vec_386))
+        vec_index386 = 0
+        # Program TableJoin Region
+        while vec_index386 < len(vec_386):
+            var_388 = vec_386[vec_index386]
+            vec_index386 += 1
+            if var_388 in self.index_157:
+                tuple_387_1_index: int = 0
+                tuple_387_1_vec: List[int] = self.index_244[var_388]
+                while tuple_387_1_index < len(tuple_387_1_vec):
+                    tuple_387_1 = tuple_387_1_vec[tuple_387_1_index]
+                    tuple_387_1_index += 1
+                    var_389 = tuple_387_1
+                    # Program TransitionState Region
+                    tuple_389_388_2 = (var_389, var_388, self.var_2)
+                    prev_state = self.table_9[tuple_389_388_2]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_389_388_2] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_389_388_2[0], tuple_389_388_2[1])].append(tuple_389_388_2[2])
+                        # Program Parallel Region
+                        # Program Series Region
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_388_389 = (var_388, var_389)
+                        prev_state = self.table_27[tuple_388_389]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_388_389] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_388_389[0]].append(tuple_388_389[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_388)
+                        if not ret:
+                            # Program TransitionState Region
+                            tuple_388_389 = (var_388, var_389)
+                            prev_state = self.table_27[tuple_388_389]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_388_389] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_388_389[0]].append(tuple_388_389[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_389, var_388)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_389_388 = (var_389, var_388)
+                                    prev_state = self.table_52[tuple_389_388]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_389_388] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_389_388[0]].append(tuple_389_388[1])
+                                            self.index_778[tuple_389_388[1]].append(tuple_389_388[0])
+                                        # Program VectorAppend Region
+                                        vec_420.append(var_389)
+                                # Program TransitionState Region
+                                tuple_389_388 = (var_389, var_388)
+                                prev_state = self.table_15[tuple_389_388]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_389_388] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_389_388[0]].append(tuple_389_388[1])
+                        # Program TransitionState Region
+                        tuple_389_388 = (var_389, var_388)
+                        prev_state = self.table_94[tuple_389_388]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_389_388] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_389_388[1]].append(tuple_389_388[0])
+                            # Program VectorAppend Region
+                            vec_416.append(var_388)
+                        # Program TransitionState Region
+                        tuple_388 = var_388
+                        prev_state = self.table_32[tuple_388]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_388] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_397.append(var_388)
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_2:
+                            # Program TransitionState Region
+                            tuple_388 = var_388
+                            prev_state = self.table_18[tuple_388]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_18[tuple_388] = 1 | 4
+                                if not present_bit:
+                                    pass
+                                # Program Parallel Region
+                                # Program VectorAppend Region
+                                vec_416.append(var_388)
+                                # Program Series Region
+                                # Program TableScan Region
+                                scan_tuple_393: int
+                                scan_index_393: int = 0
+                                scan_tuple_393_vec: List[int] = self.index_116[var_388]
+                                while scan_index_393 < len(scan_tuple_393_vec):
+                                    scan_tuple_393 = scan_tuple_393_vec[scan_index_393]
+                                    scan_index_393 += 1
+                                    vec_393.append(scan_tuple_393)
+                                # Program VectorLoop Region
+                                vec_index393 = 0
+                                while vec_index393 < len(vec_393):
+                                    var_394 = vec_393[vec_index393]
+                                    vec_index393 += 1
+                                    # Program TransitionState Region
+                                    # Remove from negated view
+                                    tuple_388_394 = (var_388, var_394)
+                                    prev_state = self.table_27[tuple_388_394]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 1:
+                                        self.table_27[tuple_388_394] = 0 | 4
+                                        # Program Parallel Region
+                                        # Program Call Region
+                                        ret = self.proc_119_(var_388, var_394)
+
+                                        # Program Call Region
+                                        ret = self.proc_123_(var_388, var_394)
+
+                                # Program TransitionState Region
+                                tuple_388_388 = (var_388, var_388)
+                                prev_state = self.table_6[tuple_388_388]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_388_388] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_388_388[1]].append(tuple_388_388[0])
+                                        self.index_756[tuple_388_388[0]].append(tuple_388_388[1])
+                                    # Program VectorAppend Region
+                                    vec_332.append((var_388, var_388))
+                        # Program TransitionState Region
+                        tuple_389_388 = (var_389, var_388)
+                        prev_state = self.table_40[tuple_389_388]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_40[tuple_389_388] = 1 | 4
+                            if not present_bit:
+                                self.index_265[tuple_389_388[0]].append(tuple_389_388[1])
+                            # Program VectorAppend Region
+                            vec_404.append(var_389)
+        # Program VectorClear Region
+        del vec_386[:]
+        vec_index386 = 0
+        # Program VectorUnique Region
+        vec_397 = list(set(vec_397))
+        vec_index397 = 0
+        # Program TableJoin Region
+        while vec_index397 < len(vec_397):
+            var_399 = vec_397[vec_index397]
+            vec_index397 += 1
+            if var_399 in self.index_256:
+                if var_399 in self.index_257:
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_399 = var_399
+                    prev_state = self.table_18[tuple_399]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_18[tuple_399] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_416.append(var_399)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_400: int
+                        scan_index_400: int = 0
+                        scan_tuple_400_vec: List[int] = self.index_116[var_399]
+                        while scan_index_400 < len(scan_tuple_400_vec):
+                            scan_tuple_400 = scan_tuple_400_vec[scan_index_400]
+                            scan_index_400 += 1
+                            vec_400.append(scan_tuple_400)
+                        # Program VectorLoop Region
+                        vec_index400 = 0
+                        while vec_index400 < len(vec_400):
+                            var_401 = vec_400[vec_index400]
+                            vec_index400 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_399_401 = (var_399, var_401)
+                            prev_state = self.table_27[tuple_399_401]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_399_401] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_399, var_401)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_399, var_401)
+
+                        # Program TransitionState Region
+                        tuple_399_399 = (var_399, var_399)
+                        prev_state = self.table_6[tuple_399_399]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_6[tuple_399_399] = 1 | 4
+                            if not present_bit:
+                                self.index_290[tuple_399_399[1]].append(tuple_399_399[0])
+                                self.index_756[tuple_399_399[0]].append(tuple_399_399[1])
+                            # Program VectorAppend Region
+                            vec_332.append((var_399, var_399))
+        # Program VectorClear Region
+        del vec_397[:]
+        vec_index397 = 0
+        # Program VectorUnique Region
+        vec_404 = list(set(vec_404))
+        vec_index404 = 0
+        # Program TableJoin Region
+        while vec_index404 < len(vec_404):
+            var_406 = vec_404[vec_index404]
+            vec_index404 += 1
+            if var_406 in self.index_151:
+                tuple_405_1_index: int = 0
+                tuple_405_1_vec: List[int] = self.index_265[var_406]
+                while tuple_405_1_index < len(tuple_405_1_vec):
+                    tuple_405_1 = tuple_405_1_vec[tuple_405_1_index]
+                    tuple_405_1_index += 1
+                    var_407 = tuple_405_1
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_406_407 = (var_406, var_407)
+                    prev_state = self.table_43[tuple_406_407]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_43[tuple_406_407] = 1 | 4
+                        if not present_bit:
+                            self.index_270[tuple_406_407[1]].append(tuple_406_407[0])
+                        # Program VectorAppend Region
+                        vec_408.append(var_407)
+        # Program VectorClear Region
+        del vec_404[:]
+        vec_index404 = 0
+        # Program VectorUnique Region
+        vec_408 = list(set(vec_408))
+        vec_index408 = 0
+        # Program TableJoin Region
+        while vec_index408 < len(vec_408):
+            var_410 = vec_408[vec_index408]
+            vec_index408 += 1
+            if var_410 in self.index_256:
+                tuple_409_1_index: int = 0
+                tuple_409_1_vec: List[int] = self.index_270[var_410]
+                while tuple_409_1_index < len(tuple_409_1_vec):
+                    tuple_409_1 = tuple_409_1_vec[tuple_409_1_index]
+                    tuple_409_1_index += 1
+                    var_411 = tuple_409_1
+                    # Program TransitionState Region
+                    tuple_411 = var_411
+                    prev_state = self.table_18[tuple_411]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_18[tuple_411] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_416.append(var_411)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_412: int
+                        scan_index_412: int = 0
+                        scan_tuple_412_vec: List[int] = self.index_116[var_411]
+                        while scan_index_412 < len(scan_tuple_412_vec):
+                            scan_tuple_412 = scan_tuple_412_vec[scan_index_412]
+                            scan_index_412 += 1
+                            vec_412.append(scan_tuple_412)
+                        # Program VectorLoop Region
+                        vec_index412 = 0
+                        while vec_index412 < len(vec_412):
+                            var_413 = vec_412[vec_index412]
+                            vec_index412 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_411_413 = (var_411, var_413)
+                            prev_state = self.table_27[tuple_411_413]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_411_413] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_411, var_413)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_411, var_413)
+
+                        # Program TransitionState Region
+                        tuple_411_411 = (var_411, var_411)
+                        prev_state = self.table_6[tuple_411_411]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_6[tuple_411_411] = 1 | 4
+                            if not present_bit:
+                                self.index_290[tuple_411_411[1]].append(tuple_411_411[0])
+                                self.index_756[tuple_411_411[0]].append(tuple_411_411[1])
+                            # Program VectorAppend Region
+                            vec_332.append((var_411, var_411))
+        # Program VectorClear Region
+        del vec_408[:]
+        vec_index408 = 0
+        # Program VectorUnique Region
+        vec_416 = list(set(vec_416))
+        vec_index416 = 0
+        # Program TableJoin Region
+        while vec_index416 < len(vec_416):
+            var_418 = vec_416[vec_index416]
+            vec_index416 += 1
+            tuple_417_0_index: int = 0
+            tuple_417_0_vec: List[int] = self.index_279[var_418]
+            while tuple_417_0_index < len(tuple_417_0_vec):
+                tuple_417_0 = tuple_417_0_vec[tuple_417_0_index]
+                tuple_417_0_index += 1
+                var_419 = tuple_417_0
+                if var_418 in self.index_280:
+                    # Program Parallel Region
+                    # Program TransitionState Region
+                    tuple_419_418 = (var_419, var_418)
+                    prev_state = self.table_97[tuple_419_418]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_97[tuple_419_418] = 1 | 4
+                        if not present_bit:
+                            self.index_285[tuple_419_418[1]].append(tuple_419_418[0])
+                        # Program VectorAppend Region
+                        vec_428.append(var_418)
+                    # Program TransitionState Region
+                    tuple_419_418 = (var_419, var_418)
+                    prev_state = self.table_22[tuple_419_418]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_22[tuple_419_418] = 1 | 4
+                        if not present_bit:
+                            self.index_760[tuple_419_418[0]].append(tuple_419_418[1])
+        # Program VectorClear Region
+        del vec_416[:]
+        vec_index416 = 0
+        # Program VectorUnique Region
+        vec_420 = list(set(vec_420))
+        vec_index420 = 0
+        # Program TableJoin Region
+        while vec_index420 < len(vec_420):
+            var_422 = vec_420[vec_index420]
+            vec_index420 += 1
+            tuple_421_0_index: int = 0
+            tuple_421_0_vec: List[int] = self.index_290[var_422]
+            while tuple_421_0_index < len(tuple_421_0_vec):
+                tuple_421_0 = tuple_421_0_vec[tuple_421_0_index]
+                tuple_421_0_index += 1
+                var_423 = tuple_421_0
+                tuple_421_1_index: int = 0
+                tuple_421_1_vec: List[int] = self.index_291[var_422]
+                while tuple_421_1_index < len(tuple_421_1_vec):
+                    tuple_421_1 = tuple_421_1_vec[tuple_421_1_index]
+                    tuple_421_1_index += 1
+                    var_424 = tuple_421_1
+                    # Program Call Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    ret = self.proc_294_(var_423, var_422)
+                    if ret:
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        ret = self.proc_164_(var_422, var_424)
+                        if ret:
+                            # Program Call Region
+                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            ret = self.proc_299_(var_423, var_424)
+                            if not ret:
+                                # Program TransitionState Region
+                                tuple_423_424 = (var_423, var_424)
+                                prev_state = self.table_6[tuple_423_424]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_423_424] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_423_424[1]].append(tuple_423_424[0])
+                                        self.index_756[tuple_423_424[0]].append(tuple_423_424[1])
+                                    # Program VectorAppend Region
+                                    vec_332.append((var_423, var_424))
+        # Program VectorClear Region
+        del vec_420[:]
+        vec_index420 = 0
+        # Program VectorUnique Region
+        vec_428 = list(set(vec_428))
+        vec_index428 = 0
+        # Program TableJoin Region
+        while vec_index428 < len(vec_428):
+            var_430 = vec_428[vec_index428]
+            vec_index428 += 1
+            tuple_429_0_index: int = 0
+            tuple_429_0_vec: List[int] = self.index_285[var_430]
+            while tuple_429_0_index < len(tuple_429_0_vec):
+                tuple_429_0 = tuple_429_0_vec[tuple_429_0_index]
+                tuple_429_0_index += 1
+                var_431 = tuple_429_0
+                if var_430 in self.index_256:
+                    # Program TransitionState Region
+                    tuple_431 = var_431
+                    prev_state = self.table_13[tuple_431]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_13[tuple_431] = 1 | 4
+                        if not present_bit:
+                            pass
+        # Program VectorClear Region
+        del vec_428[:]
+        vec_index428 = 0
+        # Induction Fixpoint Loop Region
+        while len(vec_332):
+            # Program Call Region
+            param_334_0 = [vec_332]
+            ret = self.proc_127_(param_334_0)
+            vec_332 = param_334_0[0]
+
+        vec_index332 = 0
+        # Induction Output Region
+        # Program VectorClear Region
+        del vec_332[:]
+        vec_index332 = 0
+        # Program Return Region
+        return False
+        return False
+
+    def entrypoint_1(self, vec_433: List[int]) -> bool:
+        state: int = 2
+        prev_state: int = 2
+        present_bit: int = 0
+        ret: bool = False
+        found: bool = False
+        vec_index433: int = 0
+        vec_435: List[int] = list()
+        vec_index435: int = 0
+        vec_438: List[int] = list()
+        vec_index438: int = 0
+        vec_442: List[Tuple[int, int]] = list()
+        vec_index442: int = 0
+        vec_445: List[int] = list()
+        vec_index445: int = 0
+        vec_449: List[int] = list()
+        vec_index449: int = 0
+        # Program Series Region
+        # Program Induction Init Region
+        # Program Series Region
+        # Program VectorLoop Region
+        vec_index433 = 0
+        while vec_index433 < len(vec_433):
+            var_434 = vec_433[vec_index433]
+            vec_index433 += 1
+            # Program TransitionState Region
+            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            tuple_434 = var_434
+            prev_state = self.table_34[tuple_434]
+            state = prev_state & 3
+            present_bit = prev_state & 4
+            if state == 0 or state == 2:
+                self.table_34[tuple_434] = 1 | 4
+                if not present_bit:
+                    pass
+                # Program VectorAppend Region
+                vec_435.append(var_434)
+        # Program VectorUnique Region
+        vec_435 = list(set(vec_435))
+        vec_index435 = 0
+        # Program TableJoin Region
+        while vec_index435 < len(vec_435):
+            var_437 = vec_435[vec_index435]
+            vec_index435 += 1
+            if var_437 in self.index_175:
+                if var_437 in self.index_157:
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_437 = var_437
+                    prev_state = self.table_18[tuple_437]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_18[tuple_437] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_445.append(var_437)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_438: int
+                        scan_index_438: int = 0
+                        scan_tuple_438_vec: List[int] = self.index_116[var_437]
+                        while scan_index_438 < len(scan_tuple_438_vec):
+                            scan_tuple_438 = scan_tuple_438_vec[scan_index_438]
+                            scan_index_438 += 1
+                            vec_438.append(scan_tuple_438)
+                        # Program VectorLoop Region
+                        vec_index438 = 0
+                        while vec_index438 < len(vec_438):
+                            var_439 = vec_438[vec_index438]
+                            vec_index438 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_437_439 = (var_437, var_439)
+                            prev_state = self.table_27[tuple_437_439]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_437_439] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_437, var_439)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_437, var_439)
+
+                        # Program TransitionState Region
+                        tuple_437_437 = (var_437, var_437)
+                        prev_state = self.table_6[tuple_437_437]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_6[tuple_437_437] = 1 | 4
+                            if not present_bit:
+                                self.index_290[tuple_437_437[1]].append(tuple_437_437[0])
+                                self.index_756[tuple_437_437[0]].append(tuple_437_437[1])
+                            # Program VectorAppend Region
+                            vec_442.append((var_437, var_437))
+        # Program VectorClear Region
+        del vec_435[:]
+        vec_index435 = 0
+        # Program VectorUnique Region
+        vec_445 = list(set(vec_445))
+        vec_index445 = 0
+        # Program TableJoin Region
+        while vec_index445 < len(vec_445):
+            var_447 = vec_445[vec_index445]
+            vec_index445 += 1
+            tuple_446_0_index: int = 0
+            tuple_446_0_vec: List[int] = self.index_279[var_447]
+            while tuple_446_0_index < len(tuple_446_0_vec):
+                tuple_446_0 = tuple_446_0_vec[tuple_446_0_index]
+                tuple_446_0_index += 1
+                var_448 = tuple_446_0
+                if var_447 in self.index_280:
+                    # Program Parallel Region
+                    # Program TransitionState Region
+                    tuple_448_447 = (var_448, var_447)
+                    prev_state = self.table_97[tuple_448_447]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_97[tuple_448_447] = 1 | 4
+                        if not present_bit:
+                            self.index_285[tuple_448_447[1]].append(tuple_448_447[0])
+                        # Program VectorAppend Region
+                        vec_449.append(var_447)
+                    # Program TransitionState Region
+                    tuple_448_447 = (var_448, var_447)
+                    prev_state = self.table_22[tuple_448_447]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_22[tuple_448_447] = 1 | 4
+                        if not present_bit:
+                            self.index_760[tuple_448_447[0]].append(tuple_448_447[1])
+        # Program VectorClear Region
+        del vec_445[:]
+        vec_index445 = 0
+        # Program VectorUnique Region
+        vec_449 = list(set(vec_449))
+        vec_index449 = 0
+        # Program TableJoin Region
+        while vec_index449 < len(vec_449):
+            var_451 = vec_449[vec_index449]
+            vec_index449 += 1
+            tuple_450_0_index: int = 0
+            tuple_450_0_vec: List[int] = self.index_285[var_451]
+            while tuple_450_0_index < len(tuple_450_0_vec):
+                tuple_450_0 = tuple_450_0_vec[tuple_450_0_index]
+                tuple_450_0_index += 1
+                var_452 = tuple_450_0
+                if var_451 in self.index_256:
+                    # Program TransitionState Region
+                    tuple_452 = var_452
+                    prev_state = self.table_13[tuple_452]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_13[tuple_452] = 1 | 4
+                        if not present_bit:
+                            pass
+        # Program VectorClear Region
+        del vec_449[:]
+        vec_index449 = 0
+        # Induction Fixpoint Loop Region
+        while len(vec_442):
+            # Program Call Region
+            param_444_0 = [vec_442]
+            ret = self.proc_127_(param_444_0)
+            vec_442 = param_444_0[0]
+
+        vec_index442 = 0
+        # Induction Output Region
+        # Program VectorClear Region
+        del vec_442[:]
+        vec_index442 = 0
+        # Program Return Region
+        return False
+        return False
+
+    def constructor_function_1(self, vec_454: List[int]) -> bool:
+        state: int = 2
+        prev_state: int = 2
+        present_bit: int = 0
+        ret: bool = False
+        found: bool = False
+        vec_index454: int = 0
+        vec_456: List[int] = list()
+        vec_index456: int = 0
+        vec_459: List[int] = list()
+        vec_index459: int = 0
+        vec_463: List[Tuple[int, int]] = list()
+        vec_index463: int = 0
+        vec_466: List[int] = list()
+        vec_index466: int = 0
+        vec_470: List[int] = list()
+        vec_index470: int = 0
+        # Program Series Region
+        # Program Induction Init Region
+        # Program Series Region
+        # Program VectorLoop Region
+        vec_index454 = 0
+        while vec_index454 < len(vec_454):
+            var_455 = vec_454[vec_index454]
+            vec_index454 += 1
+            # Program TransitionState Region
+            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            tuple_455 = var_455
+            prev_state = self.table_46[tuple_455]
+            state = prev_state & 3
+            present_bit = prev_state & 4
+            if state == 0 or state == 2:
+                self.table_46[tuple_455] = 1 | 4
+                if not present_bit:
+                    pass
+                # Program VectorAppend Region
+                vec_456.append(var_455)
+        # Program VectorUnique Region
+        vec_456 = list(set(vec_456))
+        vec_index456 = 0
+        # Program TableJoin Region
+        while vec_index456 < len(vec_456):
+            var_458 = vec_456[vec_index456]
+            vec_index456 += 1
+            if var_458 in self.index_137:
+                if var_458 in self.index_115:
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_458 = var_458
+                    prev_state = self.table_18[tuple_458]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_18[tuple_458] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_466.append(var_458)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_459: int
+                        scan_index_459: int = 0
+                        scan_tuple_459_vec: List[int] = self.index_116[var_458]
+                        while scan_index_459 < len(scan_tuple_459_vec):
+                            scan_tuple_459 = scan_tuple_459_vec[scan_index_459]
+                            scan_index_459 += 1
+                            vec_459.append(scan_tuple_459)
+                        # Program VectorLoop Region
+                        vec_index459 = 0
+                        while vec_index459 < len(vec_459):
+                            var_460 = vec_459[vec_index459]
+                            vec_index459 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_458_460 = (var_458, var_460)
+                            prev_state = self.table_27[tuple_458_460]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_458_460] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_458, var_460)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_458, var_460)
+
+                        # Program TransitionState Region
+                        tuple_458_458 = (var_458, var_458)
+                        prev_state = self.table_6[tuple_458_458]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_6[tuple_458_458] = 1 | 4
+                            if not present_bit:
+                                self.index_290[tuple_458_458[1]].append(tuple_458_458[0])
+                                self.index_756[tuple_458_458[0]].append(tuple_458_458[1])
+                            # Program VectorAppend Region
+                            vec_463.append((var_458, var_458))
+        # Program VectorClear Region
+        del vec_456[:]
+        vec_index456 = 0
+        # Program VectorUnique Region
+        vec_466 = list(set(vec_466))
+        vec_index466 = 0
+        # Program TableJoin Region
+        while vec_index466 < len(vec_466):
+            var_468 = vec_466[vec_index466]
+            vec_index466 += 1
+            tuple_467_0_index: int = 0
+            tuple_467_0_vec: List[int] = self.index_279[var_468]
+            while tuple_467_0_index < len(tuple_467_0_vec):
+                tuple_467_0 = tuple_467_0_vec[tuple_467_0_index]
+                tuple_467_0_index += 1
+                var_469 = tuple_467_0
+                if var_468 in self.index_280:
+                    # Program Parallel Region
+                    # Program TransitionState Region
+                    tuple_469_468 = (var_469, var_468)
+                    prev_state = self.table_97[tuple_469_468]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_97[tuple_469_468] = 1 | 4
+                        if not present_bit:
+                            self.index_285[tuple_469_468[1]].append(tuple_469_468[0])
+                        # Program VectorAppend Region
+                        vec_470.append(var_468)
+                    # Program TransitionState Region
+                    tuple_469_468 = (var_469, var_468)
+                    prev_state = self.table_22[tuple_469_468]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_22[tuple_469_468] = 1 | 4
+                        if not present_bit:
+                            self.index_760[tuple_469_468[0]].append(tuple_469_468[1])
+        # Program VectorClear Region
+        del vec_466[:]
+        vec_index466 = 0
+        # Program VectorUnique Region
+        vec_470 = list(set(vec_470))
+        vec_index470 = 0
+        # Program TableJoin Region
+        while vec_index470 < len(vec_470):
+            var_472 = vec_470[vec_index470]
+            vec_index470 += 1
+            tuple_471_0_index: int = 0
+            tuple_471_0_vec: List[int] = self.index_285[var_472]
+            while tuple_471_0_index < len(tuple_471_0_vec):
+                tuple_471_0 = tuple_471_0_vec[tuple_471_0_index]
+                tuple_471_0_index += 1
+                var_473 = tuple_471_0
+                if var_472 in self.index_256:
+                    # Program TransitionState Region
+                    tuple_473 = var_473
+                    prev_state = self.table_13[tuple_473]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_13[tuple_473] = 1 | 4
+                        if not present_bit:
+                            pass
+        # Program VectorClear Region
+        del vec_470[:]
+        vec_index470 = 0
+        # Induction Fixpoint Loop Region
+        while len(vec_463):
+            # Program Call Region
+            param_465_0 = [vec_463]
+            ret = self.proc_127_(param_465_0)
+            vec_463 = param_465_0[0]
+
+        vec_index463 = 0
+        # Induction Output Region
+        # Program VectorClear Region
+        del vec_463[:]
+        vec_index463 = 0
+        # Program Return Region
+        return False
+        return False
+
+    def destructor_function_1(self, vec_475: List[int]) -> bool:
+        state: int = 2
+        prev_state: int = 2
+        present_bit: int = 0
+        ret: bool = False
+        found: bool = False
+        vec_index475: int = 0
+        vec_477: List[int] = list()
+        vec_index477: int = 0
+        vec_480: List[int] = list()
+        vec_index480: int = 0
+        vec_484: List[Tuple[int, int]] = list()
+        vec_index484: int = 0
+        vec_487: List[int] = list()
+        vec_index487: int = 0
+        vec_491: List[int] = list()
+        vec_index491: int = 0
+        # Program Series Region
+        # Program Induction Init Region
+        # Program Series Region
+        # Program VectorLoop Region
+        vec_index475 = 0
+        while vec_index475 < len(vec_475):
+            var_476 = vec_475[vec_index475]
+            vec_index475 += 1
+            # Program TransitionState Region
+            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            tuple_476 = var_476
+            prev_state = self.table_50[tuple_476]
+            state = prev_state & 3
+            present_bit = prev_state & 4
+            if state == 0 or state == 2:
+                self.table_50[tuple_476] = 1 | 4
+                if not present_bit:
+                    pass
+                # Program VectorAppend Region
+                vec_477.append(var_476)
+        # Program VectorUnique Region
+        vec_477 = list(set(vec_477))
+        vec_index477 = 0
+        # Program TableJoin Region
+        while vec_index477 < len(vec_477):
+            var_479 = vec_477[vec_index477]
+            vec_index477 += 1
+            if var_479 in self.index_114:
+                if var_479 in self.index_115:
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_479 = var_479
+                    prev_state = self.table_18[tuple_479]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_18[tuple_479] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_487.append(var_479)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_480: int
+                        scan_index_480: int = 0
+                        scan_tuple_480_vec: List[int] = self.index_116[var_479]
+                        while scan_index_480 < len(scan_tuple_480_vec):
+                            scan_tuple_480 = scan_tuple_480_vec[scan_index_480]
+                            scan_index_480 += 1
+                            vec_480.append(scan_tuple_480)
+                        # Program VectorLoop Region
+                        vec_index480 = 0
+                        while vec_index480 < len(vec_480):
+                            var_481 = vec_480[vec_index480]
+                            vec_index480 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_479_481 = (var_479, var_481)
+                            prev_state = self.table_27[tuple_479_481]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_479_481] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_479, var_481)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_479, var_481)
+
+                        # Program TransitionState Region
+                        tuple_479_479 = (var_479, var_479)
+                        prev_state = self.table_6[tuple_479_479]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_6[tuple_479_479] = 1 | 4
+                            if not present_bit:
+                                self.index_290[tuple_479_479[1]].append(tuple_479_479[0])
+                                self.index_756[tuple_479_479[0]].append(tuple_479_479[1])
+                            # Program VectorAppend Region
+                            vec_484.append((var_479, var_479))
+        # Program VectorClear Region
+        del vec_477[:]
+        vec_index477 = 0
+        # Program VectorUnique Region
+        vec_487 = list(set(vec_487))
+        vec_index487 = 0
+        # Program TableJoin Region
+        while vec_index487 < len(vec_487):
+            var_489 = vec_487[vec_index487]
+            vec_index487 += 1
+            tuple_488_0_index: int = 0
+            tuple_488_0_vec: List[int] = self.index_279[var_489]
+            while tuple_488_0_index < len(tuple_488_0_vec):
+                tuple_488_0 = tuple_488_0_vec[tuple_488_0_index]
+                tuple_488_0_index += 1
+                var_490 = tuple_488_0
+                if var_489 in self.index_280:
+                    # Program Parallel Region
+                    # Program TransitionState Region
+                    tuple_490_489 = (var_490, var_489)
+                    prev_state = self.table_97[tuple_490_489]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_97[tuple_490_489] = 1 | 4
+                        if not present_bit:
+                            self.index_285[tuple_490_489[1]].append(tuple_490_489[0])
+                        # Program VectorAppend Region
+                        vec_491.append(var_489)
+                    # Program TransitionState Region
+                    tuple_490_489 = (var_490, var_489)
+                    prev_state = self.table_22[tuple_490_489]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_22[tuple_490_489] = 1 | 4
+                        if not present_bit:
+                            self.index_760[tuple_490_489[0]].append(tuple_490_489[1])
+        # Program VectorClear Region
+        del vec_487[:]
+        vec_index487 = 0
+        # Program VectorUnique Region
+        vec_491 = list(set(vec_491))
+        vec_index491 = 0
+        # Program TableJoin Region
+        while vec_index491 < len(vec_491):
+            var_493 = vec_491[vec_index491]
+            vec_index491 += 1
+            tuple_492_0_index: int = 0
+            tuple_492_0_vec: List[int] = self.index_285[var_493]
+            while tuple_492_0_index < len(tuple_492_0_vec):
+                tuple_492_0 = tuple_492_0_vec[tuple_492_0_index]
+                tuple_492_0_index += 1
+                var_494 = tuple_492_0
+                if var_493 in self.index_256:
+                    # Program TransitionState Region
+                    tuple_494 = var_494
+                    prev_state = self.table_13[tuple_494]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_13[tuple_494] = 1 | 4
+                        if not present_bit:
+                            pass
+        # Program VectorClear Region
+        del vec_491[:]
+        vec_index491 = 0
+        # Induction Fixpoint Loop Region
+        while len(vec_484):
+            # Program Call Region
+            param_486_0 = [vec_484]
+            ret = self.proc_127_(param_486_0)
+            vec_484 = param_486_0[0]
+
+        vec_index484 = 0
+        # Induction Output Region
+        # Program VectorClear Region
+        del vec_484[:]
+        vec_index484 = 0
+        # Program Return Region
+        return False
+        return False
+
+    def raw_transfer_3(self, vec_496: List[Tuple[int, int, int]]) -> bool:
+        state: int = 2
+        prev_state: int = 2
+        present_bit: int = 0
+        ret: bool = False
+        found: bool = False
+        vec_index496: int = 0
+        vec_500: List[Tuple[int, int]] = list()
+        vec_index500: int = 0
+        vec_506: List[int] = list()
+        vec_index506: int = 0
+        vec_513: List[int] = list()
+        vec_index513: int = 0
+        vec_521: List[int] = list()
+        vec_index521: int = 0
+        vec_525: List[Tuple[int, int]] = list()
+        vec_index525: int = 0
+        vec_528: List[int] = list()
+        vec_index528: int = 0
+        vec_535: List[int] = list()
+        vec_index535: int = 0
+        vec_539: List[int] = list()
+        vec_index539: int = 0
+        vec_546: List[int] = list()
+        vec_index546: int = 0
+        vec_550: List[int] = list()
+        vec_index550: int = 0
+        vec_557: List[int] = list()
+        vec_index557: int = 0
+        vec_561: List[int] = list()
+        vec_index561: int = 0
+        vec_564: List[int] = list()
+        vec_index564: int = 0
+        vec_568: List[int] = list()
+        vec_index568: int = 0
+        vec_572: List[int] = list()
+        vec_index572: int = 0
+        vec_576: List[int] = list()
+        vec_index576: int = 0
+        vec_580: List[int] = list()
+        vec_index580: int = 0
+        vec_584: List[int] = list()
+        vec_index584: int = 0
+        vec_588: List[int] = list()
+        vec_index588: int = 0
+        # Program Series Region
+        # Program Induction Init Region
+        # Program Series Region
+        # Program VectorLoop Region
+        vec_index496 = 0
+        while vec_index496 < len(vec_496):
+            var_497, var_498, var_499 = vec_496[vec_index496]
+            vec_index496 += 1
+            # Program Parallel Region
+            # Program TupleCompare Region
+            if var_499 != self.var_0:
+                # Program TupleCompare Region
+                if var_499 != self.var_3:
+                    # Program TransitionState Region
+                    var_499 = self._resolve_edgetype(var_499)
+                    tuple_499_497_498 = (var_499, var_497, var_498)
+                    prev_state = self.table_55[tuple_499_497_498]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_55[tuple_499_497_498] = 1 | 4
+                        if not present_bit:
+                            self.index_156[tuple_499_497_498[2]].append((tuple_499_497_498[0], tuple_499_497_498[1]))
+                        # Program VectorAppend Region
+                        vec_513.append(var_498)
+            # Program TupleCompare Region
+            if self.var_0 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_62[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_62[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_509[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+            # Program TupleCompare Region
+            if self.var_3 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_65[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_65[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_510[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+            # Program TupleCompare Region
+            if self.var_0 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_62[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_62[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_509[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+            # Program TupleCompare Region
+            if self.var_3 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_65[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_65[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_510[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+            # Program TupleCompare Region
+            if self.var_0 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_62[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_62[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_509[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+            # Program TupleCompare Region
+            if self.var_3 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_65[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_65[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_510[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+            # Program TupleCompare Region
+            if self.var_0 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_62[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_62[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_509[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+            # Program TupleCompare Region
+            if self.var_3 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_65[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_65[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_510[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+            # Program TupleCompare Region
+            if self.var_0 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_62[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_62[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_509[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+            # Program TupleCompare Region
+            if self.var_3 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_65[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_65[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_510[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+            # Program TupleCompare Region
+            if self.var_0 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_62[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_62[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_509[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+            # Program TupleCompare Region
+            if self.var_3 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_65[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_65[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_510[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+            # Program TupleCompare Region
+            if self.var_0 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_62[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_62[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_509[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+            # Program TupleCompare Region
+            if self.var_3 == var_499:
+                # Program TransitionState Region
+                tuple_497_498 = (var_497, var_498)
+                prev_state = self.table_65[tuple_497_498]
+                state = prev_state & 3
+                present_bit = prev_state & 4
+                if state == 0 or state == 2:
+                    self.table_65[tuple_497_498] = 1 | 4
+                    if not present_bit:
+                        self.index_510[tuple_497_498[0]].append(tuple_497_498[1])
+                    # Program Parallel Region
+                    # Program VectorAppend Region
+                    vec_506.append(var_497)
+                    # Program VectorAppend Region
+                    vec_500.append((var_497, var_498))
+        # Program VectorUnique Region
+        vec_500 = list(set(vec_500))
+        vec_index500 = 0
+        # Program TableJoin Region
+        while vec_index500 < len(vec_500):
+            var_502, var_503 = vec_500[vec_index500]
+            vec_index500 += 1
+            if (var_502, var_503) in self.index_504:
+                if (var_502, var_503) in self.index_505:
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_502_503 = (var_502, var_503)
+                    prev_state = self.table_91[tuple_502_503]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_91[tuple_502_503] = 1 | 4
+                        if not present_bit:
+                            self.index_190[tuple_502_503[1]].append(tuple_502_503[0])
+                        # Program VectorAppend Region
+                        vec_528.append(var_503)
+        # Program VectorClear Region
+        del vec_500[:]
+        vec_index500 = 0
+        # Program VectorUnique Region
+        vec_506 = list(set(vec_506))
+        vec_index506 = 0
+        # Program TableJoin Region
+        while vec_index506 < len(vec_506):
+            var_508 = vec_506[vec_index506]
+            vec_index506 += 1
+            tuple_507_0_index: int = 0
+            tuple_507_0_vec: List[int] = self.index_509[var_508]
+            while tuple_507_0_index < len(tuple_507_0_vec):
+                tuple_507_0 = tuple_507_0_vec[tuple_507_0_index]
+                tuple_507_0_index += 1
+                var_511 = tuple_507_0
+                tuple_507_1_index: int = 0
+                tuple_507_1_vec: List[int] = self.index_510[var_508]
+                while tuple_507_1_index < len(tuple_507_1_vec):
+                    tuple_507_1 = tuple_507_1_vec[tuple_507_1_index]
+                    tuple_507_1_index += 1
+                    var_512 = tuple_507_1
+                    # Program TupleCompare Region
+                    if var_511 != var_512:
+                        # Program Parallel Region
+                        # Program TransitionState Region
+                        tuple_512_508 = (var_512, var_508)
+                        prev_state = self.table_68[tuple_512_508]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_68[tuple_512_508] = 1 | 4
+                            if not present_bit:
+                                self.index_208[tuple_512_508[0]].append(tuple_512_508[1])
+                            # Program VectorAppend Region
+                            vec_550.append(var_512)
+                        # Program TransitionState Region
+                        tuple_511_508 = (var_511, var_508)
+                        prev_state = self.table_59[tuple_511_508]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_59[tuple_511_508] = 1 | 4
+                            if not present_bit:
+                                self.index_220[tuple_511_508[0]].append(tuple_511_508[1])
+                            # Program VectorAppend Region
+                            vec_539.append(var_511)
+        # Program VectorClear Region
+        del vec_506[:]
+        vec_index506 = 0
         # Program VectorUnique Region
         vec_513 = list(set(vec_513))
         vec_index513 = 0
@@ -3669,565 +5055,870 @@ class Database:
         while vec_index513 < len(vec_513):
             var_515 = vec_513[vec_index513]
             vec_index513 += 1
-            if var_515 in self.index_334:
-                if var_515 in self.index_267:
+            tuple_514_0_index: int = 0
+            tuple_514_0_vec: List[Tuple[int, int]] = self.index_156[var_515]
+            while tuple_514_0_index < len(tuple_514_0_vec):
+                tuple_514_0 = tuple_514_0_vec[tuple_514_0_index]
+                tuple_514_0_index += 1
+                var_516 = tuple_514_0[0]
+                var_517 = tuple_514_0[1]
+                if var_515 in self.index_157:
                     # Program TransitionState Region
-                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-                    tuple_515 = var_515
-                    prev_state = self.table_17[tuple_515]
+                    var_516 = self._resolve_edgetype(var_516)
+                    tuple_517_515_516 = (var_517, var_515, var_516)
+                    prev_state = self.table_9[tuple_517_515_516]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_17[tuple_515] = 1 | 4
+                        self.table_9[tuple_517_515_516] = 1 | 4
                         if not present_bit:
-                            pass
+                            self.index_799[(tuple_517_515_516[0], tuple_517_515_516[1])].append(tuple_517_515_516[2])
                         # Program Parallel Region
                         # Program Series Region
-                        # Program TableScan Region
-                        scan_tuple_516: Tuple[int, int]
-                        scan_index_516: int = 0
-                        scan_tuple_516_vec: List[Tuple[int, int]] = self.index_199[var_515]
-                        while scan_index_516 < len(scan_tuple_516_vec):
-                            scan_tuple_516 = scan_tuple_516_vec[scan_index_516]
-                            scan_index_516 += 1
-                            vec_516.append(scan_tuple_516)
-                        # Program VectorLoop Region
-                        vec_index516 = 0
-                        while vec_index516 < len(vec_516):
-                            var_517, var_518 = vec_516[vec_index516]
-                            vec_index516 += 1
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_515_517 = (var_515, var_517)
+                        prev_state = self.table_27[tuple_515_517]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_515_517] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_515_517[0]].append(tuple_515_517[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_515)
+                        if not ret:
                             # Program TransitionState Region
-                            # Remove from negated view
-                            var_518 = self._resolve_edgetype(var_518)
-                            tuple_515_517_518 = (var_515, var_517, var_518)
-                            prev_state = self.table_26[tuple_515_517_518]
+                            tuple_515_517 = (var_515, var_517)
+                            prev_state = self.table_27[tuple_515_517]
                             state = prev_state & 3
                             present_bit = prev_state & 4
-                            if state == 1:
-                                self.table_26[tuple_515_517_518] = 0 | 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_515_517] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_515_517[0]].append(tuple_515_517[1])
+                                # Program Parallel Region
                                 # Program Call Region
-                                ret = self.proc_203_(var_515, var_517, var_518)
-
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_517, var_515)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_517_515 = (var_517, var_515)
+                                    prev_state = self.table_52[tuple_517_515]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_517_515] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_517_515[0]].append(tuple_517_515[1])
+                                            self.index_778[tuple_517_515[1]].append(tuple_517_515[0])
+                                        # Program VectorAppend Region
+                                        vec_588.append(var_517)
+                                # Program TransitionState Region
+                                tuple_517_515 = (var_517, var_515)
+                                prev_state = self.table_15[tuple_517_515]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_517_515] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_517_515[0]].append(tuple_517_515[1])
                         # Program TransitionState Region
-                        tuple_515_515 = (var_515, var_515)
-                        prev_state = self.table_6[tuple_515_515]
+                        tuple_517_515 = (var_517, var_515)
+                        prev_state = self.table_94[tuple_517_515]
                         state = prev_state & 3
                         present_bit = prev_state & 4
                         if state == 0 or state == 2:
-                            self.table_6[tuple_515_515] = 1 | 4
+                            self.table_94[tuple_517_515] = 1 | 4
                             if not present_bit:
-                                self.index_414[tuple_515_515[1]].append(tuple_515_515[0])
-                                self.index_1029[tuple_515_515[0]].append(tuple_515_515[1])
+                                self.index_279[tuple_517_515[1]].append(tuple_517_515[0])
                             # Program VectorAppend Region
-                            vec_462.append((var_515, var_515))
-                        # Program VectorAppend Region
-                        vec_579.append(var_515)
+                            vec_580.append(var_515)
+                        # Program TransitionState Region
+                        tuple_515 = var_515
+                        prev_state = self.table_32[tuple_515]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_515] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_561.append(var_515)
+                        # Program TupleCompare Region
+                        if self.var_0 == var_516:
+                            # Program TransitionState Region
+                            tuple_515 = var_515
+                            prev_state = self.table_18[tuple_515]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_18[tuple_515] = 1 | 4
+                                if not present_bit:
+                                    pass
+                                # Program Parallel Region
+                                # Program VectorAppend Region
+                                vec_580.append(var_515)
+                                # Program Series Region
+                                # Program TableScan Region
+                                scan_tuple_521: int
+                                scan_index_521: int = 0
+                                scan_tuple_521_vec: List[int] = self.index_116[var_515]
+                                while scan_index_521 < len(scan_tuple_521_vec):
+                                    scan_tuple_521 = scan_tuple_521_vec[scan_index_521]
+                                    scan_index_521 += 1
+                                    vec_521.append(scan_tuple_521)
+                                # Program VectorLoop Region
+                                vec_index521 = 0
+                                while vec_index521 < len(vec_521):
+                                    var_522 = vec_521[vec_index521]
+                                    vec_index521 += 1
+                                    # Program TransitionState Region
+                                    # Remove from negated view
+                                    tuple_515_522 = (var_515, var_522)
+                                    prev_state = self.table_27[tuple_515_522]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 1:
+                                        self.table_27[tuple_515_522] = 0 | 4
+                                        # Program Parallel Region
+                                        # Program Call Region
+                                        ret = self.proc_119_(var_515, var_522)
+
+                                        # Program Call Region
+                                        ret = self.proc_123_(var_515, var_522)
+
+                                # Program TransitionState Region
+                                tuple_515_515 = (var_515, var_515)
+                                prev_state = self.table_6[tuple_515_515]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_515_515] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_515_515[1]].append(tuple_515_515[0])
+                                        self.index_756[tuple_515_515[0]].append(tuple_515_515[1])
+                                    # Program VectorAppend Region
+                                    vec_525.append((var_515, var_515))
+                        # Program TupleCompare Region
+                        if self.var_2 == var_516:
+                            # Program TransitionState Region
+                            tuple_517_515 = (var_517, var_515)
+                            prev_state = self.table_40[tuple_517_515]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_40[tuple_517_515] = 1 | 4
+                                if not present_bit:
+                                    self.index_265[tuple_517_515[0]].append(tuple_517_515[1])
+                                # Program VectorAppend Region
+                                vec_568.append(var_517)
         # Program VectorClear Region
         del vec_513[:]
         vec_index513 = 0
         # Program VectorUnique Region
-        vec_520 = list(set(vec_520))
-        vec_index520 = 0
+        vec_528 = list(set(vec_528))
+        vec_index528 = 0
         # Program TableJoin Region
-        while vec_index520 < len(vec_520):
-            var_522 = vec_520[vec_index520]
-            vec_index520 += 1
-            if var_522 in self.index_267:
-                tuple_521_1_index: int = 0
-                tuple_521_1_vec: List[Tuple[int, int, int, int]] = self.index_342[var_522]
-                while tuple_521_1_index < len(tuple_521_1_vec):
-                    tuple_521_1 = tuple_521_1_vec[tuple_521_1_index]
-                    tuple_521_1_index += 1
-                    var_523 = tuple_521_1[0]
-                    var_524 = tuple_521_1[1]
-                    var_525 = tuple_521_1[2]
-                    var_526 = tuple_521_1[3]
-                    # Program TupleCompare Region
-                    if (self.var_3, self.var_0, ) == (var_524, var_525, ):
+        while vec_index528 < len(vec_528):
+            var_530 = vec_528[vec_index528]
+            vec_index528 += 1
+            if var_530 in self.index_157:
+                tuple_529_1_index: int = 0
+                tuple_529_1_vec: List[int] = self.index_190[var_530]
+                while tuple_529_1_index < len(tuple_529_1_vec):
+                    tuple_529_1 = tuple_529_1_vec[tuple_529_1_index]
+                    tuple_529_1_index += 1
+                    var_531 = tuple_529_1
+                    # Program TransitionState Region
+                    tuple_531_530_5 = (var_531, var_530, self.var_5)
+                    prev_state = self.table_9[tuple_531_530_5]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_531_530_5] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_531_530_5[0], tuple_531_530_5[1])].append(tuple_531_530_5[2])
+                        # Program Parallel Region
+                        # Program Series Region
                         # Program TransitionState Region
-                        tuple_526_522_3 = (var_526, var_522, self.var_3)
-                        prev_state = self.table_43[tuple_526_522_3]
+                        # Eager insert before negation to prevent race
+                        tuple_530_531 = (var_530, var_531)
+                        prev_state = self.table_27[tuple_530_531]
                         state = prev_state & 3
                         present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_526_522_3] = 1 | 4
+                        if state == 0:
+                            self.table_27[tuple_530_531] = 2 | 4
                             if not present_bit:
-                                self.index_373[tuple_526_522_3[1]].append((tuple_526_522_3[0], tuple_526_522_3[2]))
-                            # Program Parallel Region
-                            # Program Series Region
+                                self.index_116[tuple_530_531[0]].append(tuple_530_531[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_530)
+                        if not ret:
                             # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_522_526_3 = (var_522, var_526, self.var_3)
-                            prev_state = self.table_26[tuple_522_526_3]
+                            tuple_530_531 = (var_530, var_531)
+                            prev_state = self.table_27[tuple_530_531]
                             state = prev_state & 3
                             present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_522_526_3] = 2 | 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_530_531] = 1 | 4
                                 if not present_bit:
-                                    self.index_199[tuple_522_526_3[0]].append((tuple_522_526_3[1], tuple_522_526_3[2]))
-                                    self.index_1053[(tuple_522_526_3[0], tuple_522_526_3[1])].append(tuple_522_526_3[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_522)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_522_526_3 = (var_522, var_526, self.var_3)
-                                prev_state = self.table_26[tuple_522_526_3]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_522_526_3] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_522_526_3[0]].append((tuple_522_526_3[1], tuple_522_526_3[2]))
-                                        self.index_1053[(tuple_522_526_3[0], tuple_522_526_3[1])].append(tuple_522_526_3[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_526, var_522)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_526_522 = (var_526, var_522)
-                                        prev_state = self.table_9[tuple_526_522]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_526_522] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_526_522[0]].append(tuple_526_522[1])
-                                                self.index_1079[tuple_526_522[1]].append(tuple_526_522[0])
-                                            # Program VectorAppend Region
-                                            vec_584.append(var_526)
-                            # Program VectorAppend Region
-                            vec_548.append(var_522)
-                            # Program VectorAppend Region
-                            vec_579.append(var_522)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_3:
-                                # Program TransitionState Region
-                                tuple_522 = var_522
-                                prev_state = self.table_17[tuple_522]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_17[tuple_522] = 1 | 4
-                                    if not present_bit:
-                                        pass
-                                    # Program Parallel Region
-                                    # Program Series Region
-                                    # Program TableScan Region
-                                    scan_tuple_530: Tuple[int, int]
-                                    scan_index_530: int = 0
-                                    scan_tuple_530_vec: List[Tuple[int, int]] = self.index_199[var_522]
-                                    while scan_index_530 < len(scan_tuple_530_vec):
-                                        scan_tuple_530 = scan_tuple_530_vec[scan_index_530]
-                                        scan_index_530 += 1
-                                        vec_530.append(scan_tuple_530)
-                                    # Program VectorLoop Region
-                                    vec_index530 = 0
-                                    while vec_index530 < len(vec_530):
-                                        var_531, var_532 = vec_530[vec_index530]
-                                        vec_index530 += 1
-                                        # Program TransitionState Region
-                                        # Remove from negated view
-                                        var_532 = self._resolve_edgetype(var_532)
-                                        tuple_522_531_532 = (var_522, var_531, var_532)
-                                        prev_state = self.table_26[tuple_522_531_532]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 1:
-                                            self.table_26[tuple_522_531_532] = 0 | 4
-                                            # Program Call Region
-                                            ret = self.proc_203_(var_522, var_531, var_532)
-
+                                    self.index_116[tuple_530_531[0]].append(tuple_530_531[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_531, var_530)
+                                if not ret:
                                     # Program TransitionState Region
-                                    tuple_522_522 = (var_522, var_522)
-                                    prev_state = self.table_6[tuple_522_522]
+                                    tuple_531_530 = (var_531, var_530)
+                                    prev_state = self.table_52[tuple_531_530]
                                     state = prev_state & 3
                                     present_bit = prev_state & 4
                                     if state == 0 or state == 2:
-                                        self.table_6[tuple_522_522] = 1 | 4
+                                        self.table_52[tuple_531_530] = 1 | 4
                                         if not present_bit:
-                                            self.index_414[tuple_522_522[1]].append(tuple_522_522[0])
-                                            self.index_1029[tuple_522_522[0]].append(tuple_522_522[1])
+                                            self.index_291[tuple_531_530[0]].append(tuple_531_530[1])
+                                            self.index_778[tuple_531_530[1]].append(tuple_531_530[0])
                                         # Program VectorAppend Region
-                                        vec_462.append((var_522, var_522))
-                                    # Program VectorAppend Region
-                                    vec_579.append(var_522)
-                            # Program TupleCompare Region
-                            if self.var_2 == self.var_3:
+                                        vec_588.append(var_531)
                                 # Program TransitionState Region
-                                tuple_2_526_522 = (self.var_2, var_526, var_522)
-                                prev_state = self.table_56[tuple_2_526_522]
+                                tuple_531_530 = (var_531, var_530)
+                                prev_state = self.table_15[tuple_531_530]
                                 state = prev_state & 3
                                 present_bit = prev_state & 4
                                 if state == 0 or state == 2:
-                                    self.table_56[tuple_2_526_522] = 1 | 4
+                                    self.table_15[tuple_531_530] = 1 | 4
                                     if not present_bit:
-                                        self.index_385[tuple_2_526_522[1]].append((tuple_2_526_522[0], tuple_2_526_522[2]))
-                                    # Program VectorAppend Region
-                                    vec_558.append(var_526)
-        # Program VectorClear Region
-        del vec_520[:]
-        vec_index520 = 0
-        # Program VectorUnique Region
-        vec_534 = list(set(vec_534))
-        vec_index534 = 0
-        # Program TableJoin Region
-        while vec_index534 < len(vec_534):
-            var_536 = vec_534[vec_index534]
-            vec_index534 += 1
-            if var_536 in self.index_267:
-                tuple_535_1_index: int = 0
-                tuple_535_1_vec: List[Tuple[int, int, int, int]] = self.index_357[var_536]
-                while tuple_535_1_index < len(tuple_535_1_vec):
-                    tuple_535_1 = tuple_535_1_vec[tuple_535_1_index]
-                    tuple_535_1_index += 1
-                    var_537 = tuple_535_1[0]
-                    var_538 = tuple_535_1[1]
-                    var_539 = tuple_535_1[2]
-                    var_540 = tuple_535_1[3]
-                    # Program TupleCompare Region
-                    if (self.var_0, self.var_3, ) == (var_539, var_538, ):
+                                        self.index_752[tuple_531_530[0]].append(tuple_531_530[1])
                         # Program TransitionState Region
-                        tuple_540_536_0 = (var_540, var_536, self.var_0)
-                        prev_state = self.table_43[tuple_540_536_0]
+                        tuple_531_530 = (var_531, var_530)
+                        prev_state = self.table_94[tuple_531_530]
                         state = prev_state & 3
                         present_bit = prev_state & 4
                         if state == 0 or state == 2:
-                            self.table_43[tuple_540_536_0] = 1 | 4
+                            self.table_94[tuple_531_530] = 1 | 4
                             if not present_bit:
-                                self.index_373[tuple_540_536_0[1]].append((tuple_540_536_0[0], tuple_540_536_0[2]))
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_536_540_0 = (var_536, var_540, self.var_0)
-                            prev_state = self.table_26[tuple_536_540_0]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_536_540_0] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_536_540_0[0]].append((tuple_536_540_0[1], tuple_536_540_0[2]))
-                                    self.index_1053[(tuple_536_540_0[0], tuple_536_540_0[1])].append(tuple_536_540_0[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_536)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_536_540_0 = (var_536, var_540, self.var_0)
-                                prev_state = self.table_26[tuple_536_540_0]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_536_540_0] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_536_540_0[0]].append((tuple_536_540_0[1], tuple_536_540_0[2]))
-                                        self.index_1053[(tuple_536_540_0[0], tuple_536_540_0[1])].append(tuple_536_540_0[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_540, var_536)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_540_536 = (var_540, var_536)
-                                        prev_state = self.table_9[tuple_540_536]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_540_536] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_540_536[0]].append(tuple_540_536[1])
-                                                self.index_1079[tuple_540_536[1]].append(tuple_540_536[0])
-                                            # Program VectorAppend Region
-                                            vec_584.append(var_540)
+                                self.index_279[tuple_531_530[1]].append(tuple_531_530[0])
                             # Program VectorAppend Region
-                            vec_548.append(var_536)
+                            vec_580.append(var_530)
+                        # Program TransitionState Region
+                        tuple_530 = var_530
+                        prev_state = self.table_32[tuple_530]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_530] = 1 | 4
+                            if not present_bit:
+                                pass
                             # Program VectorAppend Region
-                            vec_579.append(var_536)
+                            vec_561.append(var_530)
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_5:
                             # Program TransitionState Region
-                            tuple_536 = var_536
-                            prev_state = self.table_17[tuple_536]
+                            tuple_530 = var_530
+                            prev_state = self.table_18[tuple_530]
                             state = prev_state & 3
                             present_bit = prev_state & 4
                             if state == 0 or state == 2:
-                                self.table_17[tuple_536] = 1 | 4
+                                self.table_18[tuple_530] = 1 | 4
                                 if not present_bit:
                                     pass
                                 # Program Parallel Region
+                                # Program VectorAppend Region
+                                vec_580.append(var_530)
                                 # Program Series Region
                                 # Program TableScan Region
-                                scan_tuple_544: Tuple[int, int]
-                                scan_index_544: int = 0
-                                scan_tuple_544_vec: List[Tuple[int, int]] = self.index_199[var_536]
-                                while scan_index_544 < len(scan_tuple_544_vec):
-                                    scan_tuple_544 = scan_tuple_544_vec[scan_index_544]
-                                    scan_index_544 += 1
-                                    vec_544.append(scan_tuple_544)
+                                scan_tuple_535: int
+                                scan_index_535: int = 0
+                                scan_tuple_535_vec: List[int] = self.index_116[var_530]
+                                while scan_index_535 < len(scan_tuple_535_vec):
+                                    scan_tuple_535 = scan_tuple_535_vec[scan_index_535]
+                                    scan_index_535 += 1
+                                    vec_535.append(scan_tuple_535)
                                 # Program VectorLoop Region
-                                vec_index544 = 0
-                                while vec_index544 < len(vec_544):
-                                    var_545, var_546 = vec_544[vec_index544]
-                                    vec_index544 += 1
+                                vec_index535 = 0
+                                while vec_index535 < len(vec_535):
+                                    var_536 = vec_535[vec_index535]
+                                    vec_index535 += 1
                                     # Program TransitionState Region
                                     # Remove from negated view
-                                    var_546 = self._resolve_edgetype(var_546)
-                                    tuple_536_545_546 = (var_536, var_545, var_546)
-                                    prev_state = self.table_26[tuple_536_545_546]
+                                    tuple_530_536 = (var_530, var_536)
+                                    prev_state = self.table_27[tuple_530_536]
                                     state = prev_state & 3
                                     present_bit = prev_state & 4
                                     if state == 1:
-                                        self.table_26[tuple_536_545_546] = 0 | 4
+                                        self.table_27[tuple_530_536] = 0 | 4
+                                        # Program Parallel Region
                                         # Program Call Region
-                                        ret = self.proc_203_(var_536, var_545, var_546)
+                                        ret = self.proc_119_(var_530, var_536)
+
+                                        # Program Call Region
+                                        ret = self.proc_123_(var_530, var_536)
 
                                 # Program TransitionState Region
-                                tuple_536_536 = (var_536, var_536)
-                                prev_state = self.table_6[tuple_536_536]
+                                tuple_530_530 = (var_530, var_530)
+                                prev_state = self.table_6[tuple_530_530]
                                 state = prev_state & 3
                                 present_bit = prev_state & 4
                                 if state == 0 or state == 2:
-                                    self.table_6[tuple_536_536] = 1 | 4
+                                    self.table_6[tuple_530_530] = 1 | 4
                                     if not present_bit:
-                                        self.index_414[tuple_536_536[1]].append(tuple_536_536[0])
-                                        self.index_1029[tuple_536_536[0]].append(tuple_536_536[1])
+                                        self.index_290[tuple_530_530[1]].append(tuple_530_530[0])
+                                        self.index_756[tuple_530_530[0]].append(tuple_530_530[1])
                                     # Program VectorAppend Region
-                                    vec_462.append((var_536, var_536))
-                                # Program VectorAppend Region
-                                vec_579.append(var_536)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_2:
-                                # Program TransitionState Region
-                                tuple_0_540_536 = (self.var_0, var_540, var_536)
-                                prev_state = self.table_56[tuple_0_540_536]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_56[tuple_0_540_536] = 1 | 4
-                                    if not present_bit:
-                                        self.index_385[tuple_0_540_536[1]].append((tuple_0_540_536[0], tuple_0_540_536[2]))
-                                    # Program VectorAppend Region
-                                    vec_558.append(var_540)
-        # Program VectorClear Region
-        del vec_534[:]
-        vec_index534 = 0
-        # Program VectorUnique Region
-        vec_548 = list(set(vec_548))
-        vec_index548 = 0
-        # Program TableJoin Region
-        while vec_index548 < len(vec_548):
-            var_550 = vec_548[vec_index548]
-            vec_index548 += 1
-            tuple_549_0_index: int = 0
-            tuple_549_0_vec: List[bytes] = self.index_372[var_550]
-            while tuple_549_0_index < len(tuple_549_0_vec):
-                tuple_549_0 = tuple_549_0_vec[tuple_549_0_index]
-                tuple_549_0_index += 1
-                var_551 = tuple_549_0
-                tuple_549_1_index: int = 0
-                tuple_549_1_vec: List[Tuple[int, int]] = self.index_373[var_550]
-                while tuple_549_1_index < len(tuple_549_1_vec):
-                    tuple_549_1 = tuple_549_1_vec[tuple_549_1_index]
-                    tuple_549_1_index += 1
-                    var_552 = tuple_549_1[0]
-                    var_553 = tuple_549_1[1]
-                    # Program TransitionState Region
-                    tuple_550 = var_550
-                    prev_state = self.table_17[tuple_550]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_17[tuple_550] = 1 | 4
-                        if not present_bit:
-                            pass
-                        # Program Parallel Region
-                        # Program Series Region
-                        # Program TableScan Region
-                        scan_tuple_554: Tuple[int, int]
-                        scan_index_554: int = 0
-                        scan_tuple_554_vec: List[Tuple[int, int]] = self.index_199[var_550]
-                        while scan_index_554 < len(scan_tuple_554_vec):
-                            scan_tuple_554 = scan_tuple_554_vec[scan_index_554]
-                            scan_index_554 += 1
-                            vec_554.append(scan_tuple_554)
-                        # Program VectorLoop Region
-                        vec_index554 = 0
-                        while vec_index554 < len(vec_554):
-                            var_555, var_556 = vec_554[vec_index554]
-                            vec_index554 += 1
+                                    vec_525.append((var_530, var_530))
+                        # Program TupleCompare Region
+                        if self.var_2 == self.var_5:
                             # Program TransitionState Region
-                            # Remove from negated view
-                            var_556 = self._resolve_edgetype(var_556)
-                            tuple_550_555_556 = (var_550, var_555, var_556)
-                            prev_state = self.table_26[tuple_550_555_556]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 1:
-                                self.table_26[tuple_550_555_556] = 0 | 4
-                                # Program Call Region
-                                ret = self.proc_203_(var_550, var_555, var_556)
-
-                        # Program TransitionState Region
-                        tuple_550_550 = (var_550, var_550)
-                        prev_state = self.table_6[tuple_550_550]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_6[tuple_550_550] = 1 | 4
-                            if not present_bit:
-                                self.index_414[tuple_550_550[1]].append(tuple_550_550[0])
-                                self.index_1029[tuple_550_550[0]].append(tuple_550_550[1])
-                            # Program VectorAppend Region
-                            vec_462.append((var_550, var_550))
-                        # Program VectorAppend Region
-                        vec_579.append(var_550)
-        # Program VectorClear Region
-        del vec_548[:]
-        vec_index548 = 0
-        # Program VectorUnique Region
-        vec_558 = list(set(vec_558))
-        vec_index558 = 0
-        # Program TableJoin Region
-        while vec_index558 < len(vec_558):
-            var_560 = vec_558[vec_index558]
-            vec_index558 += 1
-            tuple_559_0_index: int = 0
-            tuple_559_0_vec: List[Tuple[int, bytes, bytes]] = self.index_384[var_560]
-            while tuple_559_0_index < len(tuple_559_0_vec):
-                tuple_559_0 = tuple_559_0_vec[tuple_559_0_index]
-                tuple_559_0_index += 1
-                var_561 = tuple_559_0[0]
-                var_562 = tuple_559_0[1]
-                var_563 = tuple_559_0[2]
-                tuple_559_1_index: int = 0
-                tuple_559_1_vec: List[Tuple[int, int]] = self.index_385[var_560]
-                while tuple_559_1_index < len(tuple_559_1_vec):
-                    tuple_559_1 = tuple_559_1_vec[tuple_559_1_index]
-                    tuple_559_1_index += 1
-                    var_564 = tuple_559_1[0]
-                    var_565 = tuple_559_1[1]
-                    # Program TupleCompare Region
-                    if (self.var_1, self.var_2, ) == (var_561, var_564, ):
-                        # Program TransitionState Region
-                        tuple_2_1_560_562_563_565 = (self.var_2, self.var_1, var_560, var_562, var_563, var_565)
-                        prev_state = self.table_60[tuple_2_1_560_562_563_565]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_60[tuple_2_1_560_562_563_565] = 1 | 4
-                            if not present_bit:
-                                self.index_394[tuple_2_1_560_562_563_565[5]].append((tuple_2_1_560_562_563_565[0], tuple_2_1_560_562_563_565[1], tuple_2_1_560_562_563_565[2], tuple_2_1_560_562_563_565[3], tuple_2_1_560_562_563_565[4]))
-                            # Program VectorAppend Region
-                            vec_566.append(var_565)
-        # Program VectorClear Region
-        del vec_558[:]
-        vec_index558 = 0
-        # Program VectorUnique Region
-        vec_566 = list(set(vec_566))
-        vec_index566 = 0
-        # Program TableJoin Region
-        while vec_index566 < len(vec_566):
-            var_568 = vec_566[vec_index566]
-            vec_index566 += 1
-            tuple_567_0_index: int = 0
-            tuple_567_0_vec: List[bytes] = self.index_372[var_568]
-            while tuple_567_0_index < len(tuple_567_0_vec):
-                tuple_567_0 = tuple_567_0_vec[tuple_567_0_index]
-                tuple_567_0_index += 1
-                var_569 = tuple_567_0
-                tuple_567_1_index: int = 0
-                tuple_567_1_vec: List[Tuple[int, int, int, bytes, bytes]] = self.index_394[var_568]
-                while tuple_567_1_index < len(tuple_567_1_vec):
-                    tuple_567_1 = tuple_567_1_vec[tuple_567_1_index]
-                    tuple_567_1_index += 1
-                    var_570 = tuple_567_1[0]
-                    var_571 = tuple_567_1[1]
-                    var_572 = tuple_567_1[2]
-                    var_573 = tuple_567_1[3]
-                    var_574 = tuple_567_1[4]
-                    # Program TupleCompare Region
-                    if (self.var_1, self.var_2, ) == (var_571, var_570, ):
-                        # Program TransitionState Region
-                        tuple_572 = var_572
-                        prev_state = self.table_17[tuple_572]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_17[tuple_572] = 1 | 4
-                            if not present_bit:
-                                pass
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TableScan Region
-                            scan_tuple_575: Tuple[int, int]
-                            scan_index_575: int = 0
-                            scan_tuple_575_vec: List[Tuple[int, int]] = self.index_199[var_572]
-                            while scan_index_575 < len(scan_tuple_575_vec):
-                                scan_tuple_575 = scan_tuple_575_vec[scan_index_575]
-                                scan_index_575 += 1
-                                vec_575.append(scan_tuple_575)
-                            # Program VectorLoop Region
-                            vec_index575 = 0
-                            while vec_index575 < len(vec_575):
-                                var_576, var_577 = vec_575[vec_index575]
-                                vec_index575 += 1
-                                # Program TransitionState Region
-                                # Remove from negated view
-                                var_577 = self._resolve_edgetype(var_577)
-                                tuple_572_576_577 = (var_572, var_576, var_577)
-                                prev_state = self.table_26[tuple_572_576_577]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 1:
-                                    self.table_26[tuple_572_576_577] = 0 | 4
-                                    # Program Call Region
-                                    ret = self.proc_203_(var_572, var_576, var_577)
-
-                            # Program TransitionState Region
-                            tuple_572_572 = (var_572, var_572)
-                            prev_state = self.table_6[tuple_572_572]
+                            tuple_531_530 = (var_531, var_530)
+                            prev_state = self.table_40[tuple_531_530]
                             state = prev_state & 3
                             present_bit = prev_state & 4
                             if state == 0 or state == 2:
-                                self.table_6[tuple_572_572] = 1 | 4
+                                self.table_40[tuple_531_530] = 1 | 4
                                 if not present_bit:
-                                    self.index_414[tuple_572_572[1]].append(tuple_572_572[0])
-                                    self.index_1029[tuple_572_572[0]].append(tuple_572_572[1])
+                                    self.index_265[tuple_531_530[0]].append(tuple_531_530[1])
                                 # Program VectorAppend Region
-                                vec_462.append((var_572, var_572))
-                            # Program VectorAppend Region
-                            vec_579.append(var_572)
+                                vec_568.append(var_531)
         # Program VectorClear Region
-        del vec_566[:]
-        vec_index566 = 0
+        del vec_528[:]
+        vec_index528 = 0
         # Program VectorUnique Region
-        vec_579 = list(set(vec_579))
-        vec_index579 = 0
+        vec_539 = list(set(vec_539))
+        vec_index539 = 0
         # Program TableJoin Region
-        while vec_index579 < len(vec_579):
-            var_581 = vec_579[vec_index579]
-            vec_index579 += 1
-            tuple_580_0_index: int = 0
-            tuple_580_0_vec: List[Tuple[int, int]] = self.index_373[var_581]
-            while tuple_580_0_index < len(tuple_580_0_vec):
-                tuple_580_0 = tuple_580_0_vec[tuple_580_0_index]
-                tuple_580_0_index += 1
-                var_582 = tuple_580_0[0]
-                var_583 = tuple_580_0[1]
-                if var_581 in self.index_408:
+        while vec_index539 < len(vec_539):
+            var_541 = vec_539[vec_index539]
+            vec_index539 += 1
+            if var_541 in self.index_157:
+                tuple_540_1_index: int = 0
+                tuple_540_1_vec: List[int] = self.index_220[var_541]
+                while tuple_540_1_index < len(tuple_540_1_vec):
+                    tuple_540_1 = tuple_540_1_vec[tuple_540_1_index]
+                    tuple_540_1_index += 1
+                    var_542 = tuple_540_1
                     # Program TransitionState Region
-                    tuple_582_581 = (var_582, var_581)
-                    prev_state = self.table_12[tuple_582_581]
+                    tuple_542_541_0 = (var_542, var_541, self.var_0)
+                    prev_state = self.table_9[tuple_542_541_0]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_12[tuple_582_581] = 1 | 4
+                        self.table_9[tuple_542_541_0] = 1 | 4
                         if not present_bit:
-                            self.index_433[tuple_582_581[1]].append(tuple_582_581[0])
-                            self.index_1028[tuple_582_581[0]].append(tuple_582_581[1])
-                        # Program VectorAppend Region
-                        vec_592.append(var_581)
+                            self.index_799[(tuple_542_541_0[0], tuple_542_541_0[1])].append(tuple_542_541_0[2])
+                        # Program Parallel Region
+                        # Program Series Region
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_541_542 = (var_541, var_542)
+                        prev_state = self.table_27[tuple_541_542]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_541_542] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_541_542[0]].append(tuple_541_542[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_541)
+                        if not ret:
+                            # Program TransitionState Region
+                            tuple_541_542 = (var_541, var_542)
+                            prev_state = self.table_27[tuple_541_542]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_541_542] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_541_542[0]].append(tuple_541_542[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_542, var_541)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_542_541 = (var_542, var_541)
+                                    prev_state = self.table_52[tuple_542_541]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_542_541] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_542_541[0]].append(tuple_542_541[1])
+                                            self.index_778[tuple_542_541[1]].append(tuple_542_541[0])
+                                        # Program VectorAppend Region
+                                        vec_588.append(var_542)
+                                # Program TransitionState Region
+                                tuple_542_541 = (var_542, var_541)
+                                prev_state = self.table_15[tuple_542_541]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_542_541] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_542_541[0]].append(tuple_542_541[1])
+                        # Program TransitionState Region
+                        tuple_542_541 = (var_542, var_541)
+                        prev_state = self.table_94[tuple_542_541]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_542_541] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_542_541[1]].append(tuple_542_541[0])
+                            # Program VectorAppend Region
+                            vec_580.append(var_541)
+                        # Program TransitionState Region
+                        tuple_541 = var_541
+                        prev_state = self.table_32[tuple_541]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_541] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_561.append(var_541)
+                        # Program TransitionState Region
+                        tuple_541 = var_541
+                        prev_state = self.table_18[tuple_541]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_18[tuple_541] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program Parallel Region
+                            # Program VectorAppend Region
+                            vec_580.append(var_541)
+                            # Program Series Region
+                            # Program TableScan Region
+                            scan_tuple_546: int
+                            scan_index_546: int = 0
+                            scan_tuple_546_vec: List[int] = self.index_116[var_541]
+                            while scan_index_546 < len(scan_tuple_546_vec):
+                                scan_tuple_546 = scan_tuple_546_vec[scan_index_546]
+                                scan_index_546 += 1
+                                vec_546.append(scan_tuple_546)
+                            # Program VectorLoop Region
+                            vec_index546 = 0
+                            while vec_index546 < len(vec_546):
+                                var_547 = vec_546[vec_index546]
+                                vec_index546 += 1
+                                # Program TransitionState Region
+                                # Remove from negated view
+                                tuple_541_547 = (var_541, var_547)
+                                prev_state = self.table_27[tuple_541_547]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 1:
+                                    self.table_27[tuple_541_547] = 0 | 4
+                                    # Program Parallel Region
+                                    # Program Call Region
+                                    ret = self.proc_119_(var_541, var_547)
+
+                                    # Program Call Region
+                                    ret = self.proc_123_(var_541, var_547)
+
+                            # Program TransitionState Region
+                            tuple_541_541 = (var_541, var_541)
+                            prev_state = self.table_6[tuple_541_541]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_6[tuple_541_541] = 1 | 4
+                                if not present_bit:
+                                    self.index_290[tuple_541_541[1]].append(tuple_541_541[0])
+                                    self.index_756[tuple_541_541[0]].append(tuple_541_541[1])
+                                # Program VectorAppend Region
+                                vec_525.append((var_541, var_541))
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_2:
+                            # Program TransitionState Region
+                            tuple_542_541 = (var_542, var_541)
+                            prev_state = self.table_40[tuple_542_541]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_40[tuple_542_541] = 1 | 4
+                                if not present_bit:
+                                    self.index_265[tuple_542_541[0]].append(tuple_542_541[1])
+                                # Program VectorAppend Region
+                                vec_568.append(var_542)
         # Program VectorClear Region
-        del vec_579[:]
-        vec_index579 = 0
+        del vec_539[:]
+        vec_index539 = 0
+        # Program VectorUnique Region
+        vec_550 = list(set(vec_550))
+        vec_index550 = 0
+        # Program TableJoin Region
+        while vec_index550 < len(vec_550):
+            var_552 = vec_550[vec_index550]
+            vec_index550 += 1
+            if var_552 in self.index_157:
+                tuple_551_1_index: int = 0
+                tuple_551_1_vec: List[int] = self.index_208[var_552]
+                while tuple_551_1_index < len(tuple_551_1_vec):
+                    tuple_551_1 = tuple_551_1_vec[tuple_551_1_index]
+                    tuple_551_1_index += 1
+                    var_553 = tuple_551_1
+                    # Program TransitionState Region
+                    tuple_553_552_3 = (var_553, var_552, self.var_3)
+                    prev_state = self.table_9[tuple_553_552_3]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_553_552_3] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_553_552_3[0], tuple_553_552_3[1])].append(tuple_553_552_3[2])
+                        # Program Parallel Region
+                        # Program Series Region
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_552_553 = (var_552, var_553)
+                        prev_state = self.table_27[tuple_552_553]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_552_553] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_552_553[0]].append(tuple_552_553[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_552)
+                        if not ret:
+                            # Program TransitionState Region
+                            tuple_552_553 = (var_552, var_553)
+                            prev_state = self.table_27[tuple_552_553]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_552_553] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_552_553[0]].append(tuple_552_553[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_553, var_552)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_553_552 = (var_553, var_552)
+                                    prev_state = self.table_52[tuple_553_552]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_553_552] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_553_552[0]].append(tuple_553_552[1])
+                                            self.index_778[tuple_553_552[1]].append(tuple_553_552[0])
+                                        # Program VectorAppend Region
+                                        vec_588.append(var_553)
+                                # Program TransitionState Region
+                                tuple_553_552 = (var_553, var_552)
+                                prev_state = self.table_15[tuple_553_552]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_553_552] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_553_552[0]].append(tuple_553_552[1])
+                        # Program TransitionState Region
+                        tuple_553_552 = (var_553, var_552)
+                        prev_state = self.table_94[tuple_553_552]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_553_552] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_553_552[1]].append(tuple_553_552[0])
+                            # Program VectorAppend Region
+                            vec_580.append(var_552)
+                        # Program TransitionState Region
+                        tuple_552 = var_552
+                        prev_state = self.table_32[tuple_552]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_552] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_561.append(var_552)
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_3:
+                            # Program TransitionState Region
+                            tuple_552 = var_552
+                            prev_state = self.table_18[tuple_552]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_18[tuple_552] = 1 | 4
+                                if not present_bit:
+                                    pass
+                                # Program Parallel Region
+                                # Program VectorAppend Region
+                                vec_580.append(var_552)
+                                # Program Series Region
+                                # Program TableScan Region
+                                scan_tuple_557: int
+                                scan_index_557: int = 0
+                                scan_tuple_557_vec: List[int] = self.index_116[var_552]
+                                while scan_index_557 < len(scan_tuple_557_vec):
+                                    scan_tuple_557 = scan_tuple_557_vec[scan_index_557]
+                                    scan_index_557 += 1
+                                    vec_557.append(scan_tuple_557)
+                                # Program VectorLoop Region
+                                vec_index557 = 0
+                                while vec_index557 < len(vec_557):
+                                    var_558 = vec_557[vec_index557]
+                                    vec_index557 += 1
+                                    # Program TransitionState Region
+                                    # Remove from negated view
+                                    tuple_552_558 = (var_552, var_558)
+                                    prev_state = self.table_27[tuple_552_558]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 1:
+                                        self.table_27[tuple_552_558] = 0 | 4
+                                        # Program Parallel Region
+                                        # Program Call Region
+                                        ret = self.proc_119_(var_552, var_558)
+
+                                        # Program Call Region
+                                        ret = self.proc_123_(var_552, var_558)
+
+                                # Program TransitionState Region
+                                tuple_552_552 = (var_552, var_552)
+                                prev_state = self.table_6[tuple_552_552]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_552_552] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_552_552[1]].append(tuple_552_552[0])
+                                        self.index_756[tuple_552_552[0]].append(tuple_552_552[1])
+                                    # Program VectorAppend Region
+                                    vec_525.append((var_552, var_552))
+                        # Program TupleCompare Region
+                        if self.var_2 == self.var_3:
+                            # Program TransitionState Region
+                            tuple_553_552 = (var_553, var_552)
+                            prev_state = self.table_40[tuple_553_552]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_40[tuple_553_552] = 1 | 4
+                                if not present_bit:
+                                    self.index_265[tuple_553_552[0]].append(tuple_553_552[1])
+                                # Program VectorAppend Region
+                                vec_568.append(var_553)
+        # Program VectorClear Region
+        del vec_550[:]
+        vec_index550 = 0
+        # Program VectorUnique Region
+        vec_561 = list(set(vec_561))
+        vec_index561 = 0
+        # Program TableJoin Region
+        while vec_index561 < len(vec_561):
+            var_563 = vec_561[vec_index561]
+            vec_index561 += 1
+            if var_563 in self.index_256:
+                if var_563 in self.index_257:
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_563 = var_563
+                    prev_state = self.table_18[tuple_563]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_18[tuple_563] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_580.append(var_563)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_564: int
+                        scan_index_564: int = 0
+                        scan_tuple_564_vec: List[int] = self.index_116[var_563]
+                        while scan_index_564 < len(scan_tuple_564_vec):
+                            scan_tuple_564 = scan_tuple_564_vec[scan_index_564]
+                            scan_index_564 += 1
+                            vec_564.append(scan_tuple_564)
+                        # Program VectorLoop Region
+                        vec_index564 = 0
+                        while vec_index564 < len(vec_564):
+                            var_565 = vec_564[vec_index564]
+                            vec_index564 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_563_565 = (var_563, var_565)
+                            prev_state = self.table_27[tuple_563_565]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_563_565] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_563, var_565)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_563, var_565)
+
+                        # Program TransitionState Region
+                        tuple_563_563 = (var_563, var_563)
+                        prev_state = self.table_6[tuple_563_563]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_6[tuple_563_563] = 1 | 4
+                            if not present_bit:
+                                self.index_290[tuple_563_563[1]].append(tuple_563_563[0])
+                                self.index_756[tuple_563_563[0]].append(tuple_563_563[1])
+                            # Program VectorAppend Region
+                            vec_525.append((var_563, var_563))
+        # Program VectorClear Region
+        del vec_561[:]
+        vec_index561 = 0
+        # Program VectorUnique Region
+        vec_568 = list(set(vec_568))
+        vec_index568 = 0
+        # Program TableJoin Region
+        while vec_index568 < len(vec_568):
+            var_570 = vec_568[vec_index568]
+            vec_index568 += 1
+            if var_570 in self.index_151:
+                tuple_569_1_index: int = 0
+                tuple_569_1_vec: List[int] = self.index_265[var_570]
+                while tuple_569_1_index < len(tuple_569_1_vec):
+                    tuple_569_1 = tuple_569_1_vec[tuple_569_1_index]
+                    tuple_569_1_index += 1
+                    var_571 = tuple_569_1
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_570_571 = (var_570, var_571)
+                    prev_state = self.table_43[tuple_570_571]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_43[tuple_570_571] = 1 | 4
+                        if not present_bit:
+                            self.index_270[tuple_570_571[1]].append(tuple_570_571[0])
+                        # Program VectorAppend Region
+                        vec_572.append(var_571)
+        # Program VectorClear Region
+        del vec_568[:]
+        vec_index568 = 0
+        # Program VectorUnique Region
+        vec_572 = list(set(vec_572))
+        vec_index572 = 0
+        # Program TableJoin Region
+        while vec_index572 < len(vec_572):
+            var_574 = vec_572[vec_index572]
+            vec_index572 += 1
+            if var_574 in self.index_256:
+                tuple_573_1_index: int = 0
+                tuple_573_1_vec: List[int] = self.index_270[var_574]
+                while tuple_573_1_index < len(tuple_573_1_vec):
+                    tuple_573_1 = tuple_573_1_vec[tuple_573_1_index]
+                    tuple_573_1_index += 1
+                    var_575 = tuple_573_1
+                    # Program TransitionState Region
+                    tuple_575 = var_575
+                    prev_state = self.table_18[tuple_575]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_18[tuple_575] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_580.append(var_575)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_576: int
+                        scan_index_576: int = 0
+                        scan_tuple_576_vec: List[int] = self.index_116[var_575]
+                        while scan_index_576 < len(scan_tuple_576_vec):
+                            scan_tuple_576 = scan_tuple_576_vec[scan_index_576]
+                            scan_index_576 += 1
+                            vec_576.append(scan_tuple_576)
+                        # Program VectorLoop Region
+                        vec_index576 = 0
+                        while vec_index576 < len(vec_576):
+                            var_577 = vec_576[vec_index576]
+                            vec_index576 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_575_577 = (var_575, var_577)
+                            prev_state = self.table_27[tuple_575_577]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_575_577] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_575, var_577)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_575, var_577)
+
+                        # Program TransitionState Region
+                        tuple_575_575 = (var_575, var_575)
+                        prev_state = self.table_6[tuple_575_575]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_6[tuple_575_575] = 1 | 4
+                            if not present_bit:
+                                self.index_290[tuple_575_575[1]].append(tuple_575_575[0])
+                                self.index_756[tuple_575_575[0]].append(tuple_575_575[1])
+                            # Program VectorAppend Region
+                            vec_525.append((var_575, var_575))
+        # Program VectorClear Region
+        del vec_572[:]
+        vec_index572 = 0
+        # Program VectorUnique Region
+        vec_580 = list(set(vec_580))
+        vec_index580 = 0
+        # Program TableJoin Region
+        while vec_index580 < len(vec_580):
+            var_582 = vec_580[vec_index580]
+            vec_index580 += 1
+            tuple_581_0_index: int = 0
+            tuple_581_0_vec: List[int] = self.index_279[var_582]
+            while tuple_581_0_index < len(tuple_581_0_vec):
+                tuple_581_0 = tuple_581_0_vec[tuple_581_0_index]
+                tuple_581_0_index += 1
+                var_583 = tuple_581_0
+                if var_582 in self.index_280:
+                    # Program Parallel Region
+                    # Program TransitionState Region
+                    tuple_583_582 = (var_583, var_582)
+                    prev_state = self.table_97[tuple_583_582]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_97[tuple_583_582] = 1 | 4
+                        if not present_bit:
+                            self.index_285[tuple_583_582[1]].append(tuple_583_582[0])
+                        # Program VectorAppend Region
+                        vec_584.append(var_582)
+                    # Program TransitionState Region
+                    tuple_583_582 = (var_583, var_582)
+                    prev_state = self.table_22[tuple_583_582]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_22[tuple_583_582] = 1 | 4
+                        if not present_bit:
+                            self.index_760[tuple_583_582[0]].append(tuple_583_582[1])
+        # Program VectorClear Region
+        del vec_580[:]
+        vec_index580 = 0
         # Program VectorUnique Region
         vec_584 = list(set(vec_584))
         vec_index584 = 0
@@ -4236,127 +5927,166 @@ class Database:
             var_586 = vec_584[vec_index584]
             vec_index584 += 1
             tuple_585_0_index: int = 0
-            tuple_585_0_vec: List[int] = self.index_414[var_586]
+            tuple_585_0_vec: List[int] = self.index_285[var_586]
             while tuple_585_0_index < len(tuple_585_0_vec):
                 tuple_585_0 = tuple_585_0_vec[tuple_585_0_index]
                 tuple_585_0_index += 1
                 var_587 = tuple_585_0
-                tuple_585_1_index: int = 0
-                tuple_585_1_vec: List[int] = self.index_415[var_586]
-                while tuple_585_1_index < len(tuple_585_1_vec):
-                    tuple_585_1 = tuple_585_1_vec[tuple_585_1_index]
-                    tuple_585_1_index += 1
-                    var_588 = tuple_585_1
-                    # Program Call Region
-                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
-                    ret = self.proc_1030_(var_587, var_586)
-                    if ret:
-                        # Program Call Region
-                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
-                        ret = self.proc_1033_(var_586, var_588)
-                        if ret:
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                            ret = self.proc_426_(var_587, var_588)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_587_588 = (var_587, var_588)
-                                prev_state = self.table_6[tuple_587_588]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_6[tuple_587_588] = 1 | 4
-                                    if not present_bit:
-                                        self.index_414[tuple_587_588[1]].append(tuple_587_588[0])
-                                        self.index_1029[tuple_587_588[0]].append(tuple_587_588[1])
-                                    # Program VectorAppend Region
-                                    vec_462.append((var_587, var_588))
+                if var_586 in self.index_256:
+                    # Program TransitionState Region
+                    tuple_587 = var_587
+                    prev_state = self.table_13[tuple_587]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_13[tuple_587] = 1 | 4
+                        if not present_bit:
+                            pass
         # Program VectorClear Region
         del vec_584[:]
         vec_index584 = 0
         # Program VectorUnique Region
-        vec_592 = list(set(vec_592))
-        vec_index592 = 0
+        vec_588 = list(set(vec_588))
+        vec_index588 = 0
         # Program TableJoin Region
-        while vec_index592 < len(vec_592):
-            var_594 = vec_592[vec_index592]
-            vec_index592 += 1
-            tuple_593_0_index: int = 0
-            tuple_593_0_vec: List[int] = self.index_433[var_594]
-            while tuple_593_0_index < len(tuple_593_0_vec):
-                tuple_593_0 = tuple_593_0_vec[tuple_593_0_index]
-                tuple_593_0_index += 1
-                var_595 = tuple_593_0
-                tuple_593_1_index: int = 0
-                tuple_593_1_vec: List[bytes] = self.index_372[var_594]
-                while tuple_593_1_index < len(tuple_593_1_vec):
-                    tuple_593_1 = tuple_593_1_vec[tuple_593_1_index]
-                    tuple_593_1_index += 1
-                    var_596 = tuple_593_1
-                    # Program TransitionState Region
-                    tuple_595 = var_595
-                    prev_state = self.table_15[tuple_595]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_15[tuple_595] = 1 | 4
-                        if not present_bit:
-                            pass
+        while vec_index588 < len(vec_588):
+            var_590 = vec_588[vec_index588]
+            vec_index588 += 1
+            tuple_589_0_index: int = 0
+            tuple_589_0_vec: List[int] = self.index_290[var_590]
+            while tuple_589_0_index < len(tuple_589_0_vec):
+                tuple_589_0 = tuple_589_0_vec[tuple_589_0_index]
+                tuple_589_0_index += 1
+                var_591 = tuple_589_0
+                tuple_589_1_index: int = 0
+                tuple_589_1_vec: List[int] = self.index_291[var_590]
+                while tuple_589_1_index < len(tuple_589_1_vec):
+                    tuple_589_1 = tuple_589_1_vec[tuple_589_1_index]
+                    tuple_589_1_index += 1
+                    var_592 = tuple_589_1
+                    # Program Call Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    ret = self.proc_294_(var_591, var_590)
+                    if ret:
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        ret = self.proc_164_(var_590, var_592)
+                        if ret:
+                            # Program Call Region
+                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            ret = self.proc_299_(var_591, var_592)
+                            if not ret:
+                                # Program TransitionState Region
+                                tuple_591_592 = (var_591, var_592)
+                                prev_state = self.table_6[tuple_591_592]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_591_592] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_591_592[1]].append(tuple_591_592[0])
+                                        self.index_756[tuple_591_592[0]].append(tuple_591_592[1])
+                                    # Program VectorAppend Region
+                                    vec_525.append((var_591, var_592))
         # Program VectorClear Region
-        del vec_592[:]
-        vec_index592 = 0
+        del vec_588[:]
+        vec_index588 = 0
         # Induction Fixpoint Loop Region
-        while len(vec_462):
+        while len(vec_525):
             # Program Call Region
-            param_464_0 = [vec_462]
-            ret = self.proc_192_(param_464_0)
-            vec_462 = param_464_0[0]
+            param_527_0 = [vec_525]
+            ret = self.proc_127_(param_527_0)
+            vec_525 = param_527_0[0]
 
-        vec_index462 = 0
+        vec_index525 = 0
         # Induction Output Region
         # Program VectorClear Region
-        del vec_462[:]
-        vec_index462 = 0
+        del vec_525[:]
+        vec_index525 = 0
         # Program Return Region
         return False
+        return False
 
-    def entrypoint_1(self, vec_598: List[int]) -> bool:
+    def address_operand_2(self, vec_597: List[Tuple[int, int]]) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
-        vec_index598: int = 0
+        vec_index597: int = 0
         vec_600: List[int] = list()
         vec_index600: int = 0
-        vec_603: List[Tuple[int, int]] = list()
-        vec_index603: int = 0
-        vec_606: List[Tuple[int, int]] = list()
-        vec_index606: int = 0
-        vec_610: List[int] = list()
-        vec_index610: int = 0
-        vec_615: List[int] = list()
-        vec_index615: int = 0
+        vec_604: List[int] = list()
+        vec_index604: int = 0
+        vec_608: List[int] = list()
+        vec_index608: int = 0
+        vec_613: List[int] = list()
+        vec_index613: int = 0
+        vec_618: List[int] = list()
+        vec_index618: int = 0
+        vec_625: List[int] = list()
+        vec_index625: int = 0
+        vec_629: List[Tuple[int, int]] = list()
+        vec_index629: int = 0
+        vec_632: List[int] = list()
+        vec_index632: int = 0
+        vec_639: List[int] = list()
+        vec_index639: int = 0
+        vec_643: List[int] = list()
+        vec_index643: int = 0
+        vec_646: List[int] = list()
+        vec_index646: int = 0
+        vec_650: List[int] = list()
+        vec_index650: int = 0
+        vec_654: List[int] = list()
+        vec_index654: int = 0
+        vec_658: List[int] = list()
+        vec_index658: int = 0
+        vec_662: List[int] = list()
+        vec_index662: int = 0
+        vec_666: List[int] = list()
+        vec_index666: int = 0
+        vec_670: List[int] = list()
+        vec_index670: int = 0
         # Program Series Region
         # Program Induction Init Region
         # Program Series Region
         # Program VectorLoop Region
-        vec_index598 = 0
-        while vec_index598 < len(vec_598):
-            var_599 = vec_598[vec_index598]
-            vec_index598 += 1
+        vec_index597 = 0
+        while vec_index597 < len(vec_597):
+            var_598, var_599 = vec_597[vec_index597]
+            vec_index597 += 1
+            # Program Parallel Region
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            tuple_599 = var_599
-            prev_state = self.table_47[tuple_599]
+            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            tuple_598_599 = (var_598, var_599)
+            prev_state = self.table_71[tuple_598_599]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_47[tuple_599] = 1 | 4
+                self.table_71[tuple_598_599] = 1 | 4
                 if not present_bit:
-                    pass
+                    self.index_146[tuple_598_599[0]].append(tuple_598_599[1])
+                # Program Parallel Region
                 # Program VectorAppend Region
-                vec_600.append(var_599)
+                vec_604.append(var_598)
+                # Program VectorAppend Region
+                vec_600.append(var_598)
+            # Program TransitionState Region
+            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            tuple_598_599 = (var_598, var_599)
+            prev_state = self.table_71[tuple_598_599]
+            state = prev_state & 3
+            present_bit = prev_state & 4
+            if state == 0 or state == 2:
+                self.table_71[tuple_598_599] = 1 | 4
+                if not present_bit:
+                    self.index_146[tuple_598_599[0]].append(tuple_598_599[1])
+                # Program Parallel Region
+                # Program VectorAppend Region
+                vec_604.append(var_598)
+                # Program VectorAppend Region
+                vec_600.append(var_598)
         # Program VectorUnique Region
         vec_600 = list(set(vec_600))
         vec_index600 = 0
@@ -4364,310 +6094,733 @@ class Database:
         while vec_index600 < len(vec_600):
             var_602 = vec_600[vec_index600]
             vec_index600 += 1
-            if var_602 in self.index_334:
-                if var_602 in self.index_267:
+            if var_602 in self.index_145:
+                tuple_601_1_index: int = 0
+                tuple_601_1_vec: List[int] = self.index_146[var_602]
+                while tuple_601_1_index < len(tuple_601_1_vec):
+                    tuple_601_1 = tuple_601_1_vec[tuple_601_1_index]
+                    tuple_601_1_index += 1
+                    var_603 = tuple_601_1
                     # Program TransitionState Region
-                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-                    tuple_602 = var_602
-                    prev_state = self.table_17[tuple_602]
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_602_603 = (var_602, var_603)
+                    prev_state = self.table_85[tuple_602_603]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_17[tuple_602] = 1 | 4
+                        self.table_85[tuple_602_603] = 1 | 4
                         if not present_bit:
-                            pass
-                        # Program Parallel Region
-                        # Program Series Region
-                        # Program TableScan Region
-                        scan_tuple_606: Tuple[int, int]
-                        scan_index_606: int = 0
-                        scan_tuple_606_vec: List[Tuple[int, int]] = self.index_199[var_602]
-                        while scan_index_606 < len(scan_tuple_606_vec):
-                            scan_tuple_606 = scan_tuple_606_vec[scan_index_606]
-                            scan_index_606 += 1
-                            vec_606.append(scan_tuple_606)
-                        # Program VectorLoop Region
-                        vec_index606 = 0
-                        while vec_index606 < len(vec_606):
-                            var_607, var_608 = vec_606[vec_index606]
-                            vec_index606 += 1
-                            # Program TransitionState Region
-                            # Remove from negated view
-                            var_608 = self._resolve_edgetype(var_608)
-                            tuple_602_607_608 = (var_602, var_607, var_608)
-                            prev_state = self.table_26[tuple_602_607_608]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 1:
-                                self.table_26[tuple_602_607_608] = 0 | 4
-                                # Program Call Region
-                                ret = self.proc_203_(var_602, var_607, var_608)
-
-                        # Program TransitionState Region
-                        tuple_602_602 = (var_602, var_602)
-                        prev_state = self.table_6[tuple_602_602]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_6[tuple_602_602] = 1 | 4
-                            if not present_bit:
-                                self.index_414[tuple_602_602[1]].append(tuple_602_602[0])
-                                self.index_1029[tuple_602_602[0]].append(tuple_602_602[1])
-                            # Program VectorAppend Region
-                            vec_603.append((var_602, var_602))
+                            self.index_184[tuple_602_603[1]].append(tuple_602_603[0])
                         # Program VectorAppend Region
-                        vec_610.append(var_602)
+                        vec_608.append(var_603)
         # Program VectorClear Region
         del vec_600[:]
         vec_index600 = 0
         # Program VectorUnique Region
-        vec_610 = list(set(vec_610))
-        vec_index610 = 0
+        vec_604 = list(set(vec_604))
+        vec_index604 = 0
         # Program TableJoin Region
-        while vec_index610 < len(vec_610):
-            var_612 = vec_610[vec_index610]
-            vec_index610 += 1
-            tuple_611_0_index: int = 0
-            tuple_611_0_vec: List[Tuple[int, int]] = self.index_373[var_612]
-            while tuple_611_0_index < len(tuple_611_0_vec):
-                tuple_611_0 = tuple_611_0_vec[tuple_611_0_index]
-                tuple_611_0_index += 1
-                var_613 = tuple_611_0[0]
-                var_614 = tuple_611_0[1]
-                if var_612 in self.index_408:
+        while vec_index604 < len(vec_604):
+            var_606 = vec_604[vec_index604]
+            vec_index604 += 1
+            if var_606 in self.index_151:
+                tuple_605_1_index: int = 0
+                tuple_605_1_vec: List[int] = self.index_146[var_606]
+                while tuple_605_1_index < len(tuple_605_1_vec):
+                    tuple_605_1 = tuple_605_1_vec[tuple_605_1_index]
+                    tuple_605_1_index += 1
+                    var_607 = tuple_605_1
                     # Program TransitionState Region
-                    tuple_613_612 = (var_613, var_612)
-                    prev_state = self.table_12[tuple_613_612]
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_606_607 = (var_606, var_607)
+                    prev_state = self.table_77[tuple_606_607]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_12[tuple_613_612] = 1 | 4
+                        self.table_77[tuple_606_607] = 1 | 4
                         if not present_bit:
-                            self.index_433[tuple_613_612[1]].append(tuple_613_612[0])
-                            self.index_1028[tuple_613_612[0]].append(tuple_613_612[1])
+                            self.index_202[tuple_606_607[1]].append(tuple_606_607[0])
                         # Program VectorAppend Region
-                        vec_615.append(var_612)
+                        vec_613.append(var_607)
         # Program VectorClear Region
-        del vec_610[:]
-        vec_index610 = 0
+        del vec_604[:]
+        vec_index604 = 0
         # Program VectorUnique Region
-        vec_615 = list(set(vec_615))
-        vec_index615 = 0
+        vec_608 = list(set(vec_608))
+        vec_index608 = 0
         # Program TableJoin Region
-        while vec_index615 < len(vec_615):
-            var_617 = vec_615[vec_index615]
-            vec_index615 += 1
-            tuple_616_0_index: int = 0
-            tuple_616_0_vec: List[int] = self.index_433[var_617]
-            while tuple_616_0_index < len(tuple_616_0_vec):
-                tuple_616_0 = tuple_616_0_vec[tuple_616_0_index]
-                tuple_616_0_index += 1
-                var_618 = tuple_616_0
-                tuple_616_1_index: int = 0
-                tuple_616_1_vec: List[bytes] = self.index_372[var_617]
-                while tuple_616_1_index < len(tuple_616_1_vec):
-                    tuple_616_1 = tuple_616_1_vec[tuple_616_1_index]
-                    tuple_616_1_index += 1
-                    var_619 = tuple_616_1
+        while vec_index608 < len(vec_608):
+            var_610 = vec_608[vec_index608]
+            vec_index608 += 1
+            tuple_609_0_index: int = 0
+            tuple_609_0_vec: List[int] = self.index_183[var_610]
+            while tuple_609_0_index < len(tuple_609_0_vec):
+                tuple_609_0 = tuple_609_0_vec[tuple_609_0_index]
+                tuple_609_0_index += 1
+                var_611 = tuple_609_0
+                tuple_609_1_index: int = 0
+                tuple_609_1_vec: List[int] = self.index_184[var_610]
+                while tuple_609_1_index < len(tuple_609_1_vec):
+                    tuple_609_1 = tuple_609_1_vec[tuple_609_1_index]
+                    tuple_609_1_index += 1
+                    var_612 = tuple_609_1
                     # Program TransitionState Region
-                    tuple_618 = var_618
-                    prev_state = self.table_15[tuple_618]
+                    tuple_611_612 = (var_611, var_612)
+                    prev_state = self.table_88[tuple_611_612]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_15[tuple_618] = 1 | 4
+                        self.table_88[tuple_611_612] = 1 | 4
                         if not present_bit:
-                            pass
+                            self.index_232[tuple_611_612[0]].append(tuple_611_612[1])
+                        # Program VectorAppend Region
+                        vec_618.append(var_611)
         # Program VectorClear Region
-        del vec_615[:]
-        vec_index615 = 0
-        # Induction Fixpoint Loop Region
-        while len(vec_603):
-            # Program Call Region
-            param_605_0 = [vec_603]
-            ret = self.proc_192_(param_605_0)
-            vec_603 = param_605_0[0]
-
-        vec_index603 = 0
-        # Induction Output Region
-        # Program VectorClear Region
-        del vec_603[:]
-        vec_index603 = 0
-        # Program Return Region
-        return False
-
-    def constructor_function_1(self, vec_621: List[int]) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        vec_index621: int = 0
-        vec_623: List[int] = list()
-        vec_index623: int = 0
-        vec_629: List[Tuple[int, int]] = list()
-        vec_index629: int = 0
-        vec_632: List[Tuple[int, int]] = list()
-        vec_index632: int = 0
-        vec_636: List[int] = list()
-        vec_index636: int = 0
-        vec_641: List[int] = list()
-        vec_index641: int = 0
-        # Program Series Region
-        # Program Induction Init Region
-        # Program Series Region
-        # Program VectorLoop Region
-        vec_index621 = 0
-        while vec_index621 < len(vec_621):
-            var_622 = vec_621[vec_index621]
-            vec_index621 += 1
-            # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            tuple_622 = var_622
-            prev_state = self.table_67[tuple_622]
-            state = prev_state & 3
-            present_bit = prev_state & 4
-            if state == 0 or state == 2:
-                self.table_67[tuple_622] = 1 | 4
-                if not present_bit:
-                    pass
-                # Program VectorAppend Region
-                vec_623.append(var_622)
+        del vec_608[:]
+        vec_index608 = 0
         # Program VectorUnique Region
-        vec_623 = list(set(vec_623))
-        vec_index623 = 0
+        vec_613 = list(set(vec_613))
+        vec_index613 = 0
         # Program TableJoin Region
-        while vec_index623 < len(vec_623):
-            var_625 = vec_623[vec_index623]
-            vec_index623 += 1
-            if var_625 in self.index_211:
-                tuple_624_1_index: int = 0
-                tuple_624_1_vec: List[Tuple[int, bytes, bytes]] = self.index_188[var_625]
-                while tuple_624_1_index < len(tuple_624_1_vec):
-                    tuple_624_1 = tuple_624_1_vec[tuple_624_1_index]
-                    tuple_624_1_index += 1
-                    var_626 = tuple_624_1[0]
-                    var_627 = tuple_624_1[1]
-                    var_628 = tuple_624_1[2]
+        while vec_index613 < len(vec_613):
+            var_615 = vec_613[vec_index613]
+            vec_index613 += 1
+            tuple_614_0_index: int = 0
+            tuple_614_0_vec: List[int] = self.index_183[var_615]
+            while tuple_614_0_index < len(tuple_614_0_vec):
+                tuple_614_0 = tuple_614_0_vec[tuple_614_0_index]
+                tuple_614_0_index += 1
+                var_616 = tuple_614_0
+                tuple_614_1_index: int = 0
+                tuple_614_1_vec: List[int] = self.index_202[var_615]
+                while tuple_614_1_index < len(tuple_614_1_vec):
+                    tuple_614_1 = tuple_614_1_vec[tuple_614_1_index]
+                    tuple_614_1_index += 1
+                    var_617 = tuple_614_1
                     # Program TransitionState Region
-                    tuple_625 = var_625
-                    prev_state = self.table_17[tuple_625]
+                    tuple_616_617 = (var_616, var_617)
+                    prev_state = self.table_80[tuple_616_617]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_17[tuple_625] = 1 | 4
+                        self.table_80[tuple_616_617] = 1 | 4
                         if not present_bit:
-                            pass
+                            self.index_244[tuple_616_617[0]].append(tuple_616_617[1])
+                        # Program VectorAppend Region
+                        vec_632.append(var_616)
+        # Program VectorClear Region
+        del vec_613[:]
+        vec_index613 = 0
+        # Program VectorUnique Region
+        vec_618 = list(set(vec_618))
+        vec_index618 = 0
+        # Program TableJoin Region
+        while vec_index618 < len(vec_618):
+            var_620 = vec_618[vec_index618]
+            vec_index618 += 1
+            if var_620 in self.index_157:
+                tuple_619_1_index: int = 0
+                tuple_619_1_vec: List[int] = self.index_232[var_620]
+                while tuple_619_1_index < len(tuple_619_1_vec):
+                    tuple_619_1 = tuple_619_1_vec[tuple_619_1_index]
+                    tuple_619_1_index += 1
+                    var_621 = tuple_619_1
+                    # Program TransitionState Region
+                    tuple_621_620_0 = (var_621, var_620, self.var_0)
+                    prev_state = self.table_9[tuple_621_620_0]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_621_620_0] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_621_620_0[0], tuple_621_620_0[1])].append(tuple_621_620_0[2])
                         # Program Parallel Region
                         # Program Series Region
-                        # Program TableScan Region
-                        scan_tuple_632: Tuple[int, int]
-                        scan_index_632: int = 0
-                        scan_tuple_632_vec: List[Tuple[int, int]] = self.index_199[var_625]
-                        while scan_index_632 < len(scan_tuple_632_vec):
-                            scan_tuple_632 = scan_tuple_632_vec[scan_index_632]
-                            scan_index_632 += 1
-                            vec_632.append(scan_tuple_632)
-                        # Program VectorLoop Region
-                        vec_index632 = 0
-                        while vec_index632 < len(vec_632):
-                            var_633, var_634 = vec_632[vec_index632]
-                            vec_index632 += 1
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_620_621 = (var_620, var_621)
+                        prev_state = self.table_27[tuple_620_621]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_620_621] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_620_621[0]].append(tuple_620_621[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_620)
+                        if not ret:
                             # Program TransitionState Region
-                            # Remove from negated view
-                            var_634 = self._resolve_edgetype(var_634)
-                            tuple_625_633_634 = (var_625, var_633, var_634)
-                            prev_state = self.table_26[tuple_625_633_634]
+                            tuple_620_621 = (var_620, var_621)
+                            prev_state = self.table_27[tuple_620_621]
                             state = prev_state & 3
                             present_bit = prev_state & 4
-                            if state == 1:
-                                self.table_26[tuple_625_633_634] = 0 | 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_620_621] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_620_621[0]].append(tuple_620_621[1])
+                                # Program Parallel Region
                                 # Program Call Region
-                                ret = self.proc_203_(var_625, var_633, var_634)
-
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_621, var_620)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_621_620 = (var_621, var_620)
+                                    prev_state = self.table_52[tuple_621_620]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_621_620] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_621_620[0]].append(tuple_621_620[1])
+                                            self.index_778[tuple_621_620[1]].append(tuple_621_620[0])
+                                        # Program VectorAppend Region
+                                        vec_670.append(var_621)
+                                # Program TransitionState Region
+                                tuple_621_620 = (var_621, var_620)
+                                prev_state = self.table_15[tuple_621_620]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_621_620] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_621_620[0]].append(tuple_621_620[1])
                         # Program TransitionState Region
-                        tuple_625_625 = (var_625, var_625)
-                        prev_state = self.table_6[tuple_625_625]
+                        tuple_621_620 = (var_621, var_620)
+                        prev_state = self.table_94[tuple_621_620]
                         state = prev_state & 3
                         present_bit = prev_state & 4
                         if state == 0 or state == 2:
-                            self.table_6[tuple_625_625] = 1 | 4
+                            self.table_94[tuple_621_620] = 1 | 4
                             if not present_bit:
-                                self.index_414[tuple_625_625[1]].append(tuple_625_625[0])
-                                self.index_1029[tuple_625_625[0]].append(tuple_625_625[1])
+                                self.index_279[tuple_621_620[1]].append(tuple_621_620[0])
                             # Program VectorAppend Region
-                            vec_629.append((var_625, var_625))
-                        # Program VectorAppend Region
-                        vec_636.append(var_625)
+                            vec_662.append(var_620)
+                        # Program TransitionState Region
+                        tuple_620 = var_620
+                        prev_state = self.table_32[tuple_620]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_620] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_643.append(var_620)
+                        # Program TransitionState Region
+                        tuple_620 = var_620
+                        prev_state = self.table_18[tuple_620]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_18[tuple_620] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program Parallel Region
+                            # Program VectorAppend Region
+                            vec_662.append(var_620)
+                            # Program Series Region
+                            # Program TableScan Region
+                            scan_tuple_625: int
+                            scan_index_625: int = 0
+                            scan_tuple_625_vec: List[int] = self.index_116[var_620]
+                            while scan_index_625 < len(scan_tuple_625_vec):
+                                scan_tuple_625 = scan_tuple_625_vec[scan_index_625]
+                                scan_index_625 += 1
+                                vec_625.append(scan_tuple_625)
+                            # Program VectorLoop Region
+                            vec_index625 = 0
+                            while vec_index625 < len(vec_625):
+                                var_626 = vec_625[vec_index625]
+                                vec_index625 += 1
+                                # Program TransitionState Region
+                                # Remove from negated view
+                                tuple_620_626 = (var_620, var_626)
+                                prev_state = self.table_27[tuple_620_626]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 1:
+                                    self.table_27[tuple_620_626] = 0 | 4
+                                    # Program Parallel Region
+                                    # Program Call Region
+                                    ret = self.proc_119_(var_620, var_626)
+
+                                    # Program Call Region
+                                    ret = self.proc_123_(var_620, var_626)
+
+                            # Program TransitionState Region
+                            tuple_620_620 = (var_620, var_620)
+                            prev_state = self.table_6[tuple_620_620]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_6[tuple_620_620] = 1 | 4
+                                if not present_bit:
+                                    self.index_290[tuple_620_620[1]].append(tuple_620_620[0])
+                                    self.index_756[tuple_620_620[0]].append(tuple_620_620[1])
+                                # Program VectorAppend Region
+                                vec_629.append((var_620, var_620))
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_2:
+                            # Program TransitionState Region
+                            tuple_621_620 = (var_621, var_620)
+                            prev_state = self.table_40[tuple_621_620]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_40[tuple_621_620] = 1 | 4
+                                if not present_bit:
+                                    self.index_265[tuple_621_620[0]].append(tuple_621_620[1])
+                                # Program VectorAppend Region
+                                vec_650.append(var_621)
         # Program VectorClear Region
-        del vec_623[:]
-        vec_index623 = 0
+        del vec_618[:]
+        vec_index618 = 0
         # Program VectorUnique Region
-        vec_636 = list(set(vec_636))
-        vec_index636 = 0
+        vec_632 = list(set(vec_632))
+        vec_index632 = 0
         # Program TableJoin Region
-        while vec_index636 < len(vec_636):
-            var_638 = vec_636[vec_index636]
-            vec_index636 += 1
-            tuple_637_0_index: int = 0
-            tuple_637_0_vec: List[Tuple[int, int]] = self.index_373[var_638]
-            while tuple_637_0_index < len(tuple_637_0_vec):
-                tuple_637_0 = tuple_637_0_vec[tuple_637_0_index]
-                tuple_637_0_index += 1
-                var_639 = tuple_637_0[0]
-                var_640 = tuple_637_0[1]
-                if var_638 in self.index_408:
+        while vec_index632 < len(vec_632):
+            var_634 = vec_632[vec_index632]
+            vec_index632 += 1
+            if var_634 in self.index_157:
+                tuple_633_1_index: int = 0
+                tuple_633_1_vec: List[int] = self.index_244[var_634]
+                while tuple_633_1_index < len(tuple_633_1_vec):
+                    tuple_633_1 = tuple_633_1_vec[tuple_633_1_index]
+                    tuple_633_1_index += 1
+                    var_635 = tuple_633_1
                     # Program TransitionState Region
-                    tuple_639_638 = (var_639, var_638)
-                    prev_state = self.table_12[tuple_639_638]
+                    tuple_635_634_2 = (var_635, var_634, self.var_2)
+                    prev_state = self.table_9[tuple_635_634_2]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_12[tuple_639_638] = 1 | 4
+                        self.table_9[tuple_635_634_2] = 1 | 4
                         if not present_bit:
-                            self.index_433[tuple_639_638[1]].append(tuple_639_638[0])
-                            self.index_1028[tuple_639_638[0]].append(tuple_639_638[1])
-                        # Program VectorAppend Region
-                        vec_641.append(var_638)
+                            self.index_799[(tuple_635_634_2[0], tuple_635_634_2[1])].append(tuple_635_634_2[2])
+                        # Program Parallel Region
+                        # Program Series Region
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_634_635 = (var_634, var_635)
+                        prev_state = self.table_27[tuple_634_635]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_634_635] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_634_635[0]].append(tuple_634_635[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_634)
+                        if not ret:
+                            # Program TransitionState Region
+                            tuple_634_635 = (var_634, var_635)
+                            prev_state = self.table_27[tuple_634_635]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_634_635] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_634_635[0]].append(tuple_634_635[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_635, var_634)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_635_634 = (var_635, var_634)
+                                    prev_state = self.table_52[tuple_635_634]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_635_634] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_635_634[0]].append(tuple_635_634[1])
+                                            self.index_778[tuple_635_634[1]].append(tuple_635_634[0])
+                                        # Program VectorAppend Region
+                                        vec_670.append(var_635)
+                                # Program TransitionState Region
+                                tuple_635_634 = (var_635, var_634)
+                                prev_state = self.table_15[tuple_635_634]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_635_634] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_635_634[0]].append(tuple_635_634[1])
+                        # Program TransitionState Region
+                        tuple_635_634 = (var_635, var_634)
+                        prev_state = self.table_94[tuple_635_634]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_635_634] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_635_634[1]].append(tuple_635_634[0])
+                            # Program VectorAppend Region
+                            vec_662.append(var_634)
+                        # Program TransitionState Region
+                        tuple_634 = var_634
+                        prev_state = self.table_32[tuple_634]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_634] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_643.append(var_634)
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_2:
+                            # Program TransitionState Region
+                            tuple_634 = var_634
+                            prev_state = self.table_18[tuple_634]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_18[tuple_634] = 1 | 4
+                                if not present_bit:
+                                    pass
+                                # Program Parallel Region
+                                # Program VectorAppend Region
+                                vec_662.append(var_634)
+                                # Program Series Region
+                                # Program TableScan Region
+                                scan_tuple_639: int
+                                scan_index_639: int = 0
+                                scan_tuple_639_vec: List[int] = self.index_116[var_634]
+                                while scan_index_639 < len(scan_tuple_639_vec):
+                                    scan_tuple_639 = scan_tuple_639_vec[scan_index_639]
+                                    scan_index_639 += 1
+                                    vec_639.append(scan_tuple_639)
+                                # Program VectorLoop Region
+                                vec_index639 = 0
+                                while vec_index639 < len(vec_639):
+                                    var_640 = vec_639[vec_index639]
+                                    vec_index639 += 1
+                                    # Program TransitionState Region
+                                    # Remove from negated view
+                                    tuple_634_640 = (var_634, var_640)
+                                    prev_state = self.table_27[tuple_634_640]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 1:
+                                        self.table_27[tuple_634_640] = 0 | 4
+                                        # Program Parallel Region
+                                        # Program Call Region
+                                        ret = self.proc_119_(var_634, var_640)
+
+                                        # Program Call Region
+                                        ret = self.proc_123_(var_634, var_640)
+
+                                # Program TransitionState Region
+                                tuple_634_634 = (var_634, var_634)
+                                prev_state = self.table_6[tuple_634_634]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_634_634] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_634_634[1]].append(tuple_634_634[0])
+                                        self.index_756[tuple_634_634[0]].append(tuple_634_634[1])
+                                    # Program VectorAppend Region
+                                    vec_629.append((var_634, var_634))
+                        # Program TransitionState Region
+                        tuple_635_634 = (var_635, var_634)
+                        prev_state = self.table_40[tuple_635_634]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_40[tuple_635_634] = 1 | 4
+                            if not present_bit:
+                                self.index_265[tuple_635_634[0]].append(tuple_635_634[1])
+                            # Program VectorAppend Region
+                            vec_650.append(var_635)
         # Program VectorClear Region
-        del vec_636[:]
-        vec_index636 = 0
+        del vec_632[:]
+        vec_index632 = 0
         # Program VectorUnique Region
-        vec_641 = list(set(vec_641))
-        vec_index641 = 0
+        vec_643 = list(set(vec_643))
+        vec_index643 = 0
         # Program TableJoin Region
-        while vec_index641 < len(vec_641):
-            var_643 = vec_641[vec_index641]
-            vec_index641 += 1
-            tuple_642_0_index: int = 0
-            tuple_642_0_vec: List[int] = self.index_433[var_643]
-            while tuple_642_0_index < len(tuple_642_0_vec):
-                tuple_642_0 = tuple_642_0_vec[tuple_642_0_index]
-                tuple_642_0_index += 1
-                var_644 = tuple_642_0
-                tuple_642_1_index: int = 0
-                tuple_642_1_vec: List[bytes] = self.index_372[var_643]
-                while tuple_642_1_index < len(tuple_642_1_vec):
-                    tuple_642_1 = tuple_642_1_vec[tuple_642_1_index]
-                    tuple_642_1_index += 1
-                    var_645 = tuple_642_1
+        while vec_index643 < len(vec_643):
+            var_645 = vec_643[vec_index643]
+            vec_index643 += 1
+            if var_645 in self.index_256:
+                if var_645 in self.index_257:
                     # Program TransitionState Region
-                    tuple_644 = var_644
-                    prev_state = self.table_15[tuple_644]
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_645 = var_645
+                    prev_state = self.table_18[tuple_645]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_15[tuple_644] = 1 | 4
+                        self.table_18[tuple_645] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_662.append(var_645)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_646: int
+                        scan_index_646: int = 0
+                        scan_tuple_646_vec: List[int] = self.index_116[var_645]
+                        while scan_index_646 < len(scan_tuple_646_vec):
+                            scan_tuple_646 = scan_tuple_646_vec[scan_index_646]
+                            scan_index_646 += 1
+                            vec_646.append(scan_tuple_646)
+                        # Program VectorLoop Region
+                        vec_index646 = 0
+                        while vec_index646 < len(vec_646):
+                            var_647 = vec_646[vec_index646]
+                            vec_index646 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_645_647 = (var_645, var_647)
+                            prev_state = self.table_27[tuple_645_647]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_645_647] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_645, var_647)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_645, var_647)
+
+                        # Program TransitionState Region
+                        tuple_645_645 = (var_645, var_645)
+                        prev_state = self.table_6[tuple_645_645]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_6[tuple_645_645] = 1 | 4
+                            if not present_bit:
+                                self.index_290[tuple_645_645[1]].append(tuple_645_645[0])
+                                self.index_756[tuple_645_645[0]].append(tuple_645_645[1])
+                            # Program VectorAppend Region
+                            vec_629.append((var_645, var_645))
+        # Program VectorClear Region
+        del vec_643[:]
+        vec_index643 = 0
+        # Program VectorUnique Region
+        vec_650 = list(set(vec_650))
+        vec_index650 = 0
+        # Program TableJoin Region
+        while vec_index650 < len(vec_650):
+            var_652 = vec_650[vec_index650]
+            vec_index650 += 1
+            if var_652 in self.index_151:
+                tuple_651_1_index: int = 0
+                tuple_651_1_vec: List[int] = self.index_265[var_652]
+                while tuple_651_1_index < len(tuple_651_1_vec):
+                    tuple_651_1 = tuple_651_1_vec[tuple_651_1_index]
+                    tuple_651_1_index += 1
+                    var_653 = tuple_651_1
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_652_653 = (var_652, var_653)
+                    prev_state = self.table_43[tuple_652_653]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_43[tuple_652_653] = 1 | 4
+                        if not present_bit:
+                            self.index_270[tuple_652_653[1]].append(tuple_652_653[0])
+                        # Program VectorAppend Region
+                        vec_654.append(var_653)
+        # Program VectorClear Region
+        del vec_650[:]
+        vec_index650 = 0
+        # Program VectorUnique Region
+        vec_654 = list(set(vec_654))
+        vec_index654 = 0
+        # Program TableJoin Region
+        while vec_index654 < len(vec_654):
+            var_656 = vec_654[vec_index654]
+            vec_index654 += 1
+            if var_656 in self.index_256:
+                tuple_655_1_index: int = 0
+                tuple_655_1_vec: List[int] = self.index_270[var_656]
+                while tuple_655_1_index < len(tuple_655_1_vec):
+                    tuple_655_1 = tuple_655_1_vec[tuple_655_1_index]
+                    tuple_655_1_index += 1
+                    var_657 = tuple_655_1
+                    # Program TransitionState Region
+                    tuple_657 = var_657
+                    prev_state = self.table_18[tuple_657]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_18[tuple_657] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_662.append(var_657)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_658: int
+                        scan_index_658: int = 0
+                        scan_tuple_658_vec: List[int] = self.index_116[var_657]
+                        while scan_index_658 < len(scan_tuple_658_vec):
+                            scan_tuple_658 = scan_tuple_658_vec[scan_index_658]
+                            scan_index_658 += 1
+                            vec_658.append(scan_tuple_658)
+                        # Program VectorLoop Region
+                        vec_index658 = 0
+                        while vec_index658 < len(vec_658):
+                            var_659 = vec_658[vec_index658]
+                            vec_index658 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_657_659 = (var_657, var_659)
+                            prev_state = self.table_27[tuple_657_659]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_657_659] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_657, var_659)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_657, var_659)
+
+                        # Program TransitionState Region
+                        tuple_657_657 = (var_657, var_657)
+                        prev_state = self.table_6[tuple_657_657]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_6[tuple_657_657] = 1 | 4
+                            if not present_bit:
+                                self.index_290[tuple_657_657[1]].append(tuple_657_657[0])
+                                self.index_756[tuple_657_657[0]].append(tuple_657_657[1])
+                            # Program VectorAppend Region
+                            vec_629.append((var_657, var_657))
+        # Program VectorClear Region
+        del vec_654[:]
+        vec_index654 = 0
+        # Program VectorUnique Region
+        vec_662 = list(set(vec_662))
+        vec_index662 = 0
+        # Program TableJoin Region
+        while vec_index662 < len(vec_662):
+            var_664 = vec_662[vec_index662]
+            vec_index662 += 1
+            tuple_663_0_index: int = 0
+            tuple_663_0_vec: List[int] = self.index_279[var_664]
+            while tuple_663_0_index < len(tuple_663_0_vec):
+                tuple_663_0 = tuple_663_0_vec[tuple_663_0_index]
+                tuple_663_0_index += 1
+                var_665 = tuple_663_0
+                if var_664 in self.index_280:
+                    # Program Parallel Region
+                    # Program TransitionState Region
+                    tuple_665_664 = (var_665, var_664)
+                    prev_state = self.table_97[tuple_665_664]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_97[tuple_665_664] = 1 | 4
+                        if not present_bit:
+                            self.index_285[tuple_665_664[1]].append(tuple_665_664[0])
+                        # Program VectorAppend Region
+                        vec_666.append(var_664)
+                    # Program TransitionState Region
+                    tuple_665_664 = (var_665, var_664)
+                    prev_state = self.table_22[tuple_665_664]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_22[tuple_665_664] = 1 | 4
+                        if not present_bit:
+                            self.index_760[tuple_665_664[0]].append(tuple_665_664[1])
+        # Program VectorClear Region
+        del vec_662[:]
+        vec_index662 = 0
+        # Program VectorUnique Region
+        vec_666 = list(set(vec_666))
+        vec_index666 = 0
+        # Program TableJoin Region
+        while vec_index666 < len(vec_666):
+            var_668 = vec_666[vec_index666]
+            vec_index666 += 1
+            tuple_667_0_index: int = 0
+            tuple_667_0_vec: List[int] = self.index_285[var_668]
+            while tuple_667_0_index < len(tuple_667_0_vec):
+                tuple_667_0 = tuple_667_0_vec[tuple_667_0_index]
+                tuple_667_0_index += 1
+                var_669 = tuple_667_0
+                if var_668 in self.index_256:
+                    # Program TransitionState Region
+                    tuple_669 = var_669
+                    prev_state = self.table_13[tuple_669]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_13[tuple_669] = 1 | 4
                         if not present_bit:
                             pass
         # Program VectorClear Region
-        del vec_641[:]
-        vec_index641 = 0
+        del vec_666[:]
+        vec_index666 = 0
+        # Program VectorUnique Region
+        vec_670 = list(set(vec_670))
+        vec_index670 = 0
+        # Program TableJoin Region
+        while vec_index670 < len(vec_670):
+            var_672 = vec_670[vec_index670]
+            vec_index670 += 1
+            tuple_671_0_index: int = 0
+            tuple_671_0_vec: List[int] = self.index_290[var_672]
+            while tuple_671_0_index < len(tuple_671_0_vec):
+                tuple_671_0 = tuple_671_0_vec[tuple_671_0_index]
+                tuple_671_0_index += 1
+                var_673 = tuple_671_0
+                tuple_671_1_index: int = 0
+                tuple_671_1_vec: List[int] = self.index_291[var_672]
+                while tuple_671_1_index < len(tuple_671_1_vec):
+                    tuple_671_1 = tuple_671_1_vec[tuple_671_1_index]
+                    tuple_671_1_index += 1
+                    var_674 = tuple_671_1
+                    # Program Call Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    ret = self.proc_294_(var_673, var_672)
+                    if ret:
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        ret = self.proc_164_(var_672, var_674)
+                        if ret:
+                            # Program Call Region
+                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            ret = self.proc_299_(var_673, var_674)
+                            if not ret:
+                                # Program TransitionState Region
+                                tuple_673_674 = (var_673, var_674)
+                                prev_state = self.table_6[tuple_673_674]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_673_674] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_673_674[1]].append(tuple_673_674[0])
+                                        self.index_756[tuple_673_674[0]].append(tuple_673_674[1])
+                                    # Program VectorAppend Region
+                                    vec_629.append((var_673, var_674))
+        # Program VectorClear Region
+        del vec_670[:]
+        vec_index670 = 0
         # Induction Fixpoint Loop Region
         while len(vec_629):
             # Program Call Region
             param_631_0 = [vec_629]
-            ret = self.proc_192_(param_631_0)
+            ret = self.proc_127_(param_631_0)
             vec_629 = param_631_0[0]
 
         vec_index629 = 0
@@ -4677,2940 +6830,772 @@ class Database:
         vec_index629 = 0
         # Program Return Region
         return False
+        return False
 
-    def destructor_function_1(self, vec_647: List[int]) -> bool:
+    def relocation_2(self, vec_679: List[Tuple[int, int]]) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
-        vec_index647: int = 0
-        vec_649: List[int] = list()
-        vec_index649: int = 0
-        vec_655: List[Tuple[int, int]] = list()
-        vec_index655: int = 0
-        vec_658: List[Tuple[int, int]] = list()
-        vec_index658: int = 0
-        vec_662: List[int] = list()
-        vec_index662: int = 0
-        vec_667: List[int] = list()
-        vec_index667: int = 0
+        vec_index679: int = 0
+        vec_682: List[int] = list()
+        vec_index682: int = 0
+        vec_687: List[int] = list()
+        vec_index687: int = 0
+        vec_692: List[int] = list()
+        vec_index692: int = 0
+        vec_699: List[int] = list()
+        vec_index699: int = 0
+        vec_703: List[Tuple[int, int]] = list()
+        vec_index703: int = 0
+        vec_706: List[int] = list()
+        vec_index706: int = 0
+        vec_713: List[int] = list()
+        vec_index713: int = 0
+        vec_717: List[int] = list()
+        vec_index717: int = 0
+        vec_720: List[int] = list()
+        vec_index720: int = 0
+        vec_724: List[int] = list()
+        vec_index724: int = 0
+        vec_728: List[int] = list()
+        vec_index728: int = 0
+        vec_732: List[int] = list()
+        vec_index732: int = 0
+        vec_736: List[int] = list()
+        vec_index736: int = 0
+        vec_740: List[int] = list()
+        vec_index740: int = 0
+        vec_744: List[int] = list()
+        vec_index744: int = 0
         # Program Series Region
         # Program Induction Init Region
         # Program Series Region
         # Program VectorLoop Region
-        vec_index647 = 0
-        while vec_index647 < len(vec_647):
-            var_648 = vec_647[vec_index647]
-            vec_index647 += 1
+        vec_index679 = 0
+        while vec_index679 < len(vec_679):
+            var_680, var_681 = vec_679[vec_index679]
+            vec_index679 += 1
+            # Program Parallel Region
             # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            tuple_648 = var_648
-            prev_state = self.table_69[tuple_648]
+            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            tuple_680_681 = (var_680, var_681)
+            prev_state = self.table_74[tuple_680_681]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 0 or state == 2:
-                self.table_69[tuple_648] = 1 | 4
+                self.table_74[tuple_680_681] = 1 | 4
                 if not present_bit:
-                    pass
+                    self.index_183[tuple_680_681[0]].append(tuple_680_681[1])
+                # Program Parallel Region
                 # Program VectorAppend Region
-                vec_649.append(var_648)
+                vec_687.append(var_680)
+                # Program VectorAppend Region
+                vec_682.append(var_680)
+            # Program TransitionState Region
+            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            tuple_680_681 = (var_680, var_681)
+            prev_state = self.table_74[tuple_680_681]
+            state = prev_state & 3
+            present_bit = prev_state & 4
+            if state == 0 or state == 2:
+                self.table_74[tuple_680_681] = 1 | 4
+                if not present_bit:
+                    self.index_183[tuple_680_681[0]].append(tuple_680_681[1])
+                # Program Parallel Region
+                # Program VectorAppend Region
+                vec_687.append(var_680)
+                # Program VectorAppend Region
+                vec_682.append(var_680)
         # Program VectorUnique Region
-        vec_649 = list(set(vec_649))
-        vec_index649 = 0
+        vec_682 = list(set(vec_682))
+        vec_index682 = 0
         # Program TableJoin Region
-        while vec_index649 < len(vec_649):
-            var_651 = vec_649[vec_index649]
-            vec_index649 += 1
-            if var_651 in self.index_187:
-                tuple_650_1_index: int = 0
-                tuple_650_1_vec: List[Tuple[int, bytes, bytes]] = self.index_188[var_651]
-                while tuple_650_1_index < len(tuple_650_1_vec):
-                    tuple_650_1 = tuple_650_1_vec[tuple_650_1_index]
-                    tuple_650_1_index += 1
-                    var_652 = tuple_650_1[0]
-                    var_653 = tuple_650_1[1]
-                    var_654 = tuple_650_1[2]
+        while vec_index682 < len(vec_682):
+            var_684 = vec_682[vec_index682]
+            vec_index682 += 1
+            tuple_683_0_index: int = 0
+            tuple_683_0_vec: List[int] = self.index_183[var_684]
+            while tuple_683_0_index < len(tuple_683_0_vec):
+                tuple_683_0 = tuple_683_0_vec[tuple_683_0_index]
+                tuple_683_0_index += 1
+                var_685 = tuple_683_0
+                tuple_683_1_index: int = 0
+                tuple_683_1_vec: List[int] = self.index_184[var_684]
+                while tuple_683_1_index < len(tuple_683_1_vec):
+                    tuple_683_1 = tuple_683_1_vec[tuple_683_1_index]
+                    tuple_683_1_index += 1
+                    var_686 = tuple_683_1
                     # Program TransitionState Region
-                    tuple_651 = var_651
-                    prev_state = self.table_17[tuple_651]
+                    tuple_685_686 = (var_685, var_686)
+                    prev_state = self.table_88[tuple_685_686]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_17[tuple_651] = 1 | 4
+                        self.table_88[tuple_685_686] = 1 | 4
                         if not present_bit:
-                            pass
+                            self.index_232[tuple_685_686[0]].append(tuple_685_686[1])
+                        # Program VectorAppend Region
+                        vec_692.append(var_685)
+        # Program VectorClear Region
+        del vec_682[:]
+        vec_index682 = 0
+        # Program VectorUnique Region
+        vec_687 = list(set(vec_687))
+        vec_index687 = 0
+        # Program TableJoin Region
+        while vec_index687 < len(vec_687):
+            var_689 = vec_687[vec_index687]
+            vec_index687 += 1
+            tuple_688_0_index: int = 0
+            tuple_688_0_vec: List[int] = self.index_183[var_689]
+            while tuple_688_0_index < len(tuple_688_0_vec):
+                tuple_688_0 = tuple_688_0_vec[tuple_688_0_index]
+                tuple_688_0_index += 1
+                var_690 = tuple_688_0
+                tuple_688_1_index: int = 0
+                tuple_688_1_vec: List[int] = self.index_202[var_689]
+                while tuple_688_1_index < len(tuple_688_1_vec):
+                    tuple_688_1 = tuple_688_1_vec[tuple_688_1_index]
+                    tuple_688_1_index += 1
+                    var_691 = tuple_688_1
+                    # Program TransitionState Region
+                    tuple_690_691 = (var_690, var_691)
+                    prev_state = self.table_80[tuple_690_691]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_80[tuple_690_691] = 1 | 4
+                        if not present_bit:
+                            self.index_244[tuple_690_691[0]].append(tuple_690_691[1])
+                        # Program VectorAppend Region
+                        vec_706.append(var_690)
+        # Program VectorClear Region
+        del vec_687[:]
+        vec_index687 = 0
+        # Program VectorUnique Region
+        vec_692 = list(set(vec_692))
+        vec_index692 = 0
+        # Program TableJoin Region
+        while vec_index692 < len(vec_692):
+            var_694 = vec_692[vec_index692]
+            vec_index692 += 1
+            if var_694 in self.index_157:
+                tuple_693_1_index: int = 0
+                tuple_693_1_vec: List[int] = self.index_232[var_694]
+                while tuple_693_1_index < len(tuple_693_1_vec):
+                    tuple_693_1 = tuple_693_1_vec[tuple_693_1_index]
+                    tuple_693_1_index += 1
+                    var_695 = tuple_693_1
+                    # Program TransitionState Region
+                    tuple_695_694_0 = (var_695, var_694, self.var_0)
+                    prev_state = self.table_9[tuple_695_694_0]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_695_694_0] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_695_694_0[0], tuple_695_694_0[1])].append(tuple_695_694_0[2])
                         # Program Parallel Region
                         # Program Series Region
-                        # Program TableScan Region
-                        scan_tuple_658: Tuple[int, int]
-                        scan_index_658: int = 0
-                        scan_tuple_658_vec: List[Tuple[int, int]] = self.index_199[var_651]
-                        while scan_index_658 < len(scan_tuple_658_vec):
-                            scan_tuple_658 = scan_tuple_658_vec[scan_index_658]
-                            scan_index_658 += 1
-                            vec_658.append(scan_tuple_658)
-                        # Program VectorLoop Region
-                        vec_index658 = 0
-                        while vec_index658 < len(vec_658):
-                            var_659, var_660 = vec_658[vec_index658]
-                            vec_index658 += 1
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_694_695 = (var_694, var_695)
+                        prev_state = self.table_27[tuple_694_695]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_694_695] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_694_695[0]].append(tuple_694_695[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_694)
+                        if not ret:
                             # Program TransitionState Region
-                            # Remove from negated view
-                            var_660 = self._resolve_edgetype(var_660)
-                            tuple_651_659_660 = (var_651, var_659, var_660)
-                            prev_state = self.table_26[tuple_651_659_660]
+                            tuple_694_695 = (var_694, var_695)
+                            prev_state = self.table_27[tuple_694_695]
                             state = prev_state & 3
                             present_bit = prev_state & 4
-                            if state == 1:
-                                self.table_26[tuple_651_659_660] = 0 | 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_694_695] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_694_695[0]].append(tuple_694_695[1])
+                                # Program Parallel Region
                                 # Program Call Region
-                                ret = self.proc_203_(var_651, var_659, var_660)
-
-                        # Program TransitionState Region
-                        tuple_651_651 = (var_651, var_651)
-                        prev_state = self.table_6[tuple_651_651]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_6[tuple_651_651] = 1 | 4
-                            if not present_bit:
-                                self.index_414[tuple_651_651[1]].append(tuple_651_651[0])
-                                self.index_1029[tuple_651_651[0]].append(tuple_651_651[1])
-                            # Program VectorAppend Region
-                            vec_655.append((var_651, var_651))
-                        # Program VectorAppend Region
-                        vec_662.append(var_651)
-        # Program VectorClear Region
-        del vec_649[:]
-        vec_index649 = 0
-        # Program VectorUnique Region
-        vec_662 = list(set(vec_662))
-        vec_index662 = 0
-        # Program TableJoin Region
-        while vec_index662 < len(vec_662):
-            var_664 = vec_662[vec_index662]
-            vec_index662 += 1
-            tuple_663_0_index: int = 0
-            tuple_663_0_vec: List[Tuple[int, int]] = self.index_373[var_664]
-            while tuple_663_0_index < len(tuple_663_0_vec):
-                tuple_663_0 = tuple_663_0_vec[tuple_663_0_index]
-                tuple_663_0_index += 1
-                var_665 = tuple_663_0[0]
-                var_666 = tuple_663_0[1]
-                if var_664 in self.index_408:
-                    # Program TransitionState Region
-                    tuple_665_664 = (var_665, var_664)
-                    prev_state = self.table_12[tuple_665_664]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_12[tuple_665_664] = 1 | 4
-                        if not present_bit:
-                            self.index_433[tuple_665_664[1]].append(tuple_665_664[0])
-                            self.index_1028[tuple_665_664[0]].append(tuple_665_664[1])
-                        # Program VectorAppend Region
-                        vec_667.append(var_664)
-        # Program VectorClear Region
-        del vec_662[:]
-        vec_index662 = 0
-        # Program VectorUnique Region
-        vec_667 = list(set(vec_667))
-        vec_index667 = 0
-        # Program TableJoin Region
-        while vec_index667 < len(vec_667):
-            var_669 = vec_667[vec_index667]
-            vec_index667 += 1
-            tuple_668_0_index: int = 0
-            tuple_668_0_vec: List[int] = self.index_433[var_669]
-            while tuple_668_0_index < len(tuple_668_0_vec):
-                tuple_668_0 = tuple_668_0_vec[tuple_668_0_index]
-                tuple_668_0_index += 1
-                var_670 = tuple_668_0
-                tuple_668_1_index: int = 0
-                tuple_668_1_vec: List[bytes] = self.index_372[var_669]
-                while tuple_668_1_index < len(tuple_668_1_vec):
-                    tuple_668_1 = tuple_668_1_vec[tuple_668_1_index]
-                    tuple_668_1_index += 1
-                    var_671 = tuple_668_1
-                    # Program TransitionState Region
-                    tuple_670 = var_670
-                    prev_state = self.table_15[tuple_670]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_15[tuple_670] = 1 | 4
-                        if not present_bit:
-                            pass
-        # Program VectorClear Region
-        del vec_667[:]
-        vec_index667 = 0
-        # Induction Fixpoint Loop Region
-        while len(vec_655):
-            # Program Call Region
-            param_657_0 = [vec_655]
-            ret = self.proc_192_(param_657_0)
-            vec_655 = param_657_0[0]
-
-        vec_index655 = 0
-        # Induction Output Region
-        # Program VectorClear Region
-        del vec_655[:]
-        vec_index655 = 0
-        # Program Return Region
-        return False
-
-    def raw_transfer_3(self, vec_673: List[Tuple[int, int, int]]) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        vec_index673: int = 0
-        vec_677: List[Tuple[int, int]] = list()
-        vec_index677: int = 0
-        vec_685: List[int] = list()
-        vec_index685: int = 0
-        vec_694: List[int] = list()
-        vec_index694: int = 0
-        vec_703: List[int] = list()
-        vec_index703: int = 0
-        vec_712: List[Tuple[int, int]] = list()
-        vec_index712: int = 0
-        vec_715: List[Tuple[int, int]] = list()
-        vec_index715: int = 0
-        vec_719: List[int] = list()
-        vec_index719: int = 0
-        vec_729: List[Tuple[int, int]] = list()
-        vec_index729: int = 0
-        vec_733: List[int] = list()
-        vec_index733: int = 0
-        vec_743: List[Tuple[int, int]] = list()
-        vec_index743: int = 0
-        vec_747: List[int] = list()
-        vec_index747: int = 0
-        vec_757: List[Tuple[int, int]] = list()
-        vec_index757: int = 0
-        vec_761: List[int] = list()
-        vec_index761: int = 0
-        vec_767: List[Tuple[int, int]] = list()
-        vec_index767: int = 0
-        vec_771: List[int] = list()
-        vec_index771: int = 0
-        vec_779: List[int] = list()
-        vec_index779: int = 0
-        vec_788: List[Tuple[int, int]] = list()
-        vec_index788: int = 0
-        vec_792: List[int] = list()
-        vec_index792: int = 0
-        vec_797: List[int] = list()
-        vec_index797: int = 0
-        vec_805: List[int] = list()
-        vec_index805: int = 0
-        # Program Series Region
-        # Program Induction Init Region
-        # Program Series Region
-        # Program VectorLoop Region
-        vec_index673 = 0
-        while vec_index673 < len(vec_673):
-            var_674, var_675, var_676 = vec_673[vec_index673]
-            vec_index673 += 1
-            # Program Parallel Region
-            # Program TupleCompare Region
-            if var_676 != self.var_0:
-                # Program TupleCompare Region
-                if var_676 != self.var_3:
-                    # Program TransitionState Region
-                    var_676 = self._resolve_edgetype(var_676)
-                    tuple_676_3_0_674_675 = (var_676, self.var_3, self.var_0, var_674, var_675)
-                    prev_state = self.table_71[tuple_676_3_0_674_675]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_71[tuple_676_3_0_674_675] = 1 | 4
-                        if not present_bit:
-                            self.index_319[tuple_676_3_0_674_675[4]].append((tuple_676_3_0_674_675[0], tuple_676_3_0_674_675[1], tuple_676_3_0_674_675[2], tuple_676_3_0_674_675[3]))
-                        # Program VectorAppend Region
-                        vec_719.append(var_675)
-            # Program TupleCompare Region
-            if self.var_0 == var_676:
-                # Program TransitionState Region
-                tuple_0_674_675 = (self.var_0, var_674, var_675)
-                prev_state = self.table_77[tuple_0_674_675]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_77[tuple_0_674_675] = 1 | 4
-                    if not present_bit:
-                        self.index_697[tuple_0_674_675[1]].append((tuple_0_674_675[0], tuple_0_674_675[2]))
-                    # Program VectorAppend Region
-                    vec_694.append(var_674)
-            # Program TupleCompare Region
-            if self.var_3 == var_676:
-                # Program TransitionState Region
-                tuple_3_674_675 = (self.var_3, var_674, var_675)
-                prev_state = self.table_81[tuple_3_674_675]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_81[tuple_3_674_675] = 1 | 4
-                    if not present_bit:
-                        self.index_698[tuple_3_674_675[1]].append((tuple_3_674_675[0], tuple_3_674_675[2]))
-                    # Program VectorAppend Region
-                    vec_694.append(var_674)
-            # Program TupleCompare Region
-            if self.var_0 == var_676:
-                # Program TransitionState Region
-                tuple_0_674_675 = (self.var_0, var_674, var_675)
-                prev_state = self.table_91[tuple_0_674_675]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_91[tuple_0_674_675] = 1 | 4
-                    if not present_bit:
-                        self.index_688[tuple_0_674_675[1]].append((tuple_0_674_675[0], tuple_0_674_675[2]))
-                    # Program VectorAppend Region
-                    vec_685.append(var_674)
-            # Program TupleCompare Region
-            if self.var_3 == var_676:
-                # Program TransitionState Region
-                tuple_3_674_675 = (self.var_3, var_674, var_675)
-                prev_state = self.table_95[tuple_3_674_675]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_95[tuple_3_674_675] = 1 | 4
-                    if not present_bit:
-                        self.index_689[tuple_3_674_675[1]].append((tuple_3_674_675[0], tuple_3_674_675[2]))
-                    # Program VectorAppend Region
-                    vec_685.append(var_674)
-            # Program TupleCompare Region
-            if self.var_0 == var_676:
-                # Program TransitionState Region
-                tuple_0_674_675 = (self.var_0, var_674, var_675)
-                prev_state = self.table_147[tuple_0_674_675]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_147[tuple_0_674_675] = 1 | 4
-                    if not present_bit:
-                        self.index_681[(tuple_0_674_675[1], tuple_0_674_675[2])].append(tuple_0_674_675[0])
-                    # Program VectorAppend Region
-                    vec_677.append((var_674, var_675))
-            # Program TupleCompare Region
-            if self.var_3 == var_676:
-                # Program TransitionState Region
-                tuple_3_674_675 = (self.var_3, var_674, var_675)
-                prev_state = self.table_151[tuple_3_674_675]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_151[tuple_3_674_675] = 1 | 4
-                    if not present_bit:
-                        self.index_682[(tuple_3_674_675[1], tuple_3_674_675[2])].append(tuple_3_674_675[0])
-                    # Program VectorAppend Region
-                    vec_677.append((var_674, var_675))
-        # Program VectorUnique Region
-        vec_677 = list(set(vec_677))
-        vec_index677 = 0
-        # Program TableJoin Region
-        while vec_index677 < len(vec_677):
-            var_679, var_680 = vec_677[vec_index677]
-            vec_index677 += 1
-            tuple_678_0_index: int = 0
-            tuple_678_0_vec: List[int] = self.index_681[(var_679, var_680)]
-            while tuple_678_0_index < len(tuple_678_0_vec):
-                tuple_678_0 = tuple_678_0_vec[tuple_678_0_index]
-                tuple_678_0_index += 1
-                var_683 = tuple_678_0
-                tuple_678_1_index: int = 0
-                tuple_678_1_vec: List[int] = self.index_682[(var_679, var_680)]
-                while tuple_678_1_index < len(tuple_678_1_vec):
-                    tuple_678_1 = tuple_678_1_vec[tuple_678_1_index]
-                    tuple_678_1_index += 1
-                    var_684 = tuple_678_1
-                    # Program TupleCompare Region
-                    if (self.var_0, self.var_3, ) == (var_683, var_684, ):
-                        # Program TransitionState Region
-                        tuple_3_0_679_680 = (self.var_3, self.var_0, var_679, var_680)
-                        prev_state = self.table_155[tuple_3_0_679_680]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_155[tuple_3_0_679_680] = 1 | 4
-                            if not present_bit:
-                                self.index_268[tuple_3_0_679_680[3]].append((tuple_3_0_679_680[0], tuple_3_0_679_680[1], tuple_3_0_679_680[2]))
-                            # Program VectorAppend Region
-                            vec_703.append(var_680)
-        # Program VectorClear Region
-        del vec_677[:]
-        vec_index677 = 0
-        # Program VectorUnique Region
-        vec_685 = list(set(vec_685))
-        vec_index685 = 0
-        # Program TableJoin Region
-        while vec_index685 < len(vec_685):
-            var_687 = vec_685[vec_index685]
-            vec_index685 += 1
-            tuple_686_0_index: int = 0
-            tuple_686_0_vec: List[Tuple[int, int]] = self.index_688[var_687]
-            while tuple_686_0_index < len(tuple_686_0_vec):
-                tuple_686_0 = tuple_686_0_vec[tuple_686_0_index]
-                tuple_686_0_index += 1
-                var_690 = tuple_686_0[0]
-                var_691 = tuple_686_0[1]
-                tuple_686_1_index: int = 0
-                tuple_686_1_vec: List[Tuple[int, int]] = self.index_689[var_687]
-                while tuple_686_1_index < len(tuple_686_1_vec):
-                    tuple_686_1 = tuple_686_1_vec[tuple_686_1_index]
-                    tuple_686_1_index += 1
-                    var_692 = tuple_686_1[0]
-                    var_693 = tuple_686_1[1]
-                    # Program TupleCompare Region
-                    if (self.var_3, self.var_0, ) == (var_692, var_690, ):
-                        # Program TupleCompare Region
-                        if var_691 != var_693:
-                            # Program TransitionState Region
-                            tuple_691_693_3_0_687 = (var_691, var_693, self.var_3, self.var_0, var_687)
-                            prev_state = self.table_99[tuple_691_693_3_0_687]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0 or state == 2:
-                                self.table_99[tuple_691_693_3_0_687] = 1 | 4
-                                if not present_bit:
-                                    self.index_342[tuple_691_693_3_0_687[1]].append((tuple_691_693_3_0_687[0], tuple_691_693_3_0_687[2], tuple_691_693_3_0_687[3], tuple_691_693_3_0_687[4]))
-                                # Program VectorAppend Region
-                                vec_747.append(var_693)
-        # Program VectorClear Region
-        del vec_685[:]
-        vec_index685 = 0
-        # Program VectorUnique Region
-        vec_694 = list(set(vec_694))
-        vec_index694 = 0
-        # Program TableJoin Region
-        while vec_index694 < len(vec_694):
-            var_696 = vec_694[vec_index694]
-            vec_index694 += 1
-            tuple_695_0_index: int = 0
-            tuple_695_0_vec: List[Tuple[int, int]] = self.index_697[var_696]
-            while tuple_695_0_index < len(tuple_695_0_vec):
-                tuple_695_0 = tuple_695_0_vec[tuple_695_0_index]
-                tuple_695_0_index += 1
-                var_699 = tuple_695_0[0]
-                var_700 = tuple_695_0[1]
-                tuple_695_1_index: int = 0
-                tuple_695_1_vec: List[Tuple[int, int]] = self.index_698[var_696]
-                while tuple_695_1_index < len(tuple_695_1_vec):
-                    tuple_695_1 = tuple_695_1_vec[tuple_695_1_index]
-                    tuple_695_1_index += 1
-                    var_701 = tuple_695_1[0]
-                    var_702 = tuple_695_1[1]
-                    # Program TupleCompare Region
-                    if (self.var_0, self.var_3, ) == (var_699, var_701, ):
-                        # Program TupleCompare Region
-                        if var_700 != var_702:
-                            # Program TransitionState Region
-                            tuple_700_702_3_0_696 = (var_700, var_702, self.var_3, self.var_0, var_696)
-                            prev_state = self.table_85[tuple_700_702_3_0_696]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0 or state == 2:
-                                self.table_85[tuple_700_702_3_0_696] = 1 | 4
-                                if not present_bit:
-                                    self.index_357[tuple_700_702_3_0_696[0]].append((tuple_700_702_3_0_696[1], tuple_700_702_3_0_696[2], tuple_700_702_3_0_696[3], tuple_700_702_3_0_696[4]))
-                                # Program VectorAppend Region
-                                vec_733.append(var_700)
-        # Program VectorClear Region
-        del vec_694[:]
-        vec_index694 = 0
-        # Program VectorUnique Region
-        vec_703 = list(set(vec_703))
-        vec_index703 = 0
-        # Program TableJoin Region
-        while vec_index703 < len(vec_703):
-            var_705 = vec_703[vec_index703]
-            vec_index703 += 1
-            if var_705 in self.index_267:
-                tuple_704_1_index: int = 0
-                tuple_704_1_vec: List[Tuple[int, int, int]] = self.index_268[var_705]
-                while tuple_704_1_index < len(tuple_704_1_vec):
-                    tuple_704_1 = tuple_704_1_vec[tuple_704_1_index]
-                    tuple_704_1_index += 1
-                    var_706 = tuple_704_1[0]
-                    var_707 = tuple_704_1[1]
-                    var_708 = tuple_704_1[2]
-                    # Program TupleCompare Region
-                    if (self.var_0, self.var_3, ) == (var_707, var_706, ):
-                        # Program TransitionState Region
-                        tuple_708_705_5 = (var_708, var_705, self.var_5)
-                        prev_state = self.table_43[tuple_708_705_5]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_708_705_5] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_708_705_5[1]].append((tuple_708_705_5[0], tuple_708_705_5[2]))
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_705_708_5 = (var_705, var_708, self.var_5)
-                            prev_state = self.table_26[tuple_705_708_5]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_705_708_5] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_705_708_5[0]].append((tuple_705_708_5[1], tuple_705_708_5[2]))
-                                    self.index_1053[(tuple_705_708_5[0], tuple_705_708_5[1])].append(tuple_705_708_5[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_705)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_705_708_5 = (var_705, var_708, self.var_5)
-                                prev_state = self.table_26[tuple_705_708_5]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_705_708_5] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_705_708_5[0]].append((tuple_705_708_5[1], tuple_705_708_5[2]))
-                                        self.index_1053[(tuple_705_708_5[0], tuple_705_708_5[1])].append(tuple_705_708_5[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_708, var_705)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_708_705 = (var_708, var_705)
-                                        prev_state = self.table_9[tuple_708_705]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_708_705] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_708_705[0]].append(tuple_708_705[1])
-                                                self.index_1079[tuple_708_705[1]].append(tuple_708_705[0])
-                                            # Program VectorAppend Region
-                                            vec_797.append(var_708)
-                            # Program VectorAppend Region
-                            vec_761.append(var_705)
-                            # Program VectorAppend Region
-                            vec_792.append(var_705)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_5:
-                                # Program TransitionState Region
-                                tuple_705 = var_705
-                                prev_state = self.table_17[tuple_705]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_17[tuple_705] = 1 | 4
-                                    if not present_bit:
-                                        pass
-                                    # Program Parallel Region
-                                    # Program Series Region
-                                    # Program TableScan Region
-                                    scan_tuple_715: Tuple[int, int]
-                                    scan_index_715: int = 0
-                                    scan_tuple_715_vec: List[Tuple[int, int]] = self.index_199[var_705]
-                                    while scan_index_715 < len(scan_tuple_715_vec):
-                                        scan_tuple_715 = scan_tuple_715_vec[scan_index_715]
-                                        scan_index_715 += 1
-                                        vec_715.append(scan_tuple_715)
-                                    # Program VectorLoop Region
-                                    vec_index715 = 0
-                                    while vec_index715 < len(vec_715):
-                                        var_716, var_717 = vec_715[vec_index715]
-                                        vec_index715 += 1
-                                        # Program TransitionState Region
-                                        # Remove from negated view
-                                        var_717 = self._resolve_edgetype(var_717)
-                                        tuple_705_716_717 = (var_705, var_716, var_717)
-                                        prev_state = self.table_26[tuple_705_716_717]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 1:
-                                            self.table_26[tuple_705_716_717] = 0 | 4
-                                            # Program Call Region
-                                            ret = self.proc_203_(var_705, var_716, var_717)
-
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_695, var_694)
+                                if not ret:
                                     # Program TransitionState Region
-                                    tuple_705_705 = (var_705, var_705)
-                                    prev_state = self.table_6[tuple_705_705]
+                                    tuple_695_694 = (var_695, var_694)
+                                    prev_state = self.table_52[tuple_695_694]
                                     state = prev_state & 3
                                     present_bit = prev_state & 4
                                     if state == 0 or state == 2:
-                                        self.table_6[tuple_705_705] = 1 | 4
+                                        self.table_52[tuple_695_694] = 1 | 4
                                         if not present_bit:
-                                            self.index_414[tuple_705_705[1]].append(tuple_705_705[0])
-                                            self.index_1029[tuple_705_705[0]].append(tuple_705_705[1])
+                                            self.index_291[tuple_695_694[0]].append(tuple_695_694[1])
+                                            self.index_778[tuple_695_694[1]].append(tuple_695_694[0])
                                         # Program VectorAppend Region
-                                        vec_712.append((var_705, var_705))
-                                    # Program VectorAppend Region
-                                    vec_792.append(var_705)
-                            # Program TupleCompare Region
-                            if self.var_2 == self.var_5:
+                                        vec_744.append(var_695)
                                 # Program TransitionState Region
-                                tuple_2_708_705 = (self.var_2, var_708, var_705)
-                                prev_state = self.table_56[tuple_2_708_705]
+                                tuple_695_694 = (var_695, var_694)
+                                prev_state = self.table_15[tuple_695_694]
                                 state = prev_state & 3
                                 present_bit = prev_state & 4
                                 if state == 0 or state == 2:
-                                    self.table_56[tuple_2_708_705] = 1 | 4
+                                    self.table_15[tuple_695_694] = 1 | 4
                                     if not present_bit:
-                                        self.index_385[tuple_2_708_705[1]].append((tuple_2_708_705[0], tuple_2_708_705[2]))
+                                        self.index_752[tuple_695_694[0]].append(tuple_695_694[1])
+                        # Program TransitionState Region
+                        tuple_695_694 = (var_695, var_694)
+                        prev_state = self.table_94[tuple_695_694]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_695_694] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_695_694[1]].append(tuple_695_694[0])
+                            # Program VectorAppend Region
+                            vec_736.append(var_694)
+                        # Program TransitionState Region
+                        tuple_694 = var_694
+                        prev_state = self.table_32[tuple_694]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_694] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_717.append(var_694)
+                        # Program TransitionState Region
+                        tuple_694 = var_694
+                        prev_state = self.table_18[tuple_694]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_18[tuple_694] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program Parallel Region
+                            # Program VectorAppend Region
+                            vec_736.append(var_694)
+                            # Program Series Region
+                            # Program TableScan Region
+                            scan_tuple_699: int
+                            scan_index_699: int = 0
+                            scan_tuple_699_vec: List[int] = self.index_116[var_694]
+                            while scan_index_699 < len(scan_tuple_699_vec):
+                                scan_tuple_699 = scan_tuple_699_vec[scan_index_699]
+                                scan_index_699 += 1
+                                vec_699.append(scan_tuple_699)
+                            # Program VectorLoop Region
+                            vec_index699 = 0
+                            while vec_index699 < len(vec_699):
+                                var_700 = vec_699[vec_index699]
+                                vec_index699 += 1
+                                # Program TransitionState Region
+                                # Remove from negated view
+                                tuple_694_700 = (var_694, var_700)
+                                prev_state = self.table_27[tuple_694_700]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 1:
+                                    self.table_27[tuple_694_700] = 0 | 4
+                                    # Program Parallel Region
+                                    # Program Call Region
+                                    ret = self.proc_119_(var_694, var_700)
+
+                                    # Program Call Region
+                                    ret = self.proc_123_(var_694, var_700)
+
+                            # Program TransitionState Region
+                            tuple_694_694 = (var_694, var_694)
+                            prev_state = self.table_6[tuple_694_694]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_6[tuple_694_694] = 1 | 4
+                                if not present_bit:
+                                    self.index_290[tuple_694_694[1]].append(tuple_694_694[0])
+                                    self.index_756[tuple_694_694[0]].append(tuple_694_694[1])
+                                # Program VectorAppend Region
+                                vec_703.append((var_694, var_694))
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_2:
+                            # Program TransitionState Region
+                            tuple_695_694 = (var_695, var_694)
+                            prev_state = self.table_40[tuple_695_694]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_40[tuple_695_694] = 1 | 4
+                                if not present_bit:
+                                    self.index_265[tuple_695_694[0]].append(tuple_695_694[1])
+                                # Program VectorAppend Region
+                                vec_724.append(var_695)
+        # Program VectorClear Region
+        del vec_692[:]
+        vec_index692 = 0
+        # Program VectorUnique Region
+        vec_706 = list(set(vec_706))
+        vec_index706 = 0
+        # Program TableJoin Region
+        while vec_index706 < len(vec_706):
+            var_708 = vec_706[vec_index706]
+            vec_index706 += 1
+            if var_708 in self.index_157:
+                tuple_707_1_index: int = 0
+                tuple_707_1_vec: List[int] = self.index_244[var_708]
+                while tuple_707_1_index < len(tuple_707_1_vec):
+                    tuple_707_1 = tuple_707_1_vec[tuple_707_1_index]
+                    tuple_707_1_index += 1
+                    var_709 = tuple_707_1
+                    # Program TransitionState Region
+                    tuple_709_708_2 = (var_709, var_708, self.var_2)
+                    prev_state = self.table_9[tuple_709_708_2]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_9[tuple_709_708_2] = 1 | 4
+                        if not present_bit:
+                            self.index_799[(tuple_709_708_2[0], tuple_709_708_2[1])].append(tuple_709_708_2[2])
+                        # Program Parallel Region
+                        # Program Series Region
+                        # Program TransitionState Region
+                        # Eager insert before negation to prevent race
+                        tuple_708_709 = (var_708, var_709)
+                        prev_state = self.table_27[tuple_708_709]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0:
+                            self.table_27[tuple_708_709] = 2 | 4
+                            if not present_bit:
+                                self.index_116[tuple_708_709[0]].append(tuple_708_709[1])
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                        ret = self.proc_161_(var_708)
+                        if not ret:
+                            # Program TransitionState Region
+                            tuple_708_709 = (var_708, var_709)
+                            prev_state = self.table_27[tuple_708_709]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_27[tuple_708_709] = 1 | 4
+                                if not present_bit:
+                                    self.index_116[tuple_708_709[0]].append(tuple_708_709[1])
+                                # Program Parallel Region
+                                # Program Call Region
+                                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                                ret = self.proc_164_(var_709, var_708)
+                                if not ret:
+                                    # Program TransitionState Region
+                                    tuple_709_708 = (var_709, var_708)
+                                    prev_state = self.table_52[tuple_709_708]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 0 or state == 2:
+                                        self.table_52[tuple_709_708] = 1 | 4
+                                        if not present_bit:
+                                            self.index_291[tuple_709_708[0]].append(tuple_709_708[1])
+                                            self.index_778[tuple_709_708[1]].append(tuple_709_708[0])
+                                        # Program VectorAppend Region
+                                        vec_744.append(var_709)
+                                # Program TransitionState Region
+                                tuple_709_708 = (var_709, var_708)
+                                prev_state = self.table_15[tuple_709_708]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_15[tuple_709_708] = 1 | 4
+                                    if not present_bit:
+                                        self.index_752[tuple_709_708[0]].append(tuple_709_708[1])
+                        # Program TransitionState Region
+                        tuple_709_708 = (var_709, var_708)
+                        prev_state = self.table_94[tuple_709_708]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_94[tuple_709_708] = 1 | 4
+                            if not present_bit:
+                                self.index_279[tuple_709_708[1]].append(tuple_709_708[0])
+                            # Program VectorAppend Region
+                            vec_736.append(var_708)
+                        # Program TransitionState Region
+                        tuple_708 = var_708
+                        prev_state = self.table_32[tuple_708]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_32[tuple_708] = 1 | 4
+                            if not present_bit:
+                                pass
+                            # Program VectorAppend Region
+                            vec_717.append(var_708)
+                        # Program TupleCompare Region
+                        if self.var_0 == self.var_2:
+                            # Program TransitionState Region
+                            tuple_708 = var_708
+                            prev_state = self.table_18[tuple_708]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 0 or state == 2:
+                                self.table_18[tuple_708] = 1 | 4
+                                if not present_bit:
+                                    pass
+                                # Program Parallel Region
+                                # Program VectorAppend Region
+                                vec_736.append(var_708)
+                                # Program Series Region
+                                # Program TableScan Region
+                                scan_tuple_713: int
+                                scan_index_713: int = 0
+                                scan_tuple_713_vec: List[int] = self.index_116[var_708]
+                                while scan_index_713 < len(scan_tuple_713_vec):
+                                    scan_tuple_713 = scan_tuple_713_vec[scan_index_713]
+                                    scan_index_713 += 1
+                                    vec_713.append(scan_tuple_713)
+                                # Program VectorLoop Region
+                                vec_index713 = 0
+                                while vec_index713 < len(vec_713):
+                                    var_714 = vec_713[vec_index713]
+                                    vec_index713 += 1
+                                    # Program TransitionState Region
+                                    # Remove from negated view
+                                    tuple_708_714 = (var_708, var_714)
+                                    prev_state = self.table_27[tuple_708_714]
+                                    state = prev_state & 3
+                                    present_bit = prev_state & 4
+                                    if state == 1:
+                                        self.table_27[tuple_708_714] = 0 | 4
+                                        # Program Parallel Region
+                                        # Program Call Region
+                                        ret = self.proc_119_(var_708, var_714)
+
+                                        # Program Call Region
+                                        ret = self.proc_123_(var_708, var_714)
+
+                                # Program TransitionState Region
+                                tuple_708_708 = (var_708, var_708)
+                                prev_state = self.table_6[tuple_708_708]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_708_708] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_708_708[1]].append(tuple_708_708[0])
+                                        self.index_756[tuple_708_708[0]].append(tuple_708_708[1])
                                     # Program VectorAppend Region
-                                    vec_771.append(var_708)
+                                    vec_703.append((var_708, var_708))
+                        # Program TransitionState Region
+                        tuple_709_708 = (var_709, var_708)
+                        prev_state = self.table_40[tuple_709_708]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_40[tuple_709_708] = 1 | 4
+                            if not present_bit:
+                                self.index_265[tuple_709_708[0]].append(tuple_709_708[1])
+                            # Program VectorAppend Region
+                            vec_724.append(var_709)
+        # Program VectorClear Region
+        del vec_706[:]
+        vec_index706 = 0
+        # Program VectorUnique Region
+        vec_717 = list(set(vec_717))
+        vec_index717 = 0
+        # Program TableJoin Region
+        while vec_index717 < len(vec_717):
+            var_719 = vec_717[vec_index717]
+            vec_index717 += 1
+            if var_719 in self.index_256:
+                if var_719 in self.index_257:
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_719 = var_719
+                    prev_state = self.table_18[tuple_719]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_18[tuple_719] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_736.append(var_719)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_720: int
+                        scan_index_720: int = 0
+                        scan_tuple_720_vec: List[int] = self.index_116[var_719]
+                        while scan_index_720 < len(scan_tuple_720_vec):
+                            scan_tuple_720 = scan_tuple_720_vec[scan_index_720]
+                            scan_index_720 += 1
+                            vec_720.append(scan_tuple_720)
+                        # Program VectorLoop Region
+                        vec_index720 = 0
+                        while vec_index720 < len(vec_720):
+                            var_721 = vec_720[vec_index720]
+                            vec_index720 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_719_721 = (var_719, var_721)
+                            prev_state = self.table_27[tuple_719_721]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_719_721] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_719, var_721)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_719, var_721)
+
+                        # Program TransitionState Region
+                        tuple_719_719 = (var_719, var_719)
+                        prev_state = self.table_6[tuple_719_719]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_6[tuple_719_719] = 1 | 4
+                            if not present_bit:
+                                self.index_290[tuple_719_719[1]].append(tuple_719_719[0])
+                                self.index_756[tuple_719_719[0]].append(tuple_719_719[1])
+                            # Program VectorAppend Region
+                            vec_703.append((var_719, var_719))
+        # Program VectorClear Region
+        del vec_717[:]
+        vec_index717 = 0
+        # Program VectorUnique Region
+        vec_724 = list(set(vec_724))
+        vec_index724 = 0
+        # Program TableJoin Region
+        while vec_index724 < len(vec_724):
+            var_726 = vec_724[vec_index724]
+            vec_index724 += 1
+            if var_726 in self.index_151:
+                tuple_725_1_index: int = 0
+                tuple_725_1_vec: List[int] = self.index_265[var_726]
+                while tuple_725_1_index < len(tuple_725_1_vec):
+                    tuple_725_1 = tuple_725_1_vec[tuple_725_1_index]
+                    tuple_725_1_index += 1
+                    var_727 = tuple_725_1
+                    # Program TransitionState Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    tuple_726_727 = (var_726, var_727)
+                    prev_state = self.table_43[tuple_726_727]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_43[tuple_726_727] = 1 | 4
+                        if not present_bit:
+                            self.index_270[tuple_726_727[1]].append(tuple_726_727[0])
+                        # Program VectorAppend Region
+                        vec_728.append(var_727)
+        # Program VectorClear Region
+        del vec_724[:]
+        vec_index724 = 0
+        # Program VectorUnique Region
+        vec_728 = list(set(vec_728))
+        vec_index728 = 0
+        # Program TableJoin Region
+        while vec_index728 < len(vec_728):
+            var_730 = vec_728[vec_index728]
+            vec_index728 += 1
+            if var_730 in self.index_256:
+                tuple_729_1_index: int = 0
+                tuple_729_1_vec: List[int] = self.index_270[var_730]
+                while tuple_729_1_index < len(tuple_729_1_vec):
+                    tuple_729_1 = tuple_729_1_vec[tuple_729_1_index]
+                    tuple_729_1_index += 1
+                    var_731 = tuple_729_1
+                    # Program TransitionState Region
+                    tuple_731 = var_731
+                    prev_state = self.table_18[tuple_731]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_18[tuple_731] = 1 | 4
+                        if not present_bit:
+                            pass
+                        # Program Parallel Region
+                        # Program VectorAppend Region
+                        vec_736.append(var_731)
+                        # Program Series Region
+                        # Program TableScan Region
+                        scan_tuple_732: int
+                        scan_index_732: int = 0
+                        scan_tuple_732_vec: List[int] = self.index_116[var_731]
+                        while scan_index_732 < len(scan_tuple_732_vec):
+                            scan_tuple_732 = scan_tuple_732_vec[scan_index_732]
+                            scan_index_732 += 1
+                            vec_732.append(scan_tuple_732)
+                        # Program VectorLoop Region
+                        vec_index732 = 0
+                        while vec_index732 < len(vec_732):
+                            var_733 = vec_732[vec_index732]
+                            vec_index732 += 1
+                            # Program TransitionState Region
+                            # Remove from negated view
+                            tuple_731_733 = (var_731, var_733)
+                            prev_state = self.table_27[tuple_731_733]
+                            state = prev_state & 3
+                            present_bit = prev_state & 4
+                            if state == 1:
+                                self.table_27[tuple_731_733] = 0 | 4
+                                # Program Parallel Region
+                                # Program Call Region
+                                ret = self.proc_119_(var_731, var_733)
+
+                                # Program Call Region
+                                ret = self.proc_123_(var_731, var_733)
+
+                        # Program TransitionState Region
+                        tuple_731_731 = (var_731, var_731)
+                        prev_state = self.table_6[tuple_731_731]
+                        state = prev_state & 3
+                        present_bit = prev_state & 4
+                        if state == 0 or state == 2:
+                            self.table_6[tuple_731_731] = 1 | 4
+                            if not present_bit:
+                                self.index_290[tuple_731_731[1]].append(tuple_731_731[0])
+                                self.index_756[tuple_731_731[0]].append(tuple_731_731[1])
+                            # Program VectorAppend Region
+                            vec_703.append((var_731, var_731))
+        # Program VectorClear Region
+        del vec_728[:]
+        vec_index728 = 0
+        # Program VectorUnique Region
+        vec_736 = list(set(vec_736))
+        vec_index736 = 0
+        # Program TableJoin Region
+        while vec_index736 < len(vec_736):
+            var_738 = vec_736[vec_index736]
+            vec_index736 += 1
+            tuple_737_0_index: int = 0
+            tuple_737_0_vec: List[int] = self.index_279[var_738]
+            while tuple_737_0_index < len(tuple_737_0_vec):
+                tuple_737_0 = tuple_737_0_vec[tuple_737_0_index]
+                tuple_737_0_index += 1
+                var_739 = tuple_737_0
+                if var_738 in self.index_280:
+                    # Program Parallel Region
+                    # Program TransitionState Region
+                    tuple_739_738 = (var_739, var_738)
+                    prev_state = self.table_97[tuple_739_738]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_97[tuple_739_738] = 1 | 4
+                        if not present_bit:
+                            self.index_285[tuple_739_738[1]].append(tuple_739_738[0])
+                        # Program VectorAppend Region
+                        vec_740.append(var_738)
+                    # Program TransitionState Region
+                    tuple_739_738 = (var_739, var_738)
+                    prev_state = self.table_22[tuple_739_738]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_22[tuple_739_738] = 1 | 4
+                        if not present_bit:
+                            self.index_760[tuple_739_738[0]].append(tuple_739_738[1])
+        # Program VectorClear Region
+        del vec_736[:]
+        vec_index736 = 0
+        # Program VectorUnique Region
+        vec_740 = list(set(vec_740))
+        vec_index740 = 0
+        # Program TableJoin Region
+        while vec_index740 < len(vec_740):
+            var_742 = vec_740[vec_index740]
+            vec_index740 += 1
+            tuple_741_0_index: int = 0
+            tuple_741_0_vec: List[int] = self.index_285[var_742]
+            while tuple_741_0_index < len(tuple_741_0_vec):
+                tuple_741_0 = tuple_741_0_vec[tuple_741_0_index]
+                tuple_741_0_index += 1
+                var_743 = tuple_741_0
+                if var_742 in self.index_256:
+                    # Program TransitionState Region
+                    tuple_743 = var_743
+                    prev_state = self.table_13[tuple_743]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_13[tuple_743] = 1 | 4
+                        if not present_bit:
+                            pass
+        # Program VectorClear Region
+        del vec_740[:]
+        vec_index740 = 0
+        # Program VectorUnique Region
+        vec_744 = list(set(vec_744))
+        vec_index744 = 0
+        # Program TableJoin Region
+        while vec_index744 < len(vec_744):
+            var_746 = vec_744[vec_index744]
+            vec_index744 += 1
+            tuple_745_0_index: int = 0
+            tuple_745_0_vec: List[int] = self.index_290[var_746]
+            while tuple_745_0_index < len(tuple_745_0_vec):
+                tuple_745_0 = tuple_745_0_vec[tuple_745_0_index]
+                tuple_745_0_index += 1
+                var_747 = tuple_745_0
+                tuple_745_1_index: int = 0
+                tuple_745_1_vec: List[int] = self.index_291[var_746]
+                while tuple_745_1_index < len(tuple_745_1_vec):
+                    tuple_745_1 = tuple_745_1_vec[tuple_745_1_index]
+                    tuple_745_1_index += 1
+                    var_748 = tuple_745_1
+                    # Program Call Region
+                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    ret = self.proc_294_(var_747, var_746)
+                    if ret:
+                        # Program Call Region
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        ret = self.proc_164_(var_746, var_748)
+                        if ret:
+                            # Program Call Region
+                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            ret = self.proc_299_(var_747, var_748)
+                            if not ret:
+                                # Program TransitionState Region
+                                tuple_747_748 = (var_747, var_748)
+                                prev_state = self.table_6[tuple_747_748]
+                                state = prev_state & 3
+                                present_bit = prev_state & 4
+                                if state == 0 or state == 2:
+                                    self.table_6[tuple_747_748] = 1 | 4
+                                    if not present_bit:
+                                        self.index_290[tuple_747_748[1]].append(tuple_747_748[0])
+                                        self.index_756[tuple_747_748[0]].append(tuple_747_748[1])
+                                    # Program VectorAppend Region
+                                    vec_703.append((var_747, var_748))
+        # Program VectorClear Region
+        del vec_744[:]
+        vec_index744 = 0
+        # Induction Fixpoint Loop Region
+        while len(vec_703):
+            # Program Call Region
+            param_705_0 = [vec_703]
+            ret = self.proc_127_(param_705_0)
+            vec_703 = param_705_0[0]
+
+        vec_index703 = 0
+        # Induction Output Region
         # Program VectorClear Region
         del vec_703[:]
         vec_index703 = 0
-        # Program VectorUnique Region
-        vec_719 = list(set(vec_719))
-        vec_index719 = 0
-        # Program TableJoin Region
-        while vec_index719 < len(vec_719):
-            var_721 = vec_719[vec_index719]
-            vec_index719 += 1
-            tuple_720_0_index: int = 0
-            tuple_720_0_vec: List[Tuple[int, int, int, int]] = self.index_319[var_721]
-            while tuple_720_0_index < len(tuple_720_0_vec):
-                tuple_720_0 = tuple_720_0_vec[tuple_720_0_index]
-                tuple_720_0_index += 1
-                var_722 = tuple_720_0[0]
-                var_723 = tuple_720_0[1]
-                var_724 = tuple_720_0[2]
-                var_725 = tuple_720_0[3]
-                if var_721 in self.index_267:
-                    # Program TupleCompare Region
-                    if (self.var_0, self.var_3, ) == (var_724, var_723, ):
-                        # Program TransitionState Region
-                        var_722 = self._resolve_edgetype(var_722)
-                        tuple_725_721_722 = (var_725, var_721, var_722)
-                        prev_state = self.table_43[tuple_725_721_722]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_725_721_722] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_725_721_722[1]].append((tuple_725_721_722[0], tuple_725_721_722[2]))
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            var_722 = self._resolve_edgetype(var_722)
-                            tuple_721_725_722 = (var_721, var_725, var_722)
-                            prev_state = self.table_26[tuple_721_725_722]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_721_725_722] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_721_725_722[0]].append((tuple_721_725_722[1], tuple_721_725_722[2]))
-                                    self.index_1053[(tuple_721_725_722[0], tuple_721_725_722[1])].append(tuple_721_725_722[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_721)
-                            if not ret:
-                                # Program TransitionState Region
-                                var_722 = self._resolve_edgetype(var_722)
-                                tuple_721_725_722 = (var_721, var_725, var_722)
-                                prev_state = self.table_26[tuple_721_725_722]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_721_725_722] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_721_725_722[0]].append((tuple_721_725_722[1], tuple_721_725_722[2]))
-                                        self.index_1053[(tuple_721_725_722[0], tuple_721_725_722[1])].append(tuple_721_725_722[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_725, var_721)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_725_721 = (var_725, var_721)
-                                        prev_state = self.table_9[tuple_725_721]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_725_721] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_725_721[0]].append(tuple_725_721[1])
-                                                self.index_1079[tuple_725_721[1]].append(tuple_725_721[0])
-                                            # Program VectorAppend Region
-                                            vec_797.append(var_725)
-                            # Program VectorAppend Region
-                            vec_761.append(var_721)
-                            # Program VectorAppend Region
-                            vec_792.append(var_721)
-                            # Program TupleCompare Region
-                            if self.var_0 == var_722:
-                                # Program TransitionState Region
-                                tuple_721 = var_721
-                                prev_state = self.table_17[tuple_721]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_17[tuple_721] = 1 | 4
-                                    if not present_bit:
-                                        pass
-                                    # Program Parallel Region
-                                    # Program Series Region
-                                    # Program TableScan Region
-                                    scan_tuple_729: Tuple[int, int]
-                                    scan_index_729: int = 0
-                                    scan_tuple_729_vec: List[Tuple[int, int]] = self.index_199[var_721]
-                                    while scan_index_729 < len(scan_tuple_729_vec):
-                                        scan_tuple_729 = scan_tuple_729_vec[scan_index_729]
-                                        scan_index_729 += 1
-                                        vec_729.append(scan_tuple_729)
-                                    # Program VectorLoop Region
-                                    vec_index729 = 0
-                                    while vec_index729 < len(vec_729):
-                                        var_730, var_731 = vec_729[vec_index729]
-                                        vec_index729 += 1
-                                        # Program TransitionState Region
-                                        # Remove from negated view
-                                        var_731 = self._resolve_edgetype(var_731)
-                                        tuple_721_730_731 = (var_721, var_730, var_731)
-                                        prev_state = self.table_26[tuple_721_730_731]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 1:
-                                            self.table_26[tuple_721_730_731] = 0 | 4
-                                            # Program Call Region
-                                            ret = self.proc_203_(var_721, var_730, var_731)
-
-                                    # Program TransitionState Region
-                                    tuple_721_721 = (var_721, var_721)
-                                    prev_state = self.table_6[tuple_721_721]
-                                    state = prev_state & 3
-                                    present_bit = prev_state & 4
-                                    if state == 0 or state == 2:
-                                        self.table_6[tuple_721_721] = 1 | 4
-                                        if not present_bit:
-                                            self.index_414[tuple_721_721[1]].append(tuple_721_721[0])
-                                            self.index_1029[tuple_721_721[0]].append(tuple_721_721[1])
-                                        # Program VectorAppend Region
-                                        vec_712.append((var_721, var_721))
-                                    # Program VectorAppend Region
-                                    vec_792.append(var_721)
-                            # Program TupleCompare Region
-                            if self.var_2 == var_722:
-                                # Program TransitionState Region
-                                tuple_2_725_721 = (self.var_2, var_725, var_721)
-                                prev_state = self.table_56[tuple_2_725_721]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_56[tuple_2_725_721] = 1 | 4
-                                    if not present_bit:
-                                        self.index_385[tuple_2_725_721[1]].append((tuple_2_725_721[0], tuple_2_725_721[2]))
-                                    # Program VectorAppend Region
-                                    vec_771.append(var_725)
-        # Program VectorClear Region
-        del vec_719[:]
-        vec_index719 = 0
-        # Program VectorUnique Region
-        vec_733 = list(set(vec_733))
-        vec_index733 = 0
-        # Program TableJoin Region
-        while vec_index733 < len(vec_733):
-            var_735 = vec_733[vec_index733]
-            vec_index733 += 1
-            if var_735 in self.index_267:
-                tuple_734_1_index: int = 0
-                tuple_734_1_vec: List[Tuple[int, int, int, int]] = self.index_357[var_735]
-                while tuple_734_1_index < len(tuple_734_1_vec):
-                    tuple_734_1 = tuple_734_1_vec[tuple_734_1_index]
-                    tuple_734_1_index += 1
-                    var_736 = tuple_734_1[0]
-                    var_737 = tuple_734_1[1]
-                    var_738 = tuple_734_1[2]
-                    var_739 = tuple_734_1[3]
-                    # Program TupleCompare Region
-                    if (self.var_0, self.var_3, ) == (var_738, var_737, ):
-                        # Program TransitionState Region
-                        tuple_739_735_0 = (var_739, var_735, self.var_0)
-                        prev_state = self.table_43[tuple_739_735_0]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_739_735_0] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_739_735_0[1]].append((tuple_739_735_0[0], tuple_739_735_0[2]))
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_735_739_0 = (var_735, var_739, self.var_0)
-                            prev_state = self.table_26[tuple_735_739_0]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_735_739_0] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_735_739_0[0]].append((tuple_735_739_0[1], tuple_735_739_0[2]))
-                                    self.index_1053[(tuple_735_739_0[0], tuple_735_739_0[1])].append(tuple_735_739_0[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_735)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_735_739_0 = (var_735, var_739, self.var_0)
-                                prev_state = self.table_26[tuple_735_739_0]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_735_739_0] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_735_739_0[0]].append((tuple_735_739_0[1], tuple_735_739_0[2]))
-                                        self.index_1053[(tuple_735_739_0[0], tuple_735_739_0[1])].append(tuple_735_739_0[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_739, var_735)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_739_735 = (var_739, var_735)
-                                        prev_state = self.table_9[tuple_739_735]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_739_735] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_739_735[0]].append(tuple_739_735[1])
-                                                self.index_1079[tuple_739_735[1]].append(tuple_739_735[0])
-                                            # Program VectorAppend Region
-                                            vec_797.append(var_739)
-                            # Program VectorAppend Region
-                            vec_761.append(var_735)
-                            # Program VectorAppend Region
-                            vec_792.append(var_735)
-                            # Program TransitionState Region
-                            tuple_735 = var_735
-                            prev_state = self.table_17[tuple_735]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0 or state == 2:
-                                self.table_17[tuple_735] = 1 | 4
-                                if not present_bit:
-                                    pass
-                                # Program Parallel Region
-                                # Program Series Region
-                                # Program TableScan Region
-                                scan_tuple_743: Tuple[int, int]
-                                scan_index_743: int = 0
-                                scan_tuple_743_vec: List[Tuple[int, int]] = self.index_199[var_735]
-                                while scan_index_743 < len(scan_tuple_743_vec):
-                                    scan_tuple_743 = scan_tuple_743_vec[scan_index_743]
-                                    scan_index_743 += 1
-                                    vec_743.append(scan_tuple_743)
-                                # Program VectorLoop Region
-                                vec_index743 = 0
-                                while vec_index743 < len(vec_743):
-                                    var_744, var_745 = vec_743[vec_index743]
-                                    vec_index743 += 1
-                                    # Program TransitionState Region
-                                    # Remove from negated view
-                                    var_745 = self._resolve_edgetype(var_745)
-                                    tuple_735_744_745 = (var_735, var_744, var_745)
-                                    prev_state = self.table_26[tuple_735_744_745]
-                                    state = prev_state & 3
-                                    present_bit = prev_state & 4
-                                    if state == 1:
-                                        self.table_26[tuple_735_744_745] = 0 | 4
-                                        # Program Call Region
-                                        ret = self.proc_203_(var_735, var_744, var_745)
-
-                                # Program TransitionState Region
-                                tuple_735_735 = (var_735, var_735)
-                                prev_state = self.table_6[tuple_735_735]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_6[tuple_735_735] = 1 | 4
-                                    if not present_bit:
-                                        self.index_414[tuple_735_735[1]].append(tuple_735_735[0])
-                                        self.index_1029[tuple_735_735[0]].append(tuple_735_735[1])
-                                    # Program VectorAppend Region
-                                    vec_712.append((var_735, var_735))
-                                # Program VectorAppend Region
-                                vec_792.append(var_735)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_2:
-                                # Program TransitionState Region
-                                tuple_0_739_735 = (self.var_0, var_739, var_735)
-                                prev_state = self.table_56[tuple_0_739_735]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_56[tuple_0_739_735] = 1 | 4
-                                    if not present_bit:
-                                        self.index_385[tuple_0_739_735[1]].append((tuple_0_739_735[0], tuple_0_739_735[2]))
-                                    # Program VectorAppend Region
-                                    vec_771.append(var_739)
-        # Program VectorClear Region
-        del vec_733[:]
-        vec_index733 = 0
-        # Program VectorUnique Region
-        vec_747 = list(set(vec_747))
-        vec_index747 = 0
-        # Program TableJoin Region
-        while vec_index747 < len(vec_747):
-            var_749 = vec_747[vec_index747]
-            vec_index747 += 1
-            if var_749 in self.index_267:
-                tuple_748_1_index: int = 0
-                tuple_748_1_vec: List[Tuple[int, int, int, int]] = self.index_342[var_749]
-                while tuple_748_1_index < len(tuple_748_1_vec):
-                    tuple_748_1 = tuple_748_1_vec[tuple_748_1_index]
-                    tuple_748_1_index += 1
-                    var_750 = tuple_748_1[0]
-                    var_751 = tuple_748_1[1]
-                    var_752 = tuple_748_1[2]
-                    var_753 = tuple_748_1[3]
-                    # Program TupleCompare Region
-                    if (self.var_3, self.var_0, ) == (var_751, var_752, ):
-                        # Program TransitionState Region
-                        tuple_753_749_3 = (var_753, var_749, self.var_3)
-                        prev_state = self.table_43[tuple_753_749_3]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_753_749_3] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_753_749_3[1]].append((tuple_753_749_3[0], tuple_753_749_3[2]))
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_749_753_3 = (var_749, var_753, self.var_3)
-                            prev_state = self.table_26[tuple_749_753_3]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_749_753_3] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_749_753_3[0]].append((tuple_749_753_3[1], tuple_749_753_3[2]))
-                                    self.index_1053[(tuple_749_753_3[0], tuple_749_753_3[1])].append(tuple_749_753_3[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_749)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_749_753_3 = (var_749, var_753, self.var_3)
-                                prev_state = self.table_26[tuple_749_753_3]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_749_753_3] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_749_753_3[0]].append((tuple_749_753_3[1], tuple_749_753_3[2]))
-                                        self.index_1053[(tuple_749_753_3[0], tuple_749_753_3[1])].append(tuple_749_753_3[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_753, var_749)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_753_749 = (var_753, var_749)
-                                        prev_state = self.table_9[tuple_753_749]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_753_749] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_753_749[0]].append(tuple_753_749[1])
-                                                self.index_1079[tuple_753_749[1]].append(tuple_753_749[0])
-                                            # Program VectorAppend Region
-                                            vec_797.append(var_753)
-                            # Program VectorAppend Region
-                            vec_761.append(var_749)
-                            # Program VectorAppend Region
-                            vec_792.append(var_749)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_3:
-                                # Program TransitionState Region
-                                tuple_749 = var_749
-                                prev_state = self.table_17[tuple_749]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_17[tuple_749] = 1 | 4
-                                    if not present_bit:
-                                        pass
-                                    # Program Parallel Region
-                                    # Program Series Region
-                                    # Program TableScan Region
-                                    scan_tuple_757: Tuple[int, int]
-                                    scan_index_757: int = 0
-                                    scan_tuple_757_vec: List[Tuple[int, int]] = self.index_199[var_749]
-                                    while scan_index_757 < len(scan_tuple_757_vec):
-                                        scan_tuple_757 = scan_tuple_757_vec[scan_index_757]
-                                        scan_index_757 += 1
-                                        vec_757.append(scan_tuple_757)
-                                    # Program VectorLoop Region
-                                    vec_index757 = 0
-                                    while vec_index757 < len(vec_757):
-                                        var_758, var_759 = vec_757[vec_index757]
-                                        vec_index757 += 1
-                                        # Program TransitionState Region
-                                        # Remove from negated view
-                                        var_759 = self._resolve_edgetype(var_759)
-                                        tuple_749_758_759 = (var_749, var_758, var_759)
-                                        prev_state = self.table_26[tuple_749_758_759]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 1:
-                                            self.table_26[tuple_749_758_759] = 0 | 4
-                                            # Program Call Region
-                                            ret = self.proc_203_(var_749, var_758, var_759)
-
-                                    # Program TransitionState Region
-                                    tuple_749_749 = (var_749, var_749)
-                                    prev_state = self.table_6[tuple_749_749]
-                                    state = prev_state & 3
-                                    present_bit = prev_state & 4
-                                    if state == 0 or state == 2:
-                                        self.table_6[tuple_749_749] = 1 | 4
-                                        if not present_bit:
-                                            self.index_414[tuple_749_749[1]].append(tuple_749_749[0])
-                                            self.index_1029[tuple_749_749[0]].append(tuple_749_749[1])
-                                        # Program VectorAppend Region
-                                        vec_712.append((var_749, var_749))
-                                    # Program VectorAppend Region
-                                    vec_792.append(var_749)
-                            # Program TupleCompare Region
-                            if self.var_2 == self.var_3:
-                                # Program TransitionState Region
-                                tuple_2_753_749 = (self.var_2, var_753, var_749)
-                                prev_state = self.table_56[tuple_2_753_749]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_56[tuple_2_753_749] = 1 | 4
-                                    if not present_bit:
-                                        self.index_385[tuple_2_753_749[1]].append((tuple_2_753_749[0], tuple_2_753_749[2]))
-                                    # Program VectorAppend Region
-                                    vec_771.append(var_753)
-        # Program VectorClear Region
-        del vec_747[:]
-        vec_index747 = 0
-        # Program VectorUnique Region
-        vec_761 = list(set(vec_761))
-        vec_index761 = 0
-        # Program TableJoin Region
-        while vec_index761 < len(vec_761):
-            var_763 = vec_761[vec_index761]
-            vec_index761 += 1
-            tuple_762_0_index: int = 0
-            tuple_762_0_vec: List[bytes] = self.index_372[var_763]
-            while tuple_762_0_index < len(tuple_762_0_vec):
-                tuple_762_0 = tuple_762_0_vec[tuple_762_0_index]
-                tuple_762_0_index += 1
-                var_764 = tuple_762_0
-                tuple_762_1_index: int = 0
-                tuple_762_1_vec: List[Tuple[int, int]] = self.index_373[var_763]
-                while tuple_762_1_index < len(tuple_762_1_vec):
-                    tuple_762_1 = tuple_762_1_vec[tuple_762_1_index]
-                    tuple_762_1_index += 1
-                    var_765 = tuple_762_1[0]
-                    var_766 = tuple_762_1[1]
-                    # Program TransitionState Region
-                    tuple_763 = var_763
-                    prev_state = self.table_17[tuple_763]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_17[tuple_763] = 1 | 4
-                        if not present_bit:
-                            pass
-                        # Program Parallel Region
-                        # Program Series Region
-                        # Program TableScan Region
-                        scan_tuple_767: Tuple[int, int]
-                        scan_index_767: int = 0
-                        scan_tuple_767_vec: List[Tuple[int, int]] = self.index_199[var_763]
-                        while scan_index_767 < len(scan_tuple_767_vec):
-                            scan_tuple_767 = scan_tuple_767_vec[scan_index_767]
-                            scan_index_767 += 1
-                            vec_767.append(scan_tuple_767)
-                        # Program VectorLoop Region
-                        vec_index767 = 0
-                        while vec_index767 < len(vec_767):
-                            var_768, var_769 = vec_767[vec_index767]
-                            vec_index767 += 1
-                            # Program TransitionState Region
-                            # Remove from negated view
-                            var_769 = self._resolve_edgetype(var_769)
-                            tuple_763_768_769 = (var_763, var_768, var_769)
-                            prev_state = self.table_26[tuple_763_768_769]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 1:
-                                self.table_26[tuple_763_768_769] = 0 | 4
-                                # Program Call Region
-                                ret = self.proc_203_(var_763, var_768, var_769)
-
-                        # Program TransitionState Region
-                        tuple_763_763 = (var_763, var_763)
-                        prev_state = self.table_6[tuple_763_763]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_6[tuple_763_763] = 1 | 4
-                            if not present_bit:
-                                self.index_414[tuple_763_763[1]].append(tuple_763_763[0])
-                                self.index_1029[tuple_763_763[0]].append(tuple_763_763[1])
-                            # Program VectorAppend Region
-                            vec_712.append((var_763, var_763))
-                        # Program VectorAppend Region
-                        vec_792.append(var_763)
-        # Program VectorClear Region
-        del vec_761[:]
-        vec_index761 = 0
-        # Program VectorUnique Region
-        vec_771 = list(set(vec_771))
-        vec_index771 = 0
-        # Program TableJoin Region
-        while vec_index771 < len(vec_771):
-            var_773 = vec_771[vec_index771]
-            vec_index771 += 1
-            tuple_772_0_index: int = 0
-            tuple_772_0_vec: List[Tuple[int, bytes, bytes]] = self.index_384[var_773]
-            while tuple_772_0_index < len(tuple_772_0_vec):
-                tuple_772_0 = tuple_772_0_vec[tuple_772_0_index]
-                tuple_772_0_index += 1
-                var_774 = tuple_772_0[0]
-                var_775 = tuple_772_0[1]
-                var_776 = tuple_772_0[2]
-                tuple_772_1_index: int = 0
-                tuple_772_1_vec: List[Tuple[int, int]] = self.index_385[var_773]
-                while tuple_772_1_index < len(tuple_772_1_vec):
-                    tuple_772_1 = tuple_772_1_vec[tuple_772_1_index]
-                    tuple_772_1_index += 1
-                    var_777 = tuple_772_1[0]
-                    var_778 = tuple_772_1[1]
-                    # Program TupleCompare Region
-                    if (self.var_1, self.var_2, ) == (var_774, var_777, ):
-                        # Program TransitionState Region
-                        tuple_2_1_773_775_776_778 = (self.var_2, self.var_1, var_773, var_775, var_776, var_778)
-                        prev_state = self.table_60[tuple_2_1_773_775_776_778]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_60[tuple_2_1_773_775_776_778] = 1 | 4
-                            if not present_bit:
-                                self.index_394[tuple_2_1_773_775_776_778[5]].append((tuple_2_1_773_775_776_778[0], tuple_2_1_773_775_776_778[1], tuple_2_1_773_775_776_778[2], tuple_2_1_773_775_776_778[3], tuple_2_1_773_775_776_778[4]))
-                            # Program VectorAppend Region
-                            vec_779.append(var_778)
-        # Program VectorClear Region
-        del vec_771[:]
-        vec_index771 = 0
-        # Program VectorUnique Region
-        vec_779 = list(set(vec_779))
-        vec_index779 = 0
-        # Program TableJoin Region
-        while vec_index779 < len(vec_779):
-            var_781 = vec_779[vec_index779]
-            vec_index779 += 1
-            tuple_780_0_index: int = 0
-            tuple_780_0_vec: List[bytes] = self.index_372[var_781]
-            while tuple_780_0_index < len(tuple_780_0_vec):
-                tuple_780_0 = tuple_780_0_vec[tuple_780_0_index]
-                tuple_780_0_index += 1
-                var_782 = tuple_780_0
-                tuple_780_1_index: int = 0
-                tuple_780_1_vec: List[Tuple[int, int, int, bytes, bytes]] = self.index_394[var_781]
-                while tuple_780_1_index < len(tuple_780_1_vec):
-                    tuple_780_1 = tuple_780_1_vec[tuple_780_1_index]
-                    tuple_780_1_index += 1
-                    var_783 = tuple_780_1[0]
-                    var_784 = tuple_780_1[1]
-                    var_785 = tuple_780_1[2]
-                    var_786 = tuple_780_1[3]
-                    var_787 = tuple_780_1[4]
-                    # Program TupleCompare Region
-                    if (self.var_1, self.var_2, ) == (var_784, var_783, ):
-                        # Program TransitionState Region
-                        tuple_785 = var_785
-                        prev_state = self.table_17[tuple_785]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_17[tuple_785] = 1 | 4
-                            if not present_bit:
-                                pass
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TableScan Region
-                            scan_tuple_788: Tuple[int, int]
-                            scan_index_788: int = 0
-                            scan_tuple_788_vec: List[Tuple[int, int]] = self.index_199[var_785]
-                            while scan_index_788 < len(scan_tuple_788_vec):
-                                scan_tuple_788 = scan_tuple_788_vec[scan_index_788]
-                                scan_index_788 += 1
-                                vec_788.append(scan_tuple_788)
-                            # Program VectorLoop Region
-                            vec_index788 = 0
-                            while vec_index788 < len(vec_788):
-                                var_789, var_790 = vec_788[vec_index788]
-                                vec_index788 += 1
-                                # Program TransitionState Region
-                                # Remove from negated view
-                                var_790 = self._resolve_edgetype(var_790)
-                                tuple_785_789_790 = (var_785, var_789, var_790)
-                                prev_state = self.table_26[tuple_785_789_790]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 1:
-                                    self.table_26[tuple_785_789_790] = 0 | 4
-                                    # Program Call Region
-                                    ret = self.proc_203_(var_785, var_789, var_790)
-
-                            # Program TransitionState Region
-                            tuple_785_785 = (var_785, var_785)
-                            prev_state = self.table_6[tuple_785_785]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0 or state == 2:
-                                self.table_6[tuple_785_785] = 1 | 4
-                                if not present_bit:
-                                    self.index_414[tuple_785_785[1]].append(tuple_785_785[0])
-                                    self.index_1029[tuple_785_785[0]].append(tuple_785_785[1])
-                                # Program VectorAppend Region
-                                vec_712.append((var_785, var_785))
-                            # Program VectorAppend Region
-                            vec_792.append(var_785)
-        # Program VectorClear Region
-        del vec_779[:]
-        vec_index779 = 0
-        # Program VectorUnique Region
-        vec_792 = list(set(vec_792))
-        vec_index792 = 0
-        # Program TableJoin Region
-        while vec_index792 < len(vec_792):
-            var_794 = vec_792[vec_index792]
-            vec_index792 += 1
-            tuple_793_0_index: int = 0
-            tuple_793_0_vec: List[Tuple[int, int]] = self.index_373[var_794]
-            while tuple_793_0_index < len(tuple_793_0_vec):
-                tuple_793_0 = tuple_793_0_vec[tuple_793_0_index]
-                tuple_793_0_index += 1
-                var_795 = tuple_793_0[0]
-                var_796 = tuple_793_0[1]
-                if var_794 in self.index_408:
-                    # Program TransitionState Region
-                    tuple_795_794 = (var_795, var_794)
-                    prev_state = self.table_12[tuple_795_794]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_12[tuple_795_794] = 1 | 4
-                        if not present_bit:
-                            self.index_433[tuple_795_794[1]].append(tuple_795_794[0])
-                            self.index_1028[tuple_795_794[0]].append(tuple_795_794[1])
-                        # Program VectorAppend Region
-                        vec_805.append(var_794)
-        # Program VectorClear Region
-        del vec_792[:]
-        vec_index792 = 0
-        # Program VectorUnique Region
-        vec_797 = list(set(vec_797))
-        vec_index797 = 0
-        # Program TableJoin Region
-        while vec_index797 < len(vec_797):
-            var_799 = vec_797[vec_index797]
-            vec_index797 += 1
-            tuple_798_0_index: int = 0
-            tuple_798_0_vec: List[int] = self.index_414[var_799]
-            while tuple_798_0_index < len(tuple_798_0_vec):
-                tuple_798_0 = tuple_798_0_vec[tuple_798_0_index]
-                tuple_798_0_index += 1
-                var_800 = tuple_798_0
-                tuple_798_1_index: int = 0
-                tuple_798_1_vec: List[int] = self.index_415[var_799]
-                while tuple_798_1_index < len(tuple_798_1_vec):
-                    tuple_798_1 = tuple_798_1_vec[tuple_798_1_index]
-                    tuple_798_1_index += 1
-                    var_801 = tuple_798_1
-                    # Program Call Region
-                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
-                    ret = self.proc_1030_(var_800, var_799)
-                    if ret:
-                        # Program Call Region
-                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
-                        ret = self.proc_1033_(var_799, var_801)
-                        if ret:
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                            ret = self.proc_426_(var_800, var_801)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_800_801 = (var_800, var_801)
-                                prev_state = self.table_6[tuple_800_801]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_6[tuple_800_801] = 1 | 4
-                                    if not present_bit:
-                                        self.index_414[tuple_800_801[1]].append(tuple_800_801[0])
-                                        self.index_1029[tuple_800_801[0]].append(tuple_800_801[1])
-                                    # Program VectorAppend Region
-                                    vec_712.append((var_800, var_801))
-        # Program VectorClear Region
-        del vec_797[:]
-        vec_index797 = 0
-        # Program VectorUnique Region
-        vec_805 = list(set(vec_805))
-        vec_index805 = 0
-        # Program TableJoin Region
-        while vec_index805 < len(vec_805):
-            var_807 = vec_805[vec_index805]
-            vec_index805 += 1
-            tuple_806_0_index: int = 0
-            tuple_806_0_vec: List[int] = self.index_433[var_807]
-            while tuple_806_0_index < len(tuple_806_0_vec):
-                tuple_806_0 = tuple_806_0_vec[tuple_806_0_index]
-                tuple_806_0_index += 1
-                var_808 = tuple_806_0
-                tuple_806_1_index: int = 0
-                tuple_806_1_vec: List[bytes] = self.index_372[var_807]
-                while tuple_806_1_index < len(tuple_806_1_vec):
-                    tuple_806_1 = tuple_806_1_vec[tuple_806_1_index]
-                    tuple_806_1_index += 1
-                    var_809 = tuple_806_1
-                    # Program TransitionState Region
-                    tuple_808 = var_808
-                    prev_state = self.table_15[tuple_808]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_15[tuple_808] = 1 | 4
-                        if not present_bit:
-                            pass
-        # Program VectorClear Region
-        del vec_805[:]
-        vec_index805 = 0
-        # Induction Fixpoint Loop Region
-        while len(vec_712):
-            # Program Call Region
-            param_714_0 = [vec_712]
-            ret = self.proc_192_(param_714_0)
-            vec_712 = param_714_0[0]
-
-        vec_index712 = 0
-        # Induction Output Region
-        # Program VectorClear Region
-        del vec_712[:]
-        vec_index712 = 0
         # Program Return Region
         return False
-
-    def address_operand_2(self, vec_811: List[Tuple[int, int]]) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        vec_index811: int = 0
-        vec_814: List[int] = list()
-        vec_index814: int = 0
-        vec_821: List[int] = list()
-        vec_index821: int = 0
-        vec_828: List[int] = list()
-        vec_index828: int = 0
-        vec_836: List[int] = list()
-        vec_index836: int = 0
-        vec_844: List[int] = list()
-        vec_index844: int = 0
-        vec_855: List[Tuple[int, int]] = list()
-        vec_index855: int = 0
-        vec_858: List[Tuple[int, int]] = list()
-        vec_index858: int = 0
-        vec_862: List[int] = list()
-        vec_index862: int = 0
-        vec_873: List[Tuple[int, int]] = list()
-        vec_index873: int = 0
-        vec_877: List[int] = list()
-        vec_index877: int = 0
-        vec_883: List[Tuple[int, int]] = list()
-        vec_index883: int = 0
-        vec_887: List[int] = list()
-        vec_index887: int = 0
-        vec_895: List[int] = list()
-        vec_index895: int = 0
-        vec_904: List[Tuple[int, int]] = list()
-        vec_index904: int = 0
-        vec_908: List[int] = list()
-        vec_index908: int = 0
-        vec_913: List[int] = list()
-        vec_index913: int = 0
-        vec_921: List[int] = list()
-        vec_index921: int = 0
-        # Program Series Region
-        # Program Induction Init Region
-        # Program Series Region
-        # Program VectorLoop Region
-        vec_index811 = 0
-        while vec_index811 < len(vec_811):
-            var_812, var_813 = vec_811[vec_index811]
-            vec_index811 += 1
-            # Program Parallel Region
-            # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            tuple_812_813 = (var_812, var_813)
-            prev_state = self.table_110[tuple_812_813]
-            state = prev_state & 3
-            present_bit = prev_state & 4
-            if state == 0 or state == 2:
-                self.table_110[tuple_812_813] = 1 | 4
-                if not present_bit:
-                    self.index_232[tuple_812_813[0]].append(tuple_812_813[1])
-                # Program Parallel Region
-                # Program VectorAppend Region
-                vec_821.append(var_812)
-                # Program VectorAppend Region
-                vec_814.append(var_812)
-            # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            tuple_812_813 = (var_812, var_813)
-            prev_state = self.table_110[tuple_812_813]
-            state = prev_state & 3
-            present_bit = prev_state & 4
-            if state == 0 or state == 2:
-                self.table_110[tuple_812_813] = 1 | 4
-                if not present_bit:
-                    self.index_232[tuple_812_813[0]].append(tuple_812_813[1])
-                # Program Parallel Region
-                # Program VectorAppend Region
-                vec_821.append(var_812)
-                # Program VectorAppend Region
-                vec_814.append(var_812)
-        # Program VectorUnique Region
-        vec_814 = list(set(vec_814))
-        vec_index814 = 0
-        # Program TableJoin Region
-        while vec_index814 < len(vec_814):
-            var_816 = vec_814[vec_index814]
-            vec_index814 += 1
-            tuple_815_0_index: int = 0
-            tuple_815_0_vec: List[Tuple[int, bytes, bytes]] = self.index_231[var_816]
-            while tuple_815_0_index < len(tuple_815_0_vec):
-                tuple_815_0 = tuple_815_0_vec[tuple_815_0_index]
-                tuple_815_0_index += 1
-                var_817 = tuple_815_0[0]
-                var_818 = tuple_815_0[1]
-                var_819 = tuple_815_0[2]
-                tuple_815_1_index: int = 0
-                tuple_815_1_vec: List[int] = self.index_232[var_816]
-                while tuple_815_1_index < len(tuple_815_1_vec):
-                    tuple_815_1 = tuple_815_1_vec[tuple_815_1_index]
-                    tuple_815_1_index += 1
-                    var_820 = tuple_815_1
-                    # Program TupleCompare Region
-                    if self.var_4 == var_817:
-                        # Program TransitionState Region
-                        tuple_4_816_818_819_820 = (self.var_4, var_816, var_818, var_819, var_820)
-                        prev_state = self.table_134[tuple_4_816_818_819_820]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_134[tuple_4_816_818_819_820] = 1 | 4
-                            if not present_bit:
-                                self.index_258[tuple_4_816_818_819_820[4]].append((tuple_4_816_818_819_820[0], tuple_4_816_818_819_820[1], tuple_4_816_818_819_820[2], tuple_4_816_818_819_820[3]))
-                            # Program VectorAppend Region
-                            vec_836.append(var_820)
-        # Program VectorClear Region
-        del vec_814[:]
-        vec_index814 = 0
-        # Program VectorUnique Region
-        vec_821 = list(set(vec_821))
-        vec_index821 = 0
-        # Program TableJoin Region
-        while vec_index821 < len(vec_821):
-            var_823 = vec_821[vec_index821]
-            vec_index821 += 1
-            tuple_822_0_index: int = 0
-            tuple_822_0_vec: List[Tuple[int, bytes, bytes]] = self.index_240[var_823]
-            while tuple_822_0_index < len(tuple_822_0_vec):
-                tuple_822_0 = tuple_822_0_vec[tuple_822_0_index]
-                tuple_822_0_index += 1
-                var_824 = tuple_822_0[0]
-                var_825 = tuple_822_0[1]
-                var_826 = tuple_822_0[2]
-                tuple_822_1_index: int = 0
-                tuple_822_1_vec: List[int] = self.index_232[var_823]
-                while tuple_822_1_index < len(tuple_822_1_vec):
-                    tuple_822_1 = tuple_822_1_vec[tuple_822_1_index]
-                    tuple_822_1_index += 1
-                    var_827 = tuple_822_1
-                    # Program TupleCompare Region
-                    if self.var_1 == var_824:
-                        # Program TransitionState Region
-                        tuple_1_823_825_826_827 = (self.var_1, var_823, var_825, var_826, var_827)
-                        prev_state = self.table_116[tuple_1_823_825_826_827]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_116[tuple_1_823_825_826_827] = 1 | 4
-                            if not present_bit:
-                                self.index_249[tuple_1_823_825_826_827[4]].append((tuple_1_823_825_826_827[0], tuple_1_823_825_826_827[1], tuple_1_823_825_826_827[2], tuple_1_823_825_826_827[3]))
-                            # Program VectorAppend Region
-                            vec_828.append(var_827)
-        # Program VectorClear Region
-        del vec_821[:]
-        vec_index821 = 0
-        # Program VectorUnique Region
-        vec_828 = list(set(vec_828))
-        vec_index828 = 0
-        # Program TableJoin Region
-        while vec_index828 < len(vec_828):
-            var_830 = vec_828[vec_index828]
-            vec_index828 += 1
-            tuple_829_0_index: int = 0
-            tuple_829_0_vec: List[int] = self.index_248[var_830]
-            while tuple_829_0_index < len(tuple_829_0_vec):
-                tuple_829_0 = tuple_829_0_vec[tuple_829_0_index]
-                tuple_829_0_index += 1
-                var_831 = tuple_829_0
-                tuple_829_1_index: int = 0
-                tuple_829_1_vec: List[Tuple[int, int, bytes, bytes]] = self.index_249[var_830]
-                while tuple_829_1_index < len(tuple_829_1_vec):
-                    tuple_829_1 = tuple_829_1_vec[tuple_829_1_index]
-                    tuple_829_1_index += 1
-                    var_832 = tuple_829_1[0]
-                    var_833 = tuple_829_1[1]
-                    var_834 = tuple_829_1[2]
-                    var_835 = tuple_829_1[3]
-                    # Program TupleCompare Region
-                    if self.var_1 == var_832:
-                        # Program TransitionState Region
-                        tuple_1_830_831_833_834_835 = (self.var_1, var_830, var_831, var_833, var_834, var_835)
-                        prev_state = self.table_122[tuple_1_830_831_833_834_835]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_122[tuple_1_830_831_833_834_835] = 1 | 4
-                            if not present_bit:
-                                self.index_303[tuple_1_830_831_833_834_835[2]].append((tuple_1_830_831_833_834_835[0], tuple_1_830_831_833_834_835[1], tuple_1_830_831_833_834_835[3], tuple_1_830_831_833_834_835[4], tuple_1_830_831_833_834_835[5]))
-                            # Program VectorAppend Region
-                            vec_862.append(var_831)
-        # Program VectorClear Region
-        del vec_828[:]
-        vec_index828 = 0
-        # Program VectorUnique Region
-        vec_836 = list(set(vec_836))
-        vec_index836 = 0
-        # Program TableJoin Region
-        while vec_index836 < len(vec_836):
-            var_838 = vec_836[vec_index836]
-            vec_index836 += 1
-            tuple_837_0_index: int = 0
-            tuple_837_0_vec: List[int] = self.index_248[var_838]
-            while tuple_837_0_index < len(tuple_837_0_vec):
-                tuple_837_0 = tuple_837_0_vec[tuple_837_0_index]
-                tuple_837_0_index += 1
-                var_839 = tuple_837_0
-                tuple_837_1_index: int = 0
-                tuple_837_1_vec: List[Tuple[int, int, bytes, bytes]] = self.index_258[var_838]
-                while tuple_837_1_index < len(tuple_837_1_vec):
-                    tuple_837_1 = tuple_837_1_vec[tuple_837_1_index]
-                    tuple_837_1_index += 1
-                    var_840 = tuple_837_1[0]
-                    var_841 = tuple_837_1[1]
-                    var_842 = tuple_837_1[2]
-                    var_843 = tuple_837_1[3]
-                    # Program TupleCompare Region
-                    if self.var_4 == var_840:
-                        # Program TransitionState Region
-                        tuple_4_838_839_841_842_843 = (self.var_4, var_838, var_839, var_841, var_842, var_843)
-                        prev_state = self.table_140[tuple_4_838_839_841_842_843]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_140[tuple_4_838_839_841_842_843] = 1 | 4
-                            if not present_bit:
-                                self.index_287[tuple_4_838_839_841_842_843[2]].append((tuple_4_838_839_841_842_843[0], tuple_4_838_839_841_842_843[1], tuple_4_838_839_841_842_843[3], tuple_4_838_839_841_842_843[4], tuple_4_838_839_841_842_843[5]))
-                            # Program VectorAppend Region
-                            vec_844.append(var_839)
-        # Program VectorClear Region
-        del vec_836[:]
-        vec_index836 = 0
-        # Program VectorUnique Region
-        vec_844 = list(set(vec_844))
-        vec_index844 = 0
-        # Program TableJoin Region
-        while vec_index844 < len(vec_844):
-            var_846 = vec_844[vec_index844]
-            vec_index844 += 1
-            if var_846 in self.index_267:
-                tuple_845_1_index: int = 0
-                tuple_845_1_vec: List[Tuple[int, int, int, bytes, bytes]] = self.index_287[var_846]
-                while tuple_845_1_index < len(tuple_845_1_vec):
-                    tuple_845_1 = tuple_845_1_vec[tuple_845_1_index]
-                    tuple_845_1_index += 1
-                    var_847 = tuple_845_1[0]
-                    var_848 = tuple_845_1[1]
-                    var_849 = tuple_845_1[2]
-                    var_850 = tuple_845_1[3]
-                    var_851 = tuple_845_1[4]
-                    # Program TupleCompare Region
-                    if self.var_4 == var_847:
-                        # Program TransitionState Region
-                        tuple_849_846_0 = (var_849, var_846, self.var_0)
-                        prev_state = self.table_43[tuple_849_846_0]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_849_846_0] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_849_846_0[1]].append((tuple_849_846_0[0], tuple_849_846_0[2]))
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_846_849_0 = (var_846, var_849, self.var_0)
-                            prev_state = self.table_26[tuple_846_849_0]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_846_849_0] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_846_849_0[0]].append((tuple_846_849_0[1], tuple_846_849_0[2]))
-                                    self.index_1053[(tuple_846_849_0[0], tuple_846_849_0[1])].append(tuple_846_849_0[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_846)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_846_849_0 = (var_846, var_849, self.var_0)
-                                prev_state = self.table_26[tuple_846_849_0]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_846_849_0] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_846_849_0[0]].append((tuple_846_849_0[1], tuple_846_849_0[2]))
-                                        self.index_1053[(tuple_846_849_0[0], tuple_846_849_0[1])].append(tuple_846_849_0[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_849, var_846)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_849_846 = (var_849, var_846)
-                                        prev_state = self.table_9[tuple_849_846]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_849_846] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_849_846[0]].append(tuple_849_846[1])
-                                                self.index_1079[tuple_849_846[1]].append(tuple_849_846[0])
-                                            # Program VectorAppend Region
-                                            vec_913.append(var_849)
-                            # Program VectorAppend Region
-                            vec_877.append(var_846)
-                            # Program VectorAppend Region
-                            vec_908.append(var_846)
-                            # Program TransitionState Region
-                            tuple_846 = var_846
-                            prev_state = self.table_17[tuple_846]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0 or state == 2:
-                                self.table_17[tuple_846] = 1 | 4
-                                if not present_bit:
-                                    pass
-                                # Program Parallel Region
-                                # Program Series Region
-                                # Program TableScan Region
-                                scan_tuple_858: Tuple[int, int]
-                                scan_index_858: int = 0
-                                scan_tuple_858_vec: List[Tuple[int, int]] = self.index_199[var_846]
-                                while scan_index_858 < len(scan_tuple_858_vec):
-                                    scan_tuple_858 = scan_tuple_858_vec[scan_index_858]
-                                    scan_index_858 += 1
-                                    vec_858.append(scan_tuple_858)
-                                # Program VectorLoop Region
-                                vec_index858 = 0
-                                while vec_index858 < len(vec_858):
-                                    var_859, var_860 = vec_858[vec_index858]
-                                    vec_index858 += 1
-                                    # Program TransitionState Region
-                                    # Remove from negated view
-                                    var_860 = self._resolve_edgetype(var_860)
-                                    tuple_846_859_860 = (var_846, var_859, var_860)
-                                    prev_state = self.table_26[tuple_846_859_860]
-                                    state = prev_state & 3
-                                    present_bit = prev_state & 4
-                                    if state == 1:
-                                        self.table_26[tuple_846_859_860] = 0 | 4
-                                        # Program Call Region
-                                        ret = self.proc_203_(var_846, var_859, var_860)
-
-                                # Program TransitionState Region
-                                tuple_846_846 = (var_846, var_846)
-                                prev_state = self.table_6[tuple_846_846]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_6[tuple_846_846] = 1 | 4
-                                    if not present_bit:
-                                        self.index_414[tuple_846_846[1]].append(tuple_846_846[0])
-                                        self.index_1029[tuple_846_846[0]].append(tuple_846_846[1])
-                                    # Program VectorAppend Region
-                                    vec_855.append((var_846, var_846))
-                                # Program VectorAppend Region
-                                vec_908.append(var_846)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_2:
-                                # Program TransitionState Region
-                                tuple_0_849_846 = (self.var_0, var_849, var_846)
-                                prev_state = self.table_56[tuple_0_849_846]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_56[tuple_0_849_846] = 1 | 4
-                                    if not present_bit:
-                                        self.index_385[tuple_0_849_846[1]].append((tuple_0_849_846[0], tuple_0_849_846[2]))
-                                    # Program VectorAppend Region
-                                    vec_887.append(var_849)
-        # Program VectorClear Region
-        del vec_844[:]
-        vec_index844 = 0
-        # Program VectorUnique Region
-        vec_862 = list(set(vec_862))
-        vec_index862 = 0
-        # Program TableJoin Region
-        while vec_index862 < len(vec_862):
-            var_864 = vec_862[vec_index862]
-            vec_index862 += 1
-            if var_864 in self.index_267:
-                tuple_863_1_index: int = 0
-                tuple_863_1_vec: List[Tuple[int, int, int, bytes, bytes]] = self.index_303[var_864]
-                while tuple_863_1_index < len(tuple_863_1_vec):
-                    tuple_863_1 = tuple_863_1_vec[tuple_863_1_index]
-                    tuple_863_1_index += 1
-                    var_865 = tuple_863_1[0]
-                    var_866 = tuple_863_1[1]
-                    var_867 = tuple_863_1[2]
-                    var_868 = tuple_863_1[3]
-                    var_869 = tuple_863_1[4]
-                    # Program TupleCompare Region
-                    if self.var_1 == var_865:
-                        # Program TransitionState Region
-                        tuple_867_864_2 = (var_867, var_864, self.var_2)
-                        prev_state = self.table_43[tuple_867_864_2]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_867_864_2] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_867_864_2[1]].append((tuple_867_864_2[0], tuple_867_864_2[2]))
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_864_867_2 = (var_864, var_867, self.var_2)
-                            prev_state = self.table_26[tuple_864_867_2]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_864_867_2] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_864_867_2[0]].append((tuple_864_867_2[1], tuple_864_867_2[2]))
-                                    self.index_1053[(tuple_864_867_2[0], tuple_864_867_2[1])].append(tuple_864_867_2[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_864)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_864_867_2 = (var_864, var_867, self.var_2)
-                                prev_state = self.table_26[tuple_864_867_2]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_864_867_2] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_864_867_2[0]].append((tuple_864_867_2[1], tuple_864_867_2[2]))
-                                        self.index_1053[(tuple_864_867_2[0], tuple_864_867_2[1])].append(tuple_864_867_2[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_867, var_864)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_867_864 = (var_867, var_864)
-                                        prev_state = self.table_9[tuple_867_864]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_867_864] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_867_864[0]].append(tuple_867_864[1])
-                                                self.index_1079[tuple_867_864[1]].append(tuple_867_864[0])
-                                            # Program VectorAppend Region
-                                            vec_913.append(var_867)
-                            # Program VectorAppend Region
-                            vec_877.append(var_864)
-                            # Program VectorAppend Region
-                            vec_908.append(var_864)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_2:
-                                # Program TransitionState Region
-                                tuple_864 = var_864
-                                prev_state = self.table_17[tuple_864]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_17[tuple_864] = 1 | 4
-                                    if not present_bit:
-                                        pass
-                                    # Program Parallel Region
-                                    # Program Series Region
-                                    # Program TableScan Region
-                                    scan_tuple_873: Tuple[int, int]
-                                    scan_index_873: int = 0
-                                    scan_tuple_873_vec: List[Tuple[int, int]] = self.index_199[var_864]
-                                    while scan_index_873 < len(scan_tuple_873_vec):
-                                        scan_tuple_873 = scan_tuple_873_vec[scan_index_873]
-                                        scan_index_873 += 1
-                                        vec_873.append(scan_tuple_873)
-                                    # Program VectorLoop Region
-                                    vec_index873 = 0
-                                    while vec_index873 < len(vec_873):
-                                        var_874, var_875 = vec_873[vec_index873]
-                                        vec_index873 += 1
-                                        # Program TransitionState Region
-                                        # Remove from negated view
-                                        var_875 = self._resolve_edgetype(var_875)
-                                        tuple_864_874_875 = (var_864, var_874, var_875)
-                                        prev_state = self.table_26[tuple_864_874_875]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 1:
-                                            self.table_26[tuple_864_874_875] = 0 | 4
-                                            # Program Call Region
-                                            ret = self.proc_203_(var_864, var_874, var_875)
-
-                                    # Program TransitionState Region
-                                    tuple_864_864 = (var_864, var_864)
-                                    prev_state = self.table_6[tuple_864_864]
-                                    state = prev_state & 3
-                                    present_bit = prev_state & 4
-                                    if state == 0 or state == 2:
-                                        self.table_6[tuple_864_864] = 1 | 4
-                                        if not present_bit:
-                                            self.index_414[tuple_864_864[1]].append(tuple_864_864[0])
-                                            self.index_1029[tuple_864_864[0]].append(tuple_864_864[1])
-                                        # Program VectorAppend Region
-                                        vec_855.append((var_864, var_864))
-                                    # Program VectorAppend Region
-                                    vec_908.append(var_864)
-                            # Program TransitionState Region
-                            tuple_2_867_864 = (self.var_2, var_867, var_864)
-                            prev_state = self.table_56[tuple_2_867_864]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0 or state == 2:
-                                self.table_56[tuple_2_867_864] = 1 | 4
-                                if not present_bit:
-                                    self.index_385[tuple_2_867_864[1]].append((tuple_2_867_864[0], tuple_2_867_864[2]))
-                                # Program VectorAppend Region
-                                vec_887.append(var_867)
-        # Program VectorClear Region
-        del vec_862[:]
-        vec_index862 = 0
-        # Program VectorUnique Region
-        vec_877 = list(set(vec_877))
-        vec_index877 = 0
-        # Program TableJoin Region
-        while vec_index877 < len(vec_877):
-            var_879 = vec_877[vec_index877]
-            vec_index877 += 1
-            tuple_878_0_index: int = 0
-            tuple_878_0_vec: List[bytes] = self.index_372[var_879]
-            while tuple_878_0_index < len(tuple_878_0_vec):
-                tuple_878_0 = tuple_878_0_vec[tuple_878_0_index]
-                tuple_878_0_index += 1
-                var_880 = tuple_878_0
-                tuple_878_1_index: int = 0
-                tuple_878_1_vec: List[Tuple[int, int]] = self.index_373[var_879]
-                while tuple_878_1_index < len(tuple_878_1_vec):
-                    tuple_878_1 = tuple_878_1_vec[tuple_878_1_index]
-                    tuple_878_1_index += 1
-                    var_881 = tuple_878_1[0]
-                    var_882 = tuple_878_1[1]
-                    # Program TransitionState Region
-                    tuple_879 = var_879
-                    prev_state = self.table_17[tuple_879]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_17[tuple_879] = 1 | 4
-                        if not present_bit:
-                            pass
-                        # Program Parallel Region
-                        # Program Series Region
-                        # Program TableScan Region
-                        scan_tuple_883: Tuple[int, int]
-                        scan_index_883: int = 0
-                        scan_tuple_883_vec: List[Tuple[int, int]] = self.index_199[var_879]
-                        while scan_index_883 < len(scan_tuple_883_vec):
-                            scan_tuple_883 = scan_tuple_883_vec[scan_index_883]
-                            scan_index_883 += 1
-                            vec_883.append(scan_tuple_883)
-                        # Program VectorLoop Region
-                        vec_index883 = 0
-                        while vec_index883 < len(vec_883):
-                            var_884, var_885 = vec_883[vec_index883]
-                            vec_index883 += 1
-                            # Program TransitionState Region
-                            # Remove from negated view
-                            var_885 = self._resolve_edgetype(var_885)
-                            tuple_879_884_885 = (var_879, var_884, var_885)
-                            prev_state = self.table_26[tuple_879_884_885]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 1:
-                                self.table_26[tuple_879_884_885] = 0 | 4
-                                # Program Call Region
-                                ret = self.proc_203_(var_879, var_884, var_885)
-
-                        # Program TransitionState Region
-                        tuple_879_879 = (var_879, var_879)
-                        prev_state = self.table_6[tuple_879_879]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_6[tuple_879_879] = 1 | 4
-                            if not present_bit:
-                                self.index_414[tuple_879_879[1]].append(tuple_879_879[0])
-                                self.index_1029[tuple_879_879[0]].append(tuple_879_879[1])
-                            # Program VectorAppend Region
-                            vec_855.append((var_879, var_879))
-                        # Program VectorAppend Region
-                        vec_908.append(var_879)
-        # Program VectorClear Region
-        del vec_877[:]
-        vec_index877 = 0
-        # Program VectorUnique Region
-        vec_887 = list(set(vec_887))
-        vec_index887 = 0
-        # Program TableJoin Region
-        while vec_index887 < len(vec_887):
-            var_889 = vec_887[vec_index887]
-            vec_index887 += 1
-            tuple_888_0_index: int = 0
-            tuple_888_0_vec: List[Tuple[int, bytes, bytes]] = self.index_384[var_889]
-            while tuple_888_0_index < len(tuple_888_0_vec):
-                tuple_888_0 = tuple_888_0_vec[tuple_888_0_index]
-                tuple_888_0_index += 1
-                var_890 = tuple_888_0[0]
-                var_891 = tuple_888_0[1]
-                var_892 = tuple_888_0[2]
-                tuple_888_1_index: int = 0
-                tuple_888_1_vec: List[Tuple[int, int]] = self.index_385[var_889]
-                while tuple_888_1_index < len(tuple_888_1_vec):
-                    tuple_888_1 = tuple_888_1_vec[tuple_888_1_index]
-                    tuple_888_1_index += 1
-                    var_893 = tuple_888_1[0]
-                    var_894 = tuple_888_1[1]
-                    # Program TupleCompare Region
-                    if (self.var_1, self.var_2, ) == (var_890, var_893, ):
-                        # Program TransitionState Region
-                        tuple_2_1_889_891_892_894 = (self.var_2, self.var_1, var_889, var_891, var_892, var_894)
-                        prev_state = self.table_60[tuple_2_1_889_891_892_894]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_60[tuple_2_1_889_891_892_894] = 1 | 4
-                            if not present_bit:
-                                self.index_394[tuple_2_1_889_891_892_894[5]].append((tuple_2_1_889_891_892_894[0], tuple_2_1_889_891_892_894[1], tuple_2_1_889_891_892_894[2], tuple_2_1_889_891_892_894[3], tuple_2_1_889_891_892_894[4]))
-                            # Program VectorAppend Region
-                            vec_895.append(var_894)
-        # Program VectorClear Region
-        del vec_887[:]
-        vec_index887 = 0
-        # Program VectorUnique Region
-        vec_895 = list(set(vec_895))
-        vec_index895 = 0
-        # Program TableJoin Region
-        while vec_index895 < len(vec_895):
-            var_897 = vec_895[vec_index895]
-            vec_index895 += 1
-            tuple_896_0_index: int = 0
-            tuple_896_0_vec: List[bytes] = self.index_372[var_897]
-            while tuple_896_0_index < len(tuple_896_0_vec):
-                tuple_896_0 = tuple_896_0_vec[tuple_896_0_index]
-                tuple_896_0_index += 1
-                var_898 = tuple_896_0
-                tuple_896_1_index: int = 0
-                tuple_896_1_vec: List[Tuple[int, int, int, bytes, bytes]] = self.index_394[var_897]
-                while tuple_896_1_index < len(tuple_896_1_vec):
-                    tuple_896_1 = tuple_896_1_vec[tuple_896_1_index]
-                    tuple_896_1_index += 1
-                    var_899 = tuple_896_1[0]
-                    var_900 = tuple_896_1[1]
-                    var_901 = tuple_896_1[2]
-                    var_902 = tuple_896_1[3]
-                    var_903 = tuple_896_1[4]
-                    # Program TupleCompare Region
-                    if (self.var_1, self.var_2, ) == (var_900, var_899, ):
-                        # Program TransitionState Region
-                        tuple_901 = var_901
-                        prev_state = self.table_17[tuple_901]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_17[tuple_901] = 1 | 4
-                            if not present_bit:
-                                pass
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TableScan Region
-                            scan_tuple_904: Tuple[int, int]
-                            scan_index_904: int = 0
-                            scan_tuple_904_vec: List[Tuple[int, int]] = self.index_199[var_901]
-                            while scan_index_904 < len(scan_tuple_904_vec):
-                                scan_tuple_904 = scan_tuple_904_vec[scan_index_904]
-                                scan_index_904 += 1
-                                vec_904.append(scan_tuple_904)
-                            # Program VectorLoop Region
-                            vec_index904 = 0
-                            while vec_index904 < len(vec_904):
-                                var_905, var_906 = vec_904[vec_index904]
-                                vec_index904 += 1
-                                # Program TransitionState Region
-                                # Remove from negated view
-                                var_906 = self._resolve_edgetype(var_906)
-                                tuple_901_905_906 = (var_901, var_905, var_906)
-                                prev_state = self.table_26[tuple_901_905_906]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 1:
-                                    self.table_26[tuple_901_905_906] = 0 | 4
-                                    # Program Call Region
-                                    ret = self.proc_203_(var_901, var_905, var_906)
-
-                            # Program TransitionState Region
-                            tuple_901_901 = (var_901, var_901)
-                            prev_state = self.table_6[tuple_901_901]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0 or state == 2:
-                                self.table_6[tuple_901_901] = 1 | 4
-                                if not present_bit:
-                                    self.index_414[tuple_901_901[1]].append(tuple_901_901[0])
-                                    self.index_1029[tuple_901_901[0]].append(tuple_901_901[1])
-                                # Program VectorAppend Region
-                                vec_855.append((var_901, var_901))
-                            # Program VectorAppend Region
-                            vec_908.append(var_901)
-        # Program VectorClear Region
-        del vec_895[:]
-        vec_index895 = 0
-        # Program VectorUnique Region
-        vec_908 = list(set(vec_908))
-        vec_index908 = 0
-        # Program TableJoin Region
-        while vec_index908 < len(vec_908):
-            var_910 = vec_908[vec_index908]
-            vec_index908 += 1
-            tuple_909_0_index: int = 0
-            tuple_909_0_vec: List[Tuple[int, int]] = self.index_373[var_910]
-            while tuple_909_0_index < len(tuple_909_0_vec):
-                tuple_909_0 = tuple_909_0_vec[tuple_909_0_index]
-                tuple_909_0_index += 1
-                var_911 = tuple_909_0[0]
-                var_912 = tuple_909_0[1]
-                if var_910 in self.index_408:
-                    # Program TransitionState Region
-                    tuple_911_910 = (var_911, var_910)
-                    prev_state = self.table_12[tuple_911_910]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_12[tuple_911_910] = 1 | 4
-                        if not present_bit:
-                            self.index_433[tuple_911_910[1]].append(tuple_911_910[0])
-                            self.index_1028[tuple_911_910[0]].append(tuple_911_910[1])
-                        # Program VectorAppend Region
-                        vec_921.append(var_910)
-        # Program VectorClear Region
-        del vec_908[:]
-        vec_index908 = 0
-        # Program VectorUnique Region
-        vec_913 = list(set(vec_913))
-        vec_index913 = 0
-        # Program TableJoin Region
-        while vec_index913 < len(vec_913):
-            var_915 = vec_913[vec_index913]
-            vec_index913 += 1
-            tuple_914_0_index: int = 0
-            tuple_914_0_vec: List[int] = self.index_414[var_915]
-            while tuple_914_0_index < len(tuple_914_0_vec):
-                tuple_914_0 = tuple_914_0_vec[tuple_914_0_index]
-                tuple_914_0_index += 1
-                var_916 = tuple_914_0
-                tuple_914_1_index: int = 0
-                tuple_914_1_vec: List[int] = self.index_415[var_915]
-                while tuple_914_1_index < len(tuple_914_1_vec):
-                    tuple_914_1 = tuple_914_1_vec[tuple_914_1_index]
-                    tuple_914_1_index += 1
-                    var_917 = tuple_914_1
-                    # Program Call Region
-                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
-                    ret = self.proc_1030_(var_916, var_915)
-                    if ret:
-                        # Program Call Region
-                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
-                        ret = self.proc_1033_(var_915, var_917)
-                        if ret:
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                            ret = self.proc_426_(var_916, var_917)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_916_917 = (var_916, var_917)
-                                prev_state = self.table_6[tuple_916_917]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_6[tuple_916_917] = 1 | 4
-                                    if not present_bit:
-                                        self.index_414[tuple_916_917[1]].append(tuple_916_917[0])
-                                        self.index_1029[tuple_916_917[0]].append(tuple_916_917[1])
-                                    # Program VectorAppend Region
-                                    vec_855.append((var_916, var_917))
-        # Program VectorClear Region
-        del vec_913[:]
-        vec_index913 = 0
-        # Program VectorUnique Region
-        vec_921 = list(set(vec_921))
-        vec_index921 = 0
-        # Program TableJoin Region
-        while vec_index921 < len(vec_921):
-            var_923 = vec_921[vec_index921]
-            vec_index921 += 1
-            tuple_922_0_index: int = 0
-            tuple_922_0_vec: List[int] = self.index_433[var_923]
-            while tuple_922_0_index < len(tuple_922_0_vec):
-                tuple_922_0 = tuple_922_0_vec[tuple_922_0_index]
-                tuple_922_0_index += 1
-                var_924 = tuple_922_0
-                tuple_922_1_index: int = 0
-                tuple_922_1_vec: List[bytes] = self.index_372[var_923]
-                while tuple_922_1_index < len(tuple_922_1_vec):
-                    tuple_922_1 = tuple_922_1_vec[tuple_922_1_index]
-                    tuple_922_1_index += 1
-                    var_925 = tuple_922_1
-                    # Program TransitionState Region
-                    tuple_924 = var_924
-                    prev_state = self.table_15[tuple_924]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_15[tuple_924] = 1 | 4
-                        if not present_bit:
-                            pass
-        # Program VectorClear Region
-        del vec_921[:]
-        vec_index921 = 0
-        # Induction Fixpoint Loop Region
-        while len(vec_855):
-            # Program Call Region
-            param_857_0 = [vec_855]
-            ret = self.proc_192_(param_857_0)
-            vec_855 = param_857_0[0]
-
-        vec_index855 = 0
-        # Induction Output Region
-        # Program VectorClear Region
-        del vec_855[:]
-        vec_index855 = 0
-        # Program Return Region
         return False
 
-    def relocation_2(self, vec_927: List[Tuple[int, int]]) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        vec_index927: int = 0
-        vec_930: List[int] = list()
-        vec_index930: int = 0
-        vec_938: List[int] = list()
-        vec_index938: int = 0
-        vec_946: List[int] = list()
-        vec_index946: int = 0
-        vec_957: List[Tuple[int, int]] = list()
-        vec_index957: int = 0
-        vec_960: List[Tuple[int, int]] = list()
-        vec_index960: int = 0
-        vec_964: List[int] = list()
-        vec_index964: int = 0
-        vec_975: List[Tuple[int, int]] = list()
-        vec_index975: int = 0
-        vec_979: List[int] = list()
-        vec_index979: int = 0
-        vec_985: List[Tuple[int, int]] = list()
-        vec_index985: int = 0
-        vec_989: List[int] = list()
-        vec_index989: int = 0
-        vec_997: List[int] = list()
-        vec_index997: int = 0
-        vec_1006: List[Tuple[int, int]] = list()
-        vec_index1006: int = 0
-        vec_1010: List[int] = list()
-        vec_index1010: int = 0
-        vec_1015: List[int] = list()
-        vec_index1015: int = 0
-        vec_1023: List[int] = list()
-        vec_index1023: int = 0
-        # Program Series Region
-        # Program Induction Init Region
-        # Program Series Region
-        # Program VectorLoop Region
-        vec_index927 = 0
-        while vec_index927 < len(vec_927):
-            var_928, var_929 = vec_927[vec_index927]
-            vec_index927 += 1
-            # Program Parallel Region
-            # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            tuple_928_929 = (var_928, var_929)
-            prev_state = self.table_113[tuple_928_929]
-            state = prev_state & 3
-            present_bit = prev_state & 4
-            if state == 0 or state == 2:
-                self.table_113[tuple_928_929] = 1 | 4
-                if not present_bit:
-                    self.index_248[tuple_928_929[0]].append(tuple_928_929[1])
-                # Program Parallel Region
-                # Program VectorAppend Region
-                vec_938.append(var_928)
-                # Program VectorAppend Region
-                vec_930.append(var_928)
-            # Program TransitionState Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
-            tuple_928_929 = (var_928, var_929)
-            prev_state = self.table_113[tuple_928_929]
-            state = prev_state & 3
-            present_bit = prev_state & 4
-            if state == 0 or state == 2:
-                self.table_113[tuple_928_929] = 1 | 4
-                if not present_bit:
-                    self.index_248[tuple_928_929[0]].append(tuple_928_929[1])
-                # Program Parallel Region
-                # Program VectorAppend Region
-                vec_938.append(var_928)
-                # Program VectorAppend Region
-                vec_930.append(var_928)
-        # Program VectorUnique Region
-        vec_930 = list(set(vec_930))
-        vec_index930 = 0
-        # Program TableJoin Region
-        while vec_index930 < len(vec_930):
-            var_932 = vec_930[vec_index930]
-            vec_index930 += 1
-            tuple_931_0_index: int = 0
-            tuple_931_0_vec: List[int] = self.index_248[var_932]
-            while tuple_931_0_index < len(tuple_931_0_vec):
-                tuple_931_0 = tuple_931_0_vec[tuple_931_0_index]
-                tuple_931_0_index += 1
-                var_933 = tuple_931_0
-                tuple_931_1_index: int = 0
-                tuple_931_1_vec: List[Tuple[int, int, bytes, bytes]] = self.index_258[var_932]
-                while tuple_931_1_index < len(tuple_931_1_vec):
-                    tuple_931_1 = tuple_931_1_vec[tuple_931_1_index]
-                    tuple_931_1_index += 1
-                    var_934 = tuple_931_1[0]
-                    var_935 = tuple_931_1[1]
-                    var_936 = tuple_931_1[2]
-                    var_937 = tuple_931_1[3]
-                    # Program TupleCompare Region
-                    if self.var_4 == var_934:
-                        # Program TransitionState Region
-                        tuple_4_932_933_935_936_937 = (self.var_4, var_932, var_933, var_935, var_936, var_937)
-                        prev_state = self.table_140[tuple_4_932_933_935_936_937]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_140[tuple_4_932_933_935_936_937] = 1 | 4
-                            if not present_bit:
-                                self.index_287[tuple_4_932_933_935_936_937[2]].append((tuple_4_932_933_935_936_937[0], tuple_4_932_933_935_936_937[1], tuple_4_932_933_935_936_937[3], tuple_4_932_933_935_936_937[4], tuple_4_932_933_935_936_937[5]))
-                            # Program VectorAppend Region
-                            vec_964.append(var_933)
-        # Program VectorClear Region
-        del vec_930[:]
-        vec_index930 = 0
-        # Program VectorUnique Region
-        vec_938 = list(set(vec_938))
-        vec_index938 = 0
-        # Program TableJoin Region
-        while vec_index938 < len(vec_938):
-            var_940 = vec_938[vec_index938]
-            vec_index938 += 1
-            tuple_939_0_index: int = 0
-            tuple_939_0_vec: List[int] = self.index_248[var_940]
-            while tuple_939_0_index < len(tuple_939_0_vec):
-                tuple_939_0 = tuple_939_0_vec[tuple_939_0_index]
-                tuple_939_0_index += 1
-                var_941 = tuple_939_0
-                tuple_939_1_index: int = 0
-                tuple_939_1_vec: List[Tuple[int, int, bytes, bytes]] = self.index_249[var_940]
-                while tuple_939_1_index < len(tuple_939_1_vec):
-                    tuple_939_1 = tuple_939_1_vec[tuple_939_1_index]
-                    tuple_939_1_index += 1
-                    var_942 = tuple_939_1[0]
-                    var_943 = tuple_939_1[1]
-                    var_944 = tuple_939_1[2]
-                    var_945 = tuple_939_1[3]
-                    # Program TupleCompare Region
-                    if self.var_1 == var_942:
-                        # Program TransitionState Region
-                        tuple_1_940_941_943_944_945 = (self.var_1, var_940, var_941, var_943, var_944, var_945)
-                        prev_state = self.table_122[tuple_1_940_941_943_944_945]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_122[tuple_1_940_941_943_944_945] = 1 | 4
-                            if not present_bit:
-                                self.index_303[tuple_1_940_941_943_944_945[2]].append((tuple_1_940_941_943_944_945[0], tuple_1_940_941_943_944_945[1], tuple_1_940_941_943_944_945[3], tuple_1_940_941_943_944_945[4], tuple_1_940_941_943_944_945[5]))
-                            # Program VectorAppend Region
-                            vec_946.append(var_941)
-        # Program VectorClear Region
-        del vec_938[:]
-        vec_index938 = 0
-        # Program VectorUnique Region
-        vec_946 = list(set(vec_946))
-        vec_index946 = 0
-        # Program TableJoin Region
-        while vec_index946 < len(vec_946):
-            var_948 = vec_946[vec_index946]
-            vec_index946 += 1
-            if var_948 in self.index_267:
-                tuple_947_1_index: int = 0
-                tuple_947_1_vec: List[Tuple[int, int, int, bytes, bytes]] = self.index_303[var_948]
-                while tuple_947_1_index < len(tuple_947_1_vec):
-                    tuple_947_1 = tuple_947_1_vec[tuple_947_1_index]
-                    tuple_947_1_index += 1
-                    var_949 = tuple_947_1[0]
-                    var_950 = tuple_947_1[1]
-                    var_951 = tuple_947_1[2]
-                    var_952 = tuple_947_1[3]
-                    var_953 = tuple_947_1[4]
-                    # Program TupleCompare Region
-                    if self.var_1 == var_949:
-                        # Program TransitionState Region
-                        tuple_951_948_2 = (var_951, var_948, self.var_2)
-                        prev_state = self.table_43[tuple_951_948_2]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_951_948_2] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_951_948_2[1]].append((tuple_951_948_2[0], tuple_951_948_2[2]))
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_948_951_2 = (var_948, var_951, self.var_2)
-                            prev_state = self.table_26[tuple_948_951_2]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_948_951_2] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_948_951_2[0]].append((tuple_948_951_2[1], tuple_948_951_2[2]))
-                                    self.index_1053[(tuple_948_951_2[0], tuple_948_951_2[1])].append(tuple_948_951_2[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_948)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_948_951_2 = (var_948, var_951, self.var_2)
-                                prev_state = self.table_26[tuple_948_951_2]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_948_951_2] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_948_951_2[0]].append((tuple_948_951_2[1], tuple_948_951_2[2]))
-                                        self.index_1053[(tuple_948_951_2[0], tuple_948_951_2[1])].append(tuple_948_951_2[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_951, var_948)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_951_948 = (var_951, var_948)
-                                        prev_state = self.table_9[tuple_951_948]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_951_948] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_951_948[0]].append(tuple_951_948[1])
-                                                self.index_1079[tuple_951_948[1]].append(tuple_951_948[0])
-                                            # Program VectorAppend Region
-                                            vec_1015.append(var_951)
-                            # Program VectorAppend Region
-                            vec_979.append(var_948)
-                            # Program VectorAppend Region
-                            vec_1010.append(var_948)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_2:
-                                # Program TransitionState Region
-                                tuple_948 = var_948
-                                prev_state = self.table_17[tuple_948]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_17[tuple_948] = 1 | 4
-                                    if not present_bit:
-                                        pass
-                                    # Program Parallel Region
-                                    # Program Series Region
-                                    # Program TableScan Region
-                                    scan_tuple_960: Tuple[int, int]
-                                    scan_index_960: int = 0
-                                    scan_tuple_960_vec: List[Tuple[int, int]] = self.index_199[var_948]
-                                    while scan_index_960 < len(scan_tuple_960_vec):
-                                        scan_tuple_960 = scan_tuple_960_vec[scan_index_960]
-                                        scan_index_960 += 1
-                                        vec_960.append(scan_tuple_960)
-                                    # Program VectorLoop Region
-                                    vec_index960 = 0
-                                    while vec_index960 < len(vec_960):
-                                        var_961, var_962 = vec_960[vec_index960]
-                                        vec_index960 += 1
-                                        # Program TransitionState Region
-                                        # Remove from negated view
-                                        var_962 = self._resolve_edgetype(var_962)
-                                        tuple_948_961_962 = (var_948, var_961, var_962)
-                                        prev_state = self.table_26[tuple_948_961_962]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 1:
-                                            self.table_26[tuple_948_961_962] = 0 | 4
-                                            # Program Call Region
-                                            ret = self.proc_203_(var_948, var_961, var_962)
-
-                                    # Program TransitionState Region
-                                    tuple_948_948 = (var_948, var_948)
-                                    prev_state = self.table_6[tuple_948_948]
-                                    state = prev_state & 3
-                                    present_bit = prev_state & 4
-                                    if state == 0 or state == 2:
-                                        self.table_6[tuple_948_948] = 1 | 4
-                                        if not present_bit:
-                                            self.index_414[tuple_948_948[1]].append(tuple_948_948[0])
-                                            self.index_1029[tuple_948_948[0]].append(tuple_948_948[1])
-                                        # Program VectorAppend Region
-                                        vec_957.append((var_948, var_948))
-                                    # Program VectorAppend Region
-                                    vec_1010.append(var_948)
-                            # Program TransitionState Region
-                            tuple_2_951_948 = (self.var_2, var_951, var_948)
-                            prev_state = self.table_56[tuple_2_951_948]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0 or state == 2:
-                                self.table_56[tuple_2_951_948] = 1 | 4
-                                if not present_bit:
-                                    self.index_385[tuple_2_951_948[1]].append((tuple_2_951_948[0], tuple_2_951_948[2]))
-                                # Program VectorAppend Region
-                                vec_989.append(var_951)
-        # Program VectorClear Region
-        del vec_946[:]
-        vec_index946 = 0
-        # Program VectorUnique Region
-        vec_964 = list(set(vec_964))
-        vec_index964 = 0
-        # Program TableJoin Region
-        while vec_index964 < len(vec_964):
-            var_966 = vec_964[vec_index964]
-            vec_index964 += 1
-            if var_966 in self.index_267:
-                tuple_965_1_index: int = 0
-                tuple_965_1_vec: List[Tuple[int, int, int, bytes, bytes]] = self.index_287[var_966]
-                while tuple_965_1_index < len(tuple_965_1_vec):
-                    tuple_965_1 = tuple_965_1_vec[tuple_965_1_index]
-                    tuple_965_1_index += 1
-                    var_967 = tuple_965_1[0]
-                    var_968 = tuple_965_1[1]
-                    var_969 = tuple_965_1[2]
-                    var_970 = tuple_965_1[3]
-                    var_971 = tuple_965_1[4]
-                    # Program TupleCompare Region
-                    if self.var_4 == var_967:
-                        # Program TransitionState Region
-                        tuple_969_966_0 = (var_969, var_966, self.var_0)
-                        prev_state = self.table_43[tuple_969_966_0]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_43[tuple_969_966_0] = 1 | 4
-                            if not present_bit:
-                                self.index_373[tuple_969_966_0[1]].append((tuple_969_966_0[0], tuple_969_966_0[2]))
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TransitionState Region
-                            # Eager insert before negation to prevent race
-                            tuple_966_969_0 = (var_966, var_969, self.var_0)
-                            prev_state = self.table_26[tuple_966_969_0]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0:
-                                self.table_26[tuple_966_969_0] = 2 | 4
-                                if not present_bit:
-                                    self.index_199[tuple_966_969_0[0]].append((tuple_966_969_0[1], tuple_966_969_0[2]))
-                                    self.index_1053[(tuple_966_969_0[0], tuple_966_969_0[1])].append(tuple_966_969_0[2])
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                            ret = self.proc_273_(var_966)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_966_969_0 = (var_966, var_969, self.var_0)
-                                prev_state = self.table_26[tuple_966_969_0]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_26[tuple_966_969_0] = 1 | 4
-                                    if not present_bit:
-                                        self.index_199[tuple_966_969_0[0]].append((tuple_966_969_0[1], tuple_966_969_0[2]))
-                                        self.index_1053[(tuple_966_969_0[0], tuple_966_969_0[1])].append(tuple_966_969_0[2])
-                                    # Program Call Region
-                                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                                    ret = self.proc_276_(var_969, var_966)
-                                    if not ret:
-                                        # Program TransitionState Region
-                                        tuple_969_966 = (var_969, var_966)
-                                        prev_state = self.table_9[tuple_969_966]
-                                        state = prev_state & 3
-                                        present_bit = prev_state & 4
-                                        if state == 0 or state == 2:
-                                            self.table_9[tuple_969_966] = 1 | 4
-                                            if not present_bit:
-                                                self.index_415[tuple_969_966[0]].append(tuple_969_966[1])
-                                                self.index_1079[tuple_969_966[1]].append(tuple_969_966[0])
-                                            # Program VectorAppend Region
-                                            vec_1015.append(var_969)
-                            # Program VectorAppend Region
-                            vec_979.append(var_966)
-                            # Program VectorAppend Region
-                            vec_1010.append(var_966)
-                            # Program TransitionState Region
-                            tuple_966 = var_966
-                            prev_state = self.table_17[tuple_966]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0 or state == 2:
-                                self.table_17[tuple_966] = 1 | 4
-                                if not present_bit:
-                                    pass
-                                # Program Parallel Region
-                                # Program Series Region
-                                # Program TableScan Region
-                                scan_tuple_975: Tuple[int, int]
-                                scan_index_975: int = 0
-                                scan_tuple_975_vec: List[Tuple[int, int]] = self.index_199[var_966]
-                                while scan_index_975 < len(scan_tuple_975_vec):
-                                    scan_tuple_975 = scan_tuple_975_vec[scan_index_975]
-                                    scan_index_975 += 1
-                                    vec_975.append(scan_tuple_975)
-                                # Program VectorLoop Region
-                                vec_index975 = 0
-                                while vec_index975 < len(vec_975):
-                                    var_976, var_977 = vec_975[vec_index975]
-                                    vec_index975 += 1
-                                    # Program TransitionState Region
-                                    # Remove from negated view
-                                    var_977 = self._resolve_edgetype(var_977)
-                                    tuple_966_976_977 = (var_966, var_976, var_977)
-                                    prev_state = self.table_26[tuple_966_976_977]
-                                    state = prev_state & 3
-                                    present_bit = prev_state & 4
-                                    if state == 1:
-                                        self.table_26[tuple_966_976_977] = 0 | 4
-                                        # Program Call Region
-                                        ret = self.proc_203_(var_966, var_976, var_977)
-
-                                # Program TransitionState Region
-                                tuple_966_966 = (var_966, var_966)
-                                prev_state = self.table_6[tuple_966_966]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_6[tuple_966_966] = 1 | 4
-                                    if not present_bit:
-                                        self.index_414[tuple_966_966[1]].append(tuple_966_966[0])
-                                        self.index_1029[tuple_966_966[0]].append(tuple_966_966[1])
-                                    # Program VectorAppend Region
-                                    vec_957.append((var_966, var_966))
-                                # Program VectorAppend Region
-                                vec_1010.append(var_966)
-                            # Program TupleCompare Region
-                            if self.var_0 == self.var_2:
-                                # Program TransitionState Region
-                                tuple_0_969_966 = (self.var_0, var_969, var_966)
-                                prev_state = self.table_56[tuple_0_969_966]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_56[tuple_0_969_966] = 1 | 4
-                                    if not present_bit:
-                                        self.index_385[tuple_0_969_966[1]].append((tuple_0_969_966[0], tuple_0_969_966[2]))
-                                    # Program VectorAppend Region
-                                    vec_989.append(var_969)
-        # Program VectorClear Region
-        del vec_964[:]
-        vec_index964 = 0
-        # Program VectorUnique Region
-        vec_979 = list(set(vec_979))
-        vec_index979 = 0
-        # Program TableJoin Region
-        while vec_index979 < len(vec_979):
-            var_981 = vec_979[vec_index979]
-            vec_index979 += 1
-            tuple_980_0_index: int = 0
-            tuple_980_0_vec: List[bytes] = self.index_372[var_981]
-            while tuple_980_0_index < len(tuple_980_0_vec):
-                tuple_980_0 = tuple_980_0_vec[tuple_980_0_index]
-                tuple_980_0_index += 1
-                var_982 = tuple_980_0
-                tuple_980_1_index: int = 0
-                tuple_980_1_vec: List[Tuple[int, int]] = self.index_373[var_981]
-                while tuple_980_1_index < len(tuple_980_1_vec):
-                    tuple_980_1 = tuple_980_1_vec[tuple_980_1_index]
-                    tuple_980_1_index += 1
-                    var_983 = tuple_980_1[0]
-                    var_984 = tuple_980_1[1]
-                    # Program TransitionState Region
-                    tuple_981 = var_981
-                    prev_state = self.table_17[tuple_981]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_17[tuple_981] = 1 | 4
-                        if not present_bit:
-                            pass
-                        # Program Parallel Region
-                        # Program Series Region
-                        # Program TableScan Region
-                        scan_tuple_985: Tuple[int, int]
-                        scan_index_985: int = 0
-                        scan_tuple_985_vec: List[Tuple[int, int]] = self.index_199[var_981]
-                        while scan_index_985 < len(scan_tuple_985_vec):
-                            scan_tuple_985 = scan_tuple_985_vec[scan_index_985]
-                            scan_index_985 += 1
-                            vec_985.append(scan_tuple_985)
-                        # Program VectorLoop Region
-                        vec_index985 = 0
-                        while vec_index985 < len(vec_985):
-                            var_986, var_987 = vec_985[vec_index985]
-                            vec_index985 += 1
-                            # Program TransitionState Region
-                            # Remove from negated view
-                            var_987 = self._resolve_edgetype(var_987)
-                            tuple_981_986_987 = (var_981, var_986, var_987)
-                            prev_state = self.table_26[tuple_981_986_987]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 1:
-                                self.table_26[tuple_981_986_987] = 0 | 4
-                                # Program Call Region
-                                ret = self.proc_203_(var_981, var_986, var_987)
-
-                        # Program TransitionState Region
-                        tuple_981_981 = (var_981, var_981)
-                        prev_state = self.table_6[tuple_981_981]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_6[tuple_981_981] = 1 | 4
-                            if not present_bit:
-                                self.index_414[tuple_981_981[1]].append(tuple_981_981[0])
-                                self.index_1029[tuple_981_981[0]].append(tuple_981_981[1])
-                            # Program VectorAppend Region
-                            vec_957.append((var_981, var_981))
-                        # Program VectorAppend Region
-                        vec_1010.append(var_981)
-        # Program VectorClear Region
-        del vec_979[:]
-        vec_index979 = 0
-        # Program VectorUnique Region
-        vec_989 = list(set(vec_989))
-        vec_index989 = 0
-        # Program TableJoin Region
-        while vec_index989 < len(vec_989):
-            var_991 = vec_989[vec_index989]
-            vec_index989 += 1
-            tuple_990_0_index: int = 0
-            tuple_990_0_vec: List[Tuple[int, bytes, bytes]] = self.index_384[var_991]
-            while tuple_990_0_index < len(tuple_990_0_vec):
-                tuple_990_0 = tuple_990_0_vec[tuple_990_0_index]
-                tuple_990_0_index += 1
-                var_992 = tuple_990_0[0]
-                var_993 = tuple_990_0[1]
-                var_994 = tuple_990_0[2]
-                tuple_990_1_index: int = 0
-                tuple_990_1_vec: List[Tuple[int, int]] = self.index_385[var_991]
-                while tuple_990_1_index < len(tuple_990_1_vec):
-                    tuple_990_1 = tuple_990_1_vec[tuple_990_1_index]
-                    tuple_990_1_index += 1
-                    var_995 = tuple_990_1[0]
-                    var_996 = tuple_990_1[1]
-                    # Program TupleCompare Region
-                    if (self.var_1, self.var_2, ) == (var_992, var_995, ):
-                        # Program TransitionState Region
-                        tuple_2_1_991_993_994_996 = (self.var_2, self.var_1, var_991, var_993, var_994, var_996)
-                        prev_state = self.table_60[tuple_2_1_991_993_994_996]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_60[tuple_2_1_991_993_994_996] = 1 | 4
-                            if not present_bit:
-                                self.index_394[tuple_2_1_991_993_994_996[5]].append((tuple_2_1_991_993_994_996[0], tuple_2_1_991_993_994_996[1], tuple_2_1_991_993_994_996[2], tuple_2_1_991_993_994_996[3], tuple_2_1_991_993_994_996[4]))
-                            # Program VectorAppend Region
-                            vec_997.append(var_996)
-        # Program VectorClear Region
-        del vec_989[:]
-        vec_index989 = 0
-        # Program VectorUnique Region
-        vec_997 = list(set(vec_997))
-        vec_index997 = 0
-        # Program TableJoin Region
-        while vec_index997 < len(vec_997):
-            var_999 = vec_997[vec_index997]
-            vec_index997 += 1
-            tuple_998_0_index: int = 0
-            tuple_998_0_vec: List[bytes] = self.index_372[var_999]
-            while tuple_998_0_index < len(tuple_998_0_vec):
-                tuple_998_0 = tuple_998_0_vec[tuple_998_0_index]
-                tuple_998_0_index += 1
-                var_1000 = tuple_998_0
-                tuple_998_1_index: int = 0
-                tuple_998_1_vec: List[Tuple[int, int, int, bytes, bytes]] = self.index_394[var_999]
-                while tuple_998_1_index < len(tuple_998_1_vec):
-                    tuple_998_1 = tuple_998_1_vec[tuple_998_1_index]
-                    tuple_998_1_index += 1
-                    var_1001 = tuple_998_1[0]
-                    var_1002 = tuple_998_1[1]
-                    var_1003 = tuple_998_1[2]
-                    var_1004 = tuple_998_1[3]
-                    var_1005 = tuple_998_1[4]
-                    # Program TupleCompare Region
-                    if (self.var_1, self.var_2, ) == (var_1002, var_1001, ):
-                        # Program TransitionState Region
-                        tuple_1003 = var_1003
-                        prev_state = self.table_17[tuple_1003]
-                        state = prev_state & 3
-                        present_bit = prev_state & 4
-                        if state == 0 or state == 2:
-                            self.table_17[tuple_1003] = 1 | 4
-                            if not present_bit:
-                                pass
-                            # Program Parallel Region
-                            # Program Series Region
-                            # Program TableScan Region
-                            scan_tuple_1006: Tuple[int, int]
-                            scan_index_1006: int = 0
-                            scan_tuple_1006_vec: List[Tuple[int, int]] = self.index_199[var_1003]
-                            while scan_index_1006 < len(scan_tuple_1006_vec):
-                                scan_tuple_1006 = scan_tuple_1006_vec[scan_index_1006]
-                                scan_index_1006 += 1
-                                vec_1006.append(scan_tuple_1006)
-                            # Program VectorLoop Region
-                            vec_index1006 = 0
-                            while vec_index1006 < len(vec_1006):
-                                var_1007, var_1008 = vec_1006[vec_index1006]
-                                vec_index1006 += 1
-                                # Program TransitionState Region
-                                # Remove from negated view
-                                var_1008 = self._resolve_edgetype(var_1008)
-                                tuple_1003_1007_1008 = (var_1003, var_1007, var_1008)
-                                prev_state = self.table_26[tuple_1003_1007_1008]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 1:
-                                    self.table_26[tuple_1003_1007_1008] = 0 | 4
-                                    # Program Call Region
-                                    ret = self.proc_203_(var_1003, var_1007, var_1008)
-
-                            # Program TransitionState Region
-                            tuple_1003_1003 = (var_1003, var_1003)
-                            prev_state = self.table_6[tuple_1003_1003]
-                            state = prev_state & 3
-                            present_bit = prev_state & 4
-                            if state == 0 or state == 2:
-                                self.table_6[tuple_1003_1003] = 1 | 4
-                                if not present_bit:
-                                    self.index_414[tuple_1003_1003[1]].append(tuple_1003_1003[0])
-                                    self.index_1029[tuple_1003_1003[0]].append(tuple_1003_1003[1])
-                                # Program VectorAppend Region
-                                vec_957.append((var_1003, var_1003))
-                            # Program VectorAppend Region
-                            vec_1010.append(var_1003)
-        # Program VectorClear Region
-        del vec_997[:]
-        vec_index997 = 0
-        # Program VectorUnique Region
-        vec_1010 = list(set(vec_1010))
-        vec_index1010 = 0
-        # Program TableJoin Region
-        while vec_index1010 < len(vec_1010):
-            var_1012 = vec_1010[vec_index1010]
-            vec_index1010 += 1
-            tuple_1011_0_index: int = 0
-            tuple_1011_0_vec: List[Tuple[int, int]] = self.index_373[var_1012]
-            while tuple_1011_0_index < len(tuple_1011_0_vec):
-                tuple_1011_0 = tuple_1011_0_vec[tuple_1011_0_index]
-                tuple_1011_0_index += 1
-                var_1013 = tuple_1011_0[0]
-                var_1014 = tuple_1011_0[1]
-                if var_1012 in self.index_408:
-                    # Program TransitionState Region
-                    tuple_1013_1012 = (var_1013, var_1012)
-                    prev_state = self.table_12[tuple_1013_1012]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_12[tuple_1013_1012] = 1 | 4
-                        if not present_bit:
-                            self.index_433[tuple_1013_1012[1]].append(tuple_1013_1012[0])
-                            self.index_1028[tuple_1013_1012[0]].append(tuple_1013_1012[1])
-                        # Program VectorAppend Region
-                        vec_1023.append(var_1012)
-        # Program VectorClear Region
-        del vec_1010[:]
-        vec_index1010 = 0
-        # Program VectorUnique Region
-        vec_1015 = list(set(vec_1015))
-        vec_index1015 = 0
-        # Program TableJoin Region
-        while vec_index1015 < len(vec_1015):
-            var_1017 = vec_1015[vec_index1015]
-            vec_index1015 += 1
-            tuple_1016_0_index: int = 0
-            tuple_1016_0_vec: List[int] = self.index_414[var_1017]
-            while tuple_1016_0_index < len(tuple_1016_0_vec):
-                tuple_1016_0 = tuple_1016_0_vec[tuple_1016_0_index]
-                tuple_1016_0_index += 1
-                var_1018 = tuple_1016_0
-                tuple_1016_1_index: int = 0
-                tuple_1016_1_vec: List[int] = self.index_415[var_1017]
-                while tuple_1016_1_index < len(tuple_1016_1_vec):
-                    tuple_1016_1 = tuple_1016_1_vec[tuple_1016_1_index]
-                    tuple_1016_1_index += 1
-                    var_1019 = tuple_1016_1
-                    # Program Call Region
-                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
-                    ret = self.proc_1030_(var_1018, var_1017)
-                    if ret:
-                        # Program Call Region
-                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
-                        ret = self.proc_1033_(var_1017, var_1019)
-                        if ret:
-                            # Program Call Region
-                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
-                            ret = self.proc_426_(var_1018, var_1019)
-                            if not ret:
-                                # Program TransitionState Region
-                                tuple_1018_1019 = (var_1018, var_1019)
-                                prev_state = self.table_6[tuple_1018_1019]
-                                state = prev_state & 3
-                                present_bit = prev_state & 4
-                                if state == 0 or state == 2:
-                                    self.table_6[tuple_1018_1019] = 1 | 4
-                                    if not present_bit:
-                                        self.index_414[tuple_1018_1019[1]].append(tuple_1018_1019[0])
-                                        self.index_1029[tuple_1018_1019[0]].append(tuple_1018_1019[1])
-                                    # Program VectorAppend Region
-                                    vec_957.append((var_1018, var_1019))
-        # Program VectorClear Region
-        del vec_1015[:]
-        vec_index1015 = 0
-        # Program VectorUnique Region
-        vec_1023 = list(set(vec_1023))
-        vec_index1023 = 0
-        # Program TableJoin Region
-        while vec_index1023 < len(vec_1023):
-            var_1025 = vec_1023[vec_index1023]
-            vec_index1023 += 1
-            tuple_1024_0_index: int = 0
-            tuple_1024_0_vec: List[int] = self.index_433[var_1025]
-            while tuple_1024_0_index < len(tuple_1024_0_vec):
-                tuple_1024_0 = tuple_1024_0_vec[tuple_1024_0_index]
-                tuple_1024_0_index += 1
-                var_1026 = tuple_1024_0
-                tuple_1024_1_index: int = 0
-                tuple_1024_1_vec: List[bytes] = self.index_372[var_1025]
-                while tuple_1024_1_index < len(tuple_1024_1_vec):
-                    tuple_1024_1 = tuple_1024_1_vec[tuple_1024_1_index]
-                    tuple_1024_1_index += 1
-                    var_1027 = tuple_1024_1
-                    # Program TransitionState Region
-                    tuple_1026 = var_1026
-                    prev_state = self.table_15[tuple_1026]
-                    state = prev_state & 3
-                    present_bit = prev_state & 4
-                    if state == 0 or state == 2:
-                        self.table_15[tuple_1026] = 1 | 4
-                        if not present_bit:
-                            pass
-        # Program VectorClear Region
-        del vec_1023[:]
-        vec_index1023 = 0
-        # Induction Fixpoint Loop Region
-        while len(vec_957):
-            # Program Call Region
-            param_959_0 = [vec_957]
-            ret = self.proc_192_(param_959_0)
-            vec_957 = param_959_0[0]
-
-        vec_index957 = 0
-        # Induction Output Region
-        # Program VectorClear Region
-        del vec_957[:]
-        vec_index957 = 0
-        # Program Return Region
-        return False
-
-    def proc_1030_(self, var_1031: int, var_1032: int) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        # Program Series Region
-        # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker
-        ret = self.proc_1070_(var_1031, var_1032)
-        if ret:
-            # Program Return Region
-            return True
-        # Program Return Region
-        return False
-
-    def proc_1033_(self, var_1034: int, var_1035: int) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        # Program Series Region
-        # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker
-        ret = self.proc_1037_(var_1034, var_1035)
-        if ret:
-            # Program Return Region
-            return True
-        # Program Return Region
-        return False
-
-    def proc_1037_(self, var_1038: int, var_1039: int) -> bool:
+    def proc_753_(self, var_754: int, var_755: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
@@ -7618,7 +7603,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program CheckState Region
-        state = self.table_9[(var_1038, var_1039)] & 3
+        state = self.table_15[(var_754, var_755)] & 3
         if state == 0:
             # Program Return Region
             return False
@@ -7627,33 +7612,33 @@ class Database:
             return True
         elif state == 2:
             # Program TransitionState Region
-            tuple_1038_1039 = (var_1038, var_1039)
-            prev_state = self.table_9[tuple_1038_1039]
+            tuple_754_755 = (var_754, var_755)
+            prev_state = self.table_15[tuple_754_755]
             state = prev_state & 3
             present_bit = prev_state & 4
             if state == 2:
-                self.table_9[tuple_1038_1039] = 0 | 4
+                self.table_15[tuple_754_755] = 0 | 4
                 # Program Call Region
-                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Union.cpp: BuildTopDownUnionChecker::call_preds
-                ret = self.proc_1041_(var_1038, var_1039)
+                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker::call_pred
+                ret = self.proc_787_(var_755, var_754)
                 if ret:
                     # Program Series Region
                     # Program TransitionState Region
-                    tuple_1038_1039 = (var_1038, var_1039)
-                    prev_state = self.table_9[tuple_1038_1039]
+                    tuple_754_755 = (var_754, var_755)
+                    prev_state = self.table_15[tuple_754_755]
                     state = prev_state & 3
                     present_bit = prev_state & 4
                     if state == 0 or state == 2:
-                        self.table_9[tuple_1038_1039] = 1 | 4
+                        self.table_15[tuple_754_755] = 1 | 4
                         if not present_bit:
-                            self.index_415[tuple_1038_1039[0]].append(tuple_1038_1039[1])
-                            self.index_1079[tuple_1038_1039[1]].append(tuple_1038_1039[0])
+                            self.index_752[tuple_754_755[0]].append(tuple_754_755[1])
                     # Program Return Region
                     return True
         # Program Return Region
         return False
+        return False
 
-    def proc_1041_(self, var_1042: int, var_1043: int) -> bool:
+    def proc_757_(self, var_758: int, var_759: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
@@ -7661,95 +7646,57 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
-        ret = self.proc_1045_(var_1042, var_1043)
+        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker
+        ret = self.proc_761_(var_758, var_759)
         if ret:
             # Program Return Region
             return True
         # Program Return Region
         return False
+        return False
 
-    def proc_1045_(self, var_1046: int, var_1047: int) -> bool:
+    def proc_761_(self, var_762: int, var_763: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
         # Program Series Region
-        # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
-        ret = self.proc_1049_(var_1047, var_1046)
-        if ret:
+        # Program CheckState Region
+        state = self.table_6[(var_762, var_763)] & 3
+        if state == 1:
             # Program Return Region
             return True
-        # Program Return Region
-        return False
-
-    def proc_1049_(self, var_1050: int, var_1051: int) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        vec_1054: List[int] = list()
-        vec_index1054: int = 0
-        # Program Series Region
-        # Program TableScan Region
-        scan_tuple_1054: int
-        scan_index_1054: int = 0
-        scan_tuple_1054_vec: List[int] = self.index_1053[var_1050, var_1051]
-        while scan_index_1054 < len(scan_tuple_1054_vec):
-            scan_tuple_1054 = scan_tuple_1054_vec[scan_index_1054]
-            scan_index_1054 += 1
-            vec_1054.append(scan_tuple_1054)
-        # Program VectorLoop Region
-        vec_index1054 = 0
-        while vec_index1054 < len(vec_1054):
-            var_1055 = vec_1054[vec_index1054]
-            vec_index1054 += 1
-            # Program CheckState Region
-            state = self.table_26[(var_1050, var_1051, var_1055)] & 3
-            if state == 0:
-                # Program Return Region
-                return False
-            elif state == 1:
-                # Program Series Region
+        elif state == 2:
+            # Program TransitionState Region
+            tuple_762_763 = (var_762, var_763)
+            prev_state = self.table_6[tuple_762_763]
+            state = prev_state & 3
+            present_bit = prev_state & 4
+            if state == 2:
+                self.table_6[tuple_762_763] = 0 | 4
                 # Program Call Region
-                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                ret = self.proc_273_(var_1050)
-                if not ret:
+                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                ret = self.proc_769_(var_762, var_763)
+                if ret:
+                    # Program Series Region
+                    # Program TransitionState Region
+                    tuple_762_763 = (var_762, var_763)
+                    prev_state = self.table_6[tuple_762_763]
+                    state = prev_state & 3
+                    present_bit = prev_state & 4
+                    if state == 0 or state == 2:
+                        self.table_6[tuple_762_763] = 1 | 4
+                        if not present_bit:
+                            self.index_290[tuple_762_763[1]].append(tuple_762_763[0])
+                            self.index_756[tuple_762_763[0]].append(tuple_762_763[1])
                     # Program Return Region
                     return True
-                # Program TransitionState Region
-                var_1055 = self._resolve_edgetype(var_1055)
-                tuple_1050_1051_1055 = (var_1050, var_1051, var_1055)
-                prev_state = self.table_26[tuple_1050_1051_1055]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 1:
-                    self.table_26[tuple_1050_1051_1055] = 0 | 4
-            elif state == 2:
-                # Program TransitionState Region
-                var_1055 = self._resolve_edgetype(var_1055)
-                tuple_1050_1051_1055 = (var_1050, var_1051, var_1055)
-                prev_state = self.table_26[tuple_1050_1051_1055]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 2:
-                    self.table_26[tuple_1050_1051_1055] = 0 | 4
-                    # Program Call Region
-                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
-                    ret = self.proc_273_(var_1050)
-                    if not ret:
-                        # Program Call Region
-                        ret = self.proc_1060_(var_1051, var_1050, var_1055)
-                        if ret:
-                            # Program Return Region
-                            return True
         # Program Return Region
         return False
+        return False
 
-    def proc_1060_(self, var_1061: int, var_1062: int, var_1063: int) -> bool:
+    def proc_769_(self, var_770: int, var_771: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
@@ -7757,182 +7704,162 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
-        ret = self.proc_1065_(var_1061, var_1062, var_1063)
+        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+        ret = self.proc_773_(var_770, var_771)
         if ret:
             # Program Return Region
             return True
         # Program Return Region
         return False
+        return False
 
-    def proc_1065_(self, var_1066: int, var_1067: int, var_1068: int) -> bool:
+    def proc_773_(self, var_774: int, var_775: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
-        # Program CheckState Region
-        state = self.table_43[(var_1066, var_1067, var_1068)] & 3
-        if state == 0:
-            # Program Return Region
-            return False
-        elif state == 1:
-            # Program Return Region
-            return True
-        elif state == 2:
-            # Program Return Region
-            return False
-
-    def proc_1070_(self, var_1071: int, var_1072: int) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        # Program CheckState Region
-        state = self.table_6[(var_1071, var_1072)] & 3
-        if state == 0:
-            # Program Return Region
-            return False
-        elif state == 1:
-            # Program Return Region
-            return True
-        elif state == 2:
-            # Program Return Region
-            return False
-
-    def proc_1074_(self, var_1075: int, var_1076: int) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        vec_1078: List[int] = list()
-        vec_index1078: int = 0
-        vec_1080: List[int] = list()
-        vec_index1080: int = 0
+        vec_777: List[int] = list()
+        vec_index777: int = 0
+        vec_779: List[int] = list()
+        vec_index779: int = 0
         # Program Series Region
         # Program TableScan Region
-        scan_tuple_1080: int
-        scan_index_1080: int = 0
-        scan_tuple_1080_vec: List[int] = self.index_1079[var_1076]
-        while scan_index_1080 < len(scan_tuple_1080_vec):
-            scan_tuple_1080 = scan_tuple_1080_vec[scan_index_1080]
-            scan_index_1080 += 1
-            vec_1080.append(scan_tuple_1080)
+        scan_tuple_779: int
+        scan_index_779: int = 0
+        scan_tuple_779_vec: List[int] = self.index_778[var_775]
+        while scan_index_779 < len(scan_tuple_779_vec):
+            scan_tuple_779 = scan_tuple_779_vec[scan_index_779]
+            scan_index_779 += 1
+            vec_779.append(scan_tuple_779)
         # Program VectorLoop Region
-        vec_index1080 = 0
-        while vec_index1080 < len(vec_1080):
-            var_1081 = vec_1080[vec_index1080]
-            vec_index1080 += 1
+        vec_index779 = 0
+        while vec_index779 < len(vec_779):
+            var_780 = vec_779[vec_index779]
+            vec_index779 += 1
             # Program VectorAppend Region
-            vec_1078.append(var_1081)
+            vec_777.append(var_780)
         # Program VectorUnique Region
-        vec_1078 = list(set(vec_1078))
-        vec_index1078 = 0
+        vec_777 = list(set(vec_777))
+        vec_index777 = 0
         # Program TableJoin Region
-        while vec_index1078 < len(vec_1078):
-            var_1083 = vec_1078[vec_index1078]
-            vec_index1078 += 1
-            tuple_1082_0_index: int = 0
-            tuple_1082_0_vec: List[int] = self.index_414[var_1083]
-            while tuple_1082_0_index < len(tuple_1082_0_vec):
-                tuple_1082_0 = tuple_1082_0_vec[tuple_1082_0_index]
-                tuple_1082_0_index += 1
-                var_1084 = tuple_1082_0
-                tuple_1082_1_index: int = 0
-                tuple_1082_1_vec: List[int] = self.index_415[var_1083]
-                while tuple_1082_1_index < len(tuple_1082_1_vec):
-                    tuple_1082_1 = tuple_1082_1_vec[tuple_1082_1_index]
-                    tuple_1082_1_index += 1
-                    var_1085 = tuple_1082_1
+        while vec_index777 < len(vec_777):
+            var_782 = vec_777[vec_index777]
+            vec_index777 += 1
+            tuple_781_0_index: int = 0
+            tuple_781_0_vec: List[int] = self.index_290[var_782]
+            while tuple_781_0_index < len(tuple_781_0_vec):
+                tuple_781_0 = tuple_781_0_vec[tuple_781_0_index]
+                tuple_781_0_index += 1
+                var_783 = tuple_781_0
+                tuple_781_1_index: int = 0
+                tuple_781_1_vec: List[int] = self.index_291[var_782]
+                while tuple_781_1_index < len(tuple_781_1_vec):
+                    tuple_781_1 = tuple_781_1_vec[tuple_781_1_index]
+                    tuple_781_1_index += 1
+                    var_784 = tuple_781_1
                     # Program TupleCompare Region
-                    if (var_1075, var_1076, ) == (var_1084, var_1085, ):
+                    if (var_774, var_775, ) == (var_783, var_784, ):
                         # Program Series Region
                         # Program Parallel Region
                         # Program Call Region
-                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
-                        ret = self.proc_1030_(var_1084, var_1083)
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        ret = self.proc_294_(var_783, var_782)
                         if not ret:
                             # Program Return Region
                             return False
                         # Program Call Region
-                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
-                        ret = self.proc_1033_(var_1083, var_1085)
+                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        ret = self.proc_164_(var_782, var_784)
                         if not ret:
                             # Program Return Region
                             return False
                         # Program Return Region
                         return True
         # Program VectorClear Region
-        del vec_1078[:]
-        vec_index1078 = 0
+        del vec_777[:]
+        vec_index777 = 0
         # Program Return Region
         return False
+        return False
 
-    def proc_1091_(self, var_1092: int) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        # Program CheckState Region
-        state = self.table_17[var_1092] & 3
-        if state == 0:
-            # Program Return Region
-            return False
-        elif state == 1:
-            # Program Return Region
-            return True
-        elif state == 2:
-            # Program Return Region
-            return False
-
-    def proc_1110_(self, var_1111: int, var_1112: int) -> bool:
+    def proc_787_(self, var_788: int, var_789: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
         # Program Series Region
-        # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Union.cpp: BuildTopDownUnionChecker::call_preds
-        ret = self.proc_1041_(var_1111, var_1112)
-        if ret:
-            # Program Return Region
-            return True
+        # Program CheckState Region
+        state = self.table_27[(var_788, var_789)] & 3
+        if state == 1:
+            # Program Series Region
+            # Program Call Region
+            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+            ret = self.proc_161_(var_788)
+            if not ret:
+                # Program Return Region
+                return True
+            # Program TransitionState Region
+            tuple_788_789 = (var_788, var_789)
+            prev_state = self.table_27[tuple_788_789]
+            state = prev_state & 3
+            present_bit = prev_state & 4
+            if state == 1:
+                self.table_27[tuple_788_789] = 0 | 4
+        elif state == 2:
+            # Program TransitionState Region
+            tuple_788_789 = (var_788, var_789)
+            prev_state = self.table_27[tuple_788_789]
+            state = prev_state & 3
+            present_bit = prev_state & 4
+            if state == 2:
+                self.table_27[tuple_788_789] = 0 | 4
+                # Program Call Region
+                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                ret = self.proc_161_(var_788)
+                if not ret:
+                    # Program Call Region
+                    ret = self.proc_795_(var_789, var_788)
+                    if ret:
+                        # Program Return Region
+                        return True
         # Program Return Region
         return False
+        return False
 
-    def proc_1114_(self, var_1115: int, var_1116: int) -> bool:
+    def proc_795_(self, var_796: int, var_797: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
-        vec_1118: List[int] = list()
-        vec_index1118: int = 0
+        vec_800: List[int] = list()
+        vec_index800: int = 0
         # Program Series Region
         # Program TableScan Region
-        scan_tuple_1118: int
-        scan_index_1118: int = 0
-        scan_tuple_1118_vec: List[int] = self.index_414[var_1115]
-        while scan_index_1118 < len(scan_tuple_1118_vec):
-            scan_tuple_1118 = scan_tuple_1118_vec[scan_index_1118]
-            scan_index_1118 += 1
-            vec_1118.append(scan_tuple_1118)
+        scan_tuple_800: int
+        scan_index_800: int = 0
+        scan_tuple_800_vec: List[int] = self.index_799[var_796, var_797]
+        while scan_index_800 < len(scan_tuple_800_vec):
+            scan_tuple_800 = scan_tuple_800_vec[scan_index_800]
+            scan_index_800 += 1
+            vec_800.append(scan_tuple_800)
         # Program VectorLoop Region
-        vec_index1118 = 0
-        while vec_index1118 < len(vec_1118):
-            var_1119 = vec_1118[vec_index1118]
-            vec_index1118 += 1
-            # Program Call Region
-            ret = self.proc_1120_(var_1115, var_1119, var_1116)
-
+        vec_index800 = 0
+        while vec_index800 < len(vec_800):
+            var_801 = vec_800[vec_index800]
+            vec_index800 += 1
+            # Program CheckState Region
+            state = self.table_9[(var_796, var_797, var_801)] & 3
+            if state == 1:
+                # Program Return Region
+                return True
         # Program Return Region
         return False
+        return False
 
-    def proc_1120_(self, var_1121: int, var_1122: int, var_1123: int) -> bool:
+    def proc_803_(self, var_804: int, var_805: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
@@ -7940,296 +7867,114 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program TransitionState Region
-        tuple_1122_1123 = (var_1122, var_1123)
-        prev_state = self.table_6[tuple_1122_1123]
-        state = prev_state & 3
-        present_bit = prev_state & 4
-        if state == 1:
-            self.table_6[tuple_1122_1123] = 2 | 4
-            # Program Call Region
-            ret = self.proc_1133_(var_1122, var_1123)
-
-        # Program Return Region
-        return False
-
-    def proc_1133_(self, var_1134: int, var_1135: int) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        # Program Series Region
-        # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Union.cpp: CreateBottomUpUnionRemover
-        ret = self.proc_1137_(var_1134, var_1135)
-        if not ret:
-            # Program Parallel Region
-            # Program Call Region
-            ret = self.proc_1150_(var_1134, var_1135)
-
-            # Program Call Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Optimize.cpp: InlineCalls: /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
-            ret = self.proc_1137_(var_1134, var_1135)
-
-        # Program Return Region
-        return False
-
-    def proc_1137_(self, var_1138: int, var_1139: int) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        # Program Series Region
-        # Program TransitionState Region
-        tuple_1138_1139 = (var_1138, var_1139)
-        prev_state = self.table_6[tuple_1138_1139]
+        tuple_804_805 = (var_804, var_805)
+        prev_state = self.table_6[tuple_804_805]
         state = prev_state & 3
         present_bit = prev_state & 4
         if state == 2:
-            self.table_6[tuple_1138_1139] = 0 | 4
-            # Program Parallel Region
+            self.table_6[tuple_804_805] = 0 | 4
             # Program Call Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
-            ret = self.proc_1157_(var_1138, var_1139)
+            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+            ret = self.proc_769_(var_804, var_805)
             if ret:
-                # Program Series Region
-                # Program TransitionState Region
-                tuple_1138_1139 = (var_1138, var_1139)
-                prev_state = self.table_6[tuple_1138_1139]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_6[tuple_1138_1139] = 1 | 4
-                    if not present_bit:
-                        self.index_414[tuple_1138_1139[1]].append(tuple_1138_1139[0])
-                        self.index_1029[tuple_1138_1139[0]].append(tuple_1138_1139[1])
-                # Program Return Region
-                return True
-            # Program Call Region
-            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
-            ret = self.proc_1161_(var_1138, var_1139)
-            if ret:
-                # Program Series Region
-                # Program TransitionState Region
-                tuple_1138_1139 = (var_1138, var_1139)
-                prev_state = self.table_6[tuple_1138_1139]
-                state = prev_state & 3
-                present_bit = prev_state & 4
-                if state == 0 or state == 2:
-                    self.table_6[tuple_1138_1139] = 1 | 4
-                    if not present_bit:
-                        self.index_414[tuple_1138_1139[1]].append(tuple_1138_1139[0])
-                        self.index_1029[tuple_1138_1139[0]].append(tuple_1138_1139[1])
                 # Program Return Region
                 return True
         # Program Return Region
         return False
+        return False
 
-    def proc_1150_(self, var_1151: int, var_1152: int) -> bool:
+    def proc_822_(self, var_823: int, var_824: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
-        vec_1154: List[int] = list()
-        vec_index1154: int = 0
+        vec_826: List[int] = list()
+        vec_index826: int = 0
         # Program Series Region
         # Program TableScan Region
-        scan_tuple_1154: int
-        scan_index_1154: int = 0
-        scan_tuple_1154_vec: List[int] = self.index_415[var_1152]
-        while scan_index_1154 < len(scan_tuple_1154_vec):
-            scan_tuple_1154 = scan_tuple_1154_vec[scan_index_1154]
-            scan_index_1154 += 1
-            vec_1154.append(scan_tuple_1154)
+        scan_tuple_826: int
+        scan_index_826: int = 0
+        scan_tuple_826_vec: List[int] = self.index_290[var_823]
+        while scan_index_826 < len(scan_tuple_826_vec):
+            scan_tuple_826 = scan_tuple_826_vec[scan_index_826]
+            scan_index_826 += 1
+            vec_826.append(scan_tuple_826)
         # Program VectorLoop Region
-        vec_index1154 = 0
-        while vec_index1154 < len(vec_1154):
-            var_1155 = vec_1154[vec_index1154]
-            vec_index1154 += 1
+        vec_index826 = 0
+        while vec_index826 < len(vec_826):
+            var_827 = vec_826[vec_index826]
+            vec_index826 += 1
             # Program Call Region
-            ret = self.proc_1120_(var_1152, var_1151, var_1155)
+            ret = self.proc_828_(var_823, var_827, var_824)
 
         # Program Return Region
         return False
+        return False
 
-    def proc_1157_(self, var_1158: int, var_1159: int) -> bool:
+    def proc_828_(self, var_829: int, var_830: int, var_831: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
         # Program Series Region
-        # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
-        ret = self.proc_1174_(var_1158, var_1159)
-        if ret:
-            # Program Return Region
-            return True
+        # Program TransitionState Region
+        tuple_830_831 = (var_830, var_831)
+        prev_state = self.table_6[tuple_830_831]
+        state = prev_state & 3
+        present_bit = prev_state & 4
+        if state == 1:
+            self.table_6[tuple_830_831] = 2 | 4
+            # Program Parallel Region
+            # Program Call Region
+            ret = self.proc_846_(var_830, var_831)
+
+            # Program Call Region
+            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Optimize.cpp: InlineCalls: /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
+            ret = self.proc_803_(var_830, var_831)
+
         # Program Return Region
         return False
+        return False
 
-    def proc_1161_(self, var_1162: int, var_1163: int) -> bool:
+    def proc_846_(self, var_847: int, var_848: int) -> bool:
         state: int = 2
         prev_state: int = 2
         present_bit: int = 0
         ret: bool = False
         found: bool = False
+        vec_850: List[int] = list()
+        vec_index850: int = 0
         # Program Series Region
-        # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
-        ret = self.proc_1165_(var_1162, var_1163)
-        if ret:
-            # Program Return Region
-            return True
+        # Program TableScan Region
+        scan_tuple_850: int
+        scan_index_850: int = 0
+        scan_tuple_850_vec: List[int] = self.index_291[var_848]
+        while scan_index_850 < len(scan_tuple_850_vec):
+            scan_tuple_850 = scan_tuple_850_vec[scan_index_850]
+            scan_index_850 += 1
+            vec_850.append(scan_tuple_850)
+        # Program VectorLoop Region
+        vec_index850 = 0
+        while vec_index850 < len(vec_850):
+            var_851 = vec_850[vec_index850]
+            vec_index850 += 1
+            # Program Call Region
+            ret = self.proc_828_(var_848, var_847, var_851)
+
         # Program Return Region
         return False
-
-    def proc_1165_(self, var_1166: int, var_1167: int) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        # Program Series Region
-        # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
-        ret = self.proc_1169_(var_1166, var_1167)
-        if ret:
-            # Program Return Region
-            return True
-        # Program Return Region
         return False
-
-    def proc_1169_(self, var_1170: int, var_1171: int) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        # Program Series Region
-        # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
-        ret = self.proc_1074_(var_1170, var_1171)
-        if ret:
-            # Program Return Region
-            return True
-        # Program Return Region
-        return False
-
-    def proc_1174_(self, var_1175: int, var_1176: int) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        # Program Series Region
-        # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
-        ret = self.proc_1178_(var_1175, var_1176)
-        if ret:
-            # Program Return Region
-            return True
-        # Program Return Region
-        return False
-
-    def proc_1178_(self, var_1179: int, var_1180: int) -> bool:
-        state: int = 2
-        prev_state: int = 2
-        present_bit: int = 0
-        ret: bool = False
-        found: bool = False
-        # Program Series Region
-        # Program Call Region
-        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
-        ret = self.proc_273_(var_1180)
-        if ret:
-            # Program Return Region
-            return True
-        # Program Return Region
-        return False
-
-    def interproc_transfer_bf(self, param_0: int) -> Iterator[int]:
-        state: int = 0
-        tuple_index: int = 0
-        tuple_vec: List[int] = self.index_1028[param_0]
-        while tuple_index < len(tuple_vec):
-            tuple = tuple_vec[tuple_index]
-            tuple_index += 1
-            param_1: int = tuple
-            full_tuple = (param_0, param_1)
-            state = self.table_12[full_tuple] & 3
-            if state != 1:
-                continue;
-            yield param_1
-
-    def function_instruction_bf(self, param_0: int) -> Iterator[int]:
-        state: int = 0
-        tuple_index: int = 0
-        tuple_vec: List[int] = self.index_1029[param_0]
-        while tuple_index < len(tuple_vec):
-            tuple = tuple_vec[tuple_index]
-            tuple_index += 1
-            param_1: int = tuple
-            if not self.proc_1030_(param_0, param_1):
-                continue
-            yield param_1
 
     def get_external_calls_f(self) -> Iterator[int]:
         state: int = 0
         tuple_index: int = 0
-        for tuple in self.table_15:
+        for tuple in self.table_13:
             tuple_index += 1
             param_0: int = tuple
             full_tuple = param_0
-            state = self.table_15[full_tuple] & 3
-            if state != 1:
-                continue;
-            yield param_0
-
-    def function_b(self, param_0: int) -> bool:
-        state: int = 0
-        tuple_index: int = 0
-        if True:
-            full_tuple = param_0
-            state = self.table_17[full_tuple] & 3
-            if state != 1:
-                return False
-            return True
-
-    def function_f(self) -> Iterator[int]:
-        state: int = 0
-        tuple_index: int = 0
-        for tuple in self.table_17:
-            tuple_index += 1
-            param_0: int = tuple
-            full_tuple = param_0
-            state = self.table_17[full_tuple] & 3
-            if state != 1:
-                continue;
-            yield param_0
-
-    def get_sections_f(self) -> Iterator[bytes]:
-        state: int = 0
-        tuple_index: int = 0
-        for tuple in self.table_19:
-            tuple_index += 1
-            param_0: bytes = tuple
-            full_tuple = param_0
-            state = self.table_19[full_tuple] & 3
-            if state != 1:
-                continue;
-            yield param_0
-
-    def get_instructions_f(self) -> Iterator[int]:
-        state: int = 0
-        tuple_index: int = 0
-        for tuple in self.table_21:
-            tuple_index += 1
-            param_0: int = tuple
-            full_tuple = param_0
-            state = self.table_21[full_tuple] & 3
+            state = self.table_13[full_tuple] & 3
             if state != 1:
                 continue;
             yield param_0
@@ -8237,26 +7982,84 @@ class Database:
     def intraproc_transfer_bf(self, param_0: int) -> Iterator[int]:
         state: int = 0
         tuple_index: int = 0
-        tuple_vec: List[int] = self.index_415[param_0]
+        tuple_vec: List[int] = self.index_752[param_0]
         while tuple_index < len(tuple_vec):
             tuple = tuple_vec[tuple_index]
             tuple_index += 1
             param_1: int = tuple
-            if not self.proc_1033_(param_0, param_1):
+            if not self.proc_753_(param_0, param_1):
                 continue
             yield param_1
 
-    def get_section_instructions_bf(self, param_0: bytes) -> Iterator[int]:
+    def function_b(self, param_0: int) -> bool:
         state: int = 0
         tuple_index: int = 0
-        tuple_vec: List[int] = self.index_1036[param_0]
+        if True:
+            full_tuple = param_0
+            state = self.table_18[full_tuple] & 3
+            if state != 1:
+                return False
+            return True
+
+    def function_f(self) -> Iterator[int]:
+        state: int = 0
+        tuple_index: int = 0
+        for tuple in self.table_18:
+            tuple_index += 1
+            param_0: int = tuple
+            full_tuple = param_0
+            state = self.table_18[full_tuple] & 3
+            if state != 1:
+                continue;
+            yield param_0
+
+    def function_instruction_bf(self, param_0: int) -> Iterator[int]:
+        state: int = 0
+        tuple_index: int = 0
+        tuple_vec: List[int] = self.index_756[param_0]
+        while tuple_index < len(tuple_vec):
+            tuple = tuple_vec[tuple_index]
+            tuple_index += 1
+            param_1: int = tuple
+            if not self.proc_757_(param_0, param_1):
+                continue
+            yield param_1
+
+    def get_instructions_f(self) -> Iterator[int]:
+        state: int = 0
+        tuple_index: int = 0
+        for tuple in self.table_20:
+            tuple_index += 1
+            param_0: int = tuple
+            full_tuple = param_0
+            state = self.table_20[full_tuple] & 3
+            if state != 1:
+                continue;
+            yield param_0
+
+    def interproc_transfer_bf(self, param_0: int) -> Iterator[int]:
+        state: int = 0
+        tuple_index: int = 0
+        tuple_vec: List[int] = self.index_760[param_0]
         while tuple_index < len(tuple_vec):
             tuple = tuple_vec[tuple_index]
             tuple_index += 1
             param_1: int = tuple
             full_tuple = (param_0, param_1)
-            state = self.table_23[full_tuple] & 3
+            state = self.table_22[full_tuple] & 3
             if state != 1:
                 continue;
             yield param_1
+
+    def get_sections_f(self) -> Iterator[bytes]:
+        state: int = 0
+        tuple_index: int = 0
+        for tuple in self.table_25:
+            tuple_index += 1
+            param_0: bytes = tuple
+            full_tuple = param_0
+            state = self.table_25[full_tuple] & 3
+            if state != 1:
+                continue;
+            yield param_0
 
