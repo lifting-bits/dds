@@ -84,19 +84,31 @@ class InstructionDecoder(ABC):
                 i += 1
                 continue
 
-            # Collect up to the maximum number of bytes that can fit into the
+            # First, collect the minimum number of bytes needed by an
             # instruction.
             inst_data = bytearray()
-            j = self.min_instruction_size - 1
-            while (i + j) < data_len and j < self.max_instruction_size:
+            j = 0
+            while j < self.min_instruction_size and (i + j) < data_len:
                 inst_data.append(data[i + j])
                 j += 1
 
-            # If we got any then decode the instruction.
-            if inst_data:
+            # Can't find a full instruction at `i`.
+            if j != self.min_instruction_size:
+                break
+
+            # Now, try to decode the instruction. Each time we fail, try to
+            # add another by to the instruction, up until the maximum
+            # instruction size.
+            while j <= self.max_instruction_size:
                 inst = self.decode_instruction(ea + i, inst_data)
                 if inst:
                     yield inst
+                    break
+                elif (i + j) < data_len:
+                    inst_data.append(data[i + j])
+                    j += 1
+                else:
+                    break
 
             # Advance to the next possible instruction head. Note that this is
             # not necessarily the logically next instruction; this will decode
