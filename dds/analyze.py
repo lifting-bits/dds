@@ -8,9 +8,9 @@ import sys
 from typing import Final, Iterable, Optional, Union
 
 try:
-  from shlex import quote
+    from shlex import quote
 except:
-  from pipes import quote
+    from pipes import quote
 
 from capstone import *
 import capstone.x86
@@ -19,7 +19,13 @@ from datalog import DatabaseFunctors, DatabaseLog, Database
 from util import *
 from defs import *
 
-
+from arch import \
+    arch_from_string, \
+    ControlFlowBehavior, \
+    ControlFlowEdgeKind, \
+    decoder_from_string, \
+    InstructionDecoder, \
+    InstructionOperandVisitor
 from binary import BinaryParser, BinaryMetadataVisitor, LIEFBinaryMetadata
 
 
@@ -27,122 +33,13 @@ def debug(message, *args):
     print(message.format(*args), file=sys.stderr)
 
 
-# For edges with two outgoing edges (including calls
-# and jumps), add their corresponding target and 
-# fallthrough (or pseudo-fallthrough) edges.
-def lief_add_two_edges(instruction, target_type, fallthru_type, transfers):
-    i_addr = instruction.address
-    i_next = instruction.address + instruction.size
-    i_targ = get_transfer_target(instruction)
-
-    if i_targ:
-        transfers.append((i_addr, i_targ, target_type))
-
-    transfers.append((i_addr, i_next, fallthru_type))
-
-
-
-Instruction = capstone.CsInsn
-
-
-class InstructionDecoder:
-    CAPSTONE_ARCH_MODE = {
-        "x86": capstone.CS_MODE_32,
-        "x86_avx": capstone.CS_MODE_32,
-        "x86_avx512": capstone.CS_MODE_32,
-        "amd64": capstone.CS_MODE_64,
-        "amd64_avx": capstone.CS_MODE_64,
-        "amd64_avx512": capstone.CS_MODE_64,
-        "aarch32": capstone.CS_MODE_32,
-        "aarch64": capstone.CS_MODE_64,
-        "sparc32": capstone.CS_MODE_32,
-        "sparc64": capstone.CS_MODE_64
-    }
-
-    CAPSTONE_ARCH_NAME = {
-        "x86": capstone.CS_ARCH_X86,
-        "x86_avx": capstone.CS_ARCH_X86,
-        "x86_avx512": capstone.CS_ARCH_X86,
-        "amd64": capstone.CS_ARCH_X86,
-        "amd64_avx": capstone.CS_ARCH_X86,
-        "amd64_avx512": capstone.CS_ARCH_X86,
-        "aarch32": capstone.CS_ARCH_ARM,
-        "aarch64": capstone.CS_ARCH_ARM64,
-        "sparc32": capstone.CS_ARCH_SPARC,
-        "sparc64": capstone.CS_ARCH_SPARC,
-    }
-
-    MIN_INST_SIZE = {
-        "x86": 1,
-        "x86_avx": 1,
-        "x86_avx512": 1,
-        "amd64": 1,
-        "amd64_avx": 1,
-        "amd64_avx512": 1,
-        "aarch32": 4,
-        "aarch64": 4,
-        "sparc32": 4,
-        "sparc64": 4
-    }
-
-    MAX_INST_SIZE = {
-        "x86": 15,
-        "x86_avx": 15,
-        "x86_avx512": 15,
-        "amd64": 15,
-        "amd64_avx": 15,
-        "amd64_avx512": 15,
-        "aarch32": 4,
-        "aarch64": 4,
-        "sparc32": 4,
-        "sparc64": 4
-    }
-
-    def __init__(self, arch_name: str):
-        cs_mode = self.CAPSTONE_ARCH_MODE[arch_name]
-        cs_arch_name = self.CAPSTONE_ARCH_NAME[arch_name]
-        self.min_instruction_size: Final[int] = self.MIN_INST_SIZE[arch_name]
-        self.max_instruction_size: Final[int] = self.MAX_INST_SIZE[arch_name]
-        self._cs = capstone.Cs(cs_arch_name, cs_mode)
-        self._cs.detail = True
-        self._cs.syntax = CS_OPT_SYNTAX_DEFAULT
-        self._cs.skipdata = True
-
-    def decode_instruction(self, addr: int, data: Union[bytes, bytearray]) \
-            -> Optional[Instruction]:
-        """Decode one instruction in `data`, interpreting it to start at address
-        `addr`. Returns the decoded instruction, or `None`."""
-        for i in self._cs.disasm(data, addr):
-            return i.mnemonic != ".byte" and i or None
-        return None
-
-    def decode_instructions(self, addr, data: Union[bytes, bytearray]) \
-            -> Iterable[Instruction]:
-        """Decode all instructions in `data`, interpreting the first
-        instruction to begin at `addr`. Returns an iterable of the
-        successfully decoded instructions."""
-        i = 0
-        data_len: Final[int] = len(data)
-        while i < data_len:
-            inst_data = bytearray()
-            j = self.min_instruction_size
-            while (i + j) < data_len and j < self.max_instruction_size:
-                inst_data.append(data[i + j])
-                j += 1
-            if inst_data:
-                inst = self.decode_instruction(addr + i, inst_data)
-                if inst:
-                    yield inst
-            i += self.min_instruction_size
-
-
-
-class BinaryMetadataImporter(BinaryMetadataVisitor):
+class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
     """Imports metadata about a binary into a Datalog database."""
 
     def __init__(self, db: Database, decoder: InstructionDecoder):
-        self._db = db
-        self._decoder = decoder
+        self._db: Final[Database] = db
+        self._decoder: Final[InstructionDecoder] = decoder
+        self._curr_inst_ea: Optional[int] = None
 
     def visit_relocation(self, from_ea: int, to_ea: int, size: int):
         """Visit a relocation entry, applied to `size` bytes at `from_ea`,
@@ -208,6 +105,11 @@ class BinaryMetadataImporter(BinaryMetadataVisitor):
         """Visit a named section `[begin_ea, end_ea)`."""
         self._db.section_3([(name, begin_ea, end_ea)])
 
+    def visit_address_operand(self, op_index: int, addr: int):
+        """Add in a cross-reference between in instruction and one of its
+        memory operands, which references an absolute address."""
+        self._db.address_operand_2([(self._curr_inst_ea, addr)])
+
     def visit_memory(self, ea: int, data: bytes, is_writable: bool,
                      is_executable: bool):
         """Visit a range of mapped memory in the range `[ea, ea + len(data))`.
@@ -216,72 +118,45 @@ class BinaryMetadataImporter(BinaryMetadataVisitor):
         if not is_executable:
             return
 
-        insts = []
+        insns = []
         transfers = []
-        address_operands = []
 
         for i in self._decoder.decode_instructions(ea, data):
-
-            i_addr = i.address
-            i_next = i.address + i.size
-            i_type = get_instruction_type(i.mnemonic, i.op_str)
-            i_bytes = i.bytes.hex()
-
-            debug("  Adding instruction {:x}: {} {}".format(i_addr, i.mnemonic,
-                                                            i.op_str))
+            debug("  Adding instruction {:x}: {}\t\t{}".format(
+                i.ea, " ".join("{:02x}".format(b) for b in i.data),
+                i.assembly))
 
             # Add the instruction to our database.
-            insts.append((i_addr, i_type, i_bytes))
+            insns.append((i.ea, i.type, i.data))
 
-            # Conditional branches: add target and fallthrough edges.
-            if i_type == INSN_COND_DIRECT_JUMP:
-                lief_add_two_edges(i, EDGE_COND_TRUE, EDGE_COND_FALSE, transfers)
+            # If this instruction has a direct control-flow target then add it
+            # in.
+            if i.type & ControlFlowBehavior.HAS_DIRECT_TARGET:
+                target_ea = i.target_ea
+                assert target_ea is not None
+                transfers.append((i.ea, target_ea, i.target_type))
+                debug("    -> {:x} {}", target_ea, i.target_type)
 
-            # Jumps: add target edge, and post-jump fallthrough.
-            elif i_type in (INSN_DIRECT_JUMP, INSN_INDIRECT_JUMP):
-                lief_add_two_edges(i, EDGE_JUMP_TARG, EDGE_JUMP_PSEUDO, transfers)
+            # If this instruction has a fall-through control-flow target
+            # then add it in.
+            if i.type & ControlFlowBehavior.HAS_FALL_THROUGH:
+                fall_through_ea = i.fall_through_ea
+                assert fall_through_ea is not None
+                transfers.append((i.ea, fall_through_ea, i.fall_through_type))
+                debug("    -> {:x} {}", fall_through_ea, i.fall_through_type)
 
-            # Calls: add target edge, and post-call fallthrough.
-            elif i_type in (INSN_DIRECT_CALL, INSN_INDIRECT_CALL):
-                lief_add_two_edges(i, EDGE_CALL_TARG, EDGE_CALL_PSEUDO, transfers)
-
-            # Rest: add fallthrough edges (except if RET or HLT).
-            elif i_type in (INSN_NORMAL, INSN_NOP):
-                transfers.append((i_addr, i_next, EDGE_FALLTHRU))
-
-            # We omit edges from returns as these denote function endpoints.
-            elif i_type == INSN_RETURN:
-                pass
-
-            # Report if no transfer instruction is detected.
+            # Otherwise it's a "pseudo edge", which is useful for linear
+            # disassembly.
             else:
-                debug("    No transfer???")
+                transfers.append((i.ea, i.next_ea,
+                                  ControlFlowEdgeKind.PSEUDO_FALL_THROUGH))
+                debug("    -> {:x} {}", i.next_ea,
+                      ControlFlowEdgeKind.PSEUDO_FALL_THROUGH)
 
-            # Extract address-like operands found in any instruction.
-            for o in i.operands:
+            self._curr_inst_ea = i.ea
+            i.visit_operands(self)
 
-                # Indirect transfers
-                if o.type == capstone.x86.X86_OP_MEM:
-                    m = o.mem
-                    m_addr = 0
-
-                    # PC-relative, e.g. `jmp [RIP + 0xdisp]`.
-                    if m.base == capstone.x86.X86_REG_RIP and not m.segment and \
-                            not m.index:
-                        m_addr = i.address + m.disp
-
-                    # Absolute addr, e.g. `jmp [0xaddr]`.
-                    elif not m.base and not m.segment and not m.index and m.disp:
-                        m_addr = m.disp
-
-                    else:
-                        continue
-
-                    if m_addr:
-                        address_operands.append((i_addr, m_addr))
-
-        self._db.instruction_3(insts)
-        self._db.address_operand_2(address_operands)
+        self._db.instruction_3(insns)
         self._db.raw_transfer_3(transfers)
 
 
@@ -309,7 +184,7 @@ def run_under_ida(parser, args) -> int:
     env["TVHEADLESS"] = "1"
     env["HOME"] = os.path.expanduser('~')
     env["IDA_PATH"] = os.path.dirname(args.ida_path)
-    #env["PYTHONPATH"] = os.path.dirname(ida_dir)
+    # env["PYTHONPATH"] = os.path.dirname(ida_dir)
     if "SystemRoot" in os.environ:
         env["SystemRoot"] = os.environ["SystemRoot"]
 
@@ -363,7 +238,7 @@ def main(argv):
 
     parser.add_argument(
         "--instruction_decoder", type=str, default="capstone",
-        help="Instruction decoder used by the binary",
+        help="Instruction instruction used by the binary",
         choices=("capstone",))
 
     parser.add_argument(
@@ -399,7 +274,8 @@ def main(argv):
     log = DatabaseLog()
     db = Database(log, functors)
 
-    decoder = InstructionDecoder(args.arch)
+    arch = arch_from_string(args.arch)
+    decoder = decoder_from_string(args.instruction_decoder, arch)
     visitor = BinaryMetadataImporter(db, decoder)
     binary.visit_metadata(visitor)
 
@@ -415,4 +291,3 @@ def main(argv):
 # Main function.
 if __name__ == "__main__":
     sys.exit(main(sys.argv))
-

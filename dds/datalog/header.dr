@@ -1,26 +1,34 @@
 ;---------------------------------------------------------
 ; Types for instructions, and control-flow transfers
 
-#foreign insntype ```python int```
-#constant insntype INSN_NORMAL             ```python 0```
-#constant insntype INSN_DIRECT_JUMP        ```python 1```
-#constant insntype INSN_INDIRECT_JUMP      ```python 2```
-#constant insntype INSN_COND_DIRECT_JUMP   ```python 3```
-#constant insntype INSN_COND_INDIRECT_JUMP ```python 4```
-#constant insntype INSN_DIRECT_CALL        ```python 5```
-#constant insntype INSN_INDIRECT_CALL      ```python 6```
-#constant insntype INSN_RETURN             ```python 7```
-#constant insntype INSN_HALT               ```python 8```
-#constant insntype INSN_NOP                ```python 9```
+#prologue ```python
+from dds.arch import ControlFlowEdgeKind, InstructionType
+```
 
-#foreign edgetype ```python int```
-#constant edgetype EDGE_FALLTHRU    ```python 0```
-#constant edgetype EDGE_JUMP_TARG   ```python 1```
-#constant edgetype EDGE_JUMP_PSEUDO ```python 2``` ; post-jump fallthrough
-#constant edgetype EDGE_COND_TRUE   ```python 3```
-#constant edgetype EDGE_COND_FALSE  ```python 4```
-#constant edgetype EDGE_CALL_TARG   ```python 5```
-#constant edgetype EDGE_CALL_PSEUDO ```python 6``` ; post-call fallthrough
+#foreign insntype ```python InstructionType```
+#constant insntype INSN_NORMAL             ```python InstructionType.NORMAL```
+#constant insntype INSN_DIRECT_JUMP        ```python InstructionType.DIRECT_JUMP```
+#constant insntype INSN_INDIRECT_JUMP      ```python InstructionType.INDIRECT_JUMP```
+#constant insntype INSN_COND_DIRECT_JUMP   ```python InstructionType.CONDITIONAL_DIRECT_JUMP```
+#constant insntype INSN_COND_INDIRECT_JUMP ```python InstructionType.CONDITIONAL_INDIRECT_JUMP```
+#constant insntype INSN_DIRECT_CALL        ```python InstructionType.DIRECT_FUNCTION_CALL```
+#constant insntype INSN_COND_DIRECT_CALL   ```python InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL```
+#constant insntype INSN_INDIRECT_CALL      ```python InstructionType.INDIRECT_FUNCTION_CALL```
+#constant insntype INSN_COND_INDIRECT_CALL ```python InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL```
+#constant insntype INSN_RETURN             ```python InstructionType.FUNCTION_RETURN```
+#constant insntype INSN_COND_RETURN        ```python InstructionType.CONDITIONAL_FUNCTION_RETURN```
+#constant insntype INSN_HALT               ```python InstructionType.ERROR```
+
+#foreign edgetype ```python ControlFlowEdgeKind```
+#constant edgetype EDGE_FALL_THROUGH            ```python ControlFlowEdgeKind.FALL_THROUGH```
+#constant edgetype EDGE_PSEUDO_FALL_THROUGH     ```python ControlFlowEdgeKind.PSEUDO_FALL_THROUGH```
+#constant edgetype EDGE_JUMP_TAKEN              ```python ControlFlowEdgeKind.JUMP_TAKEN```
+#constant edgetype EDGE_JUMP_NOT_TAKEN          ```python ControlFlowEdgeKind.EDGE_JUMP_NOT_TAKEN```
+#constant edgetype EDGE_FUNCTION_CALL           ```python ControlFlowEdgeKind.FUNCTION_CALL```
+#constant edgetype EDGE_FUNCTION_CALL_RETURN    ```python ControlFlowEdgeKind.FUNCTION_CALL_RETURN```
+#constant edgetype EDGE_TAIL_FUNCTION_CALL      ```python ControlFlowEdgeKind.TAIL_FUNCTION_CALL```
+#constant edgetype EDGE_PC_THUNK_FUNCTION_CALL  ```python ControlFlowEdgeKind.PC_THUNK_FUNCTION_CALL```
+
 
 ;---------------------------------------------------------
 ; External symbol (could be code or data).
