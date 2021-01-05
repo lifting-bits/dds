@@ -1,15 +1,52 @@
 #import "header.dr"
 
 ;---------------------------------------------------------
-; If we have an inter-procedural transfer.
+
+; Treat inter-procedrual transfer targets as function heads.
 function(FuncEA)
   : transfer(_, FuncEA, EDGE_FUNCTION_CALL).
 
-; Any type of control-flow transfer to an external is treated ;
+; Treat the binary's entrypoint as a function head.
+function(EntryPointEA)
+  : entrypoint(EntryPointEA)
+  , plausible_instruction(EntryPointEA).
+
+; Parse constructor/destructor, imported/exported, and local 
+; function heads.
+function(FuncEA)
+  : constructor_function(FuncEA)
+  , instruction(FuncEA, _, _).
+function(FuncEA)
+  : destructor_function(FuncEA)
+  , instruction(FuncEA, _, _).
+function(FuncEA)
+  : imported_function(FuncEA, _)
+  , instruction(FuncEA, _, _).
+function(FuncEA)
+  : exported_function(FuncEA, _)
+  , instruction(FuncEA, _, _).
+function(FuncEA)
+  : local_function(FuncEA, _)
+  , instruction(FuncEA, _, _).
+
+; Treat imported, exported, and local symbols pointing to valid 
+; instructions as function heads.
+function(FuncEA)
+  : imported_symbol(FuncEA, _)
+  , instruction(FuncEA, _, _).
+function(FuncEA)
+  : exported_symbol(FuncEA, _)
+  , instruction(FuncEA, _, _).
+function(FuncEA)
+  : local_symbol(FuncEA, _)
+  , instruction(FuncEA, _, _).
+
+; Any type of control-flow transfer to an external is treated
 ; as a making that external into a function.
 function(FuncEA)
   : external_symbol(FuncEA, _)
   , raw_transfer(_, FuncEA, _).
+
 
 ; The binary entrypoint is treated as a function.
 function(EntryPointEA)
@@ -24,16 +61,6 @@ function(JmpEA)
   : instruction(JmpEA, INSN_INDIRECT_JUMP, _)
   , transfer(JmpEA, ToEA, EDGE_JUMP_TAKEN)
   , function(ToEA).
-
-; Mark all constructor functions.
-function(FuncEA)
-  : constructor_function(FuncEA)
-  , instruction(FuncEA, _, _).
-
-; Mark all destructor functions.
-function(FuncEA)
-  : destructor_function(FuncEA)
-  , instruction(FuncEA, _, _).
 
 ;---------------------------------------------------------
 ; If an instruction begins a function, it is part of it.
