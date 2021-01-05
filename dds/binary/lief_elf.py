@@ -42,15 +42,12 @@ class LIEFELFBinaryParser(BinaryParser):
             f_addr = f.address
             seen.add(f_addr)
             visitor.visit_constructor_function(f_addr)
+
         for f in self._binary.dtor_functions:
             f_addr = f.address
             seen.add(f_addr)
             visitor.visit_destructor_function(f_addr)
-        for f in self._binary.imported_functions:
-            f_addr = f.address
-            f_name = bytes(f.name, encoding="utf-8")
-            seen.add(f_addr)
-            visitor.visit_imported_function(f_addr, f_name)
+
         for f in self._binary.exported_functions:
             f_addr = f.address
             f_name = bytes(f.name, encoding="utf-8")
@@ -68,26 +65,35 @@ class LIEFELFBinaryParser(BinaryParser):
                 s_addr = next_import_addr
                 next_import_addr += self.address_size
                 imported_addrs[s_name] = s_addr
-                visitor.visit_imported_symbol(s_addr, s_name)                
+                if s.is_function:
+                    self._binary.add_exported_function(s_addr, s.name)
+                visitor.visit_imported_symbol(s_addr, s_name)
+
             elif s.exported:
                 s_addr = s.value
                 visitor.visit_exported_symbol(s_addr, s_name)
-            else:
+
+            elif s.is_static or s.is_function or s.is_variable:
                 s_addr = s.value
                 visitor.visit_local_symbol(s_addr, s_name)
 
             seen.add(s_addr)
 
+        for f in self._binary.imported_functions:
+            f_name = bytes(f.name, encoding="utf-8")
+            f_addr = imported_addrs.get(f_name, f.address)
+            if f_addr not in seen:
+                seen.add(f_addr)
+                visitor.visit_imported_function(f_addr, f_name)
+
         # Retrieve local functions (i.e., functions with addresses 
         # we haven't already seen in prior symbols).
         for f in self._binary.functions:
             f_addr = f.address
-            if f_addr in seen:
-                continue
-            
-            seen.add(f_addr)
-            f_name = bytes(f.name, encoding="utf-8") or None
-            visitor.visit_local_function(f_addr, f_name)
+            if f_addr not in seen:
+                seen.add(f_addr)
+                f_name = bytes(f.name, encoding="utf-8") or None
+                visitor.visit_local_function(f_addr, f_name)
 
         # Create a fake `.extern` section.
         if next_import_addr > extern_sec_addr:

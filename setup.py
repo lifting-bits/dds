@@ -31,11 +31,12 @@ setup(
     install_requires=[
         "wheel",
         "capstone==4.0.2",
-        "lief",
+        "lief==0.11.0.dev0",
         "aenum==2.2.6",
         "typing_extensions"
     ],
     dependency_links=[
+        "https://lief.quarkslab.com/packages",
         "https://lief.quarkslab.com/packages/lief/"
     ],
     extras_require={

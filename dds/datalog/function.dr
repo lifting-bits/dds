@@ -1,9 +1,10 @@
 #import "header.dr"
 
 ;---------------------------------------------------------
-; Treat interprocedrual transfer targets as function heads.
+
+; Treat inter-procedrual transfer targets as function heads.
 function(FuncEA)
-  : transfer(_, FuncEA, EDGE_CALL_TARG).
+  : transfer(_, FuncEA, EDGE_FUNCTION_CALL).
 
 ; Treat the binary's entrypoint as a function head.
 function(EntryPointEA)
@@ -44,14 +45,22 @@ function(FuncEA)
 ; as a making that external into a function.
 function(FuncEA)
   : external_symbol(FuncEA, _)
-  , transfer(_, FuncEA, _).
+  , raw_transfer(_, FuncEA, _).
 
-; An indirect jump in the `.plt` that has a been rewritten
-; as an external transfer is treated as a function head.
-function(FuncEA)
-  : instruction(FuncEA, INSN_INDIRECT_JUMP, _)
-  , transfer(FuncEA, ExternEA, EDGE_JUMP_TARG)
-  , external_symbol(ExternEA, _).
+
+; The binary entrypoint is treated as a function.
+function(EntryPointEA)
+  : entrypoint(EntryPointEA)
+  , plausible_instruction(EntryPointEA).
+
+; An indirect jump that has been re-written to have a known
+; target, and where that target is a function, is also treated
+; to be a function. In this case, we say that the indirect jump
+; is likely the thunk in the `.plt` section of an ELF binary.
+function(JmpEA)
+  : instruction(JmpEA, INSN_INDIRECT_JUMP, _)
+  , transfer(JmpEA, ToEA, EDGE_JUMP_TAKEN)
+  , function(ToEA).
 
 ;---------------------------------------------------------
 ; If an instruction begins a function, it is part of it.

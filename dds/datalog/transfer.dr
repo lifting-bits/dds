@@ -1,52 +1,171 @@
 #import "header.dr"
 
+#local fixed_transfer(FromEA, ToEA, EdgeType)
+
+
 ;---------------------------------------------------------
-; Normal control-flow, unrelated to functions.
-transfer(FromEA, ToEA, EdgeType)
-  : raw_transfer(FromEA, ToEA, EdgeType)
-  , plausible_instruction(ToEA)
-  , EdgeType != EDGE_CALL_TARG
-  , EdgeType != EDGE_CALL_PSEUDO.
+; We receive `raw_transfer` messages, which describe the
+; control-flows between instructions as they can be
+; understood based off of the decoded instructions. The
+; first step of "fixing up" these raw transfers is to try
+; to short-circuit through relocations, and identify
+; function calls that shouldn't introduce function heads
+; (e.g. inline PC thunk calls).
+;---------------------------------------------------------
 
-; Target of a function call.
-transfer(CallEA, TargEA, EDGE_CALL_TARG)
-  : raw_transfer(CallEA, TargEA, EDGE_CALL_TARG)
-  , raw_transfer(CallEA, FallEA, EDGE_CALL_PSEUDO)
-  , TargEA != FallEA
-  , plausible_instruction(TargEA).
 
-; Fall-through of a function call.
-transfer(CallEA, FallEA, EDGE_CALL_PSEUDO)
-  : raw_transfer(CallEA, TargEA, EDGE_CALL_TARG)
-  , raw_transfer(CallEA, FallEA, EDGE_CALL_PSEUDO)
-  , TargEA != FallEA
-  , plausible_instruction(FallEA).
-
-; An indirect jump through a relocation.
-transfer(JmpEA, ExternEA, EDGE_JUMP_TARG)
+; An indirect jump through a relocation. For example:
+;
+;       .plt:0000000000000530 ; int printf(const char *format, ...)
+;       .plt:0000000000000530 _printf         proc near
+;       .plt:0000000000000530                 jmp     cs:off_201018
+;       .plt:0000000000000530 _printf         endp
+;
+; With `off_201018` having:
+;
+;       .got.plt:0000000000201018 off_201018      dq offset printf
+;
+; Where the reference to `printf` in `off_201018` is enacted by a relocation.
+; Here, we want to rewrite the indirect jump to go straight to the external
+; address of `printf`.
+fixed_transfer(JmpEA, ExternEA, EDGE_JUMP_TAKEN)
   : instruction(JmpEA, INSN_INDIRECT_JUMP, _)
   , address_operand(JmpEA, AddrOfTargetEA)
   , relocation(AddrOfTargetEA, ExternEA)
   , plausible_instruction(ExternEA).
 
-; An indirect call through a relocation.
-transfer(CallEA, ExternEA, EDGE_CALL_TARG)
+
+; An indirect, conditional jump through a relocation.
+; Similar case to above.
+fixed_transfer(JmpEA, ExternEA, EDGE_JUMP_TAKEN)
+  : instruction(JmpEA, INSN_COND_INDIRECT_JUMP, _)
+  , address_operand(JmpEA, AddrOfTargetEA)
+  , relocation(AddrOfTargetEA, ExternEA)
+  , plausible_instruction(ExternEA).
+
+
+; An indirect call through a relocation. Similar case to above.
+fixed_transfer(CallEA, ExternEA, EDGE_FUNCTION_CALL)
   : instruction(CallEA, INSN_INDIRECT_CALL, _)
   , address_operand(CallEA, AddrOfTargetEA)
   , relocation(AddrOfTargetEA, ExternEA)
   , plausible_instruction(ExternEA).
 
+
+; An indirect, conditional call through a relocation.
+; Similar case to above.
+fixed_transfer(CallEA, ExternEA, EDGE_FUNCTION_CALL)
+  : instruction(CallEA, INSN_COND_INDIRECT_CALL, _)
+  , address_operand(CallEA, AddrOfTargetEA)
+  , relocation(AddrOfTargetEA, ExternEA)
+  , plausible_instruction(ExternEA).
+
+
 ; If the target and the fall-through are the same instruction, then
-; this is usally a kind of "inline PC thunk" pattern, e.g.
+; this is usually a kind of "inline PC thunk" pattern, e.g.
 ;
 ;       call $+5
 ;       pop ebx
 ;
-; On x86, where x86 is the address of the `pop` instruction.
-transfer(CallEA, TargEA, EDGE_FALLTHRU)
-  : raw_transfer(CallEA, TargEA, EDGE_CALL_TARG)
-  , raw_transfer(CallEA, TargEA, EDGE_CALL_PSEUDO)
+; On x86, `ebx` will contain the address of `pop ebx` after executing
+; these two instructions. In practice, we don't want to consider
+; `pop ebx` to be the head of a function.
+fixed_transfer(CallEA, TargEA, EDGE_PC_THUNK_FUNCTION_CALL)
+  : raw_transfer(CallEA, TargEA, EDGE_FUNCTION_CALL)
+  , raw_transfer(CallEA, TargEA, EDGE_FUNCTION_CALL_RETURN)
   , plausible_instruction(TargEA).
+
+
+; Target of a function call.
+fixed_transfer(CallEA, TargEA, EDGE_FUNCTION_CALL)
+  : fixed_transfer(CallEA, TargEA, EDGE_FUNCTION_CALL)
+  , fixed_transfer(CallEA, FallEA, EDGE_FUNCTION_CALL_RETURN)
+  , TargEA != FallEA
+  , plausible_instruction(TargEA).
+
+
+; Fall-through of a function call.
+;
+; TODO(pag): Add support for no-return functions.
+fixed_transfer(CallEA, FallEA, EDGE_FUNCTION_CALL_RETURN)
+  : fixed_transfer(CallEA, TargEA, EDGE_FUNCTION_CALL)
+  , fixed_transfer(CallEA, FallEA, EDGE_FUNCTION_CALL_RETURN)
+  , TargEA != FallEA
+  , plausible_instruction(FallEA).
+
+
+; Transfer that isn't related to a call.
+fixed_transfer(FromEA, ToEA, EdgeType)
+  : raw_transfer(FromEA, ToEA, EdgeType)
+  , plausible_instruction(ToEA)
+  , EdgeType != EDGE_FUNCTION_CALL
+  , EdgeType != EDGE_FUNCTION_CALL_RETURN.
+
+
+
+;---------------------------------------------------------
+; Now that we have our "fixed" transfers, we're going to
+; go one small step forward and try to identify jumps that
+; are actually tail-calls. We're also going to try to filter
+; out straight-line instruction sequences that follow logical
+; terminating instructions at the end of functions.
+;---------------------------------------------------------
+
+
+; Keep track of a linear sequence of instructions that
+; falls-through to the beginning of a function.
+#local falls_through_to_function(EA)
+
+
+; The base case is an instruction that falls-through
+; into the head of a function.
+falls_through_to_function(EA)
+    : transfer(EA, FuncEA, EDGE_FALL_THROUGH)
+    , function(FuncEA).
+
+
+; The inductive case is an instruction that falls-through
+; to another instruction that falls-through to a function.
+falls_through_to_function(EA)
+    : transfer(EA, ToEA, EDGE_FALL_THROUGH)
+    , falls_through_to_function(ToEA).
+
+
+; Often times there is padding between functions. This manifests
+; as one function ending in a `ret` or ` jmp`, followed by some
+; padding NO-OPs, followed by the head of another function. We
+; don't want any of the instructions following the `ret`/`jmp`
+; to be included as reachable from inside a function if they fall
+; through in this way, and so here we restrict the pseudo fall-
+; through
+transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
+    : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
+    , !falls_through_to_function(ToEA).
+
+
+; Here we have an edge that isn't a jump or pseudo fall-through,
+; so we pass it through.
+transfer(FromEA, ToEA, EdgeType)
+    : fixed_transfer(FromEA, ToEA, EdgeType)
+    , EdgeType != EDGE_JUMP_TAKEN
+    , EdgeType != EDGE_PSEUDO_FALL_THROUGH.
+
+
+; Here we have an edge that is a jump, and the target of
+; the jump is a function head, and so we want to change its
+; interpretation to be a tail-call.
+transfer(FromEA, ToEA, EDGE_TAIL_FUNCTION_CALL)
+    : fixed_transfer(FromEA, ToEA, EDGE_JUMP_TAKEN)
+    , function(ToEA).
+
+
+; Here we have an edge that is a jump, and the target of
+; the jump is a function head, and so we want to change its
+; interpretation to be a tail-call.
+transfer(FromEA, ToEA, EDGE_JUMP_TAKEN)
+    : fixed_transfer(FromEA, ToEA, EDGE_JUMP_TAKEN)
+    , !function(ToEA).
+
 
 ;---------------------------------------------------------
 intraproc_transfer(FromEA, ToEA)
