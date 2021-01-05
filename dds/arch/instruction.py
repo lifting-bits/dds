@@ -125,41 +125,41 @@ class InstructionType(NamedConstant):
 
 
 _TARGET_TYPE: Final[Dict[InstructionType, Optional[ControlFlowEdgeKind]]] = {
-    InstructionType.NORMAL: None,
-    InstructionType.ERROR: None,
-    InstructionType.DIRECT_JUMP: ControlFlowEdgeKind.JUMP_TAKEN,
-    InstructionType.INDIRECT_JUMP: None,
-    InstructionType.CONDITIONAL_DIRECT_JUMP: ControlFlowEdgeKind.JUMP_TAKEN,
-    InstructionType.CONDITIONAL_INDIRECT_JUMP: None,
-    InstructionType.DIRECT_FUNCTION_CALL: ControlFlowEdgeKind.FUNCTION_CALL,
-    InstructionType.INDIRECT_FUNCTION_CALL: None,
-    InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL:
-        ControlFlowEdgeKind.FUNCTION_CALL,
-    InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL: None,
-    InstructionType.FUNCTION_RETURN: None,
-    InstructionType.CONDITIONAL_FUNCTION_RETURN: None
+    id(InstructionType.NORMAL): None,
+    id(InstructionType.ERROR): None,
+    id(InstructionType.DIRECT_JUMP): ControlFlowEdgeKind.JUMP_TAKEN,
+    id(InstructionType.INDIRECT_JUMP): None,
+    id(InstructionType.CONDITIONAL_DIRECT_JUMP): ControlFlowEdgeKind.JUMP_TAKEN,
+    id(InstructionType.CONDITIONAL_INDIRECT_JUMP): None,
+    id(InstructionType.DIRECT_FUNCTION_CALL): ControlFlowEdgeKind.FUNCTION_CALL,
+    id(InstructionType.INDIRECT_FUNCTION_CALL): None,
+    id(InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL):
+    id(    ControlFlowEdgeKind.FUNCTION_CALL),
+    id(InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL): None,
+    id(InstructionType.FUNCTION_RETURN): None,
+    id(InstructionType.CONDITIONAL_FUNCTION_RETURN): None
 }
 
-_FALL_THROUGH_TYPE: Final[Dict[InstructionType,
-                               Optional[ControlFlowEdgeKind]]] = {
-    InstructionType.NORMAL: ControlFlowEdgeKind.FALL_THROUGH,
-    InstructionType.ERROR: ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
-    InstructionType.DIRECT_JUMP: ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
-    InstructionType.INDIRECT_JUMP: ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
-    InstructionType.CONDITIONAL_DIRECT_JUMP: ControlFlowEdgeKind.JUMP_NOT_TAKEN,
-    InstructionType.CONDITIONAL_INDIRECT_JUMP:
+_FALL_THROUGH_TYPE: Final[Dict[int, Optional[ControlFlowEdgeKind]]] = {
+    id(InstructionType.NORMAL): ControlFlowEdgeKind.FALL_THROUGH,
+    id(InstructionType.ERROR): ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
+    id(InstructionType.DIRECT_JUMP): ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
+    id(InstructionType.INDIRECT_JUMP): ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
+    id(InstructionType.CONDITIONAL_DIRECT_JUMP):
         ControlFlowEdgeKind.JUMP_NOT_TAKEN,
-    InstructionType.DIRECT_FUNCTION_CALL:
+    id(InstructionType.CONDITIONAL_INDIRECT_JUMP):
+        ControlFlowEdgeKind.JUMP_NOT_TAKEN,
+    id(InstructionType.DIRECT_FUNCTION_CALL):
         ControlFlowEdgeKind.FUNCTION_CALL_RETURN,
-    InstructionType.INDIRECT_FUNCTION_CALL:
+    id(InstructionType.INDIRECT_FUNCTION_CALL):
         ControlFlowEdgeKind.FUNCTION_CALL_RETURN,
-    InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL:
+    id(InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL):
         ControlFlowEdgeKind.FUNCTION_CALL_RETURN,
-    InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL:
+    id(InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL):
         ControlFlowEdgeKind.FUNCTION_CALL_RETURN,
-    InstructionType.FUNCTION_RETURN:
+    id(InstructionType.FUNCTION_RETURN):
         ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
-    InstructionType.CONDITIONAL_FUNCTION_RETURN:
+    id(InstructionType.CONDITIONAL_FUNCTION_RETURN):
         ControlFlowEdgeKind.JUMP_NOT_TAKEN
 }
 
@@ -209,11 +209,11 @@ class Instruction(ABC):
 
     @property
     def fall_through_type(self) -> Optional[ControlFlowEdgeKind]:
-        return _FALL_THROUGH_TYPE[self.type]
+        return _FALL_THROUGH_TYPE[id(self.type)]
 
     @property
     def target_type(self) -> Optional[ControlFlowEdgeKind]:
-        return _TARGET_TYPE[self.type]
+        return _TARGET_TYPE[id(self.type)]
 
     @property
     def assembly(self) -> str:
