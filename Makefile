@@ -4,7 +4,7 @@ deps = dds/datalog/section.dr dds/datalog/instruction.dr dds/datalog/function.dr
 
 all: 
 	drlojekyll $(deps) -py-out dds/datalog/__init__.py -dot-out dds.dot
-	python3 dds/analyze.py --binary examples/helloworld/helloworld.elf.x86_64.pie
+	python3 dds/analyze.py --binary examples/helloworld/helloworld.elf.x86_64.nopie
 
 debug:
 	xdot dds.dot

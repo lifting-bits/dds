@@ -1457,7 +1457,7 @@ class Database:
             if var_170 in self.index_171:
                 if var_170 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_170 = var_170
                     prev_state = self.table_15[tuple_170]
                     state = prev_state & 3
@@ -1481,7 +1481,7 @@ class Database:
             if var_185 in self.index_186:
                 if var_185 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_185 = var_185
                     prev_state = self.table_15[tuple_185]
                     state = prev_state & 3
@@ -1505,7 +1505,7 @@ class Database:
             if var_189 in self.index_190:
                 if var_189 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_189 = var_189
                     prev_state = self.table_15[tuple_189]
                     state = prev_state & 3
@@ -1529,7 +1529,7 @@ class Database:
             if var_193 in self.index_194:
                 if var_193 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_193 = var_193
                     prev_state = self.table_15[tuple_193]
                     state = prev_state & 3
@@ -1553,7 +1553,7 @@ class Database:
             if var_197 in self.index_198:
                 if var_197 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_197 = var_197
                     prev_state = self.table_15[tuple_197]
                     state = prev_state & 3
@@ -1577,7 +1577,7 @@ class Database:
             if var_201 in self.index_202:
                 if var_201 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_201 = var_201
                     prev_state = self.table_15[tuple_201]
                     state = prev_state & 3
@@ -1601,7 +1601,7 @@ class Database:
             if var_205 in self.index_206:
                 if var_205 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_205 = var_205
                     prev_state = self.table_15[tuple_205]
                     state = prev_state & 3
@@ -1625,7 +1625,7 @@ class Database:
             if var_209 in self.index_210:
                 if var_209 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_209 = var_209
                     prev_state = self.table_15[tuple_209]
                     state = prev_state & 3
@@ -1654,7 +1654,7 @@ class Database:
                     tuple_212_1_index += 1
                     var_216 = tuple_212_1
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_213_216 = (var_213, var_216)
                     prev_state = self.table_114[tuple_213_216]
                     state = prev_state & 3
@@ -1683,7 +1683,7 @@ class Database:
                     tuple_218_1_index += 1
                     var_221 = tuple_218_1
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_219_221 = (var_219, var_221)
                     prev_state = self.table_106[tuple_219_221]
                     state = prev_state & 3
@@ -1712,7 +1712,7 @@ class Database:
                     tuple_223_1_index += 1
                     var_226 = tuple_223_1
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_224_226 = (var_224, var_226)
                     prev_state = self.table_98[tuple_224_226]
                     state = prev_state & 3
@@ -1741,7 +1741,7 @@ class Database:
                     tuple_228_1_index += 1
                     var_231 = tuple_228_1
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_229_231 = (var_229, var_231)
                     prev_state = self.table_90[tuple_229_231]
                     state = prev_state & 3
@@ -1770,15 +1770,15 @@ class Database:
                     tuple_233_1_index += 1
                     var_236 = tuple_233_1
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_237_(var_234)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_240_(var_234, var_236)
                         if ret:
                             # Program TransitionState Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                             tuple_234_236 = (var_234, var_236)
                             prev_state = self.table_78[tuple_234_236]
                             state = prev_state & 3
@@ -1834,7 +1834,7 @@ class Database:
             if var_260 in self.index_261:
                 if var_260 in self.index_248:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_260 = var_260
                     prev_state = self.table_15[tuple_260]
                     state = prev_state & 3
@@ -1990,15 +1990,15 @@ class Database:
                     tuple_287_1_index += 1
                     var_291 = tuple_287_1
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_292_(var_288)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_295_(var_291, var_288)
                         if ret:
                             # Program Call Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                             ret = self.proc_299_(var_291)
                             if not ret:
                                 # Program TransitionState Region
@@ -2372,7 +2372,7 @@ class Database:
             # Program TupleCompare Region
             if self.var_2 == var_362:
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                 ret = self.proc_240_(var_360, var_361)
                 if not ret:
                     # Program TransitionState Region
@@ -2389,7 +2389,7 @@ class Database:
             # Program TupleCompare Region
             if self.var_0 == var_362:
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                 ret = self.proc_382_(var_361)
                 if not ret:
                     # Program TransitionState Region
@@ -2418,15 +2418,15 @@ class Database:
                     tuple_386_1_index += 1
                     var_388 = tuple_386_1
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_237_(var_387)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_240_(var_387, var_388)
                         if ret:
                             # Program TransitionState Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                             tuple_387_388 = (var_387, var_388)
                             prev_state = self.table_78[tuple_387_388]
                             state = prev_state & 3
@@ -2456,15 +2456,15 @@ class Database:
                     tuple_392_1_index += 1
                     var_394 = tuple_392_1
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_292_(var_393)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_295_(var_394, var_393)
                         if ret:
                             # Program Call Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                             ret = self.proc_299_(var_394)
                             if not ret:
                                 # Program TransitionState Region
@@ -2496,15 +2496,15 @@ class Database:
                 var_402 = tuple_399_0
                 if var_400 in self.index_289:
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_403_(var_402, var_400)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_292_(var_400)
                         if ret:
                             # Program Call Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                             ret = self.proc_408_(var_402)
                             if not ret:
                                 # Program TransitionState Region
@@ -2536,15 +2536,15 @@ class Database:
                 var_422 = tuple_419_0
                 if var_420 in self.index_289:
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_423_(var_422, var_420)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_292_(var_420)
                         if ret:
                             # Program Call Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                             ret = self.proc_428_(var_422, var_420, self.var_10)
                             if not ret:
                                 # Program TransitionState Region
@@ -2578,16 +2578,16 @@ class Database:
                 var_437 = tuple_434_0
                 if var_435 in self.index_289:
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_438_(var_437, var_435)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_292_(var_435)
                         if ret:
                             # Program Parallel Region
                             # Program Call Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                             ret = self.proc_443_(var_437, var_435)
                             if not ret:
                                 # Program TransitionState Region
@@ -2629,11 +2629,11 @@ class Database:
                 var_452 = tuple_448_0
                 if var_449 in self.index_451:
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_443_(var_452, var_449)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_454_(var_449)
                         if ret:
                             # Program TransitionState Region
@@ -2697,7 +2697,7 @@ class Database:
             var_507 = vec_177[vec_index177]
             vec_index177 += 1
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
             ret = self.proc_511_(var_507, var_507)
             if not ret:
                 # Program TransitionState Region
@@ -2720,7 +2720,7 @@ class Database:
             # Program TupleCompare Region
             if self.var_8 == var_510:
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                 ret = self.proc_403_(var_508, var_509)
                 if not ret:
                     # Program TransitionState Region
@@ -2739,7 +2739,7 @@ class Database:
                         # Program VectorAppend Region
                         vec_530.append(var_509)
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
             ret = self.proc_438_(var_508, var_509)
             if not ret:
                 # Program TransitionState Region
@@ -2765,7 +2765,7 @@ class Database:
                 if not present_bit:
                     self.index_363[tuple_509_508[0]].append(tuple_509_508[1])
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
             ret = self.proc_292_(var_509)
             if not ret:
                 # Program TransitionState Region
@@ -2779,7 +2779,7 @@ class Database:
                         self.index_363[tuple_509_508[0]].append(tuple_509_508[1])
                     # Program Parallel Region
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                     ret = self.proc_526_(var_508, var_509)
                     if not ret:
                         # Program TransitionState Region
@@ -2818,15 +2818,15 @@ class Database:
                 var_533 = tuple_531_0
                 if var_532 in self.index_469:
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_403_(var_533, var_532)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_472_(var_532)
                         if ret:
                             # Program Call Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                             ret = self.proc_475_(var_533)
                             if not ret:
                                 # Program TransitionState Region
@@ -2858,15 +2858,15 @@ class Database:
                 var_543 = tuple_541_0
                 if var_542 in self.index_289:
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_403_(var_543, var_542)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_292_(var_542)
                         if ret:
                             # Program Call Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                             ret = self.proc_408_(var_543)
                             if not ret:
                                 # Program TransitionState Region
@@ -2898,16 +2898,16 @@ class Database:
                 var_550 = tuple_548_0
                 if var_549 in self.index_289:
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_438_(var_550, var_549)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_292_(var_549)
                         if ret:
                             # Program Parallel Region
                             # Program Call Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                             ret = self.proc_443_(var_550, var_549)
                             if not ret:
                                 # Program TransitionState Region
@@ -2954,15 +2954,15 @@ class Database:
                     tuple_555_1_index += 1
                     var_560 = tuple_555_1
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_561_(var_559, var_556)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_526_(var_556, var_560)
                         if ret:
                             # Program Call Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                             ret = self.proc_566_(var_559, var_560)
                             if not ret:
                                 # Program TransitionState Region
@@ -2995,11 +2995,11 @@ class Database:
                 var_573 = tuple_571_0
                 if var_572 in self.index_451:
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_443_(var_573, var_572)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_454_(var_572)
                         if ret:
                             # Program TransitionState Region
@@ -3078,7 +3078,7 @@ class Database:
             if state == 2:
                 self.table_75[tuple_241_242] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_1182_(self.var_2, var_241, var_242)
                 if ret:
                     # Program Series Region
@@ -3294,7 +3294,7 @@ class Database:
                     if not present_bit:
                         self.index_374[tuple_479_478[0]].append(tuple_479_478[1])
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
                 ret = self.proc_292_(var_479)
                 if not ret:
                     # Program TransitionState Region
@@ -3307,7 +3307,7 @@ class Database:
                         if not present_bit:
                             self.index_374[tuple_479_478[0]].append(tuple_479_478[1])
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                         ret = self.proc_483_(var_478, var_479, self.var_2)
                         if not ret:
                             # Program TransitionState Region
@@ -3367,7 +3367,7 @@ class Database:
                     if not present_bit:
                         self.index_459[tuple_479_478[0]].append(tuple_479_478[1])
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
                 ret = self.proc_472_(var_479)
                 if not ret:
                     # Program TransitionState Region
@@ -3380,7 +3380,7 @@ class Database:
                         if not present_bit:
                             self.index_459[tuple_479_478[0]].append(tuple_479_478[1])
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                         ret = self.proc_494_(var_478, var_479, self.var_9)
                         if not ret:
                             # Program TransitionState Region
@@ -3411,15 +3411,15 @@ class Database:
                 var_502 = tuple_500_0
                 if var_501 in self.index_289:
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_423_(var_502, var_501)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_292_(var_501)
                         if ret:
                             # Program Call Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                             ret = self.proc_428_(var_502, var_501, self.var_10)
                             if not ret:
                                 # Program TransitionState Region
@@ -3486,7 +3486,7 @@ class Database:
             if state == 2:
                 self.table_15[tuple_293] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_1188_(var_293)
                 if ret:
                     # Program Series Region
@@ -3526,7 +3526,7 @@ class Database:
             if state == 2:
                 self.table_78[tuple_296_297] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_1170_(var_296, var_297)
                 if ret:
                     # Program Series Region
@@ -3567,7 +3567,7 @@ class Database:
             if state == 2:
                 self.table_15[tuple_300] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_953_(var_300)
                 if ret:
                     # Program Series Region
@@ -3622,7 +3622,7 @@ class Database:
         if state == 1:
             self.table_28[tuple_372_371] = 2 | 4
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
             ret = self.proc_1050_(var_371, var_372)
 
         # Program Return Region
@@ -3684,7 +3684,7 @@ class Database:
             if state == 2:
                 self.table_15[tuple_383] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_965_(self.var_0, var_383)
                 if ret:
                     # Program Series Region
@@ -3724,7 +3724,7 @@ class Database:
             if state == 2:
                 self.table_145[tuple_404_405] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_1154_(self.var_8, var_404, var_405)
                 if ret:
                     # Program Series Region
@@ -3765,7 +3765,7 @@ class Database:
             if state == 2:
                 self.table_24[tuple_409] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_1121_(var_409)
                 if ret:
                     # Program Series Region
@@ -3847,15 +3847,15 @@ class Database:
                 var_470 = tuple_467_0
                 if var_468 in self.index_469:
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_403_(var_470, var_468)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_472_(var_468)
                         if ret:
                             # Program Call Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                             ret = self.proc_475_(var_470)
                             if not ret:
                                 # Program TransitionState Region
@@ -3917,7 +3917,7 @@ class Database:
             if state == 2:
                 self.table_20[tuple_429_430_10] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_1016_(var_430, var_429)
                 if ret:
                     # Program Series Region
@@ -3959,7 +3959,7 @@ class Database:
             if state == 2:
                 self.table_151[tuple_439_440] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_1142_(var_439, var_440)
                 if ret:
                     # Program Series Region
@@ -3999,7 +3999,7 @@ class Database:
             if state == 2:
                 self.table_154[tuple_444_445] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_1132_(var_445, var_444)
                 if ret:
                     # Program Series Region
@@ -4090,7 +4090,7 @@ class Database:
             if state == 2:
                 self.table_24[tuple_473] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_1111_(var_473)
                 if ret:
                     # Program Series Region
@@ -4130,7 +4130,7 @@ class Database:
             if state == 2:
                 self.table_24[tuple_476] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_1099_(var_476)
                 if ret:
                     # Program Series Region
@@ -4170,7 +4170,7 @@ class Database:
             if state == 2:
                 self.table_20[tuple_484_485_2] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_998_(var_485, var_484)
                 if ret:
                     # Program Series Region
@@ -4212,7 +4212,7 @@ class Database:
             if state == 2:
                 self.table_20[tuple_495_496_9] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_1025_(var_496, var_495)
                 if ret:
                     # Program Series Region
@@ -4254,7 +4254,7 @@ class Database:
             if state == 2:
                 self.table_17[tuple_512_513] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_926_(var_513)
                 if ret:
                     # Program Series Region
@@ -4315,15 +4315,15 @@ class Database:
                     tuple_580_1_index += 1
                     var_583 = tuple_580_1
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_561_(var_582, var_581)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_526_(var_581, var_583)
                         if ret:
                             # Program Call Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                             ret = self.proc_566_(var_582, var_583)
                             if not ret:
                                 # Program TransitionState Region
@@ -4370,7 +4370,7 @@ class Database:
             if state == 2:
                 self.table_81[tuple_527_528] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_1050_(var_528, var_527)
                 if ret:
                     # Program Series Region
@@ -4411,7 +4411,7 @@ class Database:
             if state == 2:
                 self.table_17[tuple_562_563] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_1081_(var_562, var_563)
                 if ret:
                     # Program Series Region
@@ -4452,7 +4452,7 @@ class Database:
             if state == 2:
                 self.table_17[tuple_567_568] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
                 ret = self.proc_912_(var_567, var_568)
                 if ret:
                     # Program Series Region
@@ -4652,7 +4652,7 @@ class Database:
             if var_595 in self.index_451:
                 if var_595 in self.index_596:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_595 = var_595
                     prev_state = self.table_15[tuple_595]
                     state = prev_state & 3
@@ -4707,7 +4707,7 @@ class Database:
             if var_611 in self.index_261:
                 if var_611 in self.index_248:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_611 = var_611
                     prev_state = self.table_15[tuple_611]
                     state = prev_state & 3
@@ -4932,11 +4932,11 @@ class Database:
                 var_643 = tuple_641_0
                 if var_642 in self.index_451:
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_443_(var_643, var_642)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_454_(var_642)
                         if ret:
                             # Program TransitionState Region
@@ -5012,7 +5012,7 @@ class Database:
             var_648 = vec_647[vec_index647]
             vec_index647 += 1
             # Program TransitionState Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
             tuple_648 = var_648
             prev_state = self.table_69[tuple_648]
             state = prev_state & 3
@@ -5033,7 +5033,7 @@ class Database:
             if var_651 in self.index_261:
                 if var_651 in self.index_248:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_651 = var_651
                     prev_state = self.table_15[tuple_651]
                     state = prev_state & 3
@@ -5096,7 +5096,7 @@ class Database:
             var_658 = vec_657[vec_index657]
             vec_index657 += 1
             # Program TransitionState Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
             tuple_658 = var_658
             prev_state = self.table_47[tuple_658]
             state = prev_state & 3
@@ -5117,7 +5117,7 @@ class Database:
             if var_661 in self.index_210:
                 if var_661 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_661 = var_661
                     prev_state = self.table_15[tuple_661]
                     state = prev_state & 3
@@ -5180,7 +5180,7 @@ class Database:
             var_668 = vec_667[vec_index667]
             vec_index667 += 1
             # Program TransitionState Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
             tuple_668 = var_668
             prev_state = self.table_51[tuple_668]
             state = prev_state & 3
@@ -5201,7 +5201,7 @@ class Database:
             if var_671 in self.index_206:
                 if var_671 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_671 = var_671
                     prev_state = self.table_15[tuple_671]
                     state = prev_state & 3
@@ -5284,7 +5284,7 @@ class Database:
             if var_682 in self.index_202:
                 if var_682 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_682 = var_682
                     prev_state = self.table_15[tuple_682]
                     state = prev_state & 3
@@ -5367,7 +5367,7 @@ class Database:
             if var_693 in self.index_198:
                 if var_693 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_693 = var_693
                     prev_state = self.table_15[tuple_693]
                     state = prev_state & 3
@@ -5450,7 +5450,7 @@ class Database:
             if var_704 in self.index_194:
                 if var_704 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_704 = var_704
                     prev_state = self.table_15[tuple_704]
                     state = prev_state & 3
@@ -5533,7 +5533,7 @@ class Database:
             if var_715 in self.index_190:
                 if var_715 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_715 = var_715
                     prev_state = self.table_15[tuple_715]
                     state = prev_state & 3
@@ -5616,7 +5616,7 @@ class Database:
             if var_726 in self.index_186:
                 if var_726 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_726 = var_726
                     prev_state = self.table_15[tuple_726]
                     state = prev_state & 3
@@ -5699,7 +5699,7 @@ class Database:
             if var_737 in self.index_171:
                 if var_737 in self.index_172:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_737 = var_737
                     prev_state = self.table_15[tuple_737]
                     state = prev_state & 3
@@ -5833,7 +5833,7 @@ class Database:
             if var_749 in self.index_451:
                 if var_749 in self.index_596:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_749 = var_749
                     prev_state = self.table_15[tuple_749]
                     state = prev_state & 3
@@ -5857,7 +5857,7 @@ class Database:
             if (var_756, var_757) in self.index_758:
                 if (var_756, var_757) in self.index_759:
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_756_757 = (var_756, var_757)
                     prev_state = self.table_126[tuple_756_757]
                     state = prev_state & 3
@@ -6012,7 +6012,7 @@ class Database:
             vec_index773 += 1
             # Program Parallel Region
             # Program TransitionState Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
             tuple_774_775 = (var_774, var_775)
             prev_state = self.table_84[tuple_774_775]
             state = prev_state & 3
@@ -6031,7 +6031,7 @@ class Database:
                 # Program VectorAppend Region
                 vec_776.append(var_774)
             # Program TransitionState Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
             tuple_774_775 = (var_774, var_775)
             prev_state = self.table_84[tuple_774_775]
             state = prev_state & 3
@@ -6050,7 +6050,7 @@ class Database:
                 # Program VectorAppend Region
                 vec_776.append(var_774)
             # Program TransitionState Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
             tuple_774_775 = (var_774, var_775)
             prev_state = self.table_84[tuple_774_775]
             state = prev_state & 3
@@ -6069,7 +6069,7 @@ class Database:
                 # Program VectorAppend Region
                 vec_776.append(var_774)
             # Program TransitionState Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
             tuple_774_775 = (var_774, var_775)
             prev_state = self.table_84[tuple_774_775]
             state = prev_state & 3
@@ -6102,7 +6102,7 @@ class Database:
                     tuple_777_1_index += 1
                     var_779 = tuple_777_1
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_778_779 = (var_778, var_779)
                     prev_state = self.table_114[tuple_778_779]
                     state = prev_state & 3
@@ -6131,7 +6131,7 @@ class Database:
                     tuple_781_1_index += 1
                     var_783 = tuple_781_1
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_782_783 = (var_782, var_783)
                     prev_state = self.table_106[tuple_782_783]
                     state = prev_state & 3
@@ -6160,7 +6160,7 @@ class Database:
                     tuple_785_1_index += 1
                     var_787 = tuple_785_1
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_786_787 = (var_786, var_787)
                     prev_state = self.table_98[tuple_786_787]
                     state = prev_state & 3
@@ -6189,7 +6189,7 @@ class Database:
                     tuple_789_1_index += 1
                     var_791 = tuple_789_1
                     # Program TransitionState Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
                     tuple_790_791 = (var_790, var_791)
                     prev_state = self.table_90[tuple_790_791]
                     state = prev_state & 3
@@ -6502,7 +6502,7 @@ class Database:
             vec_index832 += 1
             # Program Parallel Region
             # Program TransitionState Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
             tuple_833_834 = (var_833, var_834)
             prev_state = self.table_87[tuple_833_834]
             state = prev_state & 3
@@ -6521,7 +6521,7 @@ class Database:
                 # Program VectorAppend Region
                 vec_835.append(var_833)
             # Program TransitionState Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
             tuple_833_834 = (var_833, var_834)
             prev_state = self.table_87[tuple_833_834]
             state = prev_state & 3
@@ -6540,7 +6540,7 @@ class Database:
                 # Program VectorAppend Region
                 vec_835.append(var_833)
             # Program TransitionState Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
             tuple_833_834 = (var_833, var_834)
             prev_state = self.table_87[tuple_833_834]
             state = prev_state & 3
@@ -6559,7 +6559,7 @@ class Database:
                 # Program VectorAppend Region
                 vec_835.append(var_833)
             # Program TransitionState Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildEagerSuccessorRegions
             tuple_833_834 = (var_833, var_834)
             prev_state = self.table_87[tuple_833_834]
             state = prev_state & 3
@@ -6865,7 +6865,7 @@ class Database:
             if state == 2:
                 self.table_26[tuple_875] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker::call_pred
                 ret = self.proc_1069_(var_875)
                 if ret:
                     # Program Series Region
@@ -6908,7 +6908,7 @@ class Database:
             if state == 2:
                 self.table_28[tuple_878_879] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker::call_pred
                 ret = self.proc_1050_(var_879, var_878)
                 if ret:
                     # Program Series Region
@@ -6935,7 +6935,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker
         ret = self.proc_1042_(var_881)
         if ret:
             # Program Return Region
@@ -6952,7 +6952,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker
         ret = self.proc_900_(var_884, var_885)
         if ret:
             # Program Return Region
@@ -6985,7 +6985,7 @@ class Database:
             if state == 2:
                 self.table_33[tuple_888_889] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker::call_pred
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: BuildTopDownInsertChecker::call_pred
                 ret = self.proc_890_(var_889, var_888)
                 if ret:
                     # Program Series Region
@@ -7034,13 +7034,13 @@ class Database:
                         # Program Series Region
                         # Program Parallel Region
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_438_(var_897, var_896)
                         if not ret:
                             # Program Return Region
                             return False
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_292_(var_896)
                         if not ret:
                             # Program Return Region
@@ -7076,7 +7076,7 @@ class Database:
                 self.table_17[tuple_901_902] = 0 | 4
                 # Program Parallel Region
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                 ret = self.proc_904_(var_901, var_902)
                 if ret:
                     # Program Series Region
@@ -7093,7 +7093,7 @@ class Database:
                     # Program Return Region
                     return True
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                 ret = self.proc_908_(var_901, var_902)
                 if ret:
                     # Program Series Region
@@ -7121,7 +7121,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
         ret = self.proc_926_(var_906)
         if ret:
             # Program Return Region
@@ -7138,7 +7138,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
         ret = self.proc_912_(var_909, var_910)
         if ret:
             # Program Return Region
@@ -7197,13 +7197,13 @@ class Database:
                         # Program Series Region
                         # Program Parallel Region
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_561_(var_922, var_921)
                         if not ret:
                             # Program Return Region
                             return False
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_526_(var_921, var_923)
                         if not ret:
                             # Program Return Region
@@ -7239,7 +7239,7 @@ class Database:
                 self.table_15[tuple_927] = 0 | 4
                 # Program Parallel Region
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                 ret = self.proc_929_(var_927)
                 if ret:
                     # Program Series Region
@@ -7255,7 +7255,7 @@ class Database:
                     # Program Return Region
                     return True
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                 ret = self.proc_932_(var_927)
                 if ret:
                     # Program Series Region
@@ -7311,7 +7311,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
         ret = self.proc_944_(var_933)
         if ret:
             # Program Return Region
@@ -7329,13 +7329,13 @@ class Database:
         # Program Series Region
         # Program Parallel Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Union.cpp: BuildTopDownUnionChecker::call_preds
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Union.cpp: BuildTopDownUnionChecker::call_preds
         ret = self.proc_947_(var_945)
         if ret:
             # Program Return Region
             return True
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Union.cpp: BuildTopDownUnionChecker::call_preds
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Union.cpp: BuildTopDownUnionChecker::call_preds
         ret = self.proc_950_(var_945)
         if ret:
             # Program Return Region
@@ -7352,7 +7352,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
         ret = self.proc_965_(self.var_0, var_948)
         if ret:
             # Program Return Region
@@ -7369,7 +7369,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
         ret = self.proc_953_(var_951)
         if ret:
             # Program Return Region
@@ -7423,13 +7423,13 @@ class Database:
                         # Program Series Region
                         # Program Parallel Region
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_292_(var_961)
                         if not ret:
                             # Program Return Region
                             return False
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_295_(var_962, var_961)
                         if not ret:
                             # Program Return Region
@@ -7513,7 +7513,7 @@ class Database:
                     self.table_20[tuple_977_973_974] = 0 | 4
                     # Program Parallel Region
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_978_(var_977, var_973, var_974)
                     if ret:
                         # Program Series Region
@@ -7532,7 +7532,7 @@ class Database:
                         # Program Return Region
                         return True
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_988_(var_977, var_973, var_974)
                     if ret:
                         # Program Series Region
@@ -7551,7 +7551,7 @@ class Database:
                         # Program Return Region
                         return True
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_993_(var_977, var_973, var_974)
                     if ret:
                         # Program Series Region
@@ -7581,7 +7581,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
         ret = self.proc_1025_(var_980, var_979)
         if ret:
             # Program Return Region
@@ -7598,7 +7598,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
         ret = self.proc_1016_(var_990, var_989)
         if ret:
             # Program Return Region
@@ -7615,7 +7615,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
         ret = self.proc_998_(var_995, var_994)
         if ret:
             # Program Return Region
@@ -7636,7 +7636,7 @@ class Database:
         if state == 1:
             # Program Series Region
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
             ret = self.proc_292_(var_999)
             if not ret:
                 # Program Return Region
@@ -7657,7 +7657,7 @@ class Database:
             if state == 2:
                 self.table_41[tuple_999_1000] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
                 ret = self.proc_292_(var_999)
                 if not ret:
                     # Program Call Region
@@ -7730,7 +7730,7 @@ class Database:
                     if var_1018 == var_1023:
                         # Program Series Region
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_292_(var_1022)
                         if not ret:
                             # Program Return Region
@@ -7756,7 +7756,7 @@ class Database:
         if state == 1:
             # Program Series Region
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
             ret = self.proc_472_(var_1026)
             if not ret:
                 # Program Return Region
@@ -7777,7 +7777,7 @@ class Database:
             if state == 2:
                 self.table_38[tuple_1026_1027] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
                 ret = self.proc_472_(var_1026)
                 if not ret:
                     # Program Call Region
@@ -7827,7 +7827,7 @@ class Database:
                 self.table_15[tuple_1043] = 0 | 4
                 # Program Parallel Region
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                 ret = self.proc_929_(var_1043)
                 if ret:
                     # Program Series Region
@@ -7843,7 +7843,7 @@ class Database:
                     # Program Return Region
                     return True
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                 ret = self.proc_932_(var_1043)
                 if ret:
                     # Program Series Region
@@ -7874,7 +7874,7 @@ class Database:
         if state == 1:
             # Program Series Region
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
             ret = self.proc_292_(var_1051)
             if not ret:
                 # Program Return Region
@@ -7895,7 +7895,7 @@ class Database:
             if state == 2:
                 self.table_44[tuple_1051_1052] = 0 | 4
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
                 ret = self.proc_292_(var_1051)
                 if not ret:
                     # Program Call Region
@@ -7945,7 +7945,7 @@ class Database:
                     self.table_20[tuple_1059_1060_1064] = 0 | 4
                     # Program Parallel Region
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_978_(var_1059, var_1060, var_1064)
                     if ret:
                         # Program Series Region
@@ -7964,7 +7964,7 @@ class Database:
                         # Program Return Region
                         return True
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_988_(var_1059, var_1060, var_1064)
                     if ret:
                         # Program Series Region
@@ -7983,7 +7983,7 @@ class Database:
                         # Program Return Region
                         return True
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_993_(var_1059, var_1060, var_1064)
                     if ret:
                         # Program Series Region
@@ -8049,7 +8049,7 @@ class Database:
                     if var_1070 == var_1078:
                         # Program Series Region
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_443_(var_1078, var_1077)
                         if not ret:
                             # Program Return Region
@@ -8079,13 +8079,13 @@ class Database:
             self.table_17[tuple_1082_1083] = 0 | 4
             # Program Parallel Region
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
             ret = self.proc_904_(var_1082, var_1083)
             if ret:
                 # Program Return Region
                 return True
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
             ret = self.proc_908_(var_1082, var_1083)
             if ret:
                 # Program Return Region
@@ -8139,13 +8139,13 @@ class Database:
                         # Program Series Region
                         # Program Parallel Region
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_403_(var_1108, var_1107)
                         if not ret:
                             # Program Return Region
                             return False
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_472_(var_1107)
                         if not ret:
                             # Program Return Region
@@ -8175,13 +8175,13 @@ class Database:
             self.table_24[tuple_1112] = 0 | 4
             # Program Parallel Region
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
             ret = self.proc_1114_(var_1112)
             if ret:
                 # Program Return Region
                 return True
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
             ret = self.proc_1117_(var_1112)
             if ret:
                 # Program Return Region
@@ -8198,7 +8198,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
         ret = self.proc_1121_(var_1115)
         if ret:
             # Program Return Region
@@ -8215,7 +8215,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
         ret = self.proc_1099_(var_1118)
         if ret:
             # Program Return Region
@@ -8269,13 +8269,13 @@ class Database:
                         # Program Series Region
                         # Program Parallel Region
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_403_(var_1129, var_1128)
                         if not ret:
                             # Program Return Region
                             return False
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_292_(var_1128)
                         if not ret:
                             # Program Return Region
@@ -8319,13 +8319,13 @@ class Database:
                         # Program Series Region
                         # Program Parallel Region
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_438_(var_1139, var_1138)
                         if not ret:
                             # Program Return Region
                             return False
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_292_(var_1138)
                         if not ret:
                             # Program Return Region
@@ -8377,7 +8377,7 @@ class Database:
                     self.table_20[tuple_1143_1144_1147] = 0 | 4
                     # Program Parallel Region
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_978_(var_1143, var_1144, var_1147)
                     if ret:
                         # Program Series Region
@@ -8396,7 +8396,7 @@ class Database:
                         # Program Return Region
                         return True
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_988_(var_1143, var_1144, var_1147)
                     if ret:
                         # Program Series Region
@@ -8415,7 +8415,7 @@ class Database:
                         # Program Return Region
                         return True
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_993_(var_1143, var_1144, var_1147)
                     if ret:
                         # Program Series Region
@@ -8476,7 +8476,7 @@ class Database:
                 self.table_20[tuple_1160_1161_1162] = 0 | 4
                 # Program Parallel Region
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                 ret = self.proc_978_(var_1160, var_1161, var_1162)
                 if ret:
                     # Program Series Region
@@ -8495,7 +8495,7 @@ class Database:
                     # Program Return Region
                     return True
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                 ret = self.proc_988_(var_1160, var_1161, var_1162)
                 if ret:
                     # Program Series Region
@@ -8514,7 +8514,7 @@ class Database:
                     # Program Return Region
                     return True
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                 ret = self.proc_993_(var_1160, var_1161, var_1162)
                 if ret:
                     # Program Series Region
@@ -8565,7 +8565,7 @@ class Database:
                     if var_1172 == var_1177:
                         # Program Series Region
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: BuildTopDownJoinChecker
                         ret = self.proc_240_(var_1176, var_1177)
                         if not ret:
                             # Program Return Region
@@ -8611,13 +8611,13 @@ class Database:
             self.table_15[tuple_1189] = 0 | 4
             # Program Parallel Region
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
             ret = self.proc_929_(var_1189)
             if ret:
                 # Program Return Region
                 return True
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
             ret = self.proc_932_(var_1189)
             if ret:
                 # Program Return Region
@@ -8642,7 +8642,7 @@ class Database:
             self.table_44[tuple_1204_1203] = 2 | 4
             # Program Series Region
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CheckInNegatedView
             ret = self.proc_292_(var_1204)
             if ret:
                 # Program Series Region
@@ -8663,7 +8663,7 @@ class Database:
                 # Program Return Region
                 return False
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CreateBottomUpNegationRemover
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Negate.cpp: CreateBottomUpNegationRemover
             ret = self.proc_1449_(var_1204, var_1203)
             if ret:
                 # Program Series Region
@@ -8826,7 +8826,7 @@ class Database:
         # Program Series Region
         # Program Induction Init Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: CreateBottomUpTupleRemover
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: CreateBottomUpTupleRemover
         ret = self.proc_1250_(var_1248)
         if not ret:
             # Program Parallel Region
@@ -8845,7 +8845,7 @@ class Database:
                 var_1254 = vec_1253[vec_index1253]
                 vec_index1253 += 1
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: ReAddToNegatedView
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: ReAddToNegatedView
                 ret = self.proc_1255_(var_1248)
                 if ret:
                     # Program TransitionState Region
@@ -8859,7 +8859,7 @@ class Database:
                         if not present_bit:
                             self.index_459[tuple_1248_1254[0]].append(tuple_1248_1254[1])
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                         ret = self.proc_494_(var_1254, var_1248, self.var_9)
                         if not ret:
                             # Program TransitionState Region
@@ -8913,7 +8913,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
         ret = self.proc_1111_(var_1251)
         if ret:
             # Program Return Region
@@ -9046,7 +9046,7 @@ class Database:
             ret = self.proc_1310_(var_1296)
 
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Optimize.cpp: InlineCalls: /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Optimize.cpp: InlineCalls: /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
             ret = self.proc_1188_(var_1296)
 
         # Program Return Region
@@ -9075,7 +9075,7 @@ class Database:
         # Program Induction Init Region
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: CreateBottomUpTupleRemover
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: CreateBottomUpTupleRemover
         ret = self.proc_1347_(var_1308)
         if not ret:
             # Program Parallel Region
@@ -9094,7 +9094,7 @@ class Database:
                 var_1351 = vec_1350[vec_index1350]
                 vec_index1350 += 1
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: ReAddToNegatedView
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: ReAddToNegatedView
                 ret = self.proc_1352_(var_1308)
                 if ret:
                     # Program TransitionState Region
@@ -9109,7 +9109,7 @@ class Database:
                             self.index_363[tuple_1308_1351[0]].append(tuple_1308_1351[1])
                         # Program Parallel Region
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                         ret = self.proc_526_(var_1351, var_1308)
                         if not ret:
                             # Program TransitionState Region
@@ -9148,7 +9148,7 @@ class Database:
                 var_1357 = vec_1356[vec_index1356]
                 vec_index1356 += 1
                 # Program Call Region
-                # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: ReAddToNegatedView
+                # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: ReAddToNegatedView
                 ret = self.proc_1358_(var_1308)
                 if ret:
                     # Program TransitionState Region
@@ -9162,7 +9162,7 @@ class Database:
                         if not present_bit:
                             self.index_374[tuple_1308_1357[0]].append(tuple_1308_1357[1])
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                         ret = self.proc_483_(var_1357, var_1308, self.var_2)
                         if not ret:
                             # Program TransitionState Region
@@ -9210,15 +9210,15 @@ class Database:
                     tuple_1379_1_index += 1
                     var_1382 = tuple_1379_1
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                     ret = self.proc_561_(var_1381, var_1380)
                     if ret:
                         # Program Call Region
-                        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
+                        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Join.cpp: ContinueJoinWorkItem::Run
                         ret = self.proc_526_(var_1380, var_1382)
                         if ret:
                             # Program Call Region
-                            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
+                            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Build.h: BuildInsertCheck
                             ret = self.proc_566_(var_1381, var_1382)
                             if not ret:
                                 # Program TransitionState Region
@@ -9291,7 +9291,7 @@ class Database:
             ret = self.proc_1330_(var_1311, var_1311)
 
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Optimize.cpp: InlineCalls: /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Optimize.cpp: InlineCalls: /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
             ret = self.proc_1081_(var_1311, var_1311)
 
         # Program Return Region
@@ -9346,7 +9346,7 @@ class Database:
             ret = self.proc_1330_(var_1338, var_1339)
 
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Optimize.cpp: InlineCalls: /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Optimize.cpp: InlineCalls: /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
             ret = self.proc_1081_(var_1338, var_1339)
 
         # Program Return Region
@@ -9361,7 +9361,7 @@ class Database:
         found: bool = False
         # Program Series Region
         # Program Call Region
-        # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
+        # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Tuple.cpp: BuildTopDownTupleChecker::call_pred
         ret = self.proc_1188_(var_1348)
         if ret:
             # Program Return Region
@@ -9408,7 +9408,7 @@ class Database:
                     self.table_20[tuple_1490_1353_1491] = 0 | 4
                     # Program Parallel Region
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_978_(var_1490, var_1353, var_1491)
                     if ret:
                         # Program Series Region
@@ -9427,7 +9427,7 @@ class Database:
                         # Program Return Region
                         return True
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_988_(var_1490, var_1353, var_1491)
                     if ret:
                         # Program Series Region
@@ -9446,7 +9446,7 @@ class Database:
                         # Program Return Region
                         return True
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_993_(var_1490, var_1353, var_1491)
                     if ret:
                         # Program Series Region
@@ -9626,7 +9626,7 @@ class Database:
         if state == 1:
             self.table_33[tuple_1397_1396] = 2 | 4
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
             ret = self.proc_890_(var_1396, var_1397)
 
         # Program Return Region
@@ -9648,7 +9648,7 @@ class Database:
         if state == 1:
             self.table_26[tuple_1406] = 2 | 4
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
             ret = self.proc_1069_(var_1406)
 
         # Program Return Region
@@ -9711,7 +9711,7 @@ class Database:
             ret = self.proc_1310_(var_1434)
 
             # Program Call Region
-            # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Optimize.cpp: InlineCalls: /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
+            # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Optimize.cpp: InlineCalls: /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Insert.cpp: CreateBottomUpInsertRemover
             ret = self.proc_1188_(var_1434)
 
         # Program Return Region
@@ -9756,7 +9756,7 @@ class Database:
                     self.table_20[tuple_1451_1450_1474] = 0 | 4
                     # Program Parallel Region
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_978_(var_1451, var_1450, var_1474)
                     if ret:
                         # Program Series Region
@@ -9775,7 +9775,7 @@ class Database:
                         # Program Return Region
                         return True
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_988_(var_1451, var_1450, var_1474)
                     if ret:
                         # Program Series Region
@@ -9794,7 +9794,7 @@ class Database:
                         # Program Return Region
                         return True
                     # Program Call Region
-                    # /Users/pag/Code/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
+                    # /Users/Steve/Desktop/TrailOfBits/DrLojekyll/lib/ControlFlow/Build/Induction.cpp: BuildTopDownInductionChecker::build_rule_checks
                     ret = self.proc_993_(var_1451, var_1450, var_1474)
                     if ret:
                         # Program Series Region
