@@ -105,34 +105,33 @@ falls_through_to_function(EA)
     , falls_through_to_function(ToEA).
 
 ;---------------------------------------------------------
-; Omit pseudo-flow edges that transfer to new functions.
+; Omit pseudo fall-throughs that transfer to functions.
 transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     , !function(ToEA).
 
-; Omit pseudo-flow edges that transfer to padding
+; Omit pseudo fall-throughs that transfer to padding
 ; instructions (i.e., instructions that exist between the 
 ; end of one function and the start of another).
 transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     , !falls_through_to_function(ToEA).
 
-; Omit pseudo-flow edges that transfer to new sections.
+; Omit pseudo fall-throughs that transfer to new sections.
 transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
-    , !section_start(ToEa).
+    , !section_start(ToEA).
 
-; Omit pseudo-flow edges that transfer to error instructions
+; Omit pseudo fall-throughs that transfer to error instructions.
 ; (e.g., HLT or UD2).
 transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
-    , instruction(ToEa, InsnType, _)
+    , instruction(ToEA, InsnType, _)
     , InsnType != INSN_HALT.
-
 
 ; If a terminator instruction, e.g. `jmp` or `ret` is immediately
 ; followed by a function head then we don't want to treat the
-; pseudo-flow as being an inter-procedural flow.
+; pseudo fall-through as being an inter-procedural flow.
 transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     , !falls_through_to_function(ToEA)
@@ -158,9 +157,6 @@ transfer(FromEA, ToEA, EDGE_TAIL_FUNCTION_CALL)
 transfer(FromEA, ToEA, EDGE_JUMP_TAKEN)
     : fixed_transfer(FromEA, ToEA, EDGE_JUMP_TAKEN)
     , !function(ToEA).
-
-;TODO (snagy2) only admit pseudo-fallthroughs if the target isn't the head of a function
-
 
 ;---------------------------------------------------------
 ; Interprocedural transfers, minus inlined thunk calls.

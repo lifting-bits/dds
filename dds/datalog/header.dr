@@ -54,7 +54,7 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 ; Return all section names.
 #query get_section_names(free bytes SecName)
 ; Return the section at 
-#query section_start(free u64 SecStart)
+#query section_start(bound u64 SecStart)
 
 ;---------------------------------------------------------
 ; Instruction objects.
