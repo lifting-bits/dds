@@ -106,6 +106,9 @@ falls_through_to_function(EA)
 
 ;---------------------------------------------------------
 ; Omit pseudo fall-throughs that transfer to new sections.
+;
+; TODO(snagy2): It's unclear if this impacts anything;
+; possible there is some inter-section transfer worth keeping?
 transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     , !section_start(ToEA).
