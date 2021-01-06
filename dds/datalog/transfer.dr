@@ -123,11 +123,6 @@ transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     , !falls_through_to_function(ToEA).
 
-
-transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
-    : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
-    , instruction(ToEA, InsnType, _).
-
 ; Omit pseudo fall-throughs that transfer to non-instructions;
 ; and pseudo fall-throughs that transfer to error instructions
 ; (e.g., x86's `hlt` and `ud2`).
