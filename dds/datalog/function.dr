@@ -63,13 +63,21 @@ function(JmpEA)
   , function(ToEA).
 
 ;---------------------------------------------------------
-; If an instruction begins a function, it is part of it.
-function_instruction(FuncEA, FuncEA)
-  : function(FuncEA).
 
-; A function's intraproc-connected instructions are part of it.
+
+; The first instruction of a function is always a member of
+; that function. In this case, we require that the instruction
+; be associated with a decoded instruction, otherwise it is
+; an external function.
+function_instruction(FuncEA, FuncEA)
+  : function(FuncEA)
+  , instruction(FuncEA, _, _).
+
+
+; If there's a flow between two instructions in a
+; function then the destination instruction of that flow is
+; also a part of the function.
 function_instruction(FuncEA, NextEA)
   : function_instruction(FuncEA, InsnEA)
   , intraproc_transfer(InsnEA, NextEA).
 
-  

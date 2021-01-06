@@ -2,7 +2,6 @@
 
 from abc import ABC, abstractmethod
 from aenum import NamedConstant
-from enum import Flag, auto
 from typing import Dict, Final, Optional, Union
 
 
@@ -17,42 +16,42 @@ class ControlFlowBehavior:
     HAS_DIRECT_TARGET = HAS_TARGET | TARGET_IS_DIRECT
 
 
-class ControlFlowEdgeKind(Flag):
+class ControlFlowEdgeKind(NamedConstant):
     # In a `call target`, this represents the flow between the `call`
     # instruction and `target`.
-    FUNCTION_CALL = auto()
+    FUNCTION_CALL = (1 << 1)
 
     # With `jmp target`, this represents the flow between the `jmp` and
     # `target`.
-    JUMP_TAKEN = auto()
+    JUMP_TAKEN = (1 << 2)
 
     # This represents the flow between one instruction and its next instruction.
     # For `jmp` instructions, this is a kind of pseudo edge.
-    FALL_THROUGH = auto()
+    FALL_THROUGH = (1 << 3)
 
     # This represents the flow between one instruction and its next instruction.
     # For `jmp` and `ret` instructions, this is a kind of pseudo edge. The goal
     # is to capture the notion of linear disassembly.
-    PSEUDO_FALL_THROUGH = auto()
+    PSEUDO_FALL_THROUGH = (1 << 4)
 
     # In something like a `jCC label`, this represents the flow between the
     # `jCC` and the following instruction.
-    JUMP_NOT_TAKEN = JUMP_TAKEN | FALL_THROUGH
+    JUMP_NOT_TAKEN = (1 << 5) | JUMP_TAKEN | FALL_THROUGH
 
     # In a `call target`, this represents the flow between `target` back
     # to the instruction following the `call`.
-    FUNCTION_CALL_RETURN = FUNCTION_CALL | FALL_THROUGH
+    FUNCTION_CALL_RETURN = (1 << 6) | FUNCTION_CALL | FALL_THROUGH
 
     # If we have a `jmp target`, where `target` is a function head.
     #
     # NOTE: This is a Datalog-derived edge type.
-    TAIL_FUNCTION_CALL = FUNCTION_CALL | JUMP_TAKEN
+    TAIL_FUNCTION_CALL = (1 << 7) | FUNCTION_CALL | JUMP_TAKEN
 
     # If we have something like `call $+5` on x86, which is used to get the
     # program counter onto the stack (or into a register).
     #
     # NOTE: This is a Datalog-derived edge type.
-    PC_THUNK_FUNCTION_CALL = FUNCTION_CALL | FUNCTION_CALL_RETURN
+    PC_THUNK_FUNCTION_CALL = (1 << 8) | FUNCTION_CALL | FUNCTION_CALL_RETURN
 
 
 class InstructionType(NamedConstant):
@@ -64,21 +63,26 @@ class InstructionType(NamedConstant):
     #
     # Represented with an empty flag set, i.e. it doesn't have either a target
     # or a fall-through.
-    ERROR = 0
+    ERROR = (1 << 16)
 
     # Normal, single-entry, single-exit instructions. These instructions
     # transfer control to the next instruction.
-    NORMAL = ControlFlowBehavior.HAS_FALL_THROUGH
+    NORMAL = (1 << 17) | ControlFlowBehavior.HAS_FALL_THROUGH
 
     # A direct jump, e.g. `jmp label` on x86.
     DIRECT_JUMP = \
-        ControlFlowBehavior.HAS_TARGET | ControlFlowBehavior.TARGET_IS_DIRECT
+        (1 << 18) | \
+        ControlFlowBehavior.HAS_TARGET | \
+        ControlFlowBehavior.TARGET_IS_DIRECT
 
     # An indirect jump, e.g. `jmp rax` or `jmp [rax]` on x86-64.
-    INDIRECT_JUMP = ControlFlowBehavior.HAS_TARGET
+    INDIRECT_JUMP = \
+        (1 << 19) | \
+        ControlFlowBehavior.HAS_TARGET
 
     # A conditional jump. E.g. `jz label` on x86.
     CONDITIONAL_DIRECT_JUMP = \
+        (1 << 20) | \
         ControlFlowBehavior.HAS_TARGET | \
         ControlFlowBehavior.HAS_FALL_THROUGH | \
         ControlFlowBehavior.TARGET_IS_CONDITIONAL | \
@@ -86,23 +90,27 @@ class InstructionType(NamedConstant):
 
     # A conditional jump. E.g. `jz label` on x86.
     CONDITIONAL_INDIRECT_JUMP = \
+        (1 << 21) | \
         ControlFlowBehavior.HAS_TARGET | \
         ControlFlowBehavior.HAS_FALL_THROUGH | \
         ControlFlowBehavior.TARGET_IS_CONDITIONAL
 
     # A direct function call, e.g. `call label`.
     DIRECT_FUNCTION_CALL = \
+        (1 << 22) | \
         ControlFlowBehavior.HAS_TARGET | \
         ControlFlowBehavior.HAS_FALL_THROUGH | \
         ControlFlowBehavior.TARGET_IS_DIRECT
 
     # An indirect function call, e.g. `call rax` or `call [rax]` on x86-64.
     INDIRECT_FUNCTION_CALL = \
+        (1 << 23) | \
         ControlFlowBehavior.HAS_TARGET | ControlFlowBehavior.HAS_FALL_THROUGH
 
     # A conditional direct function call. E.g. a conditional branch-and-link
     # on AArch32.
     CONDITIONAL_DIRECT_FUNCTION_CALL = \
+        (1 << 24) | \
         ControlFlowBehavior.HAS_TARGET | \
         ControlFlowBehavior.HAS_FALL_THROUGH | \
         ControlFlowBehavior.TARGET_IS_CONDITIONAL | \
@@ -111,55 +119,56 @@ class InstructionType(NamedConstant):
     # A conditional indirect function call. E.g. a conditional branch-and-link
     # on AArch32.
     CONDITIONAL_INDIRECT_FUNCTION_CALL = \
+        (1 << 25) | \
         ControlFlowBehavior.HAS_TARGET | \
         ControlFlowBehavior.HAS_FALL_THROUGH | \
         ControlFlowBehavior.TARGET_IS_CONDITIONAL
 
     # Function return, e.g. `ret` on x86.
-    FUNCTION_RETURN = 0
+    FUNCTION_RETURN = (1 << 26)
 
     # Function return, e.g. `ret` on x86.
     CONDITIONAL_FUNCTION_RETURN = \
+        (1 << 27) | \
         ControlFlowBehavior.HAS_FALL_THROUGH | \
         ControlFlowBehavior.TARGET_IS_CONDITIONAL
 
 
 _TARGET_TYPE: Final[Dict[InstructionType, Optional[ControlFlowEdgeKind]]] = {
-    id(InstructionType.NORMAL): None,
-    id(InstructionType.ERROR): None,
-    id(InstructionType.DIRECT_JUMP): ControlFlowEdgeKind.JUMP_TAKEN,
-    id(InstructionType.INDIRECT_JUMP): None,
-    id(InstructionType.CONDITIONAL_DIRECT_JUMP): ControlFlowEdgeKind.JUMP_TAKEN,
-    id(InstructionType.CONDITIONAL_INDIRECT_JUMP): None,
-    id(InstructionType.DIRECT_FUNCTION_CALL): ControlFlowEdgeKind.FUNCTION_CALL,
-    id(InstructionType.INDIRECT_FUNCTION_CALL): None,
-    id(InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL):
-    id(    ControlFlowEdgeKind.FUNCTION_CALL),
-    id(InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL): None,
-    id(InstructionType.FUNCTION_RETURN): None,
-    id(InstructionType.CONDITIONAL_FUNCTION_RETURN): None
+    InstructionType.NORMAL: None,
+    InstructionType.ERROR: None,
+    InstructionType.DIRECT_JUMP: ControlFlowEdgeKind.JUMP_TAKEN,
+    InstructionType.INDIRECT_JUMP: None,
+    InstructionType.CONDITIONAL_DIRECT_JUMP: ControlFlowEdgeKind.JUMP_TAKEN,
+    InstructionType.CONDITIONAL_INDIRECT_JUMP: None,
+    InstructionType.DIRECT_FUNCTION_CALL: ControlFlowEdgeKind.FUNCTION_CALL,
+    InstructionType.INDIRECT_FUNCTION_CALL: None,
+    InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL:
+        ControlFlowEdgeKind.FUNCTION_CALL,
+    InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL: None,
+    InstructionType.FUNCTION_RETURN: None,
+    InstructionType.CONDITIONAL_FUNCTION_RETURN: None
 }
 
-_FALL_THROUGH_TYPE: Final[Dict[int, Optional[ControlFlowEdgeKind]]] = {
-    id(InstructionType.NORMAL): ControlFlowEdgeKind.FALL_THROUGH,
-    id(InstructionType.ERROR): ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
-    id(InstructionType.DIRECT_JUMP): ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
-    id(InstructionType.INDIRECT_JUMP): ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
-    id(InstructionType.CONDITIONAL_DIRECT_JUMP):
+_FALL_THROUGH_TYPE: Final[
+    Dict[InstructionType, Optional[ControlFlowEdgeKind]]] = {
+    InstructionType.NORMAL: ControlFlowEdgeKind.FALL_THROUGH,
+    InstructionType.ERROR: ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
+    InstructionType.DIRECT_JUMP: ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
+    InstructionType.INDIRECT_JUMP: ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
+    InstructionType.CONDITIONAL_DIRECT_JUMP: ControlFlowEdgeKind.JUMP_NOT_TAKEN,
+    InstructionType.CONDITIONAL_INDIRECT_JUMP:
         ControlFlowEdgeKind.JUMP_NOT_TAKEN,
-    id(InstructionType.CONDITIONAL_INDIRECT_JUMP):
-        ControlFlowEdgeKind.JUMP_NOT_TAKEN,
-    id(InstructionType.DIRECT_FUNCTION_CALL):
+    InstructionType.DIRECT_FUNCTION_CALL:
         ControlFlowEdgeKind.FUNCTION_CALL_RETURN,
-    id(InstructionType.INDIRECT_FUNCTION_CALL):
+    InstructionType.INDIRECT_FUNCTION_CALL:
         ControlFlowEdgeKind.FUNCTION_CALL_RETURN,
-    id(InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL):
+    InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL:
         ControlFlowEdgeKind.FUNCTION_CALL_RETURN,
-    id(InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL):
+    InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL:
         ControlFlowEdgeKind.FUNCTION_CALL_RETURN,
-    id(InstructionType.FUNCTION_RETURN):
-        ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
-    id(InstructionType.CONDITIONAL_FUNCTION_RETURN):
+    InstructionType.FUNCTION_RETURN: ControlFlowEdgeKind.PSEUDO_FALL_THROUGH,
+    InstructionType.CONDITIONAL_FUNCTION_RETURN:
         ControlFlowEdgeKind.JUMP_NOT_TAKEN
 }
 
@@ -209,11 +218,11 @@ class Instruction(ABC):
 
     @property
     def fall_through_type(self) -> Optional[ControlFlowEdgeKind]:
-        return _FALL_THROUGH_TYPE[id(self.type)]
+        return _FALL_THROUGH_TYPE[self.type]
 
     @property
     def target_type(self) -> Optional[ControlFlowEdgeKind]:
-        return _TARGET_TYPE[id(self.type)]
+        return _TARGET_TYPE[self.type]
 
     @property
     def assembly(self) -> str:

@@ -96,6 +96,9 @@ def _x86_decode_error(insn: capstone.CsInsn) -> InstructionType:
 
 _X86_OP_TO_TYPE_DECODER: Final = {
     capstone.x86.X86_INS_CALL: _x86_decode_call,
+    capstone.x86.X86_INS_IRET: _x86_decode_ret,
+    capstone.x86.X86_INS_IRETD: _x86_decode_ret,
+    capstone.x86.X86_INS_IRETQ: _x86_decode_ret,
     capstone.x86.X86_INS_RET: _x86_decode_ret,
     capstone.x86.X86_INS_RETF: _x86_decode_ret,
     capstone.x86.X86_INS_RETFQ: _x86_decode_ret,
@@ -121,6 +124,9 @@ _X86_OP_TO_TYPE_DECODER: Final = {
     capstone.x86.X86_INS_JP: _x86_decode_jcc,
     capstone.x86.X86_INS_JRCXZ: _x86_decode_jcc,
     capstone.x86.X86_INS_JS: _x86_decode_jcc,
+    capstone.x86.X86_INS_LOOP: _x86_decode_jcc,
+    capstone.x86.X86_INS_LOOPE: _x86_decode_jcc,
+    capstone.x86.X86_INS_LOOPNE: _x86_decode_jcc,
     capstone.x86.X86_INS_HLT: _x86_decode_error,
     capstone.x86.X86_INS_UD0: _x86_decode_error,
     capstone.x86.X86_INS_UD2: _x86_decode_error,

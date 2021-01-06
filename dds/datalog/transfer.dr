@@ -78,8 +78,8 @@ fixed_transfer(CallEA, TargEA, EDGE_PC_THUNK_FUNCTION_CALL)
 
 ; Target of a function call.
 fixed_transfer(CallEA, TargEA, EDGE_FUNCTION_CALL)
-  : fixed_transfer(CallEA, TargEA, EDGE_FUNCTION_CALL)
-  , fixed_transfer(CallEA, FallEA, EDGE_FUNCTION_CALL_RETURN)
+  : raw_transfer(CallEA, TargEA, EDGE_FUNCTION_CALL)
+  , raw_transfer(CallEA, FallEA, EDGE_FUNCTION_CALL_RETURN)
   , TargEA != FallEA
   , plausible_instruction(TargEA).
 
@@ -88,8 +88,8 @@ fixed_transfer(CallEA, TargEA, EDGE_FUNCTION_CALL)
 ;
 ; TODO(pag): Add support for no-return functions.
 fixed_transfer(CallEA, FallEA, EDGE_FUNCTION_CALL_RETURN)
-  : fixed_transfer(CallEA, TargEA, EDGE_FUNCTION_CALL)
-  , fixed_transfer(CallEA, FallEA, EDGE_FUNCTION_CALL_RETURN)
+  : raw_transfer(CallEA, TargEA, EDGE_FUNCTION_CALL)
+  , raw_transfer(CallEA, FallEA, EDGE_FUNCTION_CALL_RETURN)
   , TargEA != FallEA
   , plausible_instruction(FallEA).
 
@@ -120,14 +120,14 @@ fixed_transfer(FromEA, ToEA, EdgeType)
 ; The base case is an instruction that falls-through
 ; into the head of a function.
 falls_through_to_function(EA)
-    : transfer(EA, FuncEA, EDGE_FALL_THROUGH)
+    : raw_transfer(EA, FuncEA, EDGE_FALL_THROUGH)
     , function(FuncEA).
 
 
 ; The inductive case is an instruction that falls-through
 ; to another instruction that falls-through to a function.
 falls_through_to_function(EA)
-    : transfer(EA, ToEA, EDGE_FALL_THROUGH)
+    : raw_transfer(EA, ToEA, EDGE_FALL_THROUGH)
     , falls_through_to_function(ToEA).
 
 
@@ -141,6 +141,15 @@ falls_through_to_function(EA)
 transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     , !falls_through_to_function(ToEA).
+
+
+; If a terminator instruction, e.g. `jmp` or `ret` is immediately
+; followed by a function head then we don't want to treat the
+; pseudo-flow as being an inter-procedural flow.
+transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
+    : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
+    , !falls_through_to_function(ToEA)
+    , !function(ToEA).
 
 
 ; Here we have an edge that isn't a jump or pseudo fall-through,
