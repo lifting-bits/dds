@@ -52,7 +52,9 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 ; Section objects.
 #message section(bytes SecName, u64 SecStart, u64 SecEnd)
 ; Return all section names.
-#query get_sections(free bytes SecName)
+#query get_section_names(free bytes SecName)
+; Return the section at 
+#query section_start(free u64 SecStart)
 
 ;---------------------------------------------------------
 ; Instruction objects.
@@ -86,7 +88,7 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 #message local_symbol(u64 SymEA, bytes SymName)
 
 ;---------------------------------------------------------
-; Transfer objects
+; Transfer objects.
 #message raw_transfer(u64 InsnEA, u64 NextEA, edgetype EdgeType)
 ; An adjusted transfer, e.g. that distinguishes between PC-
 ; thunk calls and non-PC thunk calls.

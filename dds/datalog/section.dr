@@ -1,5 +1,9 @@
 #import "header.dr"
 
 ;---------------------------------------------------------
-get_sections(SecName) 
+get_section_names(SecName) 
   : section(SecName, _, _).
+
+;---------------------------------------------------------
+section_start(SecStart)
+  : section(_, SecStart, _).
