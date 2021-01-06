@@ -120,14 +120,14 @@ fixed_transfer(FromEA, ToEA, EdgeType)
 ; The base case is an instruction that falls-through
 ; into the head of a function.
 falls_through_to_function(EA)
-    : raw_transfer(EA, FuncEA, EDGE_FALL_THROUGH)
+    : fixed_transfer(EA, FuncEA, EDGE_FALL_THROUGH)
     , function(FuncEA).
 
 
 ; The inductive case is an instruction that falls-through
 ; to another instruction that falls-through to a function.
 falls_through_to_function(EA)
-    : raw_transfer(EA, ToEA, EDGE_FALL_THROUGH)
+    : fixed_transfer(EA, ToEA, EDGE_FALL_THROUGH)
     , falls_through_to_function(ToEA).
 
 
@@ -141,6 +141,8 @@ falls_through_to_function(EA)
 transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
     , !falls_through_to_function(ToEA).
+
+;TODO (snagy2) only admit pseudo-fallthroughs if the target isn't the head of a function
 
 
 ; If a terminator instruction, e.g. `jmp` or `ret` is immediately
