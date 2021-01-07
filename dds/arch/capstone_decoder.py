@@ -22,8 +22,10 @@ _CAPSTONE_ARCH_MODE: Final[Dict[ArchName, int]] = {
     ArchName.AMD64_AVX512: capstone.CS_MODE_64,
     ArchName.AARCH32: capstone.CS_MODE_32,
     ArchName.AARCH64: capstone.CS_MODE_64,
-    ArchName.SPARC32: capstone.CS_MODE_32 | capstone.CS_MODE_BIG_ENDIAN,
-    ArchName.SPARC64: capstone.CS_MODE_64 | capstone.CS_MODE_BIG_ENDIAN | \
+    ArchName.SPARC32: capstone.CS_MODE_32 | \
+                      capstone.CS_MODE_BIG_ENDIAN,
+    ArchName.SPARC64: capstone.CS_MODE_64 | \
+                      capstone.CS_MODE_BIG_ENDIAN | \
                       capstone.CS_MODE_V9
 }
 

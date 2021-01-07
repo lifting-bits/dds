@@ -2,8 +2,8 @@
 
 ;---------------------------------------------------------
 get_section_names(SecName) 
-  : section(SecName, _, _).
+    : section(SecName, _, _).
 
 ;---------------------------------------------------------
 section_start(SecStart)
-  : section(_, SecStart, _).
+    : section(_, SecStart, _).

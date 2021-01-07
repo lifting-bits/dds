@@ -3,62 +3,62 @@
 ;---------------------------------------------------------
 ; Treat inter-procedrual transfer targets as function heads.
 function(FuncEA)
-  : transfer(_, FuncEA, EDGE_FUNCTION_CALL).
+    : transfer(_, FuncEA, EDGE_FUNCTION_CALL).
 
 ; Treat the binary's entrypoint as a function head.
 function(EntryPointEA)
-  : entrypoint(EntryPointEA)
-  , plausible_instruction(EntryPointEA).
+    : entrypoint(EntryPointEA)
+    , plausible_instruction(EntryPointEA).
 
 ; Parse constructor/destructor, imported/exported, and local 
 ; function heads.
 function(FuncEA)
-  : constructor_function(FuncEA)
-  , instruction(FuncEA, _, _).
+    : constructor_function(FuncEA)
+    , instruction(FuncEA, _, _).
 function(FuncEA)
-  : destructor_function(FuncEA)
-  , instruction(FuncEA, _, _).
+    : destructor_function(FuncEA)
+    , instruction(FuncEA, _, _).
 function(FuncEA)
-  : imported_function(FuncEA, _)
-  , instruction(FuncEA, _, _).
+    : imported_function(FuncEA, _)
+    , instruction(FuncEA, _, _).
 function(FuncEA)
-  : exported_function(FuncEA, _)
-  , instruction(FuncEA, _, _).
+    : exported_function(FuncEA, _)
+    , instruction(FuncEA, _, _).
 function(FuncEA)
-  : local_function(FuncEA, _)
-  , instruction(FuncEA, _, _).
+    : local_function(FuncEA, _)
+    , instruction(FuncEA, _, _).
 
 ; Treat imported, exported, and local symbols pointing to valid 
 ; instructions as function heads.
 function(FuncEA)
-  : imported_symbol(FuncEA, _)
-  , instruction(FuncEA, _, _).
+    : imported_symbol(FuncEA, _)
+    , instruction(FuncEA, _, _).
 function(FuncEA)
-  : exported_symbol(FuncEA, _)
-  , instruction(FuncEA, _, _).
+    : exported_symbol(FuncEA, _)
+    , instruction(FuncEA, _, _).
 function(FuncEA)
-  : local_symbol(FuncEA, _)
-  , instruction(FuncEA, _, _).
+    : local_symbol(FuncEA, _)
+    , instruction(FuncEA, _, _).
 
 ; Any type of control-flow transfer to an external is treated
 ; as a making that external into a function.
 function(FuncEA)
-  : external_symbol(FuncEA, _)
-  , raw_transfer(_, FuncEA, _).
+    : external_symbol(FuncEA, _)
+    , raw_transfer(_, FuncEA, _).
 
 ; The binary entrypoint is treated as a function.
 function(EntryPointEA)
-  : entrypoint(EntryPointEA)
-  , plausible_instruction(EntryPointEA).
+    : entrypoint(EntryPointEA)
+    , plausible_instruction(EntryPointEA).
 
 ; An indirect jump that has been re-written to have a known
 ; target, and where that target is a function, is also treated
 ; to be a function. In this case, we say that the indirect jump
 ; is likely the thunk in the `.plt` section of an ELF binary.
 function(JmpEA)
-  : instruction(JmpEA, INSN_INDIRECT_JUMP, _)
-  , transfer(JmpEA, ToEA, EDGE_JUMP_TAKEN)
-  , function(ToEA).
+    : instruction(JmpEA, INSN_INDIRECT_JUMP, _)
+    , transfer(JmpEA, ToEA, EDGE_JUMP_TAKEN)
+    , function(ToEA).
 
 ;---------------------------------------------------------
 ; The first instruction of a function is always a member of
@@ -66,12 +66,12 @@ function(JmpEA)
 ; be associated with a decoded instruction, otherwise it is
 ; an external function.
 function_instruction(FuncEA, FuncEA)
-  : function(FuncEA)
-  , instruction(FuncEA, _, _).
+    : function(FuncEA)
+    , instruction(FuncEA, _, _).
 
 ; If there's a flow between two instructions in a
 ; function then the destination instruction of that flow is
 ; also a part of the function.
 function_instruction(FuncEA, NextEA)
-  : function_instruction(FuncEA, InsnEA)
-  , intraproc_transfer(InsnEA, NextEA).
+    : function_instruction(FuncEA, InsnEA)
+    , intraproc_transfer(InsnEA, NextEA).
