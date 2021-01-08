@@ -56,10 +56,32 @@ dominates_invalid_instruction(EA)
     , !plausible_instruction(TargEA)
     , !plausible_instruction(FallEA).
 
-; Inductive case. We omit pseudo fall-throughs as these are
-; artificial edges.
+; Recursive case for fall-throughs.
 dominates_invalid_instruction(EA)
-    : instruction(EA, _, _)
-    , raw_transfer(EA, ToEA, EdgeType)
-    , EdgeType != EDGE_PSEUDO_FALL_THROUGH
+    : instruction(EA, INSN_NORMAL, _)
+    , raw_transfer(EA, ToEA, EDGE_FALL_THROUGH)
+    , dominates_invalid_instruction(ToEA).
+
+; Recursive case for direct jumps.
+dominates_invalid_instruction(EA)
+    : instruction(EA, INSN_DIRECT_JUMP, _)
+    , raw_transfer(EA, ToEA, EDGE_JUMP_TAKEN)
+    , dominates_invalid_instruction(ToEA).
+
+; Recursive case for conditional direct jumps.
+dominates_invalid_instruction(EA)
+    : instruction(EA, INSN_COND_DIRECT_JUMP, _)
+    , raw_transfer(EA, ToEA, EDGE_JUMP_TAKEN)
+    , dominates_invalid_instruction(ToEA).
+
+; Recursive case for direct calls.
+dominates_invalid_instruction(EA)
+    : instruction(EA, INSN_DIRECT_CALL, _)
+    , raw_transfer(EA, ToEA, EDGE_FUNCTION_CALL)
+    , dominates_invalid_instruction(ToEA).
+
+; Recursive case for conditional direct calls.
+dominates_invalid_instruction(EA)
+    : instruction(EA, INSN_COND_DIRECT_CALL, _)
+    , raw_transfer(EA, ToEA, EDGE_FUNCTION_CALL)
     , dominates_invalid_instruction(ToEA).
