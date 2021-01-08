@@ -62,6 +62,11 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 #query get_instructions(free u64 InsnEA)
 ; A plausible instruction address.
 #export plausible_instruction(EA)
+; Denotes instructions that *always* precede errors (i.e., 
+; non-decodable instructions). We omit instructions that 
+; *may* precede errors, such as conditional jumps where a 
+; single branch precedes an error.
+#export dominates_invalid_instruction(EA)
 
 ;---------------------------------------------------------
 ; Operand objects.

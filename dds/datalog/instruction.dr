@@ -13,12 +13,6 @@ plausible_instruction(EA)
     , raw_transfer(_, EA, _).
 
 ;---------------------------------------------------------
-; Denotes instructions that *always* precede errors (i.e., 
-; non-decodable instructions). We omit instructions that 
-; *may* precede errors, such as conditional jumps where a 
-; single branch precedes an error.
-#local dominates_invalid_instruction(EA)
-
 ; Fall-throughs to non-decodable instructions.
 dominates_invalid_instruction(EA)
     : instruction(EA, INSN_NORMAL, _)
@@ -82,6 +76,6 @@ dominates_invalid_instruction(EA)
 
 ; Recursive case for conditional direct calls.
 dominates_invalid_instruction(EA)
-    : instruction(EA, INSN_COND_DIRECT_CALL, _)
+    : instruction(EA, INSN_DI, _)
     , raw_transfer(EA, ToEA, EDGE_FUNCTION_CALL)
     , dominates_invalid_instruction(ToEA).
