@@ -9,7 +9,8 @@ plausible_instruction(EA)
     : instruction(EA, _, _).
 
 plausible_instruction(EA)
-    : external_symbol(EA, _).
+    : external_symbol(EA, _)
+    , raw_transfer(_, EA, _).
 
 ;---------------------------------------------------------
 ; Denotes instructions that *always* precede errors (e.g., 
@@ -165,5 +166,3 @@ always_leads_to_error(EA)
     , raw_transfer(EA, ToEA, EdgeType)
     , EdgeType != EDGE_PSEUDO_FALL_THROUGH
     , always_leads_to_error(ToEA).
-
-
