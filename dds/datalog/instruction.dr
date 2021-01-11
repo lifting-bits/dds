@@ -76,6 +76,6 @@ dominates_invalid_instruction(EA)
 
 ; Recursive case for conditional direct calls.
 dominates_invalid_instruction(EA)
-    : instruction(EA, INSN_DI, _)
+    : instruction(EA, INSN_COND_DIRECT_CALL, _)
     , raw_transfer(EA, ToEA, EDGE_FUNCTION_CALL)
     , dominates_invalid_instruction(ToEA).
