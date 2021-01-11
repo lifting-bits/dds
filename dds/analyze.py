@@ -16,7 +16,6 @@ from capstone import *
 import capstone.x86
 
 from datalog import DatabaseFunctors, DatabaseLog, Database
-from util import *
 from defs import *
 
 from arch import \
