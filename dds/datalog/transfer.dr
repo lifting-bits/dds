@@ -125,12 +125,14 @@ falls_through_to_function(EA)
 ;          instructions (implied by using `fixed_transfer`).
 ;       6) The subsequent instruction isn't at the beginning of
 ;          a new section.
+;       7) The subsequence instruction is not an error instruction.
 transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
         : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
         , !falls_through_to_function(ToEA)
         , !function(ToEA)
         , !section_start(ToEA)
-        , instruction(ToEA, _, _).
+        , instruction(ToEA, InsnType, _)
+        , InsnType != INSN_HALT.
 
 ; Here we have an edge that isn't a jump or pseudo fall-through,
 ; so we pass it through.
