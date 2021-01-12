@@ -4,6 +4,11 @@ deps = dds/datalog/section.dr dds/datalog/instruction.dr dds/datalog/function.dr
 
 all: 
 	drlojekyll $(deps) -py-out dds/datalog/__init__.py -dot-out dds.dot
+
+lief: all
+	python3 dds/analyze.py --binary examples/helloworld/helloworld.elf.x86_64.nopie 
+
+binja: all
 	python3 dds/analyze.py --binary examples/helloworld/helloworld.elf.x86_64.nopie --binary_parser binja
 
 debug:
