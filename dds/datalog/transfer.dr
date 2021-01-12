@@ -113,32 +113,24 @@ falls_through_to_function(EA)
         , falls_through_to_function(ToEA).
 
 ;---------------------------------------------------------
-; Omit pseudo fall-throughs that transfer to new sections.
-;
-; TODO(snagy2): It's unclear if this impacts anything;
-; possible there is some inter-section transfer worth keeping?
-transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
-        : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
-        , !section_start(ToEA).
 
-; Omit pseudo fall-throughs that transfer to new functions.
+; Only keep pseudo fall-throughs that...
+;       1) Don't transfer to new functions
+;       2) Don't transfer to function padding (i.e., sequences of
+;          instructions directly following one function that fall-
+;          through to the next function).
+;       3) Transfers to actual instructions (rather than plausible
+;          ones, which include external addresses).
+;       4) The subsequent instruction doesn't lead ot invalid
+;          instructions (implied by using `fixed_transfer`).
+;       6) The subsequent instruction isn't at the beginning of
+;          a new section.
+;       7) The subsequence instruction is not an error instruction.
 transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
         : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
         , !falls_through_to_function(ToEA)
-        , !function(ToEA).
-
-; Omit pseudo fall-throughs that transfer to function padding
-; (i.e., sequences of instructions directly following one 
-; function that fall-through to the next function).
-transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
-        : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
-        , !falls_through_to_function(ToEA).
-
-; Omit pseudo fall-throughs that transfer to non-instructions;
-; and pseudo fall-throughs that transfer to error instructions
-; (e.g., x86's `hlt` and `ud2`).
-transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
-        : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
+        , !function(ToEA)
+        , !section_start(ToEA)
         , instruction(ToEA, InsnType, _)
         , InsnType != INSN_HALT.
 
