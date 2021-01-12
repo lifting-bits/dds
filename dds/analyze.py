@@ -5,31 +5,49 @@ import argparse
 import os
 import subprocess
 import sys
-from typing import Final, Iterable, Optional, Union
+from typing import Final, List, Optional, Sequence
 
 try:
     from shlex import quote
 except:
     from pipes import quote
 
-from capstone import *
-import capstone.x86
+# TODO(pag): I don't understand Python packaging, but this makes it work under
+#            PyCharm's venv, and a `setup.py` install, and when executed within
+#            an IDA Pro subprocess.
+sys.path.append(os.path.dirname(__file__))
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from datalog import DatabaseFunctors, DatabaseLog, Database
-from defs import *
+from dds.datalog import \
+    Database, \
+    DatabaseFunctors, \
+    DatabaseLog
 
-from arch import \
+from dds.arch import \
     arch_from_string, \
     ControlFlowBehavior, \
     ControlFlowEdgeKind, \
     decoder_from_string, \
+    Instruction, \
     InstructionDecoder, \
     InstructionOperandVisitor
-from binary import BinaryParser, BinaryMetadataVisitor, LIEFBinaryMetadata
+
+from dds.binary import \
+    binary_parser_from_string, \
+    BinaryParser, \
+    BinaryMetadataVisitor
 
 
 def debug(message, *args):
     print(message.format(*args), file=sys.stderr)
+
+
+def _argv() -> Sequence[str]:
+    try:
+        import idc
+        return idc.ARGV
+    except:
+        return sys.argv
 
 
 class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
@@ -38,7 +56,6 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
     def __init__(self, db: Database, decoder: InstructionDecoder):
         self._db: Final[Database] = db
         self._decoder: Final[InstructionDecoder] = decoder
-        self._curr_inst_ea: Optional[int] = None
 
     def visit_relocation(self, from_ea: int, to_ea: int, size: int):
         """Visit a relocation entry, applied to `size` bytes at `from_ea`,
@@ -97,10 +114,11 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
         """Visit a named section `[begin_ea, end_ea)`."""
         self._db.section_3([(name, begin_ea, end_ea)])
 
-    def visit_address_operand(self, op_index: int, addr: int):
+    def visit_address_operand(self, inst: Instruction, op_index: int,
+                              addr: int):
         """Add in a cross-reference between in instruction and one of its
         memory operands, which references an absolute address."""
-        self._db.address_operand_2([(self._curr_inst_ea, addr)])
+        self._db.address_operand_2([(inst.ea, addr)])
 
     def visit_memory(self, ea: int, data: bytes, is_writable: bool,
                      is_executable: bool):
@@ -145,7 +163,6 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
                 debug("    -> {:x} {}", i.next_ea,
                       ControlFlowEdgeKind.PSEUDO_FALL_THROUGH)
 
-            self._curr_inst_ea = i.ea
             i.visit_operands(self)
 
         self._db.instruction_3(insns)
@@ -155,12 +172,12 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
 def parse_binary(args) -> Optional[BinaryParser]:
     """Parse the binary at `path` with the binary parser named by
     `parser_name`."""
-    if "lief" == args.binary_parser:
-        binary = LIEFBinaryMetadata(args.arch, args.os, args.binary)
-    else:
+    parser = binary_parser_from_string(args.binary_parser)
+    if not parser:
         raise Exception("Unhandled binary parser type '{}'".format(
-            parser_name))
+            args.binary_parser))
 
+    binary = parser(args.arch, args.os, args.binary)
     if not binary:
         raise Exception("Invalid or unrecognized file format")
 
@@ -171,19 +188,28 @@ def run_under_ida(parser, args) -> int:
     """Re-run this program under the control of IDA Pro. This will give us
     access to IDA Pro's APIs."""
 
+    ida_path = os.path.dirname(args.ida_path)
+
     env = {}
     env["IDALOG"] = os.devnull
     env["TVHEADLESS"] = "1"
     env["HOME"] = os.path.expanduser('~')
-    env["IDA_PATH"] = os.path.dirname(args.ida_path)
-    # env["PYTHONPATH"] = os.path.dirname(ida_dir)
+    env["IDA_PATH"] = ida_path
+
+    # path: List[str] = [ida_path]
+    # if "PYTHONPATH" in os.environ:
+    #     path.extend(os.environ["PYTHONPATH"].split(os.pathsep))
+    # path.extend(sys.path)
+    # #
+    # env["PYTHONPATH"] = os.pathsep.join(path)
+
     if "SystemRoot" in os.environ:
         env["SystemRoot"] = os.environ["SystemRoot"]
 
     script_cmd = []
     script_cmd.append(os.path.abspath(__file__))
     script_cmd.append("--binary")
-    script_cmd.append(args.binary)
+    script_cmd.append(os.path.abspath(args.binary))
     script_cmd.append("--binary_parser")
     script_cmd.append(args.binary_parser)
     script_cmd.append("--instruction_decoder")
@@ -193,11 +219,11 @@ def run_under_ida(parser, args) -> int:
     script_cmd.append("--os")
     script_cmd.append(args.os)
 
-    cmd = []
+    cmd: List[str] = []
     cmd.append(quote(args.ida_path))  # Path to IDA.
     cmd.append("-B")  # Batch mode.
     cmd.append("-S\"{}\"".format(" ".join(script_cmd)))
-    cmd.append(quote(args.binary))
+    cmd.append(quote(os.path.abspath(args.binary)))
 
     try:
         with open(os.devnull, "w") as devnull:
@@ -207,16 +233,17 @@ def run_under_ida(parser, args) -> int:
                 stdin=None,
                 stdout=devnull,  # Necessary.
                 stderr=sys.stderr,  # For enabling `--log_file /dev/stderr`.
-                shell=True,  # Necessary.
-                cwd=os.path.dirname(__file__))
+                shell=True)  # Necessary.
 
-    except:
-        parser.error("Error executing under the control of IDA Pro")
+    except Exception as e:
+        parser.error("Error executing under the control of IDA Pro: {}".format(e))
         return 1
 
 
-def main(argv):
+def main(argv: Optional[Sequence[str]] = None):
     """Disassemble a binary."""
+    if argv is None:
+        argv = _argv()
 
     parser = argparse.ArgumentParser(
         prog=argv[0], description="Dr. Disassembler's binary analyzer")
@@ -231,7 +258,7 @@ def main(argv):
     parser.add_argument(
         "--instruction_decoder", type=str, default="capstone",
         help="Instruction instruction used by the binary",
-        choices=("capstone",))
+        choices=("capstone", "ida", ))
 
     parser.add_argument(
         "--ida_path", type=str, default="",
@@ -282,4 +309,4 @@ def main(argv):
 
 # Main function.
 if __name__ == "__main__":
-    sys.exit(main(sys.argv))
+    sys.exit(main(_argv()))

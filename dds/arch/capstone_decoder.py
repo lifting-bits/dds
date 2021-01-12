@@ -96,6 +96,9 @@ def _x86_decode_error(insn: capstone.CsInsn) -> InstructionType:
     return InstructionType.ERROR
 
 
+# TODO(pag): XEND as an conditional indirect jump, and XABORT as an indirect
+#            jump.
+# TODO(pag): ENDBR32 and ENDBR64 as conditional indirect jumps.
 _X86_OP_TO_TYPE_DECODER: Final = {
     capstone.x86.X86_INS_CALL: _x86_decode_call,
     capstone.x86.X86_INS_IRET: _x86_decode_ret,
@@ -105,7 +108,6 @@ _X86_OP_TO_TYPE_DECODER: Final = {
     capstone.x86.X86_INS_RETF: _x86_decode_ret,
     capstone.x86.X86_INS_RETFQ: _x86_decode_ret,
     capstone.x86.X86_INS_JMP: _x86_decode_jmp,
-    # TODO(pag): xabort?
     capstone.x86.X86_INS_XBEGIN: _x86_decode_jcc,
     capstone.x86.X86_INS_JAE: _x86_decode_jcc,
     capstone.x86.X86_INS_JA: _x86_decode_jcc,
@@ -169,9 +171,9 @@ class CapstoneX86Instruction(CapstoneInstruction):
                 # TODO(pag): Handle pseudo RIZ register?
                 if m.base == capstone.x86.X86_REG_RIP:
                     if not m.index and not m.segment:
-                        visitor.visit_address_operand(i, self.ea + m.disp)
+                        visitor.visit_address_operand(self, i, self.ea + m.disp)
                 elif not m.base and not m.index and not m.segment:
-                    visitor.visit_address_operand(i, m.disp)
+                    visitor.visit_address_operand(self, i, m.disp)
 
 
 class CapstoneAArch32Instruction(CapstoneInstruction, ABC):

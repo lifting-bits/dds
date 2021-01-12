@@ -20,7 +20,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/lifting-bits/dds",
-    packages=find_packages(exclude=['examples']),
+    packages=["dds", "dds.arch", "dds.binary", "dds.datalog"],
     platforms="any",
     python_requires=">=3.7",
     entry_points={

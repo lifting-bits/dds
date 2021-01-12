@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 from enum import IntEnum
-from typing import Dict, Final, Iterable, Optional, Union
+from typing import Callable, Dict, Final, Iterable, Optional, Union
 
 from .name import ArchName
 from .instruction import Instruction
@@ -116,8 +116,35 @@ class InstructionDecoder(ABC):
             i += self.min_instruction_size
 
 
+class InvalidInstructionDecoder(InstructionDecoder):
+    """An invalid instruction decoder that always fails to decode
+    instructions."""
+
+    def decode_instruction(self, ea: int, data: Union[bytes, bytearray]) -> \
+            Optional[Instruction]:
+        return None
+
+
+def _capstone_decoder(arch_name: ArchName) -> InstructionDecoder:
+    from .capstone_decoder import CapstoneInstructionDecoder
+    return CapstoneInstructionDecoder(arch_name)
+
+
+def _ida_decoder(arch_name: ArchName) -> InstructionDecoder:
+    from .ida_decoder import IDAInstructionDecoder
+    return IDAInstructionDecoder(arch_name)
+
+
+def _invalid_decoder(arch_name: ArchName) -> InstructionDecoder:
+    return InvalidInstructionDecoder(arch_name)
+
+
+_DECODER_MAP: Final[Dict[str, Callable]] = {
+    "capstone": _capstone_decoder,
+    "ida": _ida_decoder,
+}
+
+
 def decoder_from_string(decoder_name: str, arch_name: ArchName) \
         -> InstructionDecoder:
-    if decoder_name == "capstone":
-        from .capstone_decoder import CapstoneInstructionDecoder
-        return CapstoneInstructionDecoder(arch_name)
+    return _DECODER_MAP.get(decoder_name, _invalid_decoder)(arch_name)
