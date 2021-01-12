@@ -12,7 +12,10 @@ try:
 except:
     from pipes import quote
 
-from dds.datalog import DatabaseFunctors, DatabaseLog, Database
+from dds.datalog import \
+    Database, \
+    DatabaseFunctors, \
+    DatabaseLog
 
 from dds.arch import \
     arch_from_string, \
