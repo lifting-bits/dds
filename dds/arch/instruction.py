@@ -1,7 +1,7 @@
 # Copyright 2020, Trail of Bits. All rights reserved.
 
 from abc import ABC, abstractmethod
-from aenum import NamedConstant
+from enum import IntEnum
 from typing import Dict, Final, Optional, Union
 
 
@@ -16,7 +16,7 @@ class ControlFlowBehavior:
     HAS_DIRECT_TARGET = HAS_TARGET | TARGET_IS_DIRECT
 
 
-class ControlFlowEdgeKind(NamedConstant):
+class ControlFlowEdgeKind(IntEnum):
     # In a `call target`, this represents the flow between the `call`
     # instruction and `target`.
     FUNCTION_CALL = (1 << 1)
@@ -54,7 +54,7 @@ class ControlFlowEdgeKind(NamedConstant):
     PC_THUNK_FUNCTION_CALL = (1 << 8) | FUNCTION_CALL | FUNCTION_CALL_RETURN
 
 
-class InstructionType(NamedConstant):
+class InstructionType(IntEnum):
     """Represents different categories of instructions. An invalid instruction
     category is not represented, as we don't add invalid instructions into
     the database."""

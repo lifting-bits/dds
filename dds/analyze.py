@@ -12,6 +12,12 @@ try:
 except:
     from pipes import quote
 
+# TODO(pag): I don't understand Python packaging, but this makes it work under
+#            PyCharm's venv, and a `setup.py` install, and when executed within
+#            an IDA Pro subprocess.
+sys.path.append(os.path.dirname(__file__))
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
 from dds.datalog import \
     Database, \
     DatabaseFunctors, \
@@ -34,6 +40,14 @@ from dds.binary import \
 
 def debug(message, *args):
     print(message.format(*args), file=sys.stderr)
+
+
+def _argv() -> Sequence[str]:
+    try:
+        import idc
+        return idc.ARGV
+    except:
+        return sys.argv
 
 
 class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
@@ -212,7 +226,6 @@ def run_under_ida(parser, args) -> int:
     cmd.append(quote(os.path.abspath(args.binary)))
 
     try:
-        print(" ".join(cmd))
         with open(os.devnull, "w") as devnull:
             return subprocess.check_call(
                 " ".join(cmd),
@@ -220,8 +233,7 @@ def run_under_ida(parser, args) -> int:
                 stdin=None,
                 stdout=devnull,  # Necessary.
                 stderr=sys.stderr,  # For enabling `--log_file /dev/stderr`.
-                shell=True,  # Necessary.
-                cwd=os.path.dirname(os.path.dirname(__file__)))
+                shell=True)  # Necessary.
 
     except Exception as e:
         parser.error("Error executing under the control of IDA Pro: {}".format(e))
@@ -231,7 +243,7 @@ def run_under_ida(parser, args) -> int:
 def main(argv: Optional[Sequence[str]] = None):
     """Disassemble a binary."""
     if argv is None:
-        argv = sys.argv
+        argv = _argv()
 
     parser = argparse.ArgumentParser(
         prog=argv[0], description="Dr. Disassembler's binary analyzer")
@@ -297,4 +309,4 @@ def main(argv: Optional[Sequence[str]] = None):
 
 # Main function.
 if __name__ == "__main__":
-    sys.exit(main(sys.argv))
+    sys.exit(main(_argv()))
