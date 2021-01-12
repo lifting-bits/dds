@@ -89,7 +89,19 @@ class BinjaBinaryParser(BinaryParser):
                 f_name = bytes(f.name, "utf-8")
                 visitor.visit_local_function(f.start, f_name)
 
-        # 
-        #for f in self._binary.sections:
+        # Finally, go through and decode the sections accordingly.s
+        for s in self._binary.sections.values():
+
+            # Omit sections that have no semantics (probably 
+            # indicating an erroneous section).
+            if not s.semantics:
+                continue
+
+            is_executable = SectionSemantics.ReadOnlyCodeSectionSemantics == s.semantics
+            is_writeable = SectionSemantics.ReadWriteDataSectionSemantics == s.semantics
+                
+            # TODO(snagy2, pag): Visit segments?
+            visitor.visit_memory(s.start, self._binary.read(s.start, s.end),
+                                 is_writeable, is_executable)
 
 
