@@ -1,10 +1,8 @@
 # Copyright 2020, Trail of Bits. All rights reserved.
 
 from typing import Callable, Optional
-
 from .parser import BinaryParser, BinaryMetadataVisitor
 from .ida import IDABinaryParser
-from .binja import BinjaBinaryParser
 
 def _lief_parser(arch_name: str, os_name: str, target: str) \
         -> Optional[BinaryParser]:
@@ -21,7 +19,7 @@ def _binja_parser(arch_name: str, os_name: str, target: str) \
         -> Optional[BinaryParser]:
     """Parse the binary `target` with Binary Ninja."""
     import binaryninja
-
+    from .binja import BinjaBinaryParser
     parsed = binaryninja.BinaryViewType.get_view_of_file(target)
     return BinjaBinaryParser(arch_name, os_name, parsed)
 
