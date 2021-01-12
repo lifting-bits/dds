@@ -191,7 +191,8 @@ _FALL_THROUGH_TYPE: Final[
 
 
 class InstructionOperandVisitor:
-    def visit_address_operand(self, op_index: int, addr: int):
+    def visit_address_operand(self, inst: 'Instruction', op_index: int,
+                              addr: int):
         pass
 
     # TODO: Eventually add others, if desirable.
