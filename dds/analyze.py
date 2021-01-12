@@ -253,7 +253,7 @@ def main(argv: Optional[Sequence[str]] = None):
     parser.add_argument(
         "--binary_parser", type=str, default="lief",
         help="Which binary parser to use.",
-        choices=("lief",))
+        choices=("lief", "binja", ))
 
     parser.add_argument(
         "--instruction_decoder", type=str, default="capstone",
