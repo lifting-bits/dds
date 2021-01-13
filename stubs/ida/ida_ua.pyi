@@ -1,6 +1,6 @@
 # Copyright 2021, Trail of Bits. All rights reserved.
 
-from typing import Sequence
+from typing import Optional, Sequence
 
 ea_t = int
 optype_t = int
@@ -43,4 +43,10 @@ def can_decode(ea: ea_t) -> bool:
     ...
 
 def decode_insn(insn: insn_t, ea: ea_t) -> int:
+    ...
+
+def print_insn_mnem(ea: ea_t) -> Optional[str]:
+    ...
+
+def print_operand(ea: ea_t, n: int, getn_flags: int = 0, newtype=None) -> Optional[str]:
     ...

@@ -1,7 +1,7 @@
 # Copyright 2020, Trail of Bits. All rights reserved.
 
 from abc import ABC, abstractmethod
-from typing import Final, Optional
+from typing import Final, Optional, Union
 
 
 class BinaryMetadataVisitor:
@@ -61,8 +61,8 @@ class BinaryMetadataVisitor:
         """Visit a named section `[begin_ea, end_ea)`."""
         pass
 
-    def visit_memory(self, ea: int, data: bytes, is_writable: bool,
-                     is_executable: bool):
+    def visit_memory(self, ea: int, data: Union[bytes, bytearray],
+                     is_writable: bool, is_executable: bool):
         """Visit a range of mapped memory in the range `[ea, ea + len(data))`.
         The memory is readable, and is executable is `is_executable == True`
         and writeable if `is_writeable == True`."""
