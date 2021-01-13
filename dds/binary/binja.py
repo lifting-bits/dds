@@ -1,30 +1,35 @@
-import itertools
+# Copyright 2021, Trail of Bits. All rights reserved.
+
 from binaryninja import *
 
-from typing import Final
+from typing import Dict, Final, Set
 from .parser import BinaryParser, BinaryMetadataVisitor
+
 
 # Helper function for some of Binja's list attributes,
 # which might contain sublists.
 def _expand(_list):
     for i in _list:
-        if isinstance(i,list):
+        if isinstance(i, list):
             yield from _expand(i)
         else:
             yield i
 
 
 class BinjaBinaryParser(BinaryParser):
-    """Metadata provider, implemented via information available through Binary Ninja."""
+    """Metadata provider, implemented via information available through Binary
+    Ninja."""
 
-    def __init__(self, arch_name: str, os_name: str, binary: binaryview.BinaryView):
+    def __init__(self, arch_name: str, os_name: str,
+                 binary: binaryview.BinaryView):
+        binary.update_analysis_and_wait()
         BinaryParser.__init__(self, arch_name, os_name)
         self._binary: Final[binaryview.BinaryView] = binary
 
     def visit_metadata(self, visitor: BinaryMetadataVisitor):
         """Extract metadata about this binary and invoke the appropriate
-        methods in `visitor`.""" 
-        #self._binary.update_analysis_and_wait()
+        methods in `visitor`."""
+
         visitor.visit_entrypoint_function(self._binary.entry_point)
 
         # Retrieve all sections and their metadata.
@@ -34,8 +39,8 @@ class BinjaBinaryParser(BinaryParser):
 
         # Add `0` as a default, so that some invalid addresses get treated as
         # seen.
-        seen = set([0])
-        imported_addrs = {}
+        seen: Set[int] = set([0])
+        imported_addrs: Dict[bytes, int] = {}
 
         # Parse all symbols into imported, exported, and local symbols into
         # functions, variables, and unknowns.
@@ -47,7 +52,7 @@ class BinjaBinaryParser(BinaryParser):
             s_name = bytes(s.name.split('@')[0], "utf-8")
             if not s_name:
                 continue
-
+            
             # Parse imported symbols.
             if s.type == SymbolType.ImportedFunctionSymbol \
             or s.type == SymbolType.LibraryFunctionSymbol:
@@ -73,12 +78,13 @@ class BinjaBinaryParser(BinaryParser):
         # Process relocations. We match each ExternalSymbol by
         # name to an ImportAddressSymbol, and then map their
         # respective addresses as a relocation.
-        for r in _expand(self._binary.get_symbols_of_type(SymbolType.ExternalSymbol)):
+        for r in _expand(
+                self._binary.get_symbols_of_type(SymbolType.ExternalSymbol)):
             if r.name:
-                s_name = bytes(r.name, "utf-8") 
+                s_name = bytes(r.name, "utf-8")
                 if s_name in imported_addrs:
                     s_addr = imported_addrs[s_name]
-                    r_size = 0 # irrelevant for Binja
+                    r_size = 0  # irrelevant for Binja
                     visitor.visit_relocation(r.address, s_addr, r_size)
 
         # Retrieve any remaining functions not already seen
@@ -95,11 +101,11 @@ class BinjaBinaryParser(BinaryParser):
             if not s.semantics:
                 continue
 
-            is_executable = SectionSemantics.ReadOnlyCodeSectionSemantics == s.semantics
-            is_writeable = SectionSemantics.ReadWriteDataSectionSemantics == s.semantics
-                
+            is_executable = SectionSemantics.ReadOnlyCodeSectionSemantics == \
+                            s.semantics
+            is_writeable = SectionSemantics.ReadWriteDataSectionSemantics == \
+                           s.semantics
+
             # TODO(snagy2, pag): Visit segments?
             visitor.visit_memory(s.start, self._binary.read(s.start, s.end),
                                  is_writeable, is_executable)
-
-

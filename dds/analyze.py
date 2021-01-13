@@ -5,7 +5,7 @@ import argparse
 import os
 import subprocess
 import sys
-from typing import Final, List, Optional, Sequence
+from typing import Final, List, Optional, Sequence, Union
 
 try:
     from shlex import quote
@@ -48,6 +48,15 @@ def _argv() -> Sequence[str]:
         return idc.ARGV
     except:
         return sys.argv
+
+
+def _exit(code: int):
+    try:
+        import idc
+        idc.process_config_line("ABANDON_DATABASE=YES")
+        idc.qexit(code)
+    except:
+        sys.exit(code)
 
 
 class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
@@ -118,8 +127,8 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
         memory operands, which references an absolute address."""
         self._db.address_operand_2([(inst.ea, addr)])
 
-    def visit_memory(self, ea: int, data: bytes, is_writable: bool,
-                     is_executable: bool):
+    def visit_memory(self, ea: int, data: Union[bytes, bytearray],
+                     is_writable: bool, is_executable: bool):
         """Visit a range of mapped memory in the range `[ea, ea + len(data))`.
         The memory is readable, and is executable is `is_executable == True`
         and writeable if `is_writeable == True`."""
@@ -139,7 +148,8 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
 
             # If this instruction has a direct control-flow target then add it
             # in.
-            if i.type & ControlFlowBehavior.HAS_DIRECT_TARGET:
+            if (i.type & ControlFlowBehavior.HAS_DIRECT_TARGET) == \
+                    ControlFlowBehavior.HAS_DIRECT_TARGET:
                 target_ea = i.target_ea
                 assert target_ea is not None
                 transfers.append((i.ea, target_ea, i.target_type))
@@ -147,7 +157,8 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
 
             # If this instruction has a fall-through control-flow target
             # then add it in.
-            if i.type & ControlFlowBehavior.HAS_FALL_THROUGH:
+            if (i.type & ControlFlowBehavior.HAS_FALL_THROUGH) == \
+                    ControlFlowBehavior.HAS_FALL_THROUGH:
                 fall_through_ea = i.fall_through_ea
                 assert fall_through_ea is not None
                 transfers.append((i.ea, fall_through_ea, i.fall_through_type))
@@ -224,6 +235,8 @@ def run_under_ida(parser, args) -> int:
     cmd.append(quote(os.path.abspath(args.binary)))
 
     try:
+        print(" ".join(cmd))
+        print()
         with open(os.devnull, "w") as devnull:
             return subprocess.check_call(
                 " ".join(cmd),
@@ -251,7 +264,7 @@ def main(argv: Optional[Sequence[str]] = None):
     parser.add_argument(
         "--binary_parser", type=str, default="lief",
         help="Which binary parser to use.",
-        choices=("lief", "binja", ))
+        choices=("lief", "binja", "ida",))
 
     parser.add_argument(
         "--instruction_decoder", type=str, default="capstone",
@@ -277,15 +290,15 @@ def main(argv: Optional[Sequence[str]] = None):
 
     args = parser.parse_args(argv[1:])
 
+    if args.ida_path:
+        return run_under_ida(parser, args)
+
     binary: Optional[BinaryParser] = None
     try:
         binary = parse_binary(args)
     except Exception as e:
         parser.error("Error parsing file '{}': {}".format(args.binary, str(e)))
         return 1
-
-    if args.ida_path:
-        return run_under_ida(parser, args)
 
     functors = DatabaseFunctors()
     log = DatabaseLog()
@@ -307,4 +320,4 @@ def main(argv: Optional[Sequence[str]] = None):
 
 # Main function.
 if __name__ == "__main__":
-    sys.exit(main(_argv()))
+    _exit(main(_argv()))

@@ -1,10 +1,11 @@
 # Copyright 2021, Trail of Bits. All rights reserved.
 
-from abc import ABC
-from typing import Dict, Final, Callable, Iterable, Optional, Tuple, Union
+from typing import Dict, Final, Callable, Iterable, List, Optional, Tuple, Union
 
 import ida_allins
+import ida_auto
 import ida_bytes
+import ida_segment
 import ida_ua
 import ida_xref
 import idc
@@ -12,7 +13,6 @@ import idc
 from .name import ArchName
 from .decoder import InstructionDecoder
 from .instruction import \
-    ControlFlowBehavior, \
     Instruction, \
     InstructionOperandVisitor, \
     InstructionType
@@ -28,14 +28,14 @@ _X86_INST_TYPES: Final[Dict[int, InstructionType]] = {
     ida_allins.NN_call: InstructionType.DIRECT_FUNCTION_CALL,
 
     # Near call, indirect.
-    ida_allins.NN_callni: InstructionType.INIRECT_FUNCTION_CALL,
+    ida_allins.NN_callni: InstructionType.INDIRECT_FUNCTION_CALL,
 
     # Far call, indiret.
-    ida_allins.NN_callfi: InstructionType.INIRECT_FUNCTION_CALL,
+    ida_allins.NN_callfi: InstructionType.INDIRECT_FUNCTION_CALL,
 
     # System calls, treat these as indirect procedure calls.
-    ida_allins.NN_syscall: InstructionType.INIRECT_FUNCTION_CALL,
-    ida_allins.NN_sysenter: InstructionType.INIRECT_FUNCTION_CALL,
+    ida_allins.NN_syscall: InstructionType.INDIRECT_FUNCTION_CALL,
+    ida_allins.NN_sysenter: InstructionType.INDIRECT_FUNCTION_CALL,
 
     # Far returns. These use segment selectors.
     ida_allins.NN_retf: InstructionType.FUNCTION_RETURN,
@@ -164,7 +164,7 @@ _ARM_INST_TYPES: Final[Dict[int, InstructionType]] = {
 
 
 _SPARC_INST_TYPES: Final[Dict[int, InstructionType]] = {
-    ida_allins.SPARC_call: InstructionType.FUNCTION_CALL,  # Subject to fixing.
+    ida_allins.SPARC_call: InstructionType.DIRECT_FUNCTION_CALL,
     ida_allins.SPARC_ret: InstructionType.FUNCTION_RETURN,
     ida_allins.SPARC_retl: InstructionType.FUNCTION_RETURN,
     ida_allins.SPARC_rett: InstructionType.FUNCTION_RETURN,
@@ -237,7 +237,13 @@ _ITYPE_FIXER: Final[Dict[ArchName, Callable]] = {
 def _is_code(ea: int) -> bool:
     """Returns `true` if IDA Pro thinks the data at address `ea` is code."""
     flags = ida_bytes.get_full_flags(ea)
-    return ida_bytes.is_code(flags)
+    if ida_bytes.is_code(flags):
+        return True
+    s = ida_segment.getseg(ea)
+    if s:
+        return (s.type == ida_segment.SEG_CODE) or \
+               ((s.perm & ida_segment.SEGPERM_EXEC) != 0)
+    return False
 
 
 def _xref_generator(ea: int, get_first, get_next) -> Iterable[int]:
@@ -248,19 +254,24 @@ def _xref_generator(ea: int, get_first, get_next) -> Iterable[int]:
         target_ea = get_next(ea, target_ea)
 
 
-def _code_refs_from(ea: int) -> Iterable[int]:
+def _code_refs_from(ea: int, taken_flow: bool = True,
+                    predicate=_is_code) -> Iterable[int]:
     """Generate the sequence of references to code from `ea`."""
 
     # First, go see if there's a fixed-up relocation that is code.
     fixup_ea: int = idc.get_fixup_target_off(ea)
-    if fixup_ea != idc.BADADDR and _is_code(fixup_ea):
+    if fixup_ea != idc.BADADDR and predicate(fixup_ea):
         yield fixup_ea
 
     # If the target wasn't fixed up as a result of a relocation, then go
     # and look for it as a cross-reference.
-    for target_ea in _xref_generator(ea, ida_xref.get_first_cref_from,
-                                     ida_xref.get_next_cref_from):
-        if target_ea != fixup_ea and _is_code(target_ea):
+    first, next = ida_xref.get_first_cref_from, ida_xref.get_next_cref_from
+    if not taken_flow:
+        first, next = (ida_xref.get_first_fcref_from,
+                       ida_xref.get_next_fcref_from)
+
+    for target_ea in _xref_generator(ea, first, next):
+        if target_ea != fixup_ea and predicate(target_ea):
             yield target_ea
 
 
@@ -275,7 +286,7 @@ class IDAInstruction(Instruction):
                  ida_insn: ida_ua.insn_t):
         self._ea = ea
         self._data = data
-        self._type: itype
+        self._type = itype
         self._ida_insn = ida_insn
 
     @property
@@ -295,22 +306,18 @@ class IDAInstruction(Instruction):
         return self._data
 
     @property
-    def target_ea(self) -> Optional[int]:
+    def target_ea(self, predicate=_is_code) -> Optional[int]:
         """Get the target of a direct branch (direct jump, direct call,
         taken target of a conditional branch)."""
-        target_ea: int = idc.BADADDR
-        for target_ea in _code_refs_from(self.ea):
+        accept_any = lambda x: True
+        for target_ea in _code_refs_from(self.ea, predicate=accept_any):
             return target_ea
 
-        if target_ea == idc.BADADDR:
-            for i, op in enumerate(self._ida_insn.ops):
-                if op.addr and _is_code(op.addr):
-                    return target_ea
+        for i, op in enumerate(self._ida_insn.ops):
+            if op.addr and op.addr != idc.BADADDR:
+                return op.addr
 
-        if target_ea != idc.BADADDR:
-            return target_ea
-        else:
-            return None
+        return None
 
     @property
     def fall_through_ea(self) -> int:
@@ -342,6 +349,23 @@ class IDAInstruction(Instruction):
             elif op.type == ida_ua.o_displ:
                 visitor.visit_address_operand(self, op.n, op.addr)
 
+    @property
+    def assembly(self) -> str:
+        parts: List[Optional[str]] = [ida_ua.print_insn_mnem(self._ea)]
+        if not parts[0]:
+            return ""
+
+        if self._ea != self._ida_insn.ea:
+            parts.append(ida_ua.print_insn_mnem(self._ida_insn.ea))
+
+        for op in self._ida_insn.ops:
+            if op.type:
+                o_str = ida_ua.print_operand(self._ida_insn.ea, op.n)
+                if o_str:
+                    parts.append("".join(c for c in o_str if c.isprintable()))
+
+        return " ".join(s for s in parts if s)
+
 
 class IDAInstructionDecoder(InstructionDecoder):
     """Implements instruction decoding via IDA Pro. Data passed in is trusted
@@ -349,6 +373,7 @@ class IDAInstructionDecoder(InstructionDecoder):
     interface that isn't tied to the loaded image."""
 
     def __init__(self, arch_name: ArchName):
+        ida_auto.auto_wait()
         InstructionDecoder.__init__(self, arch_name)
         self._itypes = _ITYPE_MAP[arch_name]
 
@@ -376,7 +401,8 @@ class IDAInstructionDecoder(InstructionDecoder):
         # Figure out the instruction type, and possible "fix it" if the IDA
         # itypes themselves don't contain sufficient info to distinguish
         # things like direct and indirect calls.
-        fixer = _ITYPE_FIXER.get(self.arch, _fix_none)
-        itype = fixer(insn, self._itypes[insn.itype])
+        itype_fixer = _ITYPE_FIXER.get(self.arch, _fix_none)
+        itype = self._itypes.get(insn.itype, InstructionType.NORMAL)
+        itype = itype_fixer(insn, itype)
 
         return IDAInstruction(ea, bytes(data[:insn_len]), itype, insn)
