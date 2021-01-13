@@ -113,7 +113,6 @@ falls_through_to_function(EA)
         , falls_through_to_function(ToEA).
 
 ;---------------------------------------------------------
-
 ; Only keep pseudo fall-throughs that...
 ;       1) Don't transfer to new functions
 ;       2) Don't transfer to function padding (i.e., sequences of

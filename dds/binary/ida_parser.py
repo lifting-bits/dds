@@ -102,8 +102,6 @@ def _relocations() -> Iterable[Tuple[int, int, int]]:
         from_ea = ida_fixup.get_next_fixup_ea(from_ea)
 
 
-
-
 def _xref_generator(ea: int, get_first, get_next) -> Iterable[int]:
     """Invokes an a first and next function to generate cross-references."""
     target_ea = get_first(ea)
@@ -118,35 +116,6 @@ def _data_refs_to(ea: int) -> Iterable[int]:
                                      ida_xref.get_next_dref_to):
         if source_ea != idc.BADADDR:
             yield source_ea
-
-
-def _is_constructor_func(ea: int) -> bool:
-    """Returns `true` if the function beginning at `ea` appears to be
-    a constructor functor."""
-    if ".init" in idc.get_segm_name(ea):
-        return True
-
-    for xref_source_ea in _data_refs_to(ea):
-        seg_name = idc.get_segm_name(xref_source_ea)
-        if ".preinit_array" in seg_name or ".init_array" in seg_name or \
-                ".ctors" in seg_name:
-            return True
-
-    return False
-
-
-def _is_destructor_func(ea: int) -> bool:
-    """Returns `true` if the function beginning at `ea` appears to be
-    a constructor functor."""
-    if ".fini" in idc.get_segm_name(ea):
-        return True
-
-    for xref_source_ea in _data_refs_to(ea):
-        seg_name = idc.get_segm_name(xref_source_ea)
-        if ".fini_array" in seg_name or ".dtors" in seg_name:
-            return True
-
-    return False
 
 
 def _read_segment_bytes(s: ida_segment.segment_t) -> bytearray:
@@ -204,12 +173,6 @@ class IDABinaryParser(BinaryParser):
             elif f.start_ea in entry_eas:
                 visitor.visit_exported_symbol(
                     f.start_ea, _symbol_name(f.start_ea))
-
-            elif _is_constructor_func(f.start_ea):
-                visitor.visit_constructor_function(f.start_ea)
-
-            elif _is_destructor_func(f.start_ea):
-                visitor.visit_destructor_function(f.start_ea)
 
             else:
                 visitor.visit_local_function(

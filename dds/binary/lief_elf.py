@@ -45,7 +45,7 @@ class LIEFELFBinaryParser(BinaryParser):
             
             # Omit null names, likely indicating an erroneous symbol.
             s_name = bytes(s.name, "utf-8")
-            if not s_name or s_addr in imported_addrs:
+            if not s_name or s_addr in seen:
                 continue
 
             # Assign each imported symbol an address in our 
@@ -83,7 +83,7 @@ class LIEFELFBinaryParser(BinaryParser):
 
             seen.add(s_addr)
 
-        # Process relocatoins: create our fake `.extern` section.
+        # Process relocations: create our fake `.extern` section.
         if next_import_addr > extern_sec_addr:
             visitor.visit_section(extern_sec_addr, next_import_addr, b".extern")
 

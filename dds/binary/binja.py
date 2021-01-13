@@ -50,7 +50,7 @@ class BinjaBinaryParser(BinaryParser):
             # Eliminate anything in a symbol's name that 
             # stars with '@' (i.e., '@GOT').
             s_name = bytes(s.name.split('@')[0], "utf-8")
-            if not s_name:
+            if not s_name or s_addr in seen:
                 continue
             
             # Parse imported symbols.
