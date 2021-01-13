@@ -30,10 +30,6 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 #constant edgetype EDGE_PC_THUNK_FUNCTION_CALL  ```python ControlFlowEdgeKind.PC_THUNK_FUNCTION_CALL```
 
 ;---------------------------------------------------------
-; External symbol (could be code or data).
-#message external_symbol(u64 ExternEA, bytes ExternName)
-
-;---------------------------------------------------------
 ; Entrypoint of the binary.
 #message entrypoint(u64 EntryPointEA)
 
@@ -77,19 +73,20 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 #message relocation(u64 RelocEA, u64 ExternEA)
 
 ;---------------------------------------------------------
-; Function objects (constructors, destructors, imported, 
-; exported, and local functions).
-#message constructor_function(u64 FuncEA)
-#message destructor_function(u64 FuncEA)
-#message imported_function(u64 FuncEA, bytes Name)
-#message exported_function(u64 FuncEA, bytes Name)
-#message local_function(u64 FuncEA, bytes Name)
-
-;---------------------------------------------------------
-; Symbol objects (imported, exported, and local).
-#message imported_symbol(u64 SymEA, bytes SymName)
-#message exported_symbol(u64 SymEA, bytes SymName)
-#message local_symbol(u64 SymEA, bytes SymName)
+; Symbol objects: imported, exported, and local (static)
+; functions, variables, and unknowns.
+#message imported_function(u64 EA, bytes Name)
+#message imported_variable(u64 EA, bytes Name)
+#message imported_symbol(u64 EA, bytes Name)
+#message exported_function(u64 EA, bytes Name)
+#message exported_variable(u64 EA, bytes Name)
+#message exported_symbol(u64 EA, bytes Name)
+#message local_function(u64 EA, bytes Name)
+#message local_variable(u64 EA, bytes Name)
+#message local_symbol(u64 EA, bytes Name)
+; External symbol objects. These represent placeholders
+; in an `.EXTERN` section for calls to imported functions.
+#message external_symbol(u64 EA, bytes Name)
 
 ;---------------------------------------------------------
 ; Transfer objects.

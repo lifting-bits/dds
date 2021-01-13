@@ -10,46 +10,34 @@ function(EntryPointEA)
     : entrypoint(EntryPointEA)
     , plausible_instruction(EntryPointEA).
 
-; Parse constructor/destructor, imported/exported, and local 
-; function heads.
-function(FuncEA)
-    : constructor_function(FuncEA)
-    , instruction(FuncEA, _, _).
-function(FuncEA)
-    : destructor_function(FuncEA)
-    , instruction(FuncEA, _, _).
-function(FuncEA)
-    : imported_function(FuncEA, _)
-    , instruction(FuncEA, _, _).
-function(FuncEA)
-    : exported_function(FuncEA, _)
-    , instruction(FuncEA, _, _).
-function(FuncEA)
-    : local_function(FuncEA, _)
-    , instruction(FuncEA, _, _).
+; Mark imported, exported, and local functions as function heads.
+function(EA)
+    : imported_function(EA, _)
+    , instruction(EA, _, _).
+function(EA)
+    : exported_function(EA, _)
+    , instruction(EA, _, _).    
+function(EA)
+    : local_function(EA, _)
+    , instruction(EA, _, _).
 
-; Treat imported, exported, and local symbols pointing to valid 
-; instructions as function heads.
-function(FuncEA)
-    : imported_symbol(FuncEA, _)
-    , instruction(FuncEA, _, _).
-function(FuncEA)
-    : exported_symbol(FuncEA, _)
-    , instruction(FuncEA, _, _).
-function(FuncEA)
-    : local_symbol(FuncEA, _)
-    , instruction(FuncEA, _, _).
+; Mark imported, exported, and local symbols targeted by calls as 
+; function heads.
+function(EA)
+    : imported_symbol(EA, _)
+    , instruction(EA, _, _).
+function(EA)
+    : exported_symbol(EA, _)
+    , instruction(EA, _, _).    
+function(EA)
+    : local_symbol(EA, _)
+    , instruction(EA, _, _).
 
 ; Any type of control-flow transfer to an external is treated
 ; as a making that external into a function.
 function(FuncEA)
     : external_symbol(FuncEA, _)
     , raw_transfer(_, FuncEA, _).
-
-; The binary entrypoint is treated as a function.
-function(EntryPointEA)
-    : entrypoint(EntryPointEA)
-    , plausible_instruction(EntryPointEA).
 
 ; An indirect jump that has been re-written to have a known
 ; target, and where that target is a function, is also treated
