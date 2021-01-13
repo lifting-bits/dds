@@ -37,9 +37,10 @@ class BinjaBinaryParser(BinaryParser):
         seen = set([0])
         imported_addrs = {}
 
-        # Retrieve imported/local symbols. We parse ExternalSymbol
-        # types separately to accommodate relocations.
+        # Parse all symbols into imported, exported, and local symbols into
+        # functions, variables, and unknowns.
         for s in _expand(self._binary.symbols.values()):  
+            s_addr = s.address
 
             # Eliminate anything in a symbol's name that 
             # stars with '@' (i.e., '@GOT').
@@ -47,32 +48,30 @@ class BinjaBinaryParser(BinaryParser):
             if not s_name:
                 continue
 
-            # Parse local symbols.
-            if s.type == SymbolType.FunctionSymbol \
-            or s.type == SymbolType.DataSymbol:
-                visitor.visit_local_symbol(s.address, s_name)
-
             # Parse imported symbols.
-            elif s.type == SymbolType.ImportedFunctionSymbol \
-            or s.type == SymbolType.ImportedDataSymbol \
+            if s.type == SymbolType.ImportedFunctionSymbol \
             or s.type == SymbolType.LibraryFunctionSymbol:
-                visitor.visit_imported_symbol(s.address, s_name)
-
-            # Parse imported address symbols, storing each in
-            # a dictionary for our eventual relocations.
+                visitor.visit_imported_function(s_addr, s_name)
+            elif s.type == SymbolType.ImportedDataSymbol:
+                visitor.visit_imported_variable(s_addr, s_name)
             elif s.type == SymbolType.ImportAddressSymbol:
-                visitor.visit_imported_symbol(s_name, s.address)
-                imported_addrs[s_name] = s.address
+                visitor.visit_imported_symbol(s_addr, s_name)
 
-            # We omit ExternalSymbol types as we parse them later
-            # into relocations.
+            # Parse local (static) symbols.
+            elif s.type == SymbolType.FunctionSymbol:
+                visitor.visit_local_function(s_addr, s_name)
+            elif s.type == SymbolType.DataSymbol:
+                visitor.visit_local_variable(s_addr, s_name)
+
+            # We omit external symbols (SymbolType.ExternalSymbol) 
+            # as we parse them later into relocations.
             else:
                 continue
 
-            seen.add(s.address)
+            seen.add(s_addr)
 
-        # Retrieve all relocations. We match each ExternalSymbol
-        # by name to an ImportAddressSymbol, and then map their
+        # Process relocations. We match each ExternalSymbol by
+        # name to an ImportAddressSymbol, and then map their
         # respective addresses as a relocation.
         for r in _expand(self._binary.get_symbols_of_type(SymbolType.ExternalSymbol)):
             if r.name:
@@ -82,14 +81,13 @@ class BinjaBinaryParser(BinaryParser):
                     r_size = 0 # irrelevant for Binja
                     visitor.visit_relocation(r.address, s_addr, r_size)
 
-        # Retrieve functions. It seems Binary Ninja only returns
-        # local functions, so parse accordingly.
+        # Retrieve any remaining functions not already seen
+        # from the symbol table.
         for f in self._binary.functions:
-            if f.start not in seen:
-                f_name = bytes(f.name, "utf-8")
-                visitor.visit_local_function(f.start, f_name)
+            f_name = bytes(f.name, "utf-8")
+            visitor.visit_local_function(f.start, f_name)
 
-        # Finally, go through and decode the sections accordingly.s
+        # Finally, go through and decode the sections accordingly.
         for s in self._binary.sections.values():
 
             # Omit sections that have no semantics (probably 

@@ -1,6 +1,10 @@
 .PHONY: all examples clean
 
-deps = dds/datalog/section.dr dds/datalog/instruction.dr dds/datalog/function.dr dds/datalog/transfer.dr
+deps = dds/datalog/section.dr \
+	   dds/datalog/instruction.dr \
+	   dds/datalog/function.dr \
+	   dds/datalog/transfer.dr \
+	   dds/datalog/variable.dr
 
 all: 
 	drlojekyll $(deps) -py-out dds/datalog/__init__.py -dot-out dds.dot
