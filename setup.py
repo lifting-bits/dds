@@ -33,6 +33,7 @@ setup(
         "capstone==4.0.2",
         "lief==0.11.0.dev0",
         "aenum==2.2.6",
+        "cle==9.0.5405",
         "typing_extensions"
     ],
     dependency_links=[
