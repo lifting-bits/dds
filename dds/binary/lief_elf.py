@@ -104,6 +104,7 @@ class LIEFELFBinaryParser(BinaryParser):
         for f in chain(self._binary.functions, \
             self._binary.ctor_functions, \
             self._binary.dtor_functions):
+
             visitor.visit_local_function(f.address, bytes(f.name, 'utf-8'))
 
         # Finally, go through and decode the sections accordingly.

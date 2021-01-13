@@ -91,6 +91,7 @@ class BinjaBinaryParser(BinaryParser):
         # from the symbol table.
         for f in self._binary.functions:
             f_name = bytes(f.name, "utf-8")
+
             visitor.visit_local_function(f.start, f_name)
 
         # Finally, go through and decode the sections accordingly.
