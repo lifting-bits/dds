@@ -269,7 +269,7 @@ def main(argv: Optional[Sequence[str]] = None):
     parser.add_argument(
         "--instruction_decoder", type=str, default="capstone",
         help="Instruction instruction used by the binary",
-        choices=("capstone", "ida", ))
+        choices=("capstone", "binja", "ida", ))
 
     parser.add_argument(
         "--ida_path", type=str, default="",

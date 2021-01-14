@@ -122,11 +122,13 @@ def _capstone_decoder(arch_name: ArchName) -> InstructionDecoder:
     from .capstone_decoder import CapstoneInstructionDecoder
     return CapstoneInstructionDecoder(arch_name)
 
+def _binja_decoder(arch_name: ArchName) -> InstructionDecoder:
+    from .binja_decoder import BinjaInstructionDecoder
+    return BinjaInstructionDecoder(arch_name)
 
 def _ida_decoder(arch_name: ArchName) -> InstructionDecoder:
     from .ida_decoder import IDAInstructionDecoder
     return IDAInstructionDecoder(arch_name)
-
 
 def _invalid_decoder(arch_name: ArchName) -> InstructionDecoder:
     return InvalidInstructionDecoder(arch_name)
@@ -134,6 +136,7 @@ def _invalid_decoder(arch_name: ArchName) -> InstructionDecoder:
 
 _DECODER_MAP: Final[Dict[str, Callable]] = {
     "capstone": _capstone_decoder,
+    "binja": _binja_decoder,
     "ida": _ida_decoder,
 }
 

@@ -17,6 +17,10 @@ binja: all
 	python3 dds/analyze.py --binary examples/helloworld/helloworld.elf.x86_64.nopie \
 		--binary_parser binja --instruction_decoder capstone
 
+bdec: all
+	python3 dds/analyze.py --binary examples/helloworld/helloworld.elf.x86_64.nopie \
+		--binary_parser lief --instruction_decoder binja
+
 debug:
 	xdot dds.dot
 
