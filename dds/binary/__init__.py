@@ -10,7 +10,7 @@ def _lief_parser(arch_name: str, os_name: str, target: str) \
     import lief
     parsed = lief.parse(target)
     if isinstance(parsed, lief.ELF.Binary):
-        from .lief_elf import LIEFELFBinaryParser
+        from .lief_parser_elf import LIEFELFBinaryParser
         return LIEFELFBinaryParser(arch_name, os_name, parsed)
     else:
         return None

@@ -79,7 +79,7 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
     
     def visit_imported_variable(self, ea:int, name: Optional[bytes]):
         """Visit variables imported to this binary."""
-        self._db.imported_variable_2([(ea, name)])
+        #self._db.imported_variable_2([(ea, name)])
     
     def visit_imported_symbol(self, ea:int, name: Optional[bytes]):
         """Visit unknown imported symbols. There are no guarantees
@@ -92,7 +92,7 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
     
     def visit_exported_variable(self, ea:int, name: Optional[bytes]):
         """Visit variables exported by this binary."""
-        self._db.exported_variable_2([(ea, name)])
+        #self._db.exported_variable_2([(ea, name)])
     
     def visit_exported_symbol(self, ea:int, name: Optional[bytes]):
         """Visit unknown exported symbols. There are no guarantees
@@ -105,7 +105,7 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
     
     def visit_local_variable(self, ea:int, name: Optional[bytes]):
         """Visit variables local to this binary."""
-        self._db.local_variable_2([(ea, name)])
+        #self._db.local_variable_2([(ea, name)])
     
     def visit_local_symbol(self, ea:int, name: Optional[bytes]):
         """Visit unknown local symbols. There are no guarantees

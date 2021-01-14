@@ -1,3 +1,5 @@
+; Copyright 2021, Trail of Bits. All rights reserved.
+
 ;---------------------------------------------------------
 ; Types for instructions, and control-flow transfers
 
@@ -46,10 +48,9 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 ;---------------------------------------------------------
 ; Section objects.
 #message section(bytes SecName, u64 SecStart, u64 SecEnd)
-; Return all section names.
-#query get_section_names(free bytes SecName)
 ; Return the section at 
-#query section_start(bound u64 SecStart)
+#export section_start(SecStart)
+#export section_end(SecEnd)
 
 ;---------------------------------------------------------
 ; Instruction objects.
@@ -75,15 +76,19 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 ;---------------------------------------------------------
 ; Symbol objects: imported, exported, and local (static)
 ; functions, variables, and unknowns.
-#message imported_function(u64 EA, bytes Name)
-#message imported_variable(u64 EA, bytes Name)
+
 #message imported_symbol(u64 EA, bytes Name)
-#message exported_function(u64 EA, bytes Name)
-#message exported_variable(u64 EA, bytes Name)
 #message exported_symbol(u64 EA, bytes Name)
-#message local_function(u64 EA, bytes Name)
-#message local_variable(u64 EA, bytes Name)
 #message local_symbol(u64 EA, bytes Name)
+
+;#message imported_variable(u64 EA, bytes Name)
+;#message exported_variable(u64 EA, bytes Name)
+;#message local_variable(u64 EA, bytes Name)
+
+#message imported_function(u64 EA, bytes Name)
+#message exported_function(u64 EA, bytes Name)
+#message local_function(u64 EA, bytes Name)
+
 ; External symbol objects. These represent placeholders
 ; in an `.EXTERN` section for calls to imported functions.
 #message external_symbol(u64 EA, bytes Name)
@@ -93,12 +98,10 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 #message raw_transfer(u64 InsnEA, u64 NextEA, edgetype EdgeType)
 ; An adjusted transfer, e.g. that distinguishes between PC-
 ; thunk calls and non-PC thunk calls.
-#export transfer(u64 InsnEA, u64 NextEA, edgetype EdgeType)
+#query transfer(bound u64 InsnEA, free u64 NextEA, free edgetype EdgeType)
 ; Interprocedural transfers, minus inlined thunk calls.
-#query interproc_transfer(bound u64 CallEA, free u64 FuncEA)
+#export interproc_transfer(CallEA, FuncEA)
 ; Intraprocedural transfers.
-#query intraproc_transfer(bound u64 FuncEA, free u64 InsnEA)
-; Return all calls to external (relocated) addresses.
-#query get_external_calls(free u64 CallEA)
-; Return all tail calls (jumps to function starts).
-#query get_tail_calls(free u64 CallEA)
+#export intraproc_transfer(FuncEA, InsnEA)
+
+
