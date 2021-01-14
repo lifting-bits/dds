@@ -56,10 +56,3 @@ dominates_invalid_instruction(EA)
     , raw_transfer(EA, RetEA, EDGE_FUNCTION_CALL_RETURN)
     , dominates_invalid_instruction(CalleeEA)
     , dominates_invalid_instruction(RetEA).
-
-dominates_invalid_instruction(EA)
-    : instruction(EA, INSN_COND_DIRECT_CALL, _)
-    , raw_transfer(EA, CalleeEA, EDGE_FUNCTION_CALL)
-    , raw_transfer(EA, RetEA, EDGE_FUNCTION_CALL_RETURN)
-    , dominates_invalid_instruction(CalleeEA)
-    , dominates_invalid_instruction(RetEA).
