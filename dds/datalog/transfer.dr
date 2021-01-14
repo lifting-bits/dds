@@ -1,11 +1,6 @@
-#import "header.dr"
+; Copyright 2021, Trail of Bits. All rights reserved.
 
-;---------------------------------------------------------
-; Fixed transfers. Here, "fixing" our raw_transfers refers 
-; to (1) re-routing relocations to their respective external
-; addresses; and (2) pruning CALL's whose targets shouldn't
-; be considered function heads (i.e., inline PC thunk calls).
-#local fixed_transfer(FromEA, ToEA, EdgeType)
+#import "header.dr"
 
 ; An indirect jump through a relocation. For example:
 ;
@@ -21,7 +16,11 @@
 ; Where the reference to `printf` in `off_201018` is enacted by a relocation.
 ; Here, we want to rewrite the indirect jump to go straight to the external
 ; address of `printf`.
-fixed_transfer(JmpEA, ExternEA, EDGE_JUMP_TAKEN)
+
+#local indirect_jump_to_external(JmpEA, ExternEA)
+#local indirect_call_to_external(JmpEA, ExternEA)
+
+indirect_jump_to_external(JmpEA, ExternEA)
     : instruction(JmpEA, INSN_INDIRECT_JUMP, _)
     , address_operand(JmpEA, AddrOfTargetEA)
     , relocation(AddrOfTargetEA, ExternEA)
@@ -30,7 +29,7 @@ fixed_transfer(JmpEA, ExternEA, EDGE_JUMP_TAKEN)
 
 ; An indirect, conditional jump through a relocation.
 ; Similar case to above.
-fixed_transfer(JmpEA, ExternEA, EDGE_JUMP_TAKEN)
+indirect_jump_to_external(JmpEA, ExternEA)
     : instruction(JmpEA, INSN_COND_INDIRECT_JUMP, _)
     , address_operand(JmpEA, AddrOfTargetEA)
     , relocation(AddrOfTargetEA, ExternEA)
@@ -38,7 +37,7 @@ fixed_transfer(JmpEA, ExternEA, EDGE_JUMP_TAKEN)
     , !dominates_invalid_instruction(ExternEA).
 
 ; An indirect call through a relocation. Similar case to above.
-fixed_transfer(CallEA, ExternEA, EDGE_FUNCTION_CALL)
+indirect_call_to_external(CallEA, ExternEA)
     : instruction(CallEA, INSN_INDIRECT_CALL, _)
     , address_operand(CallEA, AddrOfTargetEA)
     , relocation(AddrOfTargetEA, ExternEA)
@@ -47,12 +46,24 @@ fixed_transfer(CallEA, ExternEA, EDGE_FUNCTION_CALL)
 
 ; An indirect, conditional call through a relocation.
 ; Similar case to above.
-fixed_transfer(CallEA, ExternEA, EDGE_FUNCTION_CALL)
+indirect_call_to_external(CallEA, ExternEA)
     : instruction(CallEA, INSN_COND_INDIRECT_CALL, _)
     , address_operand(CallEA, AddrOfTargetEA)
     , relocation(AddrOfTargetEA, ExternEA)
     , plausible_instruction(ExternEA)
     , !dominates_invalid_instruction(ExternEA).
+
+;---------------------------------------------------------
+; Fixed transfers. Here, "fixing" our raw_transfers refers
+; to (1) re-routing relocations to their respective external
+; addresses; and (2) pruning CALL's whose targets shouldn't
+; be considered function heads (i.e., inline PC thunk calls).
+#local fixed_transfer(FromEA, ToEA, EdgeType)
+fixed_transfer(JmpEA, ExternEA, EDGE_JUMP_TAKEN)
+    : indirect_jump_to_external(JmpEA, ExternEA).
+
+fixed_transfer(CallEA, ExternEA, EDGE_FUNCTION_CALL)
+    : indirect_call_to_external(CallEA, ExternEA).
 
 ; If the target and the fall-through are the same instruction, then
 ; this is usually a kind of "inline PC thunk" pattern, e.g.
@@ -96,46 +107,127 @@ fixed_transfer(FromEA, ToEA, EdgeType)
     , !dominates_invalid_instruction(ToEA).
 
 ;---------------------------------------------------------
-; This denotes a linear sequence of instructions that
-; falls-through to the beginning of the next function.
-#local falls_through_to_function(EA)
+; An explicit control-flow target is one that is the target
+; of a `jmp`, a `call`, but not a fall-through or pseudo-
+; fall through.
 
-; The base case is an instruction that falls-through
-; into the head of a function.
-falls_through_to_function(EA)
-    : fixed_transfer(EA, FuncEA, EDGE_FALL_THROUGH)
-    , function(FuncEA).
+#local explicit_control_flow_target(EA)
 
-; The inductive case is an instruction that falls-through
-; to another instruction that falls-through to a function.
-falls_through_to_function(EA)
-    : fixed_transfer(EA, ToEA, EDGE_FALL_THROUGH)
-    , falls_through_to_function(ToEA).
+explicit_control_flow_target(EA)
+    : function(EA).
+
+explicit_control_flow_target(EA)
+    : fixed_transfer(_, EA, EdgeType)
+    , EdgeType != EDGE_FALL_THROUGH
+    , EdgeType != EDGE_PSEUDO_FALL_THROUGH.
+
+;---------------------------------------------------------
+; A basic block is a sequence of one or more instructions that
+; executes in a straight line, without control-flow from
+; elsewhere jumping into the middle of it.
+#local basic_block(BlockEA, InsnEA)
+
+basic_block(InsnEA, InsnEA)
+    : explicit_control_flow_target(InsnEA).
+
+basic_block(BlockEA, NextInsnEA)
+    : basic_block(BlockEA, InsnEA)
+    , fixed_transfer(InsnEA, NextInsnEA, EDGE_FALL_THROUGH)
+    , !explicit_control_flow_target(NextInsnEA).
+
+;---------------------------------------------------------
+; Next we try to identify inter- and intra-function padding. Below
+; is an example that includes both:
+;
+;      __do_global_dtors_aux proc near
+;                      cmp     cs:__bss_start, 0
+;                      jnz     short locret_4004B0
+;                      push    rbp
+;                      mov     rbp, rsp
+;                      call    deregister_tm_clones
+;                      mov     cs:__bss_start, 1
+;                      pop     rbp
+;                      retn
+;                      align 10h           ;; intra-function padding
+;      locret_4004B0:
+;                      rep retn
+;      __do_global_dtors_aux endp
+;                      align 20h           ;; inter-function padding
+;      frame_dummy     proc near
+;
+; In the above code, we have both inter- and intra-function padding.
+; In both cases, the padding follows a `retn` instruction. In the
+; first case, the padding precedes `locret_4004B0`, i.e. the head of
+; a basic block, targeted by `jnz     short locret_4004B0`. In the
+; second case, the padding separates the two functions.
+;
+; We detect the second case via a backward pass: starting at the
+; beginning of a function, beginning of a section, or ending of a
+; section, work backward, finding possible padding.
+;
+; We are more restricted/speculative in how we detect the first case,
+; intra-function padding. In general, if we miss jump tables then an
+; overly aggressive approach could really throw things off.
+
+#local inter_function_padding(EA)
+
+; Base case for inter-function padding:
+;
+; An instruction that falls through to the beginning of a function,
+; the beginning of a section, or the ending of a section, and that
+; doesn't itself belong to any known basic blocks is treated as
+; padding.
+inter_function_padding(InsnEA)
+    : fixed_transfer(InsnEA, FuncEA, EDGE_FALL_THROUGH)
+    , function(FuncEA)
+    , !basic_block(_, InsnEA).
+
+inter_function_padding(InsnEA)
+    : fixed_transfer(InsnEA, SecStartEA, EDGE_FALL_THROUGH)
+    , section_start(SecStartEA)
+    , !basic_block(_, InsnEA).
+
+inter_function_padding(InsnEA)
+    : fixed_transfer(InsnEA, SecEndEA, EDGE_FALL_THROUGH)
+    , section_end(SecEndEA)
+    , !basic_block(_, InsnEA).
+
+; Inductive case for inter-function padding:
+;
+; An instruction that falls through to function padding, where that
+; instruction isn't part of any basic blocks, is also considered
+; to be padding.
+inter_function_padding(InsnEA)
+    : fixed_transfer(InsnEA, PaddingEA, EDGE_FALL_THROUGH)
+    , inter_function_padding(PaddingEA)
+    , !basic_block(_, InsnEA).
 
 ;---------------------------------------------------------
 
 ; Only keep pseudo fall-throughs that...
-;   1) Don't originate from function returns.
-;   2) Don't transfer to new functions
-;   3) Don't transfer to function padding (i.e., sequences of
+;   1) Don't transfer to function heads.
+;   2) Don't transfer to function padding (i.e., sequences of
 ;      instructions directly following one function that fall-
 ;      through to the next function).
-;   4) Transfers to actual instructions (rather than plausible
+;   3) Transfers to actual instructions (rather than plausible
 ;      ones, which include external addresses).
-;   5) The subsequent instruction doesn't lead ot invalid
+;   4) The subsequent instruction doesn't lead ot invalid
 ;      instructions (implied by using `fixed_transfer`).
-;   6) The subsequent instruction isn't at the beginning of
+;   5) The subsequent instruction isn't at the beginning of
 ;      a new section.
-;   7) The subsequence instruction is not an error instruction.
-transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
-    : fixed_transfer(FromEA, ToEA, EDGE_PSEUDO_FALL_THROUGH)
-    , instruction(FromEA, FromType, _)
-    , FromType != INSN_RETURN    
-    , !function(ToEA)    
-    , !falls_through_to_function(ToEA)
-    , !section_start(ToEA)
-    , instruction(ToEA, ToType, _)
-    , ToType != INSN_HALT.
+;   6) The subsequence instruction is not an error instruction.
+;   7) The instruction isn't an indirect jump to an external,
+;      which often lives in something like the `.plt` section
+;      of an ELF.
+transfer(FromEA, NextEA, EDGE_PSEUDO_FALL_THROUGH)
+    : fixed_transfer(FromEA, NextEA, EDGE_PSEUDO_FALL_THROUGH)
+    , !indirect_jump_to_external(FromEA, _)
+    , !function(NextEA)
+    , !section_start(NextEA)
+    , !section_end(NextEA)
+    , !inter_function_padding(NextEA)
+    , instruction(NextEA, NextInsnType, _)
+    , NextInsnType != INSN_HALT.
 
 ; Here we have an edge that isn't a jump or pseudo fall-through,
 ; so we pass it through.
@@ -168,9 +260,3 @@ intraproc_transfer(FromEA, ToEA)
 interproc_transfer(FromEA, ToEA)
     : transfer(FromEA, ToEA, _)
     , function(ToEA).
-
-;---------------------------------------------------------
-; Return all calls to external (relocated) addresses.
-get_external_calls(CallEA)
-    : interproc_transfer(CallEA, TargEA)
-    , external_symbol(TargEA, _).

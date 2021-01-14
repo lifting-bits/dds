@@ -1,3 +1,5 @@
+; Copyright 2021, Trail of Bits. All rights reserved.
+
 #import "header.dr"
 
 ;---------------------------------------------------------
@@ -14,68 +16,43 @@ plausible_instruction(EA)
 
 ;---------------------------------------------------------
 ; Fall-throughs to non-decodable instructions.
-dominates_invalid_instruction(EA)
-    : instruction(EA, INSN_NORMAL, _)
-    , raw_transfer(EA, ToEA, EDGE_FALL_THROUGH)
-    , !plausible_instruction(ToEA).
 
-; Direct jumps to non-decodable instructions.
+; Any transfer to a non-plausible instruction at `EA`
+; marks `EA` as dominating an invalid instruction.
 dominates_invalid_instruction(EA)
-    : instruction(EA, INSN_DIRECT_JUMP, _)
-    , raw_transfer(EA, ToEA, EDGE_JUMP_TAKEN)
-    , !plausible_instruction(ToEA).
-
-; Direct calls to non-decodable instructions. We omit 
-; return edges since the target function may not return.
-dominates_invalid_instruction(EA)
-    : instruction(EA, INSN_DIRECT_CALL, _)
-    , raw_transfer(EA, ToEA, EDGE_FUNCTION_CALL)
-    , !plausible_instruction(ToEA).
-
-; Conditional direct jumps where both edges precede 
-; non-decodable instructions.
-dominates_invalid_instruction(EA)
-    : instruction(EA, INSN_COND_DIRECT_JUMP, _)
-    , raw_transfer(EA, TargEA, EDGE_JUMP_TAKEN)
-    , raw_transfer(EA, FallEA, EDGE_JUMP_NOT_TAKEN)
-    , !plausible_instruction(TargEA)
-    , !plausible_instruction(FallEA).
-
-; Conditional direct calls where both edges precede 
-; non-decodable instructions.
-dominates_invalid_instruction(EA)
-    : instruction(EA, INSN_COND_DIRECT_CALL, _)
-    , raw_transfer(EA, TargEA, EDGE_FUNCTION_CALL)
-    , raw_transfer(EA, FallEA, EDGE_FUNCTION_CALL_RETURN)
-    , !plausible_instruction(TargEA)
-    , !plausible_instruction(FallEA).
+    : raw_transfer(_, EA, _)
+    , !plausible_instruction(EA).
 
 ; Recursive case for fall-throughs.
 dominates_invalid_instruction(EA)
     : instruction(EA, INSN_NORMAL, _)
-    , raw_transfer(EA, ToEA, EDGE_FALL_THROUGH)
-    , dominates_invalid_instruction(ToEA).
+    , raw_transfer(EA, FallThroughEA, EDGE_FALL_THROUGH)
+    , dominates_invalid_instruction(FallThroughEA).
 
 ; Recursive case for direct jumps.
 dominates_invalid_instruction(EA)
     : instruction(EA, INSN_DIRECT_JUMP, _)
-    , raw_transfer(EA, ToEA, EDGE_JUMP_TAKEN)
-    , dominates_invalid_instruction(ToEA).
+    , raw_transfer(EA, JmpTargetEA, EDGE_JUMP_TAKEN)
+    , dominates_invalid_instruction(JmpTargetEA).
 
 ; Recursive case for conditional direct jumps.
 dominates_invalid_instruction(EA)
     : instruction(EA, INSN_COND_DIRECT_JUMP, _)
-    , raw_transfer(EA, ToEA, EDGE_JUMP_TAKEN)
-    , dominates_invalid_instruction(ToEA).
+    , raw_transfer(EA, TakenEA, EDGE_JUMP_TAKEN)
+    , raw_transfer(EA, NotTakenEA, EDGE_JUMP_NOT_TAKEN)
+    , dominates_invalid_instruction(TakenEA)
+    , dominates_invalid_instruction(NotTakenEA).
 
 ; Recursive case for direct calls.
 dominates_invalid_instruction(EA)
     : instruction(EA, INSN_DIRECT_CALL, _)
-    , raw_transfer(EA, ToEA, EDGE_FUNCTION_CALL)
-    , dominates_invalid_instruction(ToEA).
+    , raw_transfer(EA, CalleeEA, EDGE_FUNCTION_CALL)
+    , dominates_invalid_instruction(CalleeEA).
 
 ; Recursive case for conditional direct calls.
 dominates_invalid_instruction(EA)
     : instruction(EA, INSN_COND_DIRECT_CALL, _)
-    , raw_transfer(EA, ToEA, EDGE_FUNCTION_CALL)
-    , dominates_invalid_instruction(ToEA).
+    , raw_transfer(EA, CalleeEA, EDGE_FUNCTION_CALL)
+    , raw_transfer(EA, RetEA, EDGE_FUNCTION_CALL_RETURN)
+    , dominates_invalid_instruction(CalleeEA)
+    , dominates_invalid_instruction(RetEA).
