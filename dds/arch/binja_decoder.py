@@ -44,7 +44,7 @@ def _llil_to_itype(insn):
         dest = insn.dest.operation
         
         if dest in [LowLevelILOperation.LLIL_CONST, \
-                    LowLevelILOperation.LLIL_CONST_PTR]:
+                    LowLevelILOperation.LLIL_CONST_PTR]: 
             return InstructionType.DIRECT_JUMP 
         elif dest == LowLevelILOperation.LLIL_REG:
             return InstructionType.INDIRECT_JUMP     
@@ -95,7 +95,7 @@ def _llil_to_itype(insn):
     # TODO(snagy2): Do we really want to return `ERROR`
     # for undecodable instructions? Shouldn't this be
     # distinct from halting instructions?
-    elif insn.operation in [lowlevelil.LowLevelILOperation.LLIL_UNDEF \
+    elif insn.operation in [lowlevelil.LowLevelILOperation.LLIL_UNDEF, \
                             lowlevelil.LowLevelILOperation.LLIL_UNIMPL, \
                             lowlevelil.LowLevelILOperation.LLIL_UNIMPL_MEM]:
         return None
@@ -116,7 +116,8 @@ class BinjaInstruction(Instruction):
         self._ea = ea
         self._data = data
         self._type = itype
-        self._llil_insn = llil_insn      
+        self._llil_insn = llil_insn    
+        #print (hex(ea), len(data))  
 
     @property
     def type(self) -> InstructionType:
@@ -138,7 +139,6 @@ class BinjaInstruction(Instruction):
     def target_ea(self) -> Optional[int]:
         """Get the target of a direct branch (direct jump, direct call,
         taken target of a conditional branch)."""
-        print (hex(self._ea), self._type, self._llil_insn)
 
         if self._type & ControlFlowBehavior.HAS_DIRECT_TARGET:
             if self._type == InstructionType.CONDITIONAL_DIRECT_JUMP:
@@ -182,6 +182,11 @@ class BinjaInstructionDecoder(InstructionDecoder):
         llil_insn = self._bn.get_low_level_il_from_bytes(bytes(data), ea)
         itype     = _llil_to_itype(llil_insn)
         insn_len  = llil_insn.size
+
+        # TODO (snagy2, pag): The issue here is that llil_insn.size 
+        # does NOT match the assembly instruction's size; this is 
+        # currently messing up how we compute fall-throughs (i.e., 
+        # they're ending up in completely wrong targets).
         
         if itype is not None:
             return BinjaInstruction(ea, bytes(data[:insn_len]), itype, llil_insn)
