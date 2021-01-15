@@ -39,59 +39,65 @@ def _llil_to_itype(insn):
     if insn.operation == lowlevelil.LowLevelILOperation.LLIL_GOTO:
         raise AssertionError()
 
-    # Unconditional branches
+    # Unconditional branches.
     if insn.operation == lowlevelil.LowLevelILOperation.LLIL_JUMP:
-        if insn.dest.operation == LowLevelILOperation.LLIL_CONST \
-        or insn.dest.operation == LowLevelILOperation.LLIL_CONST_PTR:
+        dest = insn.dest.operation
+        
+        if dest in [LowLevelILOperation.LLIL_CONST, \
+                    LowLevelILOperation.LLIL_CONST_PTR]:
             return InstructionType.DIRECT_JUMP 
-        elif insn.dest.operation == LowLevelILOperation.LLIL_REG:
+        elif dest == LowLevelILOperation.LLIL_REG:
             return InstructionType.INDIRECT_JUMP     
-        elif insn.dest.operation == LowLevelILOperation.LLIL_LOAD:
+        elif dest == LowLevelILOperation.LLIL_LOAD:
             return InstructionType.INDIRECT_JUMP       
         else:
             return None
 
-    # Conditional branches
+    # Conditional branches.
     elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_IF:
-        if insn.function[insn.true].dest.operation == LowLevelILOperation.LLIL_CONST \
-        or insn.function[insn.true].dest.operation == LowLevelILOperation.LLIL_CONST_PTR:
+        dest = insn.function[insn.true].dest.operation
+        
+        if dest in [LowLevelILOperation.LLIL_CONST, \
+                    LowLevelILOperation.LLIL_CONST_PTR]:
             return InstructionType.CONDITIONAL_DIRECT_JUMP 
-        elif insn.function[insn.true].dest.operation == LowLevelILOperation.LLIL_REG:
+        elif dest == LowLevelILOperation.LLIL_REG:
             return InstructionType.CONDITIONAL_INDIRECT_JUMP     
-        elif insn.function[insn.true].dest.operation == LowLevelILOperation.LLIL_LOAD:
+        elif dest == LowLevelILOperation.LLIL_LOAD:
             return InstructionType.CONDITIONAL_INDIRECT_JUMP       
         else:
             return None    
 
-    # Calls
-    elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_CALL\
-    or insn.operation == lowlevelil.LowLevelILOperation.LLIL_SYSCALL:
-        if insn.dest.operation == LowLevelILOperation.LLIL_CONST \
-        or insn.dest.operation == LowLevelILOperation.LLIL_CONST_PTR:
+    # Calls and system calls.
+    elif insn.operation in [lowlevelil.LowLevelILOperation.LLIL_CALL, \
+                            lowlevelil.LowLevelILOperation.LLIL_SYSCALL]:
+        dest = insn.dest.operation
+        
+        if dest == [LowLevelILOperation.LLIL_CONST, \
+                    LowLevelILOperation.LLIL_CONST_PTR]:
             return InstructionType.DIRECT_FUNCTION_CALL
-        elif insn.dest.operation == LowLevelILOperation.LLIL_REG:
+        elif dest == LowLevelILOperation.LLIL_REG:
             return InstructionType.INDIRECT_FUNCTION_CALL
-        elif insn.dest.operation == LowLevelILOperation.LLIL_LOAD:
+        elif dest == LowLevelILOperation.LLIL_LOAD:
             return InstructionType.INDIRECT_FUNCTION_CALL
         else:
             return None
 
-    # Returns
+    # Returns.
     elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_RET:
         return InstructionType.FUNCTION_RETURN
 
     # TODO(snagy2): Hopefully LLIL_TRAP excludes all
     # breakpoints (e.g., x86's `int3` instruction).
-    elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_NORET \
-    or insn.operation == lowlevelil.LowLevelILOperation.LLIL_TRAP:
+    elif insn.operation in [lowlevelil.LowLevelILOperation.LLIL_NORET, \
+                            lowlevelil.LowLevelILOperation.LLIL_TRAP]:
         return InstructionType.ERROR
 
     # TODO(snagy2): Do we really want to return `ERROR`
     # for undecodable instructions? Shouldn't this be
     # distinct from halting instructions?
-    elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_UNDEF \
-    or insn.operation == lowlevelil.LowLevelILOperation.LLIL_UNIMPL \
-    or insn.operation == lowlevelil.LowLevelILOperation.LLIL_UNIMPL_MEM:
+    elif insn.operation in [lowlevelil.LowLevelILOperation.LLIL_UNDEF \
+                            lowlevelil.LowLevelILOperation.LLIL_UNIMPL, \
+                            lowlevelil.LowLevelILOperation.LLIL_UNIMPL_MEM]:
         return None
 
     else:
