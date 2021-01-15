@@ -102,6 +102,7 @@ def _llil_to_itype(insn):
 
 
 class BinjaInstruction(Instruction):
+
     _ea: Final[int]
     _data: Final[bytes]
     _type: Final[InstructionType]
@@ -117,12 +118,15 @@ class BinjaInstruction(Instruction):
     @property
     def type(self) -> InstructionType:
         return self._type
+    
     @property
     def ea(self) -> int:
         return self._ea   
+    
     @property
     def size(self) -> int:
         return len(self._data)
+    
     @property
     def data(self) -> Union[bytes, bytearray]:
         return self._data
@@ -131,27 +135,29 @@ class BinjaInstruction(Instruction):
     def target_ea(self) -> Optional[int]:
         """Get the target of a direct branch (direct jump, direct call,
         taken target of a conditional branch)."""
-        return None
+        if self._type & ControlFlowBehavior.HAS_DIRECT_TARGET:
+            return self._llil_insn.dest.constant
 
     @property
     def fall_through_ea(self) -> Optional[int]:
-        #if self._type & ControlFlowBehavior.HAS_FALL_THROUGH:
-        #    return self.next_ea
-        #else:
-        #    return None
-        return None
+        if self._type & ControlFlowBehavior.HAS_FALL_THROUGH:
+            return self.next_ea
+        else:
+            return None
+
+    def visit_operands(self, visitor: InstructionOperandVisitor):
+        pass
+
 
 class BinjaInstructionDecoder(InstructionDecoder):
     def __init__(self, arch_name: ArchName):
         InstructionDecoder.__init__(self, arch_name)
         self._bn = _BINJA_ARCH_MODE[arch_name]
 
-    
+
     def decode_instruction(self, ea: int, data: Union[bytes, bytearray]) -> \
             Optional[Instruction]:
 
         insn = self._bn.get_low_level_il_from_bytes(bytes(data), ea)
         itype = _llil_to_itype(insn)
-        print (hex(ea), insn, itype)
-
-        #exit(0)
+        return BinjaInstruction(ea, bytes(data), itype, insn)
