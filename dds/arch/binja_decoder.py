@@ -31,30 +31,35 @@ _BINJA_ARCH_MODE: Final[Dict[ArchName, int]] = {
 # not clear if it represents jump instructions?
 #
 # https://docs.binary.ninja/dev/bnil-llil.html
+# TODO: add "\x05\xf0\x4f\x00" as conditional indirect calls (for ARMv7)
 def _llil_to_itype(insn):
     """Given a Binary Ninja LLIL, extract its InstructionType."""
+
+    # LLIL_GOTO's shouldn't happen, so error-out if we see one.
+    if insn.operation == lowlevelil.LowLevelILOperation.LLIL_GOTO:
+        raise AssertionError()
 
     if insn.operation == lowlevelil.LowLevelILOperation.LLIL_JUMP:
         if insn.dest.operation == LowLevelILOperation.LLIL_CONST \
         or insn.dest.operation == LowLevelILOperation.LLIL_CONST_PTR:
-            return InstructionType.CONDITIONAL_DIRECT_JUMP 
+            return InstructionType.DIRECT_JUMP 
         elif insn.dest.operation == LowLevelILOperation.LLIL_REG:
-            return InstructionType.CONDITIONAL_INDIRECT_JUMP     
+            return InstructionType.INDIRECT_JUMP     
         elif insn.dest.operation == LowLevelILOperation.LLIL_LOAD:
-            return InstructionType.CONDITIONAL_INDIRECT_JUMP       
+            return InstructionType.INDIRECT_JUMP       
         else:
             return None
 
-    elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_GOTO:
-        if insn.dest.operation == LowLevelILOperation.LLIL_CONST \
-        or insn.dest.operation == LowLevelILOperation.LLIL_CONST_PTR:
-            return InstructionType.DIRECT_JUMP      
-        elif insn.dest.operation == LowLevelILOperation.LLIL_REG:
-            return InstructionType.INDIRECT_JUMP        
-        elif insn.dest.operation == LowLevelILOperation.LLIL_LOAD:
-            return InstructionType.CONDITIONAL_INDIRECT_JUMP            
+    elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_IF:
+        if insn.function[insn.true].dest.operation == LowLevelILOperation.LLIL_CONST \
+        or insn.function[insn.true].dest.operation == LowLevelILOperation.LLIL_CONST_PTR:
+            return InstructionType.CONDITIONAL_DIRECT_JUMP 
+        elif insn.function[insn.true].dest.operation == LowLevelILOperation.LLIL_REG:
+            return InstructionType.CONDITIONAL_INDIRECT_JUMP     
+        elif insn.function[insn.true].dest.operation == LowLevelILOperation.LLIL_LOAD:
+            return InstructionType.CONDITIONAL_INDIRECT_JUMP       
         else:
-            return None     
+            return None    
 
     elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_CALL\
     or insn.operation == lowlevelil.LowLevelILOperation.LLIL_SYSCALL:
@@ -123,8 +128,13 @@ class BinjaInstruction(Instruction):
     def target_ea(self) -> Optional[int]:
         """Get the target of a direct branch (direct jump, direct call,
         taken target of a conditional branch)."""
+        print (hex(self._ea), self._type, self._llil_insn)
+
         if self._type & ControlFlowBehavior.HAS_DIRECT_TARGET:
-            return self._llil_insn.dest.constant
+            if self._type == InstructionType.CONDITIONAL_DIRECT_JUMP:
+                return self._llil_insn.function[self._llil_insn.true].dest.constant
+            else:
+                return self._llil_insn.dest.constant
 
     @property
     def fall_through_ea(self) -> Optional[int]:
