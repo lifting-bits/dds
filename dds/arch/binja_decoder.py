@@ -39,6 +39,7 @@ def _llil_to_itype(insn):
     if insn.operation == lowlevelil.LowLevelILOperation.LLIL_GOTO:
         raise AssertionError()
 
+    # Unconditional branches
     if insn.operation == lowlevelil.LowLevelILOperation.LLIL_JUMP:
         if insn.dest.operation == LowLevelILOperation.LLIL_CONST \
         or insn.dest.operation == LowLevelILOperation.LLIL_CONST_PTR:
@@ -50,6 +51,7 @@ def _llil_to_itype(insn):
         else:
             return None
 
+    # Conditional branches
     elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_IF:
         if insn.function[insn.true].dest.operation == LowLevelILOperation.LLIL_CONST \
         or insn.function[insn.true].dest.operation == LowLevelILOperation.LLIL_CONST_PTR:
@@ -61,6 +63,7 @@ def _llil_to_itype(insn):
         else:
             return None    
 
+    # Calls
     elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_CALL\
     or insn.operation == lowlevelil.LowLevelILOperation.LLIL_SYSCALL:
         if insn.dest.operation == LowLevelILOperation.LLIL_CONST \
@@ -73,6 +76,7 @@ def _llil_to_itype(insn):
         else:
             return None
 
+    # Returns
     elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_RET:
         return InstructionType.FUNCTION_RETURN
 
