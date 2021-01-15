@@ -1,0 +1,4 @@
+drlojekyll dds/datalog/section.dr dds/datalog/instruction.dr dds/datalog/function.dr dds/datalog/transfer.dr  -py-out dds/datalog/__init__.py -dot-out dds.dot
+python3 dds/analyze.py --binary examples/helloworld/helloworld.elf.x86_64.nopie \
+	--binary_parser lief --instruction_decoder binja
+Makefile:20: recipe for target 'bdec' failed

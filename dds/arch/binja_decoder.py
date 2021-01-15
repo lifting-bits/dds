@@ -37,65 +37,53 @@ def _llil_to_itype(insn):
     if insn.operation == lowlevelil.LowLevelILOperation.LLIL_JUMP:
         if insn.dest.operation == LowLevelILOperation.LLIL_CONST \
         or insn.dest.operation == LowLevelILOperation.LLIL_CONST_PTR:
-            return InstructionType.CONDITIONAL_DIRECT_JUMP
-        
+            return InstructionType.CONDITIONAL_DIRECT_JUMP 
         elif insn.dest.operation == LowLevelILOperation.LLIL_REG:
-            return InstructionType.CONDITIONAL_INDIRECT_JUMP
-        
+            return InstructionType.CONDITIONAL_INDIRECT_JUMP     
         elif insn.dest.operation == LowLevelILOperation.LLIL_LOAD:
-            return InstructionType.CONDITIONAL_INDIRECT_JUMP
-        
+            return InstructionType.CONDITIONAL_INDIRECT_JUMP       
         else:
-            print (insn, insn.dest.operation)
-            print ("Unsupported dest operation?")
-            exit(0)
+            return None
 
     elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_GOTO:
         if insn.dest.operation == LowLevelILOperation.LLIL_CONST \
         or insn.dest.operation == LowLevelILOperation.LLIL_CONST_PTR:
-            return InstructionType.DIRECT_JUMP
-        
+            return InstructionType.DIRECT_JUMP      
         elif insn.dest.operation == LowLevelILOperation.LLIL_REG:
-            return InstructionType.INDIRECT_JUMP
-        
+            return InstructionType.INDIRECT_JUMP        
         elif insn.dest.operation == LowLevelILOperation.LLIL_LOAD:
-            return InstructionType.CONDITIONAL_INDIRECT_JUMP
-            
+            return InstructionType.CONDITIONAL_INDIRECT_JUMP            
         else:
-            print (insn, insn, insn.operation)
-            print ("Unsupported dest operation?")
-            exit(0)        
+            return None     
 
     elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_CALL\
     or insn.operation == lowlevelil.LowLevelILOperation.LLIL_SYSCALL:
         if insn.dest.operation == LowLevelILOperation.LLIL_CONST \
         or insn.dest.operation == LowLevelILOperation.LLIL_CONST_PTR:
             return InstructionType.DIRECT_FUNCTION_CALL
-        
         elif insn.dest.operation == LowLevelILOperation.LLIL_REG:
             return InstructionType.INDIRECT_FUNCTION_CALL
-        
         elif insn.dest.operation == LowLevelILOperation.LLIL_LOAD:
             return InstructionType.INDIRECT_FUNCTION_CALL
-        
         else:
-            print (insn, insn, insn.operation)
-            print ("Unsupported dest operation?")
-            exit(0)        
+            return None
 
     elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_RET:
         return InstructionType.FUNCTION_RETURN
 
     # TODO(snagy2): Hopefully LLIL_TRAP excludes all
     # breakpoints (e.g., x86's `int3` instruction).
-    elif insn.operation in [lowlevelil.LowLevelILOperation.LLIL_NORET, lowlevelil.LowLevelILOperation.LLIL_TRAP]:
+    elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_NORET \
+    or insn.operation == lowlevelil.LowLevelILOperation.LLIL_TRAP:
         return InstructionType.ERROR
 
     # TODO(snagy2): Do we really want to return `ERROR`
     # for undecodable instructions? Shouldn't this be
     # distinct from halting instructions?
-    elif insn.operation in [lowlevelil.LowLevelILOperation.LLIL_UNDEF, lowlevelil.LowLevelILOperation.LLIL_UNIMPL, lowlevelil.LowLevelILOperation.LLIL_UNIMPL_MEM]:
-        return InstructionType.ERROR
+    elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_UNDEF \
+    or insn.operation == lowlevelil.LowLevelILOperation.LLIL_UNIMPL \
+    or insn.operation == lowlevelil.LowLevelILOperation.LLIL_UNIMPL_MEM:
+        return None
 
     else:
         return InstructionType.NORMAL
@@ -146,7 +134,20 @@ class BinjaInstruction(Instruction):
             return None
 
     def visit_operands(self, visitor: InstructionOperandVisitor):
-        pass
+        for i, op in enumerate(self._llil_insn.operands): 
+            
+            if isinstance(op, LowLevelILInstruction):
+                if op.operation == LowLevelILOperation.LLIL_CONST \
+                or op.operation == LowLevelILOperation.LLIL_CONST_PTR:
+                    visitor.visit_address_operand(self, i, op.constant)
+
+                elif op.operation == LowLevelILOperation.LLIL_LOAD: 
+                    
+                    # prefix_operands for op([0x600ff8].q) = 
+                    #     [<LLIL_LOAD 8>, <LLIL_CONST_PTR 8>, 6295544]
+                    for x in op.prefix_operands:
+                        if isinstance(x, int):
+                            visitor.visit_address_operand(self, i, x)
 
 
 class BinjaInstructionDecoder(InstructionDecoder):
@@ -158,6 +159,12 @@ class BinjaInstructionDecoder(InstructionDecoder):
     def decode_instruction(self, ea: int, data: Union[bytes, bytearray]) -> \
             Optional[Instruction]:
 
-        insn = self._bn.get_low_level_il_from_bytes(bytes(data), ea)
-        itype = _llil_to_itype(insn)
-        return BinjaInstruction(ea, bytes(data), itype, insn)
+        llil_insn = self._bn.get_low_level_il_from_bytes(bytes(data), ea)
+        itype     = _llil_to_itype(llil_insn)
+        insn_len  = llil_insn.size
+        
+        if itype is not None:
+            return BinjaInstruction(ea, bytes(data[:insn_len]), itype, llil_insn)
+
+
+

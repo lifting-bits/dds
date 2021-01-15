@@ -223,7 +223,8 @@ class CapstoneInstructionDecoder(InstructionDecoder):
         """Decode one instruction in `data`, interpreting it to start at address
         `ea`. Returns the decoded instruction, or `None`."""
         for i in self._cs.disasm(data, ea):
-            if i.mnemonic == ".byte":
-                return None
-            return _CAPSTONE_ARCH_INSTRUCTION[self.arch](i)
-        return None
+            #if i.mnemonic == ".byte":
+            #    return None
+            itype = _CAPSTONE_ARCH_INSTRUCTION[self.arch](i)
+            print (hex(itype.ea), itype._type)
+        #return None
