@@ -96,19 +96,23 @@ def _x86_decode_error(insn: capstone.CsInsn) -> InstructionType:
     return InstructionType.ERROR
 
 
+def _x86_decode_indirect_jcc(insn: capstone.CsInsn) -> InstructionType:
+    return InstructionType.CONDITIONAL_INDIRECT_JUMP
+
+
+def _x86_decode_indirect_jump(insn: capstone.CsInsn) -> InstructionType:
+    return InstructionType.INDIRECT_JUMP
+
+
 # TODO(pag): XEND as an conditional indirect jump, and XABORT as an indirect
 #            jump.
 # TODO(pag): ENDBR32 and ENDBR64 as conditional indirect jumps.
 _X86_OP_TO_TYPE_DECODER: Final = {
     capstone.x86.X86_INS_CALL: _x86_decode_call,
-    capstone.x86.X86_INS_IRET: _x86_decode_ret,
-    capstone.x86.X86_INS_IRETD: _x86_decode_ret,
-    capstone.x86.X86_INS_IRETQ: _x86_decode_ret,
     capstone.x86.X86_INS_RET: _x86_decode_ret,
     capstone.x86.X86_INS_RETF: _x86_decode_ret,
     capstone.x86.X86_INS_RETFQ: _x86_decode_ret,
     capstone.x86.X86_INS_JMP: _x86_decode_jmp,
-    capstone.x86.X86_INS_XBEGIN: _x86_decode_jcc,
     capstone.x86.X86_INS_JAE: _x86_decode_jcc,
     capstone.x86.X86_INS_JA: _x86_decode_jcc,
     capstone.x86.X86_INS_JBE: _x86_decode_jcc,
@@ -138,7 +142,25 @@ _X86_OP_TO_TYPE_DECODER: Final = {
     capstone.x86.X86_INS_INT: _x86_decode_error,
     capstone.x86.X86_INS_INT1: _x86_decode_error,
     capstone.x86.X86_INS_INT3: _x86_decode_error,
-    capstone.x86.X86_INS_INTO: _x86_decode_error,
+
+    # Old x86 stuff.
+    capstone.x86.X86_INS_INTO: _x86_decode_indirect_jcc,
+    capstone.x86.X86_INS_BOUND: _x86_decode_indirect_jcc,
+
+    # Restricted transactional memory.
+    capstone.x86.X86_INS_XBEGIN: _x86_decode_jcc,
+    capstone.x86.X86_INS_XEND: _x86_decode_indirect_jcc,
+    capstone.x86.X86_INS_XABORT: _x86_decode_indirect_jump,
+
+    # Intel CET.
+    capstone.x86.X86_INS_ENDBR32: _x86_decode_indirect_jcc,
+    capstone.x86.X86_INS_ENDBR64: _x86_decode_indirect_jcc,
+
+    capstone.x86.X86_INS_SYSRET: _x86_decode_ret,
+    capstone.x86.X86_INS_SYSEXIT: _x86_decode_ret,
+    capstone.x86.X86_INS_IRET: _x86_decode_ret,
+    capstone.x86.X86_INS_IRETD: _x86_decode_ret,
+    capstone.x86.X86_INS_IRETQ: _x86_decode_ret,
 }
 
 
