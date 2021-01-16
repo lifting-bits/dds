@@ -60,7 +60,7 @@ _X86_INST_TYPES: Final[Dict[int, InstructionType]] = {
 
     # Error conditions.
     ida_allins.NN_int: InstructionType.ERROR,
-    ida_allins.NN_into: InstructionType.ERROR,
+    ida_allins.NN_into: InstructionType.CONDITIONAL_INDIRECT_JUMP,
     ida_allins.NN_int3: InstructionType.ERROR,
     ida_allins.NN_ud0: InstructionType.ERROR,
     ida_allins.NN_ud1: InstructionType.ERROR,
@@ -131,6 +131,9 @@ _X86_INST_TYPES: Final[Dict[int, InstructionType]] = {
     # Intel CET.
     ida_allins.NN_endbr32: InstructionType.CONDITIONAL_INDIRECT_JUMP,
     ida_allins.NN_endbr64: InstructionType.CONDITIONAL_INDIRECT_JUMP,
+
+    # `bound` instruction, which conditionally traps.
+    ida_allins.NN_bound: InstructionType.CONDITIONAL_INDIRECT_JUMP,
 }
 
 

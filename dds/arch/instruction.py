@@ -69,60 +69,54 @@ class InstructionType(IntEnum):
     # transfer control to the next instruction.
     NORMAL = (1 << 17) | ControlFlowBehavior.HAS_FALL_THROUGH
 
-    # A direct jump, e.g. `jmp label` on x86.
-    DIRECT_JUMP = \
-        (1 << 18) | \
-        ControlFlowBehavior.HAS_TARGET | \
-        ControlFlowBehavior.TARGET_IS_DIRECT
-
     # An indirect jump, e.g. `jmp rax` or `jmp [rax]` on x86-64.
     INDIRECT_JUMP = \
-        (1 << 19) | \
+        (1 << 18) | \
         ControlFlowBehavior.HAS_TARGET
 
-    # A conditional jump. E.g. `jz label` on x86.
-    CONDITIONAL_DIRECT_JUMP = \
-        (1 << 20) | \
-        ControlFlowBehavior.HAS_TARGET | \
-        ControlFlowBehavior.HAS_FALL_THROUGH | \
-        ControlFlowBehavior.TARGET_IS_CONDITIONAL | \
+    # A direct jump, e.g. `jmp label` on x86.
+    DIRECT_JUMP = \
+        (1 << 19) | \
+        INDIRECT_JUMP | \
         ControlFlowBehavior.TARGET_IS_DIRECT
 
     # A conditional jump. E.g. `jz label` on x86.
     CONDITIONAL_INDIRECT_JUMP = \
-        (1 << 21) | \
+        (1 << 20) | \
         ControlFlowBehavior.HAS_TARGET | \
         ControlFlowBehavior.HAS_FALL_THROUGH | \
         ControlFlowBehavior.TARGET_IS_CONDITIONAL
 
-    # A direct function call, e.g. `call label`.
-    DIRECT_FUNCTION_CALL = \
-        (1 << 22) | \
-        ControlFlowBehavior.HAS_TARGET | \
-        ControlFlowBehavior.HAS_FALL_THROUGH | \
+    # A conditional jump. E.g. `jz label` on x86.
+    CONDITIONAL_DIRECT_JUMP = \
+        (1 << 21) | \
+        CONDITIONAL_INDIRECT_JUMP | \
         ControlFlowBehavior.TARGET_IS_DIRECT
 
     # An indirect function call, e.g. `call rax` or `call [rax]` on x86-64.
     INDIRECT_FUNCTION_CALL = \
-        (1 << 23) | \
+        (1 << 22) | \
         ControlFlowBehavior.HAS_TARGET | \
         ControlFlowBehavior.HAS_FALL_THROUGH
+
+    # A direct function call, e.g. `call label`.
+    DIRECT_FUNCTION_CALL = \
+        (1 << 23) | \
+        INDIRECT_FUNCTION_CALL | \
+        ControlFlowBehavior.TARGET_IS_DIRECT
 
     # A conditional direct function call. E.g. a conditional branch-and-link
     # on AArch32.
     CONDITIONAL_DIRECT_FUNCTION_CALL = \
         (1 << 24) | \
-        ControlFlowBehavior.HAS_TARGET | \
-        ControlFlowBehavior.HAS_FALL_THROUGH | \
-        ControlFlowBehavior.TARGET_IS_CONDITIONAL | \
-        ControlFlowBehavior.TARGET_IS_DIRECT
+        DIRECT_FUNCTION_CALL | \
+        ControlFlowBehavior.TARGET_IS_CONDITIONAL
 
     # A conditional indirect function call. E.g. a conditional branch-and-link
     # on AArch32.
     CONDITIONAL_INDIRECT_FUNCTION_CALL = \
         (1 << 25) | \
-        ControlFlowBehavior.HAS_TARGET | \
-        ControlFlowBehavior.HAS_FALL_THROUGH | \
+        INDIRECT_FUNCTION_CALL | \
         ControlFlowBehavior.TARGET_IS_CONDITIONAL
 
     # Function return, e.g. `ret` on x86.
@@ -131,6 +125,7 @@ class InstructionType(IntEnum):
     # Function return, e.g. `rnz` on Intel 8085.
     CONDITIONAL_FUNCTION_RETURN = \
         (1 << 27) | \
+        FUNCTION_RETURN | \
         ControlFlowBehavior.HAS_FALL_THROUGH | \
         ControlFlowBehavior.TARGET_IS_CONDITIONAL
 
