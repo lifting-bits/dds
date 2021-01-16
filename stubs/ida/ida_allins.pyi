@@ -9,6 +9,7 @@ NN_repe: Final[int] = 157
 NN_repne: Final[int] = 158
 
 # x86 instruction types relevant to itype lookup.
+NN_bound: Final[int] = 9
 NN_call: Final[int] = 16
 NN_callfi: Final[int] = 17
 NN_callni: Final[int] = 18

@@ -131,6 +131,9 @@ _X86_INST_TYPES: Final[Dict[int, InstructionType]] = {
     # Intel CET.
     ida_allins.NN_endbr32: InstructionType.CONDITIONAL_INDIRECT_JUMP,
     ida_allins.NN_endbr64: InstructionType.CONDITIONAL_INDIRECT_JUMP,
+
+    # `bound` instruction, which conditionally traps.
+    ida_allins.NN_bound: InstructionType.CONDITIONAL_INDIRECT_JUMP,
 }
 
 

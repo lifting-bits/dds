@@ -1,7 +1,7 @@
 # Copyright 2021, Trail of Bits. All rights reserved.
 
 from abc import ABC
-from typing import Dict, Final, Callable, Iterable, Optional, Union
+from typing import Dict, Final, Callable, Iterable, Optional, Union, Set
 from binaryninja import *
 
 from .name import ArchName
@@ -12,7 +12,6 @@ from .instruction import \
     InstructionOperandVisitor, \
     InstructionType
 
-
 _BINJA_ARCH_MODE: Final[Dict[ArchName, int]] = {
     ArchName.X86: Architecture['x86'],
     ArchName.X86_AVX: Architecture['x86'],
@@ -22,90 +21,215 @@ _BINJA_ARCH_MODE: Final[Dict[ArchName, int]] = {
     ArchName.AMD64_AVX512: Architecture['x86_64'],
     ArchName.AARCH32: Architecture['armv7'],
     ArchName.AARCH64: Architecture['aarch64']
-    #ArchName.SPARC32: 
-    #ArchName.SPARC32: 
+    # ArchName.SPARC32:
+    # ArchName.SPARC32:
 }
 
+_JUMP_TARGET_KIND: Dict[LowLevelILOperation, InstructionType] = {
+    LowLevelILOperation.LLIL_CONST: InstructionType.DIRECT_JUMP,
+    LowLevelILOperation.LLIL_CONST_PTR: InstructionType.DIRECT_JUMP,
+    LowLevelILOperation.LLIL_EXTERN_PTR: InstructionType.DIRECT_JUMP,
+}
 
-# TODO(snagy2): support LLIL_JUMP_TO (jump tables); 
-# not clear if it represents jump instructions?
-#
-# https://docs.binary.ninja/dev/bnil-llil.html
-# TODO: add "\x05\xf0\x4f\x00" as conditional indirect calls (for ARMv7)
-def _llil_to_itype(insn):
-    """Given a Binary Ninja LLIL, extract its InstructionType."""
+_CALL_TARGET_KIND: Dict[LowLevelILOperation, InstructionType] = {
+    LowLevelILOperation.LLIL_CONST: InstructionType.DIRECT_FUNCTION_CALL,
+    LowLevelILOperation.LLIL_CONST_PTR: InstructionType.DIRECT_FUNCTION_CALL,
+    LowLevelILOperation.LLIL_EXTERN_PTR: InstructionType.DIRECT_FUNCTION_CALL,
+}
 
-    # LLIL_GOTO's shouldn't happen, so error-out if we see one.
-    if insn.operation == lowlevelil.LowLevelILOperation.LLIL_GOTO:
-        raise AssertionError()
+# An extra flag for bitmasks returned by `_visit_llil` that signal conditional
+# control flow. This hels us distinguish a `bound` instruction on x86 as not
+# being an error, as really it's a conditional error, or alternatively, a
+# conditional indirect jump.
+_FLAG_IS_CONDITIONAL: Final[int] = (1 << 63)
+
+
+def _visit_llil(func: LowLevelILFunction, index: int) -> int:
+    """Recursively visit the instructions of a low levle IL function and build
+    up a bitmask representing the possible control flow features and instruction
+    types of the instruction which produced `func`."""
+
+    try:
+        insn: LowLevelILInstruction = func[index]
+    except IndexError as e:
+        return InstructionType.NORMAL
+
+    # Goto within the IL. If we see a backwards edge the assume we're dealing
+    # with something conditional; we'll merge later.
+    if insn.operation == LowLevelILOperation.LLIL_GOTO:
+        if insn.dest < index:
+            return InstructionType.CONDITIONAL_DIRECT_JUMP
+        else:
+            return _visit_llil(func, insn.dest)
 
     # Unconditional branches.
-    if insn.operation == lowlevelil.LowLevelILOperation.LLIL_JUMP:
-        dest = insn.dest.operation
-        
-        if dest in [LowLevelILOperation.LLIL_CONST, \
-                    LowLevelILOperation.LLIL_CONST_PTR]: 
-            return InstructionType.DIRECT_JUMP 
-        elif dest == LowLevelILOperation.LLIL_REG:
-            return InstructionType.INDIRECT_JUMP     
-        elif dest == LowLevelILOperation.LLIL_LOAD:
-            return InstructionType.INDIRECT_JUMP       
-        else:
-            return None
+    elif insn.operation == LowLevelILOperation.LLIL_JUMP or \
+            insn.operation == LowLevelILOperation.LLIL_TAILCALL:
+        return _JUMP_TARGET_KIND.get(insn.dest.operation,
+                                     InstructionType.INDIRECT_JUMP)
+
+    # Jump tables.
+    elif insn.operation == LowLevelILOperation.LLIL_JUMP_TO:
+        return InstructionType.INDIRECT_JUMP
+
+    elif insn.operation == LowLevelILOperation.LLIL_CALL:
+        return _CALL_TARGET_KIND.get(insn.dest.operation,
+                                     InstructionType.INDIRECT_FUNCTION_CALL)
+
+    elif insn.operation == LowLevelILOperation.LLIL_RET:
+        return InstructionType.FUNCTION_RETURN
 
     # Conditional branches.
-    elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_IF:
-        dest = insn.function[insn.true].dest.operation
-        
-        if dest in [LowLevelILOperation.LLIL_CONST, \
-                    LowLevelILOperation.LLIL_CONST_PTR]:
-            return InstructionType.CONDITIONAL_DIRECT_JUMP 
-        elif dest == LowLevelILOperation.LLIL_REG:
-            return InstructionType.CONDITIONAL_INDIRECT_JUMP     
-        elif dest == LowLevelILOperation.LLIL_LOAD:
-            return InstructionType.CONDITIONAL_INDIRECT_JUMP       
-        else:
-            return None    
+    elif insn.operation == LowLevelILOperation.LLIL_IF:
 
-    # Calls and system calls.
-    elif insn.operation in [lowlevelil.LowLevelILOperation.LLIL_CALL, \
-                            lowlevelil.LowLevelILOperation.LLIL_SYSCALL]:
-        dest = insn.dest.operation
-        
-        if dest == [LowLevelILOperation.LLIL_CONST, \
-                    LowLevelILOperation.LLIL_CONST_PTR]:
-            return InstructionType.DIRECT_FUNCTION_CALL
-        elif dest == LowLevelILOperation.LLIL_REG:
-            return InstructionType.INDIRECT_FUNCTION_CALL
-        elif dest == LowLevelILOperation.LLIL_LOAD:
-            return InstructionType.INDIRECT_FUNCTION_CALL
-        else:
-            return None
+        true_kind: int = ControlFlowBehavior.HAS_TARGET | \
+                         ControlFlowBehavior.TARGET_IS_CONDITIONAL
+
+        if insn.true > index:
+            true_kind = _visit_llil(func, insn.true)
+        false_kind: int = 0
+        if insn.false > index:
+            false_kind = _visit_llil(func, insn.false)
+        return true_kind | false_kind | _FLAG_IS_CONDITIONAL
+
+    elif insn.operation == LowLevelILOperation.LLIL_SYSCALL:
+        return InstructionType.INDIRECT_FUNCTION_CALL
 
     # Returns.
     elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_RET:
         return InstructionType.FUNCTION_RETURN
 
-    # TODO(snagy2): Hopefully LLIL_TRAP excludes all
-    # breakpoints (e.g., x86's `int3` instruction).
-    elif insn.operation in [lowlevelil.LowLevelILOperation.LLIL_NORET, \
-                            lowlevelil.LowLevelILOperation.LLIL_TRAP]:
+    elif insn.operation == LowLevelILOperation.LLIL_NORET or \
+            insn.operation == LowLevelILOperation.LLIL_TRAP or \
+            insn.operation == LowLevelILOperation.LLIL_UNDEF:
         return InstructionType.ERROR
 
-    # TODO(snagy2): Do we really want to return `ERROR`
-    # for undecodable instructions? Shouldn't this be
-    # distinct from halting instructions?
-    elif insn.operation in [lowlevelil.LowLevelILOperation.LLIL_UNDEF, \
-                            lowlevelil.LowLevelILOperation.LLIL_UNIMPL, \
-                            lowlevelil.LowLevelILOperation.LLIL_UNIMPL_MEM]:
-        return None
+    else:
+        return _visit_llil(func, index + 1)
 
+
+def _llil_to_itype(insn: LowLevelILInstruction) -> InstructionType:
+    """Deduce an `InstructionType` from a low-level IL instruction"""
+
+    joint_kind = _visit_llil(insn.function, 0)
+
+    # Conditional flows with a target.
+    if joint_kind & ControlFlowBehavior.TARGET_IS_CONDITIONAL:
+        assert 0 != (joint_kind & ControlFlowBehavior.HAS_TARGET)
+
+        # Conditional flows wiht a direct target, either conditional jump
+        # or conditional call.
+        if joint_kind & ControlFlowBehavior.TARGET_IS_DIRECT:
+            if (joint_kind & InstructionType.DIRECT_FUNCTION_CALL) == \
+                    InstructionType.DIRECT_FUNCTION_CALL:
+                return InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL
+            else:
+                return InstructionType.CONDITIONAL_DIRECT_JUMP
+
+        elif (joint_kind & InstructionType.FUNCTION_RETURN) == \
+                InstructionType.FUNCTION_RETURN:
+            return InstructionType.CONDITIONAL_FUNCTION_RETURN
+        elif (joint_kind & InstructionType.INDIRECT_FUNCTION_CALL) == \
+                InstructionType.INDIRECT_FUNCTION_CALL:
+            return InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL
+        else:
+            return InstructionType.CONDITIONAL_INDIRECT_JUMP
+
+    # Direct flows with a target, either
+    elif joint_kind & ControlFlowBehavior.TARGET_IS_DIRECT:
+        if (joint_kind & InstructionType.DIRECT_FUNCTION_CALL) == \
+                InstructionType.DIRECT_FUNCTION_CALL:
+            return InstructionType.DIRECT_FUNCTION_CALL
+        else:
+            return InstructionType.DIRECT_JUMP
+
+    elif (joint_kind & InstructionType.FUNCTION_RETURN) == \
+            InstructionType.FUNCTION_RETURN:
+        return InstructionType.FUNCTION_RETURN
+
+    elif (joint_kind & InstructionType.INDIRECT_FUNCTION_CALL) == \
+            InstructionType.INDIRECT_FUNCTION_CALL:
+        return InstructionType.INDIRECT_FUNCTION_CALL
+
+    elif (joint_kind & InstructionType.INDIRECT_JUMP) == \
+            InstructionType.INDIRECT_JUMP:
+        return InstructionType.INDIRECT_JUMP
+
+    # We use the `_FLAG_IS_CONDITIONAL` as an extra test to distinguish
+    # things like x86's `bound`.
+    elif (joint_kind & InstructionType.ERROR) == InstructionType.ERROR and \
+            0 == (joint_kind & _FLAG_IS_CONDITIONAL):
+        return InstructionType.ERROR
+
+    # Normal, fall-through instruction.
     else:
         return InstructionType.NORMAL
 
 
-class BinjaInstruction(Instruction):
+def _find_jump_target(func: LowLevelILFunction, index: int, seen: Set[int]):
+    """Find the direct target of a jump or call from the LLIL."""
 
+    try:
+        insn = func[index]
+    except IndexError as e:
+        return 0
+
+    if index in seen:
+        return 0
+
+    seen.add(index)
+
+    # Goto within the IL. If we see a backwards edge the assume we're
+    # dealing
+    # with something conditional; we'll merge later.
+    if insn.operation == LowLevelILOperation.LLIL_GOTO:
+        return _find_jump_target(func, insn.dest, seen)
+
+    # Unconditional branches.
+    elif insn.operation == LowLevelILOperation.LLIL_JUMP or \
+            insn.operation == LowLevelILOperation.LLIL_TAILCALL:
+        if insn.dest.operation == LowLevelILOperation.LLIL_CONST or \
+                insn.dest.operation == LowLevelILOperation.LLIL_CONST_PTR:
+            return insn.dest.constant
+        else:
+            return 0
+
+    # Jump tables.
+    elif insn.operation == LowLevelILOperation.LLIL_JUMP_TO:
+        return 0
+
+    elif insn.operation == LowLevelILOperation.LLIL_CALL:
+        if insn.dest.operation == LowLevelILOperation.LLIL_CONST or \
+                insn.dest.operation == LowLevelILOperation.LLIL_CONST_PTR:
+            return insn.dest.constant
+        else:
+            return 0
+
+    elif insn.operation == LowLevelILOperation.LLIL_RET:
+        return 0
+
+    # Conditional branches.
+    elif insn.operation == LowLevelILOperation.LLIL_IF:
+        return max(_find_jump_target(func, insn.true, seen),
+                   _find_jump_target(func, insn.false, seen))
+
+    elif insn.operation == LowLevelILOperation.LLIL_SYSCALL:
+        return 0
+
+    # Returns.
+    elif insn.operation == lowlevelil.LowLevelILOperation.LLIL_RET:
+        return 0
+
+    elif insn.operation == LowLevelILOperation.LLIL_NORET or \
+            insn.operation == LowLevelILOperation.LLIL_TRAP or \
+            insn.operation == LowLevelILOperation.LLIL_UNDEF:
+        return 0
+
+    else:
+        return _find_jump_target(func, index + 1, seen)
+
+
+class BinjaInstruction(Instruction):
     _ea: Final[int]
     _data: Final[bytes]
     _type: Final[InstructionType]
@@ -116,21 +240,21 @@ class BinjaInstruction(Instruction):
         self._ea = ea
         self._data = data
         self._type = itype
-        self._llil_insn = llil_insn    
-        #print (hex(ea), len(data))  
+        self._llil_insn = llil_insn
+        # print (hex(ea), len(data))
 
     @property
     def type(self) -> InstructionType:
         return self._type
-    
+
     @property
     def ea(self) -> int:
-        return self._ea   
-    
+        return self._ea
+
     @property
     def size(self) -> int:
         return len(self._data)
-    
+
     @property
     def data(self) -> Union[bytes, bytearray]:
         return self._data
@@ -139,12 +263,10 @@ class BinjaInstruction(Instruction):
     def target_ea(self) -> Optional[int]:
         """Get the target of a direct branch (direct jump, direct call,
         taken target of a conditional branch)."""
-
         if self._type & ControlFlowBehavior.HAS_DIRECT_TARGET:
-            if self._type == InstructionType.CONDITIONAL_DIRECT_JUMP:
-                return self._llil_insn.function[self._llil_insn.true].dest.constant
-            else:
-                return self._llil_insn.dest.constant
+            return _find_jump_target(self._llil_insn.function, 0, set())
+        else:
+            return None
 
     @property
     def fall_through_ea(self) -> Optional[int]:
@@ -154,20 +276,14 @@ class BinjaInstruction(Instruction):
             return None
 
     def visit_operands(self, visitor: InstructionOperandVisitor):
-        for i, op in enumerate(self._llil_insn.operands): 
-            
-            if isinstance(op, LowLevelILInstruction):
-                if op.operation == LowLevelILOperation.LLIL_CONST \
-                or op.operation == LowLevelILOperation.LLIL_CONST_PTR:
-                    visitor.visit_address_operand(self, i, op.constant)
+        for i, op in enumerate(self._llil_insn.operands):
+            if not isinstance(op, LowLevelILInstruction) or \
+                    op.operation != LowLevelILOperation.LLIL_LOAD:
+                continue
 
-                elif op.operation == LowLevelILOperation.LLIL_LOAD: 
-                    
-                    # prefix_operands for op([0x600ff8].q) = 
-                    #     [<LLIL_LOAD 8>, <LLIL_CONST_PTR 8>, 6295544]
-                    for x in op.prefix_operands:
-                        if isinstance(x, int):
-                            visitor.visit_address_operand(self, i, x)
+            if op.src.operation == LowLevelILOperation.LLIL_CONST or \
+                    op.src.operation == LowLevelILOperation.LLIL_CONST_PTR:
+                visitor.visit_address_operand(self, i, op.src.constant)
 
 
 class BinjaInstructionDecoder(InstructionDecoder):
@@ -175,21 +291,19 @@ class BinjaInstructionDecoder(InstructionDecoder):
         InstructionDecoder.__init__(self, arch_name)
         self._bn = _BINJA_ARCH_MODE[arch_name]
 
-
     def decode_instruction(self, ea: int, data: Union[bytes, bytearray]) -> \
             Optional[Instruction]:
 
-        llil_insn = self._bn.get_low_level_il_from_bytes(bytes(data), ea)
-        itype     = _llil_to_itype(llil_insn)
-        insn_len  = llil_insn.size
+        insn: LowLevelILInstruction = \
+            self._bn.get_low_level_il_from_bytes(bytes(data), ea)
 
-        # TODO (snagy2, pag): The issue here is that llil_insn.size 
-        # does NOT match the assembly instruction's size; this is 
-        # currently messing up how we compute fall-throughs (i.e., 
-        # they're ending up in completely wrong targets).
-        
-        if itype is not None:
-            return BinjaInstruction(ea, bytes(data[:insn_len]), itype, llil_insn)
+        if not insn or insn.operation == LowLevelILOperation.LLIL_UNDEF:
+            return None
 
+        itype = _llil_to_itype(insn)
+        info: InstructionInfo = self._bn.get_instruction_info(bytes(data), ea)
+        insn_len = info.length
+        if not insn_len:
+            return None
 
-
+        return BinjaInstruction(ea, bytes(data[:insn_len]), itype, insn)
