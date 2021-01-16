@@ -84,12 +84,14 @@ def _visit_llil(func: LowLevelILFunction, index: int) -> int:
 
         true_kind: int = ControlFlowBehavior.HAS_TARGET | \
                          ControlFlowBehavior.TARGET_IS_CONDITIONAL
+        false_kind: int = true_kind
 
         if insn.true > index:
             true_kind = _visit_llil(func, insn.true)
-        false_kind: int = 0
+
         if insn.false > index:
             false_kind = _visit_llil(func, insn.false)
+
         return true_kind | false_kind | _FLAG_IS_CONDITIONAL
 
     elif insn.operation == LowLevelILOperation.LLIL_SYSCALL:
