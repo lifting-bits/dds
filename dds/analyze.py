@@ -2,7 +2,10 @@
 # Copyright 2020, Trail of Bits. All rights reserved.
 
 import argparse
+import hashlib
 import os
+import pickle
+import shutil
 import subprocess
 import sys
 from typing import Final, List, Optional, Sequence, Union
@@ -215,6 +218,9 @@ def run_under_ida(parser, args) -> int:
     if "SystemRoot" in os.environ:
         env["SystemRoot"] = os.environ["SystemRoot"]
 
+    stdout_path = os.path.join(args.workspace_dir, "stdout")
+    stderr_path = os.path.join(args.workspace_dir, "stdout")
+
     script_cmd = []
     script_cmd.append(os.path.abspath(__file__))
     script_cmd.append("--binary")
@@ -227,28 +233,83 @@ def run_under_ida(parser, args) -> int:
     script_cmd.append(args.arch)
     script_cmd.append("--os")
     script_cmd.append(args.os)
+    script_cmd.append("--workspace_dir")
+    script_cmd.append(args.workspace_dir)
+    script_cmd.append("--ida_stdout_path")
+    script_cmd.append(stdout_path)
+    script_cmd.append("--ida_stderr_path")
+    script_cmd.append(stderr_path)
+    script_cmd.append("--ida_sys_path")
+    script_cmd.append(pickle.dumps(sys.path).hex())
 
     cmd: List[str] = []
     cmd.append(quote(args.ida_path))  # Path to IDA.
     cmd.append("-B")  # Batch mode.
     cmd.append("-S\"{}\"".format(" ".join(script_cmd)))
     cmd.append(quote(os.path.abspath(args.binary)))
-
+    ret: int
     try:
-        print(" ".join(cmd))
-        print()
+        #print(" ".join(cmd))
+        #print()
         with open(os.devnull, "w") as devnull:
-            return subprocess.check_call(
+            ret = subprocess.check_call(
                 " ".join(cmd),
                 env=env,
                 stdin=None,
                 stdout=devnull,  # Necessary.
-                stderr=sys.stderr,  # For enabling `--log_file /dev/stderr`.
+                stderr=devnull,  # Necessary.
                 shell=True)  # Necessary.
 
     except Exception as e:
-        parser.error("Error executing under the control of IDA Pro: {}".format(e))
-        return 1
+        parser.error("Error executing under the control of IDA Pro: {}".format(
+            str(e)))
+        ret = 1
+
+    try:
+        with open(stderr_path, "r") as ida_stderr:
+            sys.stderr.write(ida_stderr.read())
+        sys.stderr.flush()
+        os.unlink(stderr_path)
+    except:
+        pass
+
+    try:
+        with open(stdout_path, "r") as ida_stdout:
+            sys.stdout.write(ida_stdout.read())
+        os.unlink(stdout_path)
+    except:
+        pass
+
+    return ret
+
+
+def setup_workspace(parser, args):
+    """Setup the solypsis workspace directory."""
+    if not os.path.isdir(args.workspace_dir):
+        try:
+            os.makedirs(args.workspace_dir, 0o777)
+        except OSError as e:
+            parser.error("Unable to create workspace directory '{}': {}".format(
+                args.workspace_dir, str(e)))
+
+    args.workspace_dir = os.path.abspath(args.workspace_dir)
+
+
+def copy_binary_into_workspace(args):
+    """IDA Pro has issues when opening files in directories in which the
+    user does not have write access, e.g. `/bin/ls` often cannot be opened
+    directly because IDA Pro will want to create a `/bin/ls.i64` file."""
+    with open(args.binary, "rb") as binary_file:
+        sha1_hash = hashlib.sha1(binary_file.read())
+
+    temp_bin_path = os.path.join(args.workspace_dir, sha1_hash.hexdigest())
+    if not os.path.isfile(temp_bin_path):
+        try:
+            os.link(args.binary, temp_bin_path)
+        except:
+            shutil.copyfile(args.binary, temp_bin_path)
+
+    args.binary = temp_bin_path
 
 
 def main(argv: Optional[Sequence[str]] = None):
@@ -288,12 +349,55 @@ def main(argv: Optional[Sequence[str]] = None):
         help="Operating system on which this binary is expected to execute.",
         choices=("linux", "macos", "windows", "solaris"))
 
+    parser.add_argument(
+        "--workspace_dir", type=str, default="", required=True,
+        help="Path to a workspace directory where temporary files will be "
+             "stored.")
+
+    parser.add_argument(
+        "--ida_stdout_path", type=str, default="", help=argparse.SUPPRESS)
+
+    parser.add_argument(
+        "--ida_stderr_path", type=str, default="", help=argparse.SUPPRESS)
+
+    parser.add_argument(
+        "--ida_sys_path", type=str, default="", help=argparse.SUPPRESS)
+
     args = parser.parse_args(argv[1:])
 
+    setup_workspace(parser, args)
+
+    # We want to run under IDA Pro's Python interpreter.
     if args.ida_path:
+        copy_binary_into_workspace(args)
         return run_under_ida(parser, args)
 
-    binary: Optional[BinaryParser] = None
+    # Here we assume we have already copied the binary into the workspace.
+    elif args.ida_stdout_path and args.ida_stderr_path and args.ida_sys_path:
+        sys.stdout = open(args.ida_stdout_path, "w+")
+        sys.stderr = open(args.ida_stderr_path, "w+")
+
+        # Super evil >:-) Try to pull out IDA's main python directories.
+        paths = []
+        old_paths = []
+        for i, p in enumerate(sys.path):
+            if "ida" in p.lower() and i < 10:
+                paths.append(p)
+            else:
+                old_paths.append(p)
+
+        # Now add in the `sys.path` of the parent process.
+        paths.extend(pickle.loads(bytes.fromhex(args.ida_sys_path)))
+
+        # Now add in the old paths that IDA had.
+        paths.extend(old_paths)
+
+        sys.path.clear()
+        sys.path.extend(paths)
+    else:
+        copy_binary_into_workspace(args)
+
+    binary: Optional[BinaryParser]
     try:
         binary = parse_binary(args)
     except Exception as e:
