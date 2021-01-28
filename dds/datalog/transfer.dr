@@ -251,12 +251,12 @@ transfer(FromEA, ToEA, EDGE_JUMP_TAKEN)
     , !function(ToEA).
 
 ;---------------------------------------------------------
-; Interprocedural transfers, minus inlined thunk calls.
+; Inter-procedural transfers.
 intraproc_transfer(FromEA, ToEA)
     : transfer(FromEA, ToEA, _)
     , !function(ToEA).
 
-; Intraprocedural transfers.
+; Intra-procedural transfers.
 interproc_transfer(FromEA, ToEA)
     : transfer(FromEA, ToEA, _)
     , function(ToEA).

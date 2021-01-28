@@ -142,5 +142,5 @@ _DECODER_MAP: Final[Dict[str, Callable]] = {
 
 
 def decoder_from_string(decoder_name: str, arch_name: ArchName) \
-        -> InstructionDecoder:
+        -> Optional[InstructionDecoder]:
     return _DECODER_MAP.get(decoder_name, _invalid_decoder)(arch_name)

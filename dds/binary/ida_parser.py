@@ -148,7 +148,7 @@ class IDABinaryParser(BinaryParser):
     """Parse a binary with IDA Pro, and provide a mechanism for visiting
     metadata."""
 
-    def __init__(self, arch_name: str, os_name: str):
+    def __init__(self, arch_name: 'ArchName', os_name: str):
         ida_auto.auto_wait()
         BinaryParser.__init__(self, arch_name, os_name)
 

@@ -1,6 +1,7 @@
 # Copyright 2020, Trail of Bits. All rights reserved.
 
 from enum import IntEnum
+from typing import Optional
 
 
 class ArchName(IntEnum):
@@ -31,7 +32,7 @@ _ARCH_NAME_TO_ARCH = {
 }
 
 
-def arch_from_string(name: str) -> ArchName:
-    return _ARCH_NAME_TO_ARCH[name]
+def arch_from_string(name: str) -> Optional[ArchName]:
+    return _ARCH_NAME_TO_ARCH.get(name, None)
 
 

@@ -12,7 +12,8 @@ class LIEFELFBinaryParser(BinaryParser):
     """ELF metadata provider, implemented via information available through
     LIEF."""
 
-    def __init__(self, arch_name: str, os_name: str, binary: lief.ELF.Binary):
+    def __init__(self, arch_name: 'ArchName', os_name: str,
+                 binary: lief.ELF.Binary):
         BinaryParser.__init__(self, arch_name, os_name)
         self._binary: Final[lief.ELF.Binary] = binary
 

@@ -6,18 +6,21 @@ deps = dds/datalog/section.dr \
 	   dds/datalog/transfer.dr 
 
 all: 
-	drlojekyll $(deps) -py-out dds/datalog/__init__.py -dot-out dds.dot
+	drlojekyll $(deps) \
+	    -py-out dds/datalog/database.py \
+	    -py-interface-out dds/datalog/interface.py \
+	    -dot-out dds.dot
 
 lief: all
-	python3 dds/analyze.py --binary examples/helloworld/helloworld.elf.x86_64.nopie \
+	python3 -m dds.__main__ --binary examples/helloworld/helloworld.elf.x86_64.nopie \
 		--binary_parser lief --instruction_decoder capstone
 
 binja: all
-	python3 dds/analyze.py --binary examples/helloworld/helloworld.elf.x86_64.nopie \
+	python3 -m dds.__main__ --binary examples/helloworld/helloworld.elf.x86_64.nopie \
 		--binary_parser binja --instruction_decoder capstone
 
 bdec: all
-	python3 dds/analyze.py --binary examples/helloworld/helloworld.elf.x86_64.nopie \
+	python3 -m dds.__main__ --binary examples/helloworld/helloworld.elf.x86_64.nopie \
 		--binary_parser lief --instruction_decoder binja
 
 debug:
