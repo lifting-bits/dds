@@ -21,21 +21,7 @@ except:
 sys.path.append(os.path.dirname(__file__))
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from dds.datalog import \
-    Database, \
-    DatabaseFunctors, \
-    DatabaseLog
-
-from dds.arch import \
-    ArchName, \
-    arch_from_string, \
-    decoder_from_string
-
-from dds.binary import \
-    binary_parser_from_string, \
-    BinaryParser
-
-from dds.analyze import BinaryMetadataImporter
+from dds.analyze import BinaryAnalyzer
 
 
 def debug(message, *args):
@@ -58,21 +44,6 @@ def _exit(code: int):
         idc.qexit(code)
     except:
         sys.exit(code)
-
-
-def parse_binary(args, arch: ArchName) -> Optional[BinaryParser]:
-    """Parse the binary at `path` with the binary parser named by
-    `parser_name`."""
-    parser = binary_parser_from_string(args.binary_parser)
-    if not parser:
-        raise Exception("Unhandled binary parser type '{}'".format(
-            args.binary_parser))
-
-    binary = parser(arch, args.os, args.binary)
-    if not binary:
-        raise Exception("Invalid or unrecognized file format")
-
-    return binary
 
 
 def run_under_ida(parser, args) -> int:
@@ -105,9 +76,9 @@ def run_under_ida(parser, args) -> int:
     script_cmd.append("--binary")
     script_cmd.append(os.path.abspath(args.binary))
     script_cmd.append("--binary_parser")
-    script_cmd.append(args.binary_parser)
+    script_cmd.append(args.default_binary_parser)
     script_cmd.append("--instruction_decoder")
-    script_cmd.append(args.instruction_decoder)
+    script_cmd.append(args.default_instruction_decoder)
     script_cmd.append("--arch")
     script_cmd.append(args.arch)
     script_cmd.append("--os")
@@ -166,7 +137,7 @@ def setup_workspace(parser, args):
     """Setup the solypsis workspace directory."""
     if not os.path.isdir(args.workspace_dir):
         try:
-            os.makedirs(args.workspace_dir, 0o777)
+            os.makedirs(args.workspace_dir, exist_ok=True)
         except OSError as e:
             parser.error("Unable to create workspace directory '{}': {}".format(
                 args.workspace_dir, str(e)))
@@ -179,7 +150,7 @@ def copy_binary_into_workspace(args):
     user does not have write access, e.g. `/bin/ls` often cannot be opened
     directly because IDA Pro will want to create a `/bin/ls.i64` file."""
     with open(args.binary, "rb") as binary_file:
-        sha1_hash = hashlib.sha1(binary_file.read())
+        sha1_hash = hashlib.sha256(binary_file.read())
 
     temp_bin_path = os.path.join(args.workspace_dir, sha1_hash.hexdigest())
     if not os.path.isfile(temp_bin_path):
@@ -273,34 +244,20 @@ def main(argv: Optional[Sequence[str]] = None):
 
         sys.path.clear()
         sys.path.extend(paths)
-    else:
-        copy_binary_into_workspace(args)
 
-    arch = arch_from_string(args.arch)
+    with open(args.binary, "rb") as binary_file:
+        analyzer = BinaryAnalyzer(
+            args.arch,
+            args.os,
+            binary_file.read(),
+            workspace_dir=args.workspace_dir,
+            instruction_decoder=args.instruction_decoder,
+            binary_parser=args.binary_parser)
 
-    binary: Optional[BinaryParser]
-    try:
-        binary = parse_binary(args, arch)
-    except Exception as e:
-        parser.error("Error parsing file '{}': {}".format(args.binary, str(e)))
-        return 1
-
-    functors = DatabaseFunctors()
-    log = DatabaseLog()
-    db = Database(log, functors)
-
-    decoder = decoder_from_string(args.instruction_decoder, arch)
-    visitor = BinaryMetadataImporter(decoder)
-    binary.visit_metadata(visitor)
-
-    metadata = visitor.produce()
-    if metadata is not None:
-        metadata.apply(db)
-
-    for f in sorted(db.function_f()):
-        print("Function {:x}".format(f))
-        for i in sorted(db.function_instruction_bf(f)):
-            print("  {:x}".format(i))
+    for f in analyzer.functions:
+        print("Function {:x}".format(f.ea))
+        for i in f.instructions:
+            print("  {:x}".format(i.ea))
         print()
 
     return 0
