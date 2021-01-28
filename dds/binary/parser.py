@@ -1,7 +1,8 @@
 # Copyright 2020, Trail of Bits. All rights reserved.
 
 from abc import ABC, abstractmethod
-from typing import Final, Optional, Union
+from typing import Dict, Final, Optional, Union
+from ..arch import ArchName
 
 
 class BinaryMetadataVisitor:
@@ -68,25 +69,26 @@ class BinaryMetadataVisitor:
         pass
 
 
+_ADDRESS_SIZE_BITS: Final[Dict[ArchName, int]] = {
+    ArchName.X86: 32,
+    ArchName.X86_AVX: 32,
+    ArchName.X86_AVX512: 32,
+    ArchName.AMD64: 64,
+    ArchName.AMD64_AVX: 64,
+    ArchName.AMD64_AVX512: 64,
+    ArchName.AARCH32: 32,
+    ArchName.AARCH64: 64,
+    ArchName.SPARC32: 32,
+    ArchName.SPARC64: 64
+}
+
+
 class BinaryParser(ABC):
 
-    ADDRESS_SIZE_BITS = {
-        "x86": 32,
-        "x86_avx": 32,
-        "x86_avx512": 32,
-        "amd64": 64,
-        "amd64_avx": 64,
-        "amd64_avx512": 64,
-        "aarch32": 32,
-        "aarch64": 64,
-        "sparc32": 32,
-        "sparc64": 64
-    }
-
-    def __init__(self, arch_name: str, os_name: str):
-        self.arch: Final[str] = arch_name
+    def __init__(self, arch_name: ArchName, os_name: str):
+        self.arch: Final[ArchName] = arch_name
         self.os: Final[str] = os_name
-        self.address_size_bits: Final[int] = self.ADDRESS_SIZE_BITS[arch_name]
+        self.address_size_bits: Final[int] = _ADDRESS_SIZE_BITS[arch_name]
         self.address_size: Final[int] = self.address_size_bits // 8
 
     @abstractmethod

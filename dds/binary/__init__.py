@@ -4,7 +4,7 @@ from typing import Callable, Optional
 from .parser import BinaryParser, BinaryMetadataVisitor
 
 
-def _lief_parser(arch_name: str, os_name: str, target: str) \
+def _lief_parser(arch_name: 'ArchName', os_name: str, target: str) \
         -> Optional[BinaryParser]:
     """Parse the binary `target` with LIEF."""
     import lief
@@ -16,16 +16,16 @@ def _lief_parser(arch_name: str, os_name: str, target: str) \
         return None
 
 
-def _binja_parser(arch_name: str, os_name: str, target: str) \
+def _binja_parser(arch_name: 'ArchName', os_name: str, target: str) \
         -> Optional[BinaryParser]:
     """Parse the binary `target` with Binary Ninja."""
     import binaryninja
-    from .binja import BinjaBinaryParser
+    from .binja_parser import BinjaBinaryParser
     parsed = binaryninja.BinaryViewType.get_view_of_file(target)
     return BinjaBinaryParser(arch_name, os_name, parsed)
 
 
-def _ida_parser(arch_name: str, os_name: str, target: str) \
+def _ida_parser(arch_name: 'ArchName', os_name: str, target: str) \
         -> Optional[BinaryParser]:
     """Parse the binary `target` with IDA Pro."""
     from .ida_parser import IDABinaryParser

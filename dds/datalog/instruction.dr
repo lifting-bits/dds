@@ -3,10 +3,6 @@
 #import "header.dr"
 
 ;---------------------------------------------------------
-get_instructions(EA) 
-    : instruction(EA, _, _).
-
-;---------------------------------------------------------
 plausible_instruction(EA)
     : instruction(EA, _, _).
 

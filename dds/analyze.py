@@ -1,39 +1,28 @@
-#!/usr/bin/env python3
-# Copyright 2020, Trail of Bits. All rights reserved.
+# Copyright 2021, Trail of Bits. All rights reserved.
 
-import argparse
 import hashlib
 import os
-import pickle
-import shutil
-import subprocess
-import sys
-from typing import Final, List, Optional, Sequence, Union
 
-try:
-    from shlex import quote
-except:
-    from pipes import quote
-
-# TODO(pag): I don't understand Python packaging, but this makes it work under
-#            PyCharm's venv, and a `setup.py` install, and when executed within
-#            an IDA Pro subprocess.
-sys.path.append(os.path.dirname(__file__))
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from typing import cast, Final, Iterator, Optional, Union
 
 from dds.datalog import \
     Database, \
+    DatabaseLog, \
     DatabaseFunctors, \
-    DatabaseLog
+    DatabaseLogInterface, \
+    DatabaseInputMessageProducer, \
+    DatabaseOutputMessageProducer
 
 from dds.arch import \
+    ArchName, \
     arch_from_string, \
     ControlFlowBehavior, \
     ControlFlowEdgeKind, \
     decoder_from_string, \
     Instruction, \
     InstructionDecoder, \
-    InstructionOperandVisitor
+    InstructionOperandVisitor, \
+    InvalidInstructionDecoder
 
 from dds.binary import \
     binary_parser_from_string, \
@@ -41,94 +30,81 @@ from dds.binary import \
     BinaryMetadataVisitor
 
 
-def debug(message, *args):
-    print(message.format(*args), file=sys.stderr)
+class BinaryAnalyzerFeatureError(Exception):
+    pass
 
 
-def _argv() -> Sequence[str]:
-    try:
-        import idc
-        return idc.ARGV
-    except:
-        return sys.argv
-
-
-def _exit(code: int):
-    try:
-        import idc
-        idc.process_config_line("ABANDON_DATABASE=YES")
-        idc.qexit(code)
-    except:
-        sys.exit(code)
-
-
-class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
+class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor,
+                             DatabaseInputMessageProducer):
     """Imports metadata about a binary into a Datalog database."""
 
-    def __init__(self, db: Database, decoder: InstructionDecoder):
-        self._db: Final[Database] = db
+    def __init__(self, decoder: InstructionDecoder):
+        super(BinaryMetadataImporter, self).__init__()
         self._decoder: Final[InstructionDecoder] = decoder
 
     def visit_entrypoint_function(self, ea: int):
         """Visit the entrypoint of the binary. This is something like
         `_start` or `_init` in ELF binaries."""
-        self._db.entrypoint_1([ea])
+        self.produce_entrypoint_1(ea)
 
-    def visit_imported_function(self, ea:int, name: Optional[bytes]):
-        """Visit functions imported to this binary. In practice, 
+    def visit_imported_function(self, ea: int, name: Optional[bytes]):
+        """Visit functions imported to this binary. In practice,
         these are externals."""
-        self._db.imported_function_2([(ea, name)])
-        self._db.external_symbol_2([(ea, name)])
-    
-    def visit_imported_variable(self, ea:int, name: Optional[bytes]):
+        self.produce_imported_function_2(ea, name)
+        self.produce_external_symbol_2(ea, name)
+
+    def visit_imported_variable(self, ea: int, name: Optional[bytes]):
         """Visit variables imported to this binary."""
-        #self._db.imported_variable_2([(ea, name)])
-    
-    def visit_imported_symbol(self, ea:int, name: Optional[bytes]):
+        # self._db.imported_variable_2([(ea, name)])
+        pass
+
+    def visit_imported_symbol(self, ea: int, name: Optional[bytes]):
         """Visit unknown imported symbols. There are no guarantees
         that this is either code or data."""
-        self._db.imported_symbol_2([(ea, name)])
+        self.produce_imported_symbol_2(ea, name)
 
-    def visit_exported_function(self, ea:int, name: Optional[bytes]):
+    def visit_exported_function(self, ea: int, name: Optional[bytes]):
         """Visit functions exported by this binary."""
-        self._db.exported_function_2([(ea, name)])
-    
-    def visit_exported_variable(self, ea:int, name: Optional[bytes]):
+        self.produce_exported_function_2(ea, name)
+
+    def visit_exported_variable(self, ea: int, name: Optional[bytes]):
         """Visit variables exported by this binary."""
-        #self._db.exported_variable_2([(ea, name)])
-    
-    def visit_exported_symbol(self, ea:int, name: Optional[bytes]):
+        # self._db.exported_variable_2([(ea, name)])
+        pass
+
+    def visit_exported_symbol(self, ea: int, name: Optional[bytes]):
         """Visit unknown exported symbols. There are no guarantees
         that this is either code or data."""
-        self._db.exported_symbol_2([(ea, name)])
+        self.produce_exported_symbol_2(ea, name)
 
-    def visit_local_function(self, ea:int, name: Optional[bytes]):
+    def visit_local_function(self, ea: int, name: Optional[bytes]):
         """Visit functions local to this binary."""
-        self._db.local_function_2([(ea, name)])
-    
-    def visit_local_variable(self, ea:int, name: Optional[bytes]):
+        self.produce_local_function_2(ea, name)
+
+    def visit_local_variable(self, ea: int, name: Optional[bytes]):
         """Visit variables local to this binary."""
-        #self._db.local_variable_2([(ea, name)])
-    
-    def visit_local_symbol(self, ea:int, name: Optional[bytes]):
+        # self._db.local_variable_2([(ea, name)])
+        pass
+
+    def visit_local_symbol(self, ea: int, name: Optional[bytes]):
         """Visit unknown local symbols. There are no guarantees
         that this is either code or data."""
-        self._db.local_symbol_2([(ea, name)])        
+        self.produce_local_symbol_2(ea, name)
 
     def visit_relocation(self, from_ea: int, to_ea: int, size: int):
         """Visit a relocation entry, applied to `size` bytes at `from_ea`,
         and pointing to `to_ea`."""
-        self._db.relocation_2([(from_ea, to_ea)])
+        self.produce_relocation_2(from_ea, to_ea)
 
     def visit_section(self, begin_ea: int, end_ea: int, name: bytes):
         """Visit a named section `[begin_ea, end_ea)`."""
-        self._db.section_3([(name, begin_ea, end_ea)])
+        self.produce_section_3(name, begin_ea, end_ea)
 
     def visit_address_operand(self, inst: Instruction, op_index: int,
                               addr: int):
         """Add in a cross-reference between in instruction and one of its
         memory operands, which references an absolute address."""
-        self._db.address_operand_2([(inst.ea, addr)])
+        self.produce_address_operand_2(inst.ea, addr)
 
     def visit_memory(self, ea: int, data: Union[bytes, bytearray],
                      is_writable: bool, is_executable: bool):
@@ -138,16 +114,13 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
         if not is_executable:
             return
 
-        insns = []
-        transfers = []
-
         for i in self._decoder.decode_instructions(ea, data):
-            debug("  Adding instruction {:x}: {}\t\t{}".format(
-                i.ea, " ".join("{:02x}".format(b) for b in i.data),
-                i.assembly))
+            # debug("  Adding instruction {:x}: {}\t\t{}".format(
+            #     i.ea, " ".join("{:02x}".format(b) for b in i.data),
+            #     i.assembly))
 
             # Add the instruction to our database.
-            insns.append((i.ea, i.type, i.data))
+            self.produce_instruction_3(i.ea, i.type, i.data)
 
             # If this instruction has a direct control-flow target then add it
             # in.
@@ -155,8 +128,8 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
                     ControlFlowBehavior.HAS_DIRECT_TARGET:
                 target_ea = i.target_ea
                 assert target_ea is not None
-                transfers.append((i.ea, target_ea, i.target_type))
-                debug("    -> {:x} {}", target_ea, i.target_type)
+                self.produce_raw_transfer_3(i.ea, target_ea, i.target_type)
+                # debug("    -> {:x} {}", target_ea, i.target_type)
 
             # If this instruction has a fall-through control-flow target
             # then add it in.
@@ -164,264 +137,246 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor):
                     ControlFlowBehavior.HAS_FALL_THROUGH:
                 fall_through_ea = i.fall_through_ea
                 assert fall_through_ea is not None
-                transfers.append((i.ea, fall_through_ea, i.fall_through_type))
-                debug("    -> {:x} {}", fall_through_ea, i.fall_through_type)
+                self.produce_raw_transfer_3(
+                    i.ea, fall_through_ea, i.fall_through_type)
+                # debug("    -> {:x} {}", fall_through_ea, i.fall_through_type)
 
             # Otherwise it's a "pseudo edge", which is useful for linear
             # disassembly.
             else:
-                transfers.append((i.ea, i.next_ea,
-                                  ControlFlowEdgeKind.PSEUDO_FALL_THROUGH))
-                debug("    -> {:x} {}", i.next_ea,
-                      ControlFlowEdgeKind.PSEUDO_FALL_THROUGH)
+                self.produce_raw_transfer_3(
+                    i.ea, i.next_ea, ControlFlowEdgeKind.PSEUDO_FALL_THROUGH)
+                # debug("    -> {:x} {}", i.next_ea,
+                #       ControlFlowEdgeKind.PSEUDO_FALL_THROUGH)
 
             i.visit_operands(self)
 
-        self._db.instruction_3(insns)
-        self._db.raw_transfer_3(transfers)
+
+class BinaryObject:
+    def __init__(self, db: Database, ea: int):
+        self._db: Final = db
+        self._ea: Final = ea
+
+    @property
+    def ea(self) -> int:
+        return self._ea
+
+    def __eq__(self, other) -> bool:
+        return self.__class__ is other.__class__ and \
+               self._db is other._db and \
+               self._ea == other._ea
+
+    def __ne__(self, other) -> bool:
+        return not self.__eq__(other)
+
+    def __lt__(self, other):
+        if isinstance(other, BinaryObject):
+            return (id(self._db), self._ea) < (id(other._db), other._ea)
+        else:
+            return id(self) < id(other)
+
+    def __le__(self, other):
+        if isinstance(other, BinaryObject):
+            return (id(self._db), self._ea) <= (id(other._db), other._ea)
+        else:
+            return id(self) <= id(other)
 
 
-def parse_binary(args) -> Optional[BinaryParser]:
-    """Parse the binary at `path` with the binary parser named by
-    `parser_name`."""
-    parser = binary_parser_from_string(args.binary_parser)
-    if not parser:
-        raise Exception("Unhandled binary parser type '{}'".format(
-            args.binary_parser))
+class BinaryExternal(BinaryObject):
+    """Represents an external of some kind."""
 
-    binary = parser(args.arch, args.os, args.binary)
-    if not binary:
-        raise Exception("Invalid or unrecognized file format")
-
-    return binary
+    def __bool__(self) -> bool:
+        """Returns `True` if this external remains valid in the database."""
+        return self._db.external_b(self._ea)
 
 
-def run_under_ida(parser, args) -> int:
-    """Re-run this program under the control of IDA Pro. This will give us
-    access to IDA Pro's APIs."""
+class BinaryControlFlowTarget(BinaryObject):
+    """Represents the target of a control flow."""
+    def __init__(self, db: Database, ea: int, kind: ControlFlowEdgeKind):
+        BinaryObject.__init__(self, db, ea)
+        self._kind: Final = kind
 
-    ida_path = os.path.dirname(args.ida_path)
+    @property
+    def kind(self) -> ControlFlowEdgeKind:
+        return self._kind
 
-    env = {}
-    env["IDALOG"] = os.devnull
-    env["TVHEADLESS"] = "1"
-    env["HOME"] = os.path.expanduser('~')
-    env["IDA_PATH"] = ida_path
+    @property
+    def instruction(self) -> Optional['BinaryInstruction']:
+        """The instruction associated with this control-flow target, if any."""
+        for _ in self._db.function_instruction_fb(self._ea):
+            return BinaryInstruction(self._db, self._ea)
+        return None
 
-    # path: List[str] = [ida_path]
-    # if "PYTHONPATH" in os.environ:
-    #     path.extend(os.environ["PYTHONPATH"].split(os.pathsep))
-    # path.extend(sys.path)
-    # #
-    # env["PYTHONPATH"] = os.pathsep.join(path)
-
-    if "SystemRoot" in os.environ:
-        env["SystemRoot"] = os.environ["SystemRoot"]
-
-    stdout_path = os.path.join(args.workspace_dir, "stdout")
-    stderr_path = os.path.join(args.workspace_dir, "stdout")
-
-    script_cmd = []
-    script_cmd.append(os.path.abspath(__file__))
-    script_cmd.append("--binary")
-    script_cmd.append(os.path.abspath(args.binary))
-    script_cmd.append("--binary_parser")
-    script_cmd.append(args.binary_parser)
-    script_cmd.append("--instruction_decoder")
-    script_cmd.append(args.instruction_decoder)
-    script_cmd.append("--arch")
-    script_cmd.append(args.arch)
-    script_cmd.append("--os")
-    script_cmd.append(args.os)
-    script_cmd.append("--workspace_dir")
-    script_cmd.append(args.workspace_dir)
-    script_cmd.append("--ida_stdout_path")
-    script_cmd.append(stdout_path)
-    script_cmd.append("--ida_stderr_path")
-    script_cmd.append(stderr_path)
-    script_cmd.append("--ida_sys_path")
-    script_cmd.append(pickle.dumps(sys.path).hex())
-
-    cmd: List[str] = []
-    cmd.append(quote(args.ida_path))  # Path to IDA.
-    cmd.append("-B")  # Batch mode.
-    cmd.append("-S\"{}\"".format(" ".join(script_cmd)))
-    cmd.append(quote(os.path.abspath(args.binary)))
-    ret: int
-    try:
-        #print(" ".join(cmd))
-        #print()
-        with open(os.devnull, "w") as devnull:
-            ret = subprocess.check_call(
-                " ".join(cmd),
-                env=env,
-                stdin=None,
-                stdout=devnull,  # Necessary.
-                stderr=devnull,  # Necessary.
-                shell=True)  # Necessary.
-
-    except Exception as e:
-        parser.error("Error executing under the control of IDA Pro: {}".format(
-            str(e)))
-        ret = 1
-
-    try:
-        with open(stderr_path, "r") as ida_stderr:
-            sys.stderr.write(ida_stderr.read())
-        sys.stderr.flush()
-        os.unlink(stderr_path)
-    except:
-        pass
-
-    try:
-        with open(stdout_path, "r") as ida_stdout:
-            sys.stdout.write(ida_stdout.read())
-        os.unlink(stdout_path)
-    except:
-        pass
-
-    return ret
+    @property
+    def external(self) -> Optional[BinaryExternal]:
+        """The external associated with this control-flow target, if any."""
+        if self._db.external_b(self._ea):
+            return BinaryExternal(self._db, self._ea)
+        return None
 
 
-def setup_workspace(parser, args):
-    """Setup the solypsis workspace directory."""
-    if not os.path.isdir(args.workspace_dir):
+class BinaryInstruction(BinaryObject):
+    """Wrapper around an individual instruction in the binary."""
+
+    @property
+    def flows(self) -> Iterator[BinaryControlFlowTarget]:
+        for ea, kind in self._db.transfer_bff(self._ea):
+            yield BinaryControlFlowTarget(self._db, ea, kind)
+
+    @property
+    def functions(self) -> Iterator['BinaryFunction']:
+        """Generates the set of functions containing this instructions."""
+        for func_ea in self._db.function_instruction_fb(self._ea):
+            yield BinaryFunction(self._db, func_ea)
+
+    def __bool__(self) -> bool:
+        """Returns `True` if this instruction remains valid in the database,
+        i.e. if it belongs to at least one function."""
+        for _ in self._db.function_instruction_fb(self._ea):
+            return True
+        return False
+
+
+class BinaryFunction(BinaryObject):
+    """Wrapper around an individual function in the binary."""
+
+    @property
+    def instructions(self) -> Iterator[BinaryInstruction]:
+        """Generates the set of instructions associated with this function."""
+        for ea in self._db.function_instruction_bf(self._ea):
+            yield BinaryInstruction(self._db, ea)
+
+    def __bool__(self) -> bool:
+        """Returns `True` if this function remains valid in the database."""
+        return self._db.function_b(self._ea)
+
+
+class BinaryAnalyzer:
+    """Packages up Dr. Disassembler into a binary analyzer."""
+
+    def __init__(self, workspace_dir: str, arch_name: str,
+                 os_name: str, binary_data: bytes,
+                 producer: Optional[DatabaseOutputMessageProducer] = None):
+        # Detect what features are available.
+        self._has_binary_ninja = False
+        self._has_ida = False
+        self._has_lief = False
+        self._has_capstone = False
+        self._detect_features()
+
+        # Go get the architecture.
+        self._arch: Final[ArchName] = arch_from_string(arch_name)
+        if self._arch is None:
+            raise BinaryAnalyzerFeatureError(
+                f"Unrecognized architecture '{arch_name}'")
+
+        # Go get the instruction decoder.
+        decoder_name = self.instruction_decoder
+        decoder = decoder_from_string(decoder_name, self._arch)
+        if isinstance(decoder, InvalidInstructionDecoder):
+            raise BinaryAnalyzerFeatureError(
+                f"Unsupported instruction decoder '{decoder_name}' "
+                f"for architecture '{arch_name}'")
+        self._decoder: Final[InstructionDecoder] = decoder
+
+        # Get the constructor for a binary parser.
+        parser_name = self.binary_parser
+        make_parser = binary_parser_from_string(parser_name)
+        if not make_parser:
+            raise BinaryAnalyzerFeatureError(
+                f"Unhandled binary parser type '{self.binary_parser}'")
+
+        # Copy the binary into the workspace.
+        self._workspace_dir: Final[str] = os.path.abspath(workspace_dir)
+        self._uuid: Final[str] = hashlib.sha1(binary_data).hexdigest()
+        self._binary_path: Final[str] = \
+            os.path.join(self._workspace_dir, self._uuid)
+
+        with open(self._binary_path, "wb+") as local_file:
+            local_file.write(binary_data)
+
         try:
-            os.makedirs(args.workspace_dir, 0o777)
-        except OSError as e:
-            parser.error("Unable to create workspace directory '{}': {}".format(
-                args.workspace_dir, str(e)))
+            parser = make_parser(self._arch, os_name, self._binary_path)
+        except Exception as e:
+            raise BinaryAnalyzerFeatureError(
+                f"Error parsing binary with parser '{parser_name}': {e}")
+        self._parser: Final[BinaryParser] = parser
 
-    args.workspace_dir = os.path.abspath(args.workspace_dir)
+        # Create a database.
+        if not producer:
+            producer = DatabaseLog()
+        self._producer: Final = cast(DatabaseLogInterface, producer)
+        self._db: Final = Database(producer, DatabaseFunctors())
 
+        # Analyze the binary.
+        metadata_importer = BinaryMetadataImporter(self._decoder)
+        self._parser.visit_metadata(metadata_importer)
+        metadata = metadata_importer.produce()
+        if metadata is not None:
+            metadata.apply(self._db)
 
-def copy_binary_into_workspace(args):
-    """IDA Pro has issues when opening files in directories in which the
-    user does not have write access, e.g. `/bin/ls` often cannot be opened
-    directly because IDA Pro will want to create a `/bin/ls.i64` file."""
-    with open(args.binary, "rb") as binary_file:
-        sha1_hash = hashlib.sha1(binary_file.read())
-
-    temp_bin_path = os.path.join(args.workspace_dir, sha1_hash.hexdigest())
-    if not os.path.isfile(temp_bin_path):
+    def _detect_features(self):
+        """Detect what the supported features are that we can depend upon."""
         try:
-            os.link(args.binary, temp_bin_path)
+            import binaryninja
+            self._has_binary_ninja = True
         except:
-            shutil.copyfile(args.binary, temp_bin_path)
+            pass
 
-    args.binary = temp_bin_path
+        try:
+            import ida_ua
+            self._has_ida = True
+        except:
+            pass
 
+        try:
+            import capstone
+            self._has_capstone = True
+        except:
+            pass
 
-def main(argv: Optional[Sequence[str]] = None):
-    """Disassemble a binary."""
-    if argv is None:
-        argv = _argv()
+        try:
+            import lief
+            self._has_lief = True
+        except:
+            pass
 
-    parser = argparse.ArgumentParser(
-        prog=argv[0], description="Dr. Disassembler's binary analyzer")
-    parser.add_argument("--binary", type=str, required=True,
-                        help="Path to the binary to analyze.")
+    @property
+    def arch(self) -> ArchName:
+        return self._arch
 
-    parser.add_argument(
-        "--binary_parser", type=str, default="lief",
-        help="Which binary parser to use.",
-        choices=("lief", "binja", "ida",))
+    @property
+    def os(self) -> str:
+        return self._os
 
-    parser.add_argument(
-        "--instruction_decoder", type=str, default="capstone",
-        help="Instruction instruction used by the binary",
-        choices=("capstone", "binja", "ida", ))
+    @property
+    def binary_parser(self) -> str:
+        """Return the name of the binary parser that we are using."""
+        if self._has_binary_ninja:
+            return "binja"
+        elif self._has_ida:
+            return "ida"
+        elif self._has_lief:
+            return "lief"
+        else:
+            raise BinaryAnalyzerFeatureError(
+                "Failed to identify a suitable binary parser")
 
-    parser.add_argument(
-        "--ida_path", type=str, default="",
-        help="Path to IDA Pro 7's `idat` or `idat64` binary.")
+    @property
+    def instruction_decoder(self) -> str:
+        """Return the name of the instruction decoder that we are using."""
+        if self._has_binary_ninja:
+            return "binja"
+        elif self._has_ida:
+            return "ida"
+        elif self._has_capstone:
+            return "capstone"
+        else:
+            raise BinaryAnalyzerFeatureError(
+                "Failed to identify a suitable instruction decoder")
 
-    parser.add_argument(
-        "--arch", type=str, default="amd64",
-        help="Architecture of the instructions of the binary.",
-        choices=("x86", "x86_avx", "x86_avx512",
-                 "amd64", "amd64_avx", "amd64_avx512",
-                 "aarch32", "aarch64",
-                 "sparc32", "sparc64"))
-
-    parser.add_argument(
-        "--os", type=str, default="linux",
-        help="Operating system on which this binary is expected to execute.",
-        choices=("linux", "macos", "windows", "solaris"))
-
-    parser.add_argument(
-        "--workspace_dir", type=str, default="", required=True,
-        help="Path to a workspace directory where temporary files will be "
-             "stored.")
-
-    parser.add_argument(
-        "--ida_stdout_path", type=str, default="", help=argparse.SUPPRESS)
-
-    parser.add_argument(
-        "--ida_stderr_path", type=str, default="", help=argparse.SUPPRESS)
-
-    parser.add_argument(
-        "--ida_sys_path", type=str, default="", help=argparse.SUPPRESS)
-
-    args = parser.parse_args(argv[1:])
-
-    setup_workspace(parser, args)
-
-    # We want to run under IDA Pro's Python interpreter.
-    if args.ida_path:
-        copy_binary_into_workspace(args)
-        return run_under_ida(parser, args)
-
-    # Here we assume we have already copied the binary into the workspace.
-    elif args.ida_stdout_path and args.ida_stderr_path and args.ida_sys_path:
-        sys.stdout = open(args.ida_stdout_path, "w+")
-        sys.stderr = open(args.ida_stderr_path, "w+")
-
-        # Super evil >:-) Try to pull out IDA's main python directories.
-        paths = []
-        old_paths = []
-        for i, p in enumerate(sys.path):
-            if "ida" in p.lower() and i < 10:
-                paths.append(p)
-            else:
-                old_paths.append(p)
-
-        # Now add in the `sys.path` of the parent process.
-        paths.extend(pickle.loads(bytes.fromhex(args.ida_sys_path)))
-
-        # Now add in the old paths that IDA had.
-        paths.extend(old_paths)
-
-        sys.path.clear()
-        sys.path.extend(paths)
-    else:
-        copy_binary_into_workspace(args)
-
-    binary: Optional[BinaryParser]
-    try:
-        binary = parse_binary(args)
-    except Exception as e:
-        parser.error("Error parsing file '{}': {}".format(args.binary, str(e)))
-        return 1
-
-    functors = DatabaseFunctors()
-    log = DatabaseLog()
-    db = Database(log, functors)
-
-    arch = arch_from_string(args.arch)
-    decoder = decoder_from_string(args.instruction_decoder, arch)
-    visitor = BinaryMetadataImporter(db, decoder)
-    binary.visit_metadata(visitor)
-
-    for f in sorted(db.function_f()):
-        print("Function {:x}".format(f))
-        for i in sorted(db.function_instruction_bf(f)):
-            print("  {:x}".format(i))
-        print()
-
-    return 0
-
-
-# Main function.
-if __name__ == "__main__":
-    _exit(main(_argv()))
+    @property
+    def functions(self) -> Iterator[BinaryFunction]:
+        """Produce a list of functions in the binary."""
+        for ea in self._db.function_f():
+            yield BinaryFunction(self._db, ea)

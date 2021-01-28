@@ -20,7 +20,7 @@ class BinjaBinaryParser(BinaryParser):
     """Metadata provider, implemented via information available through Binary
     Ninja."""
 
-    def __init__(self, arch_name: str, os_name: str,
+    def __init__(self, arch_name: 'ArchName', os_name: str,
                  binary: binaryview.BinaryView):
         binary.update_analysis_and_wait()
         BinaryParser.__init__(self, arch_name, os_name)
