@@ -2,6 +2,7 @@
 
 import hashlib
 import os
+import tempfile
 
 from typing import cast, Final, Iterator, Optional, Union
 
@@ -10,12 +11,10 @@ from dds.datalog import \
     DatabaseLog, \
     DatabaseFunctors, \
     DatabaseLogInterface, \
-    DatabaseInputMessageProducer, \
-    DatabaseOutputMessageProducer
+    DatabaseInputMessageProducer
 
 from dds.arch import \
     ArchName, \
-    arch_from_string, \
     ControlFlowBehavior, \
     ControlFlowEdgeKind, \
     decoder_from_string, \
@@ -25,12 +24,11 @@ from dds.arch import \
     InvalidInstructionDecoder
 
 from dds.binary import \
-    binary_parser_from_string, \
     BinaryParser, \
     BinaryMetadataVisitor
 
 
-class BinaryAnalyzerFeatureError(Exception):
+class BinaryAnalysisError(Exception):
     pass
 
 
@@ -192,6 +190,7 @@ class BinaryExternal(BinaryObject):
 
 class BinaryControlFlowTarget(BinaryObject):
     """Represents the target of a control flow."""
+
     def __init__(self, db: Database, ea: int, kind: ControlFlowEdgeKind):
         BinaryObject.__init__(self, db, ea)
         self._kind: Final = kind
@@ -243,7 +242,7 @@ class BinaryFunction(BinaryObject):
     @property
     def instructions(self) -> Iterator[BinaryInstruction]:
         """Generates the set of instructions associated with this function."""
-        for ea in self._db.function_instruction_bf(self._ea):
+        for ea in sorted(self._db.function_instruction_bf(self._ea)):
             yield BinaryInstruction(self._db, ea)
 
     def __bool__(self) -> bool:
@@ -254,59 +253,35 @@ class BinaryFunction(BinaryObject):
 class BinaryAnalyzer:
     """Packages up Dr. Disassembler into a binary analyzer."""
 
-    def __init__(self, workspace_dir: str, arch_name: str,
-                 os_name: str, binary_data: bytes,
-                 producer: Optional[DatabaseOutputMessageProducer] = None):
+    def __init__(self, arch_name: str, os_name: str, binary_data: bytes,
+                 workspace_dir: Optional[str] = None,
+                 producer: Optional[DatabaseLogInterface] = DatabaseLog(),
+                 instruction_decoder: Optional[str] = None,
+                 binary_parser: Optional[str] = None):
+
         # Detect what features are available.
         self._has_binary_ninja = False
         self._has_ida = False
         self._has_lief = False
         self._has_capstone = False
         self._detect_features()
+        self._arch: Final[ArchName] = self._get_arch(arch_name)
+        self._decoder: Final[InstructionDecoder] = self._get_decoder(
+            arch_name, instruction_decoder)
 
-        # Go get the architecture.
-        self._arch: Final[ArchName] = arch_from_string(arch_name)
-        if self._arch is None:
-            raise BinaryAnalyzerFeatureError(
-                f"Unrecognized architecture '{arch_name}'")
-
-        # Go get the instruction decoder.
-        decoder_name = self.instruction_decoder
-        decoder = decoder_from_string(decoder_name, self._arch)
-        if isinstance(decoder, InvalidInstructionDecoder):
-            raise BinaryAnalyzerFeatureError(
-                f"Unsupported instruction decoder '{decoder_name}' "
-                f"for architecture '{arch_name}'")
-        self._decoder: Final[InstructionDecoder] = decoder
-
-        # Get the constructor for a binary parser.
-        parser_name = self.binary_parser
-        make_parser = binary_parser_from_string(parser_name)
-        if not make_parser:
-            raise BinaryAnalyzerFeatureError(
-                f"Unhandled binary parser type '{self.binary_parser}'")
-
-        # Copy the binary into the workspace.
-        self._workspace_dir: Final[str] = os.path.abspath(workspace_dir)
-        self._uuid: Final[str] = hashlib.sha1(binary_data).hexdigest()
-        self._binary_path: Final[str] = \
-            os.path.join(self._workspace_dir, self._uuid)
-
-        with open(self._binary_path, "wb+") as local_file:
-            local_file.write(binary_data)
-
-        try:
-            parser = make_parser(self._arch, os_name, self._binary_path)
-        except Exception as e:
-            raise BinaryAnalyzerFeatureError(
-                f"Error parsing binary with parser '{parser_name}': {e}")
-        self._parser: Final[BinaryParser] = parser
+        # Create a workspace, copy the binary into the workspace, then parse
+        # the binary.
+        self._delete_workspace = False
+        self._workspace_dir: Final[str] = self._get_or_create_workspace(
+            workspace_dir)
+        self._binary_path: Final[str] = self._save_binary_to_workspace(
+            binary_data)
+        self._parser: Final[BinaryParser] = self._parse_binary(
+            os_name, binary_parser)
 
         # Create a database.
-        if not producer:
-            producer = DatabaseLog()
         self._producer: Final = cast(DatabaseLogInterface, producer)
-        self._db: Final = Database(producer, DatabaseFunctors())
+        self._db: Final = Database(self._producer, DatabaseFunctors())
 
         # Analyze the binary.
         metadata_importer = BinaryMetadataImporter(self._decoder)
@@ -314,6 +289,61 @@ class BinaryAnalyzer:
         metadata = metadata_importer.produce()
         if metadata is not None:
             metadata.apply(self._db)
+
+    def __del__(self):
+        if self._delete_workspace:
+            try:
+                os.rmdir(self._workspace_dir)
+            except:
+                pass
+
+    def _get_or_create_workspace(self, workspace_dir: Optional[str]) -> str:
+        """Get or create the workspace in which the binary will be placed."""
+        if workspace_dir is None:
+            self._delete_workspace = True
+            workspace_dir = tempfile.mkdtemp()
+        workspace_dir = os.path.abspath(workspace_dir)
+        os.makedirs(workspace_dir, exist_ok=True)
+        return workspace_dir
+
+    def _save_binary_to_workspace(self, data: bytes) -> str:
+        """Saves `data` into the workspace directory."""
+        uuid = hashlib.sha256(data).hexdigest()
+        binary_path = os.path.join(self._workspace_dir, uuid)
+
+        with open(binary_path, "wb+") as local_file:
+            local_file.write(data)
+
+        return binary_path
+
+    @staticmethod
+    def _get_arch(arch_name: str) -> ArchName:
+        name = ArchName.from_string(arch_name)
+        if name is None:
+            raise BinaryAnalysisError(
+                f"Unrecognized architecture '{arch_name}'")
+        return name
+
+    def _get_decoder(self, arch_name: str, instruction_decoder: Optional[str]) \
+            -> InstructionDecoder:
+        decoder_name = instruction_decoder or self.default_instruction_decoder
+        decoder = decoder_from_string(decoder_name, self._arch)
+        if isinstance(decoder, InvalidInstructionDecoder):
+            raise BinaryAnalysisError(
+                f"Unsupported instruction decoder '{decoder_name}' "
+                f"for architecture '{arch_name}'")
+        return decoder
+
+    def _parse_binary(self, os_name: str, binary_parser: Optional[str]) \
+            -> BinaryParser:
+        """Try to parse the binary."""
+        parser_name = binary_parser or self.default_binary_parser
+        parser = BinaryParser.from_string(
+            parser_name, self._arch, os_name, self._binary_path)
+        if parser is None:
+            raise BinaryAnalysisError(
+                f"Error parsing binary with parser '{parser_name}'")
+        return parser
 
     def _detect_features(self):
         """Detect what the supported features are that we can depend upon."""
@@ -350,7 +380,7 @@ class BinaryAnalyzer:
         return self._os
 
     @property
-    def binary_parser(self) -> str:
+    def default_binary_parser(self) -> str:
         """Return the name of the binary parser that we are using."""
         if self._has_binary_ninja:
             return "binja"
@@ -359,11 +389,11 @@ class BinaryAnalyzer:
         elif self._has_lief:
             return "lief"
         else:
-            raise BinaryAnalyzerFeatureError(
+            raise BinaryAnalysisError(
                 "Failed to identify a suitable binary parser")
 
     @property
-    def instruction_decoder(self) -> str:
+    def default_instruction_decoder(self) -> str:
         """Return the name of the instruction decoder that we are using."""
         if self._has_binary_ninja:
             return "binja"
@@ -372,11 +402,11 @@ class BinaryAnalyzer:
         elif self._has_capstone:
             return "capstone"
         else:
-            raise BinaryAnalyzerFeatureError(
+            raise BinaryAnalysisError(
                 "Failed to identify a suitable instruction decoder")
 
     @property
     def functions(self) -> Iterator[BinaryFunction]:
         """Produce a list of functions in the binary."""
-        for ea in self._db.function_f():
+        for ea in sorted(self._db.function_f()):
             yield BinaryFunction(self._db, ea)

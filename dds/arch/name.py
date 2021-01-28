@@ -17,6 +17,10 @@ class ArchName(IntEnum):
     SPARC32 = 8
     SPARC64 = 9
 
+    @staticmethod
+    def from_string(name: str) -> Optional['ArchName']:
+        return arch_from_string(name)
+
 
 _ARCH_NAME_TO_ARCH = {
     "x86": ArchName.X86,
