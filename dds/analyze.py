@@ -311,8 +311,9 @@ class BinaryAnalyzer:
         uuid = hashlib.sha256(data).hexdigest()
         binary_path = os.path.join(self._workspace_dir, uuid)
 
-        with open(binary_path, "wb+") as local_file:
-            local_file.write(data)
+        if not os.path.exists(binary_path):
+            with open(binary_path, "wb+") as local_file:
+                local_file.write(data)
 
         return binary_path
 
@@ -382,10 +383,13 @@ class BinaryAnalyzer:
     @property
     def default_binary_parser(self) -> str:
         """Return the name of the binary parser that we are using."""
-        if self._has_binary_ninja:
-            return "binja"
-        elif self._has_ida:
+
+        # Prefer IDA as the binary parser if we have it, because it implies
+        # that we've already loaded IDA itself.
+        if self._has_ida:
             return "ida"
+        elif self._has_binary_ninja:
+            return "binja"
         elif self._has_lief:
             return "lief"
         else:
