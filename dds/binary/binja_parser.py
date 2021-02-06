@@ -108,5 +108,5 @@ class BinjaBinaryParser(BinaryParser):
                            s.semantics
 
             # TODO(snagy2, pag): Visit segments?
-            visitor.visit_memory(s.start, self._binary.read(s.start, s.end),
+            visitor.visit_memory(s.start, self._binary.read(s.start, len(s)),
                                  is_writeable, is_executable)

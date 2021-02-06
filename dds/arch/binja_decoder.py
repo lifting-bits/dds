@@ -12,7 +12,7 @@ from .instruction import \
     InstructionOperandVisitor, \
     InstructionType
 
-_BINJA_ARCH_MODE: Final[Dict[ArchName, int]] = {
+_BINJA_ARCH_MODE: Final[Dict[ArchName, Architecture]] = {
     ArchName.X86: Architecture['x86'],
     ArchName.X86_AVX: Architecture['x86'],
     ArchName.X86_AVX512: Architecture['x86'],
@@ -92,7 +92,9 @@ def _visit_llil(func: LowLevelILFunction, index: int) -> int:
         if insn.false > index:
             false_kind = _visit_llil(func, insn.false)
 
-        return true_kind | false_kind | _FLAG_IS_CONDITIONAL
+        return true_kind | false_kind | _FLAG_IS_CONDITIONAL | \
+               ControlFlowBehavior.HAS_TARGET | \
+               ControlFlowBehavior.TARGET_IS_CONDITIONAL
 
     elif insn.operation == LowLevelILOperation.LLIL_SYSCALL:
         return InstructionType.INDIRECT_FUNCTION_CALL
