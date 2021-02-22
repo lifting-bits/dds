@@ -1,0 +1,10 @@
+; Copyright 2021, Trail of Bits. All rights reserved.
+
+#import "header.dr"
+
+;---------------------------------------------------------
+; We export externals as any external symbols, imported 
+; functions, or imported symbols.
+external(EA) : external_symbol(EA, _).
+external(EA) : imported_function(EA, _).
+external(EA) : imported_symbol(EA, _).

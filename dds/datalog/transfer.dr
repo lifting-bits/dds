@@ -110,7 +110,6 @@ fixed_transfer(FromEA, ToEA, EdgeType)
 ; An explicit control-flow target is one that is the target
 ; of a `jmp`, a `call`, but not a fall-through or pseudo-
 ; fall through.
-
 #local explicit_control_flow_target(EA)
 
 explicit_control_flow_target(EA)
@@ -168,7 +167,6 @@ basic_block(BlockEA, NextInsnEA)
 ; We are more restricted/speculative in how we detect the first case,
 ; intra-function padding. In general, if we miss jump tables then an
 ; overly aggressive approach could really throw things off.
-
 #local inter_function_padding(EA)
 
 ; Base case for inter-function padding:
@@ -203,7 +201,6 @@ inter_function_padding(InsnEA)
     , !basic_block(_, InsnEA).
 
 ;---------------------------------------------------------
-
 ; Only keep pseudo fall-throughs that...
 ;   1) Don't transfer to function heads.
 ;   2) Don't transfer to function padding (i.e., sequences of

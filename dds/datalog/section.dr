@@ -3,6 +3,8 @@
 #import "header.dr"
 
 ;---------------------------------------------------------
+; Export section starts/ends accordingly based on detected 
+; sections.
 section_start(SecStart)
     : section(_, SecStart, _).
 

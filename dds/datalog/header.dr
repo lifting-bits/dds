@@ -2,7 +2,6 @@
 
 ;---------------------------------------------------------
 ; Types for instructions, and control-flow transfers
-
 #prologue ```python
 from dds.arch import ControlFlowEdgeKind, InstructionType
 ```
@@ -39,8 +38,10 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 ; Function objects. Derived from known call targets or 
 ; executable section (.init, .fini, .text) entries. 
 #query function(bound u64 FuncEA)
+
 ; Return all function heads.
 #query function(free u64 FuncEA)
+
 ; Return all instructions for a given function head; i.e.,
 ; all instructions connected by intraprocedural transfers.
 #query function_instruction(bound u64 FuncEA, free u64 InsnEA)
@@ -49,7 +50,8 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 ;---------------------------------------------------------
 ; Section objects.
 #message section(bytes SecName, u64 SecStart, u64 SecEnd)
-; Return the section at 
+
+; Return the section at the start/end.
 #export section_start(SecStart)
 #export section_end(SecEnd)
 
@@ -59,6 +61,7 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 
 ; A plausible instruction address.
 #export plausible_instruction(EA)
+
 ; Denotes instructions that *always* precede errors (i.e., 
 ; non-decodable instructions). We omit instructions that 
 ; *may* precede errors, such as conditional jumps where a 
@@ -76,18 +79,15 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 ;---------------------------------------------------------
 ; Symbol objects: imported, exported, and local (static)
 ; functions, variables, and unknowns.
-
-#message imported_symbol(u64 EA, bytes Name)
-#message exported_symbol(u64 EA, bytes Name)
-#message local_symbol(u64 EA, bytes Name)
-
-;#message imported_variable(u64 EA, bytes Name)
-;#message exported_variable(u64 EA, bytes Name)
-;#message local_variable(u64 EA, bytes Name)
-
 #message imported_function(u64 EA, bytes Name)
 #message exported_function(u64 EA, bytes Name)
 #message local_function(u64 EA, bytes Name)
+;#message imported_variable(u64 EA, bytes Name)
+;#message exported_variable(u64 EA, bytes Name)
+;#message local_variable(u64 EA, bytes Name)
+#message imported_symbol(u64 EA, bytes Name)
+#message exported_symbol(u64 EA, bytes Name)
+#message local_symbol(u64 EA, bytes Name)
 
 ; External symbol objects. These represent placeholders
 ; in an `.EXTERN` section for calls to imported functions.
@@ -96,18 +96,17 @@ from dds.arch import ControlFlowEdgeKind, InstructionType
 ; External address.
 #query external(bound u64 EA)
 
-external(EA) : external_symbol(EA, _).
-external(EA) : imported_function(EA, _).
-external(EA) : imported_symbol(EA, _).
-
 ;---------------------------------------------------------
 ; Transfer objects.
 #message raw_transfer(u64 InsnEA, u64 NextEA, edgetype EdgeType)
+
 ; An adjusted transfer, e.g. that distinguishes between PC-
 ; thunk calls and non-PC thunk calls.
 #query transfer(bound u64 InsnEA, free u64 NextEA, free edgetype EdgeType)
+
 ; Interprocedural transfers, minus inlined thunk calls.
 #export interproc_transfer(CallEA, FuncEA)
+
 ; Intraprocedural transfers.
 #export intraproc_transfer(FuncEA, InsnEA)
 

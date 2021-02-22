@@ -12,7 +12,6 @@ plausible_instruction(EA)
 
 ;---------------------------------------------------------
 ; Fall-throughs to non-decodable instructions.
-
 ; Any transfer to a non-plausible instruction at `EA`
 ; marks `EA` as dominating an invalid instruction.
 dominates_invalid_instruction(EA)
