@@ -4,110 +4,112 @@
 ; Types for instructions, and control-flow transfers
 #prologue ```python
 from dds.arch import ControlFlowEdgeKind, InstructionType
-```
+```.
 
-#foreign insntype ```python InstructionType```
-#constant insntype INSN_NORMAL             ```python InstructionType.NORMAL```
-#constant insntype INSN_DIRECT_JUMP        ```python InstructionType.DIRECT_JUMP```
-#constant insntype INSN_INDIRECT_JUMP      ```python InstructionType.INDIRECT_JUMP```
-#constant insntype INSN_COND_DIRECT_JUMP   ```python InstructionType.CONDITIONAL_DIRECT_JUMP```
-#constant insntype INSN_COND_INDIRECT_JUMP ```python InstructionType.CONDITIONAL_INDIRECT_JUMP```
-#constant insntype INSN_DIRECT_CALL        ```python InstructionType.DIRECT_FUNCTION_CALL```
-#constant insntype INSN_INDIRECT_CALL      ```python InstructionType.INDIRECT_FUNCTION_CALL```
-#constant insntype INSN_COND_DIRECT_CALL   ```python InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL```
-#constant insntype INSN_COND_INDIRECT_CALL ```python InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL```
-#constant insntype INSN_RETURN             ```python InstructionType.FUNCTION_RETURN```
-#constant insntype INSN_COND_RETURN        ```python InstructionType.CONDITIONAL_FUNCTION_RETURN```
-#constant insntype INSN_HALT               ```python InstructionType.ERROR```
+#foreign insntype ```python InstructionType```.
+#constant insntype INSN_NORMAL             ```python InstructionType.NORMAL```.
+#constant insntype INSN_DIRECT_JUMP        ```python InstructionType.DIRECT_JUMP```.
+#constant insntype INSN_INDIRECT_JUMP      ```python InstructionType.INDIRECT_JUMP```.
+#constant insntype INSN_COND_DIRECT_JUMP   ```python InstructionType.CONDITIONAL_DIRECT_JUMP```.
+#constant insntype INSN_COND_INDIRECT_JUMP ```python InstructionType.CONDITIONAL_INDIRECT_JUMP```.
+#constant insntype INSN_DIRECT_CALL        ```python InstructionType.DIRECT_FUNCTION_CALL```.
+#constant insntype INSN_INDIRECT_CALL      ```python InstructionType.INDIRECT_FUNCTION_CALL```.
+#constant insntype INSN_COND_DIRECT_CALL   ```python InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL```.
+#constant insntype INSN_COND_INDIRECT_CALL ```python InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL```.
+#constant insntype INSN_RETURN             ```python InstructionType.FUNCTION_RETURN```.
+#constant insntype INSN_COND_RETURN        ```python InstructionType.CONDITIONAL_FUNCTION_RETURN```.
+#constant insntype INSN_HALT               ```python InstructionType.ERROR```.
 
-#foreign edgetype ```python ControlFlowEdgeKind```
-#constant edgetype EDGE_FALL_THROUGH            ```python ControlFlowEdgeKind.FALL_THROUGH```
-#constant edgetype EDGE_PSEUDO_FALL_THROUGH     ```python ControlFlowEdgeKind.PSEUDO_FALL_THROUGH```
-#constant edgetype EDGE_JUMP_TAKEN              ```python ControlFlowEdgeKind.JUMP_TAKEN```
-#constant edgetype EDGE_JUMP_NOT_TAKEN          ```python ControlFlowEdgeKind.JUMP_NOT_TAKEN```
-#constant edgetype EDGE_FUNCTION_CALL           ```python ControlFlowEdgeKind.FUNCTION_CALL```
-#constant edgetype EDGE_FUNCTION_CALL_RETURN    ```python ControlFlowEdgeKind.FUNCTION_CALL_RETURN```
-#constant edgetype EDGE_TAIL_FUNCTION_CALL      ```python ControlFlowEdgeKind.TAIL_FUNCTION_CALL```
-#constant edgetype EDGE_PC_THUNK_FUNCTION_CALL  ```python ControlFlowEdgeKind.PC_THUNK_FUNCTION_CALL```
+#foreign edgetype ```python ControlFlowEdgeKind```.
+#constant edgetype EDGE_FALL_THROUGH            ```python ControlFlowEdgeKind.FALL_THROUGH```.
+#constant edgetype EDGE_PSEUDO_FALL_THROUGH     ```python ControlFlowEdgeKind.PSEUDO_FALL_THROUGH```.
+#constant edgetype EDGE_JUMP_TAKEN              ```python ControlFlowEdgeKind.JUMP_TAKEN```.
+#constant edgetype EDGE_JUMP_NOT_TAKEN          ```python ControlFlowEdgeKind.JUMP_NOT_TAKEN```.
+#constant edgetype EDGE_FUNCTION_CALL           ```python ControlFlowEdgeKind.FUNCTION_CALL```.
+#constant edgetype EDGE_FUNCTION_CALL_RETURN    ```python ControlFlowEdgeKind.FUNCTION_CALL_RETURN```.
+#constant edgetype EDGE_TAIL_FUNCTION_CALL      ```python ControlFlowEdgeKind.TAIL_FUNCTION_CALL```.
+#constant edgetype EDGE_PC_THUNK_FUNCTION_CALL  ```python ControlFlowEdgeKind.PC_THUNK_FUNCTION_CALL```.
 
 ;---------------------------------------------------------
 ; Entrypoint of the binary.
-#message entrypoint(u64 EntryPointEA)
+#message entrypoint(u64 EntryPointEA).
 
 ;---------------------------------------------------------
 ; Function objects. Derived from known call targets or 
-; executable section (.init, .fini, .text) entries. 
-#query function(bound u64 FuncEA)
+; executable section (.init, .fini, .text) entries.
+#query function(bound u64 FuncEA).
 
 ; Return all function heads.
-#query function(free u64 FuncEA)
+#query function(free u64 FuncEA).
 
 ; Return all instructions for a given function head; i.e.,
 ; all instructions connected by intraprocedural transfers.
-#query function_instruction(bound u64 FuncEA, free u64 InsnEA)
-#query function_instruction(free u64 FuncEA, bound u64 InsnEA)
+#query function_instruction(bound u64 FuncEA, free u64 InsnEA).
+#query function_instruction(free u64 FuncEA, bound u64 InsnEA).
 
 ;---------------------------------------------------------
 ; Section objects.
-#message section(bytes SecName, u64 SecStart, u64 SecEnd)
+#message section(bytes SecName, u64 SecStart, u64 SecEnd).
 
-; Return the section at the start/end.
-#export section_start(SecStart)
-#export section_end(SecEnd)
+; Tells us if there's a section at a specific start/end location.
+#export section_start(SecStart).
+#export section_end(SecEnd).
 
 ;---------------------------------------------------------
 ; Instruction objects.
-#message instruction(u64 InsnEA, insntype Type, bytes Bytes)
+#message instruction(u64 InsnEA, insntype Type, bytes Bytes).
 
 ; A plausible instruction address.
-#export plausible_instruction(EA)
+#export plausible_instruction(EA).
 
 ; Denotes instructions that *always* precede errors (i.e., 
 ; non-decodable instructions). We omit instructions that 
 ; *may* precede errors, such as conditional jumps where a 
 ; single branch precedes an error.
-#export dominates_invalid_instruction(EA)
+#export dominates_invalid_instruction(EA).
 
 ;---------------------------------------------------------
 ; Operand objects.
-#message address_operand(u64 InsnEA, u64 MemAddr)
+#message address_operand(u64 InsnEA, u64 MemAddr).
 
 ;---------------------------------------------------------
 ; Relocation objects.
-#message relocation(u64 RelocEA, u64 ExternEA)
+#message relocation(u64 RelocEA, u64 ExternEA).
 
 ;---------------------------------------------------------
 ; Symbol objects: imported, exported, and local (static)
 ; functions, variables, and unknowns.
-#message imported_function(u64 EA, bytes Name)
-#message exported_function(u64 EA, bytes Name)
-#message local_function(u64 EA, bytes Name)
+#message imported_symbol(u64 EA, bytes Name).
+#message exported_symbol(u64 EA, bytes Name).
+#message local_symbol(u64 EA, bytes Name).
+
 ;#message imported_variable(u64 EA, bytes Name)
 ;#message exported_variable(u64 EA, bytes Name)
 ;#message local_variable(u64 EA, bytes Name)
-#message imported_symbol(u64 EA, bytes Name)
-#message exported_symbol(u64 EA, bytes Name)
-#message local_symbol(u64 EA, bytes Name)
+
+#message imported_function(u64 EA, bytes Name).
+#message exported_function(u64 EA, bytes Name).
+#message local_function(u64 EA, bytes Name).
 
 ; External symbol objects. These represent placeholders
 ; in an `.EXTERN` section for calls to imported functions.
-#message external_symbol(u64 EA, bytes Name)
+#message external_symbol(u64 EA, bytes Name).
 
 ; External address.
-#query external(bound u64 EA)
+#query external(bound u64 EA).
 
 ;---------------------------------------------------------
 ; Transfer objects.
-#message raw_transfer(u64 InsnEA, u64 NextEA, edgetype EdgeType)
+#message raw_transfer(u64 InsnEA, u64 NextEA, edgetype EdgeType).
 
 ; An adjusted transfer, e.g. that distinguishes between PC-
 ; thunk calls and non-PC thunk calls.
-#query transfer(bound u64 InsnEA, free u64 NextEA, free edgetype EdgeType)
+#query transfer(bound u64 InsnEA, free u64 NextEA, free edgetype EdgeType).
 
-; Interprocedural transfers, minus inlined thunk calls.
-#export interproc_transfer(CallEA, FuncEA)
+; Inter-procedural transfers, minus inlined thunk calls.
+#export interproc_transfer(CallEA, FuncEA).
 
-; Intraprocedural transfers.
-#export intraproc_transfer(FuncEA, InsnEA)
+; Intra-procedural transfers.
+#export intraproc_transfer(FuncEA, InsnEA).
 
 

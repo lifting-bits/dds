@@ -1,6 +1,6 @@
 ; Copyright 2021, Trail of Bits. All rights reserved.
 
-#import "header.dr"
+#import "header.dr".
 
 ;---------------------------------------------------------
 ; Export section starts/ends accordingly based on detected 

@@ -1,10 +1,10 @@
 ; Copyright 2021, Trail of Bits. All rights reserved.
 
-#import "header.dr"
+#import "header.dr".
 
 ;---------------------------------------------------------
 ; Return all imported, exported, and local variable addresses.
-#query get_variables(free u64 EA)
+#query get_variables(free u64 EA).
 
 get_variables(EA)
     : imported_variable(EA, _).
