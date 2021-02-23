@@ -15,4 +15,4 @@ dds.egg-info/
 **od.txt
 dds/datalog/database.py
 dds/datalog/interface.py
-
+*tmp
