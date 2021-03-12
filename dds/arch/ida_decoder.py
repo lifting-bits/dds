@@ -305,7 +305,7 @@ class IDAInstruction(Instruction):
         return len(self._data)
 
     @property
-    def data(self) -> Union[bytes, bytearray]:
+    def data(self) -> bytes:
         return self._data
 
     @property
@@ -380,7 +380,7 @@ class IDAInstructionDecoder(InstructionDecoder):
         InstructionDecoder.__init__(self, arch_name)
         self._itypes = _ITYPE_MAP[arch_name]
 
-    def decode_instruction(self, ea: int, data: Union[bytes, bytearray]) -> \
+    def decode_instruction(self, ea: int, data: bytes) -> \
             Optional[Instruction]:
         if not ida_ua.can_decode(ea):
             return None
@@ -408,4 +408,6 @@ class IDAInstructionDecoder(InstructionDecoder):
         itype = self._itypes.get(insn.itype, InstructionType.NORMAL)
         itype = itype_fixer(insn, itype)
 
-        return IDAInstruction(ea, bytes(data[:insn_len]), itype, insn)
+        if len(data) > insn_len:
+            data = data[:insn_len]
+        return IDAInstruction(ea, data, itype, insn)

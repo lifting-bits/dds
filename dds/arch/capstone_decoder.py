@@ -56,8 +56,8 @@ class CapstoneInstruction(Instruction, ABC):
         return self._cs_insn.size
 
     @property
-    def data(self) -> Union[bytes, bytearray]:
-        return self._cs_insn.bytes
+    def data(self) -> bytes:
+        return bytes(self._cs_insn.bytes)
 
     @property
     def assembly(self) -> str:
@@ -240,7 +240,7 @@ class CapstoneInstructionDecoder(InstructionDecoder):
         self._cs.syntax = capstone.CS_OPT_SYNTAX_DEFAULT
         self._cs.skipdata = True
 
-    def decode_instruction(self, ea: int, data: Union[bytes, bytearray]) \
+    def decode_instruction(self, ea: int, data: bytes) \
             -> Optional[Instruction]:
         """Decode one instruction in `data`, interpreting it to start at address
         `ea`. Returns the decoded instruction, or `None`."""

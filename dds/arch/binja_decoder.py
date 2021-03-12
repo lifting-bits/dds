@@ -260,7 +260,7 @@ class BinjaInstruction(Instruction):
         return len(self._data)
 
     @property
-    def data(self) -> Union[bytes, bytearray]:
+    def data(self) -> bytes:
         return self._data
 
     @property
@@ -295,19 +295,21 @@ class BinjaInstructionDecoder(InstructionDecoder):
         InstructionDecoder.__init__(self, arch_name)
         self._bn = _BINJA_ARCH_MODE[arch_name]
 
-    def decode_instruction(self, ea: int, data: Union[bytes, bytearray]) -> \
+    def decode_instruction(self, ea: int, data: bytes) -> \
             Optional[Instruction]:
 
         insn: LowLevelILInstruction = \
-            self._bn.get_low_level_il_from_bytes(bytes(data), ea)
+            self._bn.get_low_level_il_from_bytes(data, ea)
 
         if not insn or insn.operation == LowLevelILOperation.LLIL_UNDEF:
             return None
 
         itype = _llil_to_itype(insn)
-        info: InstructionInfo = self._bn.get_instruction_info(bytes(data), ea)
+        info: InstructionInfo = self._bn.get_instruction_info(data, ea)
         insn_len = info.length
         if not insn_len:
             return None
 
-        return BinjaInstruction(ea, bytes(data[:insn_len]), itype, insn)
+        if len(data) > insn_len:
+            data = data[:insn_len]
+        return BinjaInstruction(ea, data, itype, insn)

@@ -60,7 +60,7 @@ class InstructionDecoder(ABC):
         self.max_instruction_size: Final[int] = _MAX_INST_SIZE[arch_name]
 
     @abstractmethod
-    def decode_instruction(self, ea: int, data: Union[bytes, bytearray]) \
+    def decode_instruction(self, ea: int, data: bytes) \
             -> Optional[Instruction]:
         """Decode one instruction in `data`, interpreting it to start at address
         `ea`. Returns the decoded instruction, or `None`."""
@@ -99,7 +99,7 @@ class InstructionDecoder(ABC):
             if j < self.min_instruction_size:
                 break
 
-            inst = self.decode_instruction(ea + i, inst_data)
+            inst = self.decode_instruction(ea + i, bytes(inst_data))
             if inst:
                 yield inst
 
@@ -113,7 +113,7 @@ class InvalidInstructionDecoder(InstructionDecoder):
     """An invalid instruction decoder that always fails to decode
     instructions."""
 
-    def decode_instruction(self, ea: int, data: Union[bytes, bytearray]) -> \
+    def decode_instruction(self, ea: int, data: bytes) -> \
             Optional[Instruction]:
         return None
 

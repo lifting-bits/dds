@@ -213,7 +213,7 @@ class Instruction(ABC):
 
     @property
     @abstractmethod
-    def data(self) -> Union[bytes, bytearray]:
+    def data(self) -> bytes:
         ...
 
     @property
