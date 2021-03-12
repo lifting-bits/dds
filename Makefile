@@ -13,15 +13,15 @@ all:
 
 lief: all
 	python3 -m dds.__main__ --binary examples/helloworld/helloworld.elf.x86_64.nopie \
-		--binary_parser lief --instruction_decoder capstone
+		--binary_parser lief --instruction_decoder capstone --workspace_dir dds_tmp
 
 binja: all
 	python3 -m dds.__main__ --binary examples/helloworld/helloworld.elf.x86_64.nopie \
-		--binary_parser binja --instruction_decoder capstone
+		--binary_parser binja --instruction_decoder capstone --workspace_dir dds_tmp
 
 bdec: all
 	python3 -m dds.__main__ --binary examples/helloworld/helloworld.elf.x86_64.nopie \
-		--binary_parser lief --instruction_decoder binja
+		--binary_parser lief --instruction_decoder binja --workspace_dir dds_tmp
 
 debug:
 	xdot dds.dot
