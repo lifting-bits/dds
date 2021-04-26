@@ -24,11 +24,6 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from dds.analyze import BinaryAnalyzer
 
 
-def debug(message, *args):
-    # print(message.format(*args), file=sys.stderr)
-    pass
-
-
 def _argv() -> Sequence[str]:
     try:
         import idc

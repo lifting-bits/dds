@@ -2,6 +2,7 @@
 
 import hashlib
 import os
+import sys
 import tempfile
 
 from typing import cast, Final, Iterator, Optional, Union
@@ -26,6 +27,11 @@ from dds.arch import \
 from dds.binary import \
     BinaryParser, \
     BinaryMetadataVisitor
+
+
+def debug(message, *args):
+    #print(message.format(*args), file=sys.stderr)
+    pass
 
 
 class BinaryAnalysisError(Exception):
@@ -113,9 +119,9 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor,
             return
 
         for i in self._decoder.decode_instructions(ea, data):
-            # debug("  Adding instruction {:x}: {}\t\t{}".format(
-            #     i.ea, " ".join("{:02x}".format(b) for b in i.data),
-            #     i.assembly))
+            debug("  Adding instruction {:x}:\n\ttype: {}\n\tbytes: {}\n\tassembly: {}".format(
+                 i.ea, i.type, " ".join("{:02x}".format(b) for b in i.data),
+                 i.assembly))
 
             # Add the instruction to our database.
             self.produce_instruction_3(i.ea, i.type, i.data)
@@ -127,7 +133,7 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor,
                 target_ea = i.target_ea
                 assert target_ea is not None
                 self.produce_raw_transfer_3(i.ea, target_ea, i.target_type)
-                # debug("    -> {:x} {}", target_ea, i.target_type)
+                debug("    transfer: {:x} {}", target_ea, i.target_type)
 
             # If this instruction has a fall-through control-flow target
             # then add it in.
@@ -137,15 +143,15 @@ class BinaryMetadataImporter(BinaryMetadataVisitor, InstructionOperandVisitor,
                 assert fall_through_ea is not None
                 self.produce_raw_transfer_3(
                     i.ea, fall_through_ea, i.fall_through_type)
-                # debug("    -> {:x} {}", fall_through_ea, i.fall_through_type)
+                debug("    transfer: {:x} {}", fall_through_ea, i.fall_through_type)
 
             # Otherwise it's a "pseudo edge", which is useful for linear
             # disassembly.
             else:
                 self.produce_raw_transfer_3(
                     i.ea, i.next_ea, ControlFlowEdgeKind.PSEUDO_FALL_THROUGH)
-                # debug("    -> {:x} {}", i.next_ea,
-                #       ControlFlowEdgeKind.PSEUDO_FALL_THROUGH)
+                debug("    transfer: {:x} {}", i.next_ea,
+                      ControlFlowEdgeKind.PSEUDO_FALL_THROUGH)
 
             i.visit_operands(self)
 

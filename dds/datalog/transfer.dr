@@ -117,7 +117,7 @@ explicit_control_flow_target(EA)
     : function(EA).
 
 explicit_control_flow_target(EA)
-    : fixed_transfer(_, EA, EdgeType)
+    : raw_transfer(_, EA, EdgeType)
     , EdgeType != EDGE_FALL_THROUGH
     , EdgeType != EDGE_PSEUDO_FALL_THROUGH.
 
@@ -178,17 +178,17 @@ basic_block(BlockEA, NextInsnEA)
 ; doesn't itself belong to any known basic blocks is treated as
 ; padding.
 inter_function_padding(InsnEA)
-    : fixed_transfer(InsnEA, FuncEA, EDGE_FALL_THROUGH)
+    : raw_transfer(InsnEA, FuncEA, EDGE_FALL_THROUGH)
     , function(FuncEA)
     , !basic_block(_, InsnEA).
 
 inter_function_padding(InsnEA)
-    : fixed_transfer(InsnEA, SecStartEA, EDGE_FALL_THROUGH)
+    : raw_transfer(InsnEA, SecStartEA, EDGE_FALL_THROUGH)
     , section_start(SecStartEA)
     , !basic_block(_, InsnEA).
 
 inter_function_padding(InsnEA)
-    : fixed_transfer(InsnEA, SecEndEA, EDGE_FALL_THROUGH)
+    : raw_transfer(InsnEA, SecEndEA, EDGE_FALL_THROUGH)
     , section_end(SecEndEA)
     , !basic_block(_, InsnEA).
 
@@ -198,7 +198,7 @@ inter_function_padding(InsnEA)
 ; instruction isn't part of any basic blocks, is also considered
 ; to be padding.
 inter_function_padding(InsnEA)
-    : fixed_transfer(InsnEA, PaddingEA, EDGE_FALL_THROUGH)
+    : raw_transfer(InsnEA, PaddingEA, EDGE_FALL_THROUGH)
     , inter_function_padding(PaddingEA)
     , !basic_block(_, InsnEA).
 
