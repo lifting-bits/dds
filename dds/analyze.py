@@ -2,7 +2,6 @@
 
 import hashlib
 import os
-import sys
 import tempfile
 
 from typing import cast, Final, Iterator, Optional, Union
@@ -27,6 +26,8 @@ from dds.arch import \
 from dds.binary import \
     BinaryParser, \
     BinaryMetadataVisitor
+
+from dds.heuristic import ControlFlowRecoveryHeuristic
 
 
 def debug(message, *args):
@@ -288,6 +289,9 @@ class BinaryAnalyzer:
         # Create a database.
         self._producer: Final = cast(DatabaseLogInterface, producer)
         self._db: Final = Database(self._producer, DatabaseFunctors())
+
+        self._db.enable_heuristic_1(
+            [], [])
 
         # Analyze the binary.
         metadata_importer = BinaryMetadataImporter(self._decoder)
