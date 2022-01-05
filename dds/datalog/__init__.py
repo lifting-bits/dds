@@ -1,9 +1,4 @@
-# Copyright 2021, Trail of Bits. All rights reserved.
-
-from .database import \
-    Database, \
-    DatabaseFunctors, \
-    DatabaseLog, \
-    DatabaseLogInterface
+# Auto-generated file
 
 from .interface import *
+from .database import *

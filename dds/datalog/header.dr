@@ -8,34 +8,37 @@ from dds.heuristic import ControlFlowRecoveryHeuristic
 ```.
 
 #foreign insntype ```python InstructionType``` @transparent.
-#constant insntype INSN_NORMAL             ```python InstructionType.NORMAL```.
-#constant insntype INSN_DIRECT_JUMP        ```python InstructionType.DIRECT_JUMP```.
-#constant insntype INSN_INDIRECT_JUMP      ```python InstructionType.INDIRECT_JUMP```.
-#constant insntype INSN_COND_DIRECT_JUMP   ```python InstructionType.CONDITIONAL_DIRECT_JUMP```.
-#constant insntype INSN_COND_INDIRECT_JUMP ```python InstructionType.CONDITIONAL_INDIRECT_JUMP```.
-#constant insntype INSN_DIRECT_CALL        ```python InstructionType.DIRECT_FUNCTION_CALL```.
-#constant insntype INSN_INDIRECT_CALL      ```python InstructionType.INDIRECT_FUNCTION_CALL```.
-#constant insntype INSN_COND_DIRECT_CALL   ```python InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL```.
-#constant insntype INSN_COND_INDIRECT_CALL ```python InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL```.
-#constant insntype INSN_RETURN             ```python InstructionType.FUNCTION_RETURN```.
-#constant insntype INSN_COND_RETURN        ```python InstructionType.CONDITIONAL_FUNCTION_RETURN```.
-#constant insntype INSN_HALT               ```python InstructionType.ERROR```.
+#foreign insntype ```flat int``` @transparent.
+#constant insntype INSN_NORMAL             ```python InstructionType.NORMAL``` @unique.
+#constant insntype INSN_DIRECT_JUMP        ```python InstructionType.DIRECT_JUMP``` @unique.
+#constant insntype INSN_INDIRECT_JUMP      ```python InstructionType.INDIRECT_JUMP``` @unique.
+#constant insntype INSN_COND_DIRECT_JUMP   ```python InstructionType.CONDITIONAL_DIRECT_JUMP``` @unique.
+#constant insntype INSN_COND_INDIRECT_JUMP ```python InstructionType.CONDITIONAL_INDIRECT_JUMP``` @unique.
+#constant insntype INSN_DIRECT_CALL        ```python InstructionType.DIRECT_FUNCTION_CALL``` @unique.
+#constant insntype INSN_INDIRECT_CALL      ```python InstructionType.INDIRECT_FUNCTION_CALL``` @unique.
+#constant insntype INSN_COND_DIRECT_CALL   ```python InstructionType.CONDITIONAL_DIRECT_FUNCTION_CALL``` @unique.
+#constant insntype INSN_COND_INDIRECT_CALL ```python InstructionType.CONDITIONAL_INDIRECT_FUNCTION_CALL``` @unique.
+#constant insntype INSN_RETURN             ```python InstructionType.FUNCTION_RETURN``` @unique.
+#constant insntype INSN_COND_RETURN        ```python InstructionType.CONDITIONAL_FUNCTION_RETURN``` @unique.
+#constant insntype INSN_HALT               ```python InstructionType.ERROR``` @unique.
 
 #foreign edgetype ```python ControlFlowEdgeKind``` @transparent.
-#constant edgetype EDGE_FALL_THROUGH            ```python ControlFlowEdgeKind.FALL_THROUGH```.
-#constant edgetype EDGE_PSEUDO_FALL_THROUGH     ```python ControlFlowEdgeKind.PSEUDO_FALL_THROUGH```.
-#constant edgetype EDGE_JUMP_TAKEN              ```python ControlFlowEdgeKind.JUMP_TAKEN```.
-#constant edgetype EDGE_JUMP_NOT_TAKEN          ```python ControlFlowEdgeKind.JUMP_NOT_TAKEN```.
-#constant edgetype EDGE_FUNCTION_CALL           ```python ControlFlowEdgeKind.FUNCTION_CALL```.
-#constant edgetype EDGE_FUNCTION_CALL_RETURN    ```python ControlFlowEdgeKind.FUNCTION_CALL_RETURN```.
-#constant edgetype EDGE_TAIL_FUNCTION_CALL      ```python ControlFlowEdgeKind.TAIL_FUNCTION_CALL```.
-#constant edgetype EDGE_PC_THUNK_FUNCTION_CALL  ```python ControlFlowEdgeKind.PC_THUNK_FUNCTION_CALL```.
+#foreign edgetype ```flat int``` @transparent.
+#constant edgetype EDGE_FALL_THROUGH            ```python ControlFlowEdgeKind.FALL_THROUGH``` @unique.
+#constant edgetype EDGE_PSEUDO_FALL_THROUGH     ```python ControlFlowEdgeKind.PSEUDO_FALL_THROUGH``` @unique.
+#constant edgetype EDGE_JUMP_TAKEN              ```python ControlFlowEdgeKind.JUMP_TAKEN``` @unique.
+#constant edgetype EDGE_JUMP_NOT_TAKEN          ```python ControlFlowEdgeKind.JUMP_NOT_TAKEN``` @unique.
+#constant edgetype EDGE_FUNCTION_CALL           ```python ControlFlowEdgeKind.FUNCTION_CALL``` @unique.
+#constant edgetype EDGE_FUNCTION_CALL_RETURN    ```python ControlFlowEdgeKind.FUNCTION_CALL_RETURN``` @unique.
+#constant edgetype EDGE_TAIL_FUNCTION_CALL      ```python ControlFlowEdgeKind.TAIL_FUNCTION_CALL``` @unique.
+#constant edgetype EDGE_PC_THUNK_FUNCTION_CALL  ```python ControlFlowEdgeKind.PC_THUNK_FUNCTION_CALL``` @unique.
 
 #foreign heuristic ```python ControlFlowRecoveryHeuristic``` @transparent.
+#foreign heuristic ```flat int``` @transparent.
 #constant heuristic FUNCTION_CALL_TARGETS_ARE_FUNCTION_HEADS
-    ```python ControlFlowRecoveryHeuristic.FUNCTION_CALL_TARGETS_ARE_FUNCTION_HEADS```.
+    ```python ControlFlowRecoveryHeuristic.FUNCTION_CALL_TARGETS_ARE_FUNCTION_HEADS``` @unique.
 #constant heuristic TRUST_BINARY_PARSER_FUNCTION_HEADS
-    ```python ControlFlowRecoveryHeuristic.TRUST_BINARY_PARSER_FUNCTION_HEADS```.
+    ```python ControlFlowRecoveryHeuristic.TRUST_BINARY_PARSER_FUNCTION_HEADS``` @unique.
 
 ;---------------------------------------------------------
 ; Heuristics used to influence the behavior of control-

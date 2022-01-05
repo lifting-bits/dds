@@ -265,6 +265,7 @@ class BinaryAnalyzer:
                  producer: Optional[DatabaseLogInterface] = DatabaseLog(),
                  instruction_decoder: Optional[str] = None,
                  binary_parser: Optional[str] = None):
+        self._delete_workspace = False
 
         # Detect what features are available.
         self._has_binary_ninja = False
@@ -278,7 +279,6 @@ class BinaryAnalyzer:
 
         # Create a workspace, copy the binary into the workspace, then parse
         # the binary.
-        self._delete_workspace = False
         self._workspace_dir: Final[str] = self._get_or_create_workspace(
             workspace_dir)
         self._binary_path: Final[str] = self._save_binary_to_workspace(
