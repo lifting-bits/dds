@@ -1,6 +1,7 @@
 # Diagnosing Disassembly with Dr. Disassembler
 
-This repository contains a prototype of using Datalog for disassembly.
+This repository contains a prototype of using Datalog for disassembly, described
+in [this blog post](Toward%20a%20Best-of-Both-Worlds%20Binary%20Disassembler.pdf).
 This disassembler takes a portfolio approach to disassembly: it supports
 multiple binary parser frontends, and multiple instruction decoder frontends.
 
