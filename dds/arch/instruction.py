@@ -80,7 +80,7 @@ class InstructionType(IntEnum):
         INDIRECT_JUMP | \
         ControlFlowBehavior.TARGET_IS_DIRECT
 
-    # A conditional jump. E.g. `jz label` on x86.
+    # A conditional jump. E.g. `bne [r2]` on armv7.
     CONDITIONAL_INDIRECT_JUMP = \
         (1 << 20) | \
         ControlFlowBehavior.HAS_TARGET | \

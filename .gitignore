@@ -13,6 +13,4 @@ dds.egg-info/
 **.til
 **.DS_Store
 **od.txt
-dds/datalog/database.py
-dds/datalog/interface.py
 *tmp

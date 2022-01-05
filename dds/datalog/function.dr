@@ -5,7 +5,8 @@
 ;---------------------------------------------------------
 ; Treat inter-procedrual transfer targets as function heads.
 function(FuncEA)
-    : transfer(_, FuncEA, EDGE_FUNCTION_CALL).
+    : transfer(_, FuncEA, EDGE_FUNCTION_CALL)
+    , function_call_targets_are_function_heads.
 
 ; Treat the binary's entrypoint as a function head.
 function(EntryPointEA)
@@ -15,23 +16,24 @@ function(EntryPointEA)
 ; Mark imported, exported, and local functions as function heads.
 function(EA)
     : imported_function(EA, _)
-    , instruction(EA, _, _).
-function(EA)
+    , instruction(EA, _, _)
+
     : exported_function(EA, _)
-    , instruction(EA, _, _).    
-function(EA)
+    , instruction(EA, _, _)
+
     : local_function(EA, _)
-    , instruction(EA, _, _).
+    , instruction(EA, _, _)
+    , trust_binary_parser_function_heads.
 
 ; Mark imported, exported, and local symbols targeted by calls as 
 ; function heads.
 function(EA)
     : imported_symbol(EA, _)
-    , instruction(EA, _, _).
-function(EA)
+    , instruction(EA, _, _)
+
     : exported_symbol(EA, _)
-    , instruction(EA, _, _).    
-function(EA)
+    , instruction(EA, _, _)
+
     : local_symbol(EA, _)
     , instruction(EA, _, _).
 

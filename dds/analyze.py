@@ -2,7 +2,6 @@
 
 import hashlib
 import os
-import sys
 import tempfile
 
 from typing import cast, Final, Iterator, Optional, Union
@@ -27,6 +26,8 @@ from dds.arch import \
 from dds.binary import \
     BinaryParser, \
     BinaryMetadataVisitor
+
+from dds.heuristic import ControlFlowRecoveryHeuristic
 
 
 def debug(message, *args):
@@ -264,6 +265,7 @@ class BinaryAnalyzer:
                  producer: Optional[DatabaseLogInterface] = DatabaseLog(),
                  instruction_decoder: Optional[str] = None,
                  binary_parser: Optional[str] = None):
+        self._delete_workspace = False
 
         # Detect what features are available.
         self._has_binary_ninja = False
@@ -277,7 +279,6 @@ class BinaryAnalyzer:
 
         # Create a workspace, copy the binary into the workspace, then parse
         # the binary.
-        self._delete_workspace = False
         self._workspace_dir: Final[str] = self._get_or_create_workspace(
             workspace_dir)
         self._binary_path: Final[str] = self._save_binary_to_workspace(
@@ -288,6 +289,9 @@ class BinaryAnalyzer:
         # Create a database.
         self._producer: Final = cast(DatabaseLogInterface, producer)
         self._db: Final = Database(self._producer, DatabaseFunctors())
+
+        self._db.enable_heuristic_1(
+            [], [])
 
         # Analyze the binary.
         metadata_importer = BinaryMetadataImporter(self._decoder)
